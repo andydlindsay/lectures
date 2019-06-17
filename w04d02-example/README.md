@@ -27,7 +27,7 @@ const client = new pg.Client(config);
 And we execute queries using the client:
 
 ```js
-client.query('SELECT * FROM <table>', (err, data) => console.log(err, data);
+client.query('SELECT * FROM <table>', (err, data) => console.log(err, data));
 ```
 
 **NOTE:** `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the subsequent arguments will be our data (if any).
@@ -64,7 +64,20 @@ INSERT INTO <table> (<column1>, <column2>) VALUES (<value1>, <value2>);
 DELETE FROM <table> WHERE id = <id>;
 ```
 
+### Sanitization
+
+We always want to sanitize any user-defined parameters in our SQL before running the query to prevent possible [SQL injections](https://en.wikipedia.org/wiki/SQL_injection).
+
+In `pg`, we use [prepared statements](https://en.wikipedia.org/wiki/Prepared_statement) and pass an array of values as the second argument to `client.query()`:
+
+```js
+client.query('SELECT * FROM <table> WHERE id = $1', [<id>], (err, data) => console.log(err, data));
+```
+
+In the above example, the `id` from the array will be interpolated into the SQL query.
+
 ### Useful Links
 * [node-postgres](https://node-postgres.com/)
 * [Postgres Numeric Data Types](https://www.postgresql.org/docs/11/datatype-numeric.html)
 * [Little Bobby Tables](https://xkcd.com/327/)
+* [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection)
