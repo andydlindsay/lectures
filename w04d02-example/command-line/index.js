@@ -58,10 +58,9 @@ client.connect((err) => {
             break;
 
         case 'add':
-            id = process.argv.slice(2)[1];
-            const villain = process.argv.slice(2)[2];
-            const movie = process.argv.slice(2)[3];
-            client.query('INSERT INTO movie_villains (id, villain, movie) VALUES ($1, $2, $3)', [id, villain, movie], (err) => {
+            const villain = process.argv.slice(2)[1];
+            const movie = process.argv.slice(2)[2];
+            client.query('INSERT INTO movie_villains (villain, movie) VALUES ($1, $2)', [villain, movie], (err) => {
                 if (err) {
                     console.error(err);
                     return false;
