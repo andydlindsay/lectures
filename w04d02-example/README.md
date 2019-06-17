@@ -30,7 +30,7 @@ And we execute queries using the client:
 client.query('SELECT * FROM <table>', (err, data) => console.log(err, data));
 ```
 
-**NOTE:** `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the subsequent arguments will be our data (if any).
+**NOTE:** `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the second argument will be the return value from our query.
 
 ### SQL Syntax Review
 
@@ -74,10 +74,12 @@ In `pg`, we use [prepared statements](https://en.wikipedia.org/wiki/Prepared_sta
 client.query('SELECT * FROM <table> WHERE id = $1', [<id>], (err, data) => console.log(err, data));
 ```
 
-In the above example, the `id` from the array will be interpolated into the SQL query.
+In the above example, the `id` from the array will be interpolated into the SQL query wherever `$1` appears.
 
 ### Useful Links
 * [node-postgres](https://node-postgres.com/)
 * [Postgres Numeric Data Types](https://www.postgresql.org/docs/11/datatype-numeric.html)
 * [Little Bobby Tables](https://xkcd.com/327/)
 * [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection)
+
+#### Inspired by [Sadie Freeman's](https://github.com/sadief) [lecture](https://github.com/sadief/lighthouse-labs-lectures/tree/may-21-19-sql/SQL_in_our_apps) on the same topic
