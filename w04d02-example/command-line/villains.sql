@@ -7,13 +7,7 @@ CREATE TABLE movie_villains (
 );
 
 INSERT INTO movie_villains (villain, movie)
-VALUES('Agent Smith', 'The Matrix');
-
-INSERT INTO movie_villains (villain, movie)
-VALUES('Voldemort', 'Harry Potter Series');
-
-INSERT INTO movie_villains (villain, movie)
-VALUES('Wicked Witch of the West', 'Wizard of Oz');
-
-INSERT INTO movie_villains (villain, movie)
-VALUES('Thanos', 'Avengers');
+VALUES ('Agent Smith', 'The Matrix'),
+    ('Voldemort', 'Harry Potter Series'),
+    ('Wicked Witch of the West', 'Wizard of Oz'),
+    ('Thanos', 'Avengers');
