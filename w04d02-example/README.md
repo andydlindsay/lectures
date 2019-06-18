@@ -9,7 +9,7 @@
 
 We are going to use node-postgres (`pg`) node package to interact with our database.
 
-In order to connect with our database, we need to pass configuration options to the `pg` client:
+In order to connect with our database, we pass configuration options to the `pg` client:
 
 ```js
 const pg = require('pg');
@@ -22,6 +22,12 @@ const config = {
 };
 
 const client = new pg.Client(config);
+```
+
+Then we tell our client to connect to the database:
+
+```js
+client.connect();
 ```
 
 And we execute queries using the client:

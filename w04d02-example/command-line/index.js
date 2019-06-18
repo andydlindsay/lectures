@@ -8,6 +8,7 @@ const config = {
 };
 
 const client = new pg.Client(config);
+
 const queryType = process.argv.slice(2)[0];
 let id = null;
 
