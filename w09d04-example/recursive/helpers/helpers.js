@@ -1,5 +1,5 @@
 module.exports.renderMaze = (maze) => {
-    const layers = ['above', 'sides', 'below'];
+    const layers = ['above', 'sides', 'sides', 'sides', 'below'];
 
     for (let y = 0; y < maze.length; y++) {
         for (const layer of layers) {
@@ -9,16 +9,16 @@ module.exports.renderMaze = (maze) => {
                 switch (layer) {
                     case 'above':
                         if (node.above) {
-                            output = '+  +';
+                            output = '+     +';
                         } else {
-                            output = '+--+';
+                            output = '+-----+';
                         }
                         break;
                     case 'sides':
                         if (node.left) {
-                            output = '   ';
+                            output = '      ';
                         } else {
-                            output = '|  ';
+                            output = '|     ';
                         }
                         if (node.right) {
                             output += ' ';
@@ -28,9 +28,9 @@ module.exports.renderMaze = (maze) => {
                         break;
                     case 'below':
                         if (node.below) {
-                            output = '+  +';
+                            output = '+     +';
                         } else {
-                            output = '+--+';
+                            output = '+-----+';
                         }
                         break;
                 }
