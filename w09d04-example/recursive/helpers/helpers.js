@@ -39,4 +39,5 @@ module.exports.renderMaze = (maze) => {
             console.log();
         }
     }
+    console.log();
 }
