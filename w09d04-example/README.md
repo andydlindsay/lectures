@@ -1,4 +1,7 @@
-## Planning
+# W09D04 Data Structures & Algorithms
+
+### To Do
+- [ ] 
 
 * Maze demonstration
 * Algorithms
@@ -16,3 +19,4 @@
 * [Tree](https://en.wikipedia.org/wiki/Tree_(data_structure))
 * [Graph](https://en.wikipedia.org/wiki/Graph_(abstract_data_type))
 * [Programming Mazes](https://youtu.be/Y37-gB83HKE)
+* [Mazes w/o Monsters](http://mazes-wo-monsters.herokuapp.com/)

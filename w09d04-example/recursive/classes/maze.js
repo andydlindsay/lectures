@@ -1,5 +1,6 @@
 const Node = require('./node');
 const Stack = require('./stack');
+const { renderMaze } = require('../helpers/helpers');
 
 module.exports = class Maze {
     constructor(width, length) {
@@ -66,6 +67,7 @@ module.exports = class Maze {
         while (stack.length) {
             const currentNode = stack.peek();
             currentNode.visited = true;
+            currentNode.active = true;
 
             const neighbours = this
                 .findNeighbours(currentNode)
@@ -98,6 +100,11 @@ module.exports = class Maze {
             } else {
                 stack.pop();
             }
+
+            console.clear();
+            console.log(stack.length);
+            renderMaze(this);
+            currentNode.active = false;
         }
     }
 };
