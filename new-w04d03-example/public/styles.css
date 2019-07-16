@@ -1,0 +1,16 @@
+article {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+article header {
+  font-size: 1.2rem;
+  color: rebeccapurple;
+}
+
+article footer {
+  font-size: 0.8rem;
+  color: lightsalmon;
+}
