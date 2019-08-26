@@ -27,7 +27,7 @@
 6. **Presentation** - the operating system of the device
 7. **Application** - the application (client or server)
 
-## Transport Layer Protocols
+### Transport Layer Protocols
 - Break data into packets to be sent over the network layer
 - Give each packet a header with origin and destination
 - **UDP**: **U**ser **D**atagram **P**rotocol
@@ -45,12 +45,13 @@
 
 ### HTTP
 - **H**yper**T**ext **T**ransfer **P**rotocol
-- Protocol for exchanging data over the internet
+- Protocol for how messages are formatted and transmitted
 - Call and response communication
 - _State-less_: It does not remember any previous communication
 - Routes to resources are made up of verbs and paths
-- 
-
+- **VERBS**: GET, POST, PUT, PATCH, DELETE
+- **PATHS**: `www.example.com/users`, `unicorns/123`
+- Returns status codes for each communication (eg. 200, 202, 302, 404, 500)
 
 ### Useful Links
 * [OSI Model](https://en.wikipedia.org/wiki/OSI_model)
