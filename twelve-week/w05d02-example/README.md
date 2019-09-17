@@ -55,6 +55,17 @@ It could be argued that there is really only one relationship type: _One-to-Many
 - Extremely useful for reasoning about how the database should be structured
 - Can be created using pen and paper, a whiteboard, or using an online application
 
+### ERD #1 Convert 2 Spreadsheets
+We started with these two spreadsheets:
+![Two Spreadsheets](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/bookAndAuthorsTables.png)
+
+And turned them into a relational db:
+![Books and Authors](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/books+and+authors.png)
+
+### ERD #2 Uber/Ride Hailing
+Then we created an ERD for a fictional Uber competitor:
+![Uber](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/uber.png)
+
 ### Useful Links
 * [Database Normalization](https://en.wikipedia.org/wiki/Database_normalization)
 * [Postgres Data Types](http://www.postgresqltutorial.com/postgresql-data-types/)
