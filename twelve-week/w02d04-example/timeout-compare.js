@@ -4,7 +4,7 @@ setTimeout(() => {
   console.log('setTimeout with callback');
 }, 500);
 
-setTimeoutAsync(3000)
+setTimeoutAsync(2000)
   .then(() => {
     console.log('setTimeout with promise');
-  });
+  })
