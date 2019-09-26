@@ -120,6 +120,10 @@ Promise.race(promises)
 const myPromise = new Promise((resolve, reject) => {
   // do something and resolve when finished or reject with an error
 });
+
+myPromise.then((data) => {
+  // do something with the resolved promises data
+});
 ```
 
 ### Useful Links
