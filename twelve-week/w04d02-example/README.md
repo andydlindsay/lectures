@@ -60,8 +60,8 @@ document.querySelector('body').removeEventListener('click', clickHandler);
 
 ```js
 // navigator and document are actually props on the window object
-window.navigator === navigator;
-window.document === document;
+window.navigator === navigator; // true
+window.document === document; // true
 ```
 
 ### jQuery
@@ -80,9 +80,9 @@ window.document === document;
 // html element
 $('h1');
 // css class
-const $myClass = $('.my-class');
+$('.my-class');
 // nested element
-const $nestElement = $('.my-class span');
+$('.my-class span');
 ```
 
 ### Creating Elements with jQuery
