@@ -13,7 +13,7 @@
   > The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
 - Our HTML is turned into a data structure that we call the **D**ocument **O**bject **M**odel or the **DOM**
 - The DOM is stored as a [`tree`](https://en.wikipedia.org/wiki/Tree_(data_structure)) data structure with parent/child/sibling relationships between various parts of the page
-- The DOM allows us to interact with various parts of the web page using JavaScript
+- The DOM allows us to interact with the web page using JavaScript
 
 ### DOM Events
 - An event is a notification that some action has occurred (eg. a button is clicked, the mouse pointer is moved, a key is pressed)
@@ -55,7 +55,8 @@ document.querySelector('body').removeEventListener('click', clickHandler);
 - **`navigator` object**
   - Contains information about the browser such as browser version, browser name, and geographic location
 - **`document` object**
-  - The root node of the document
+  - Represents the DOM
+  - Can be seen in the browser console by running `console.dir(document)`
 
 ```js
 // navigator and document are actually props on the window object
