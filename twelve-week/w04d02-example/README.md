@@ -59,7 +59,7 @@ document.querySelector('body').removeEventListener('click', clickHandler);
   - Can be seen in the browser console by running `console.dir(document)`
 
 ```js
-// navigator and document are actually props on the window object
+// you can also access navigator and document as props on the window object
 window.navigator === navigator; // true
 window.document === document; // true
 ```
@@ -79,8 +79,10 @@ window.document === document; // true
 ```js
 // html element
 $('h1');
-// css class
+// class
 $('.my-class');
+// id
+$('#my-id');
 // nested element
 $('.my-class span');
 ```
