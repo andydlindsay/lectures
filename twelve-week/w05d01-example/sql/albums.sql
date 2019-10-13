@@ -2,10 +2,10 @@ DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS songs;
 
 CREATE TABLE albums (
-    id SERIAL PRIMARY KEY,
-    album_name VARCHAR(50),
-    artist_name VARCHAR(50),
-    release_date DATE
+  id SERIAL PRIMARY KEY,
+  album_name VARCHAR(50),
+  artist_name VARCHAR(50),
+  release_date DATE
 );
 
 CREATE TABLE songs (
@@ -21,7 +21,7 @@ VALUES  ('Homecoming: The Live Album', 'Beyonce', 'April 17, 2019'),
         ('On the Line', 'Jenny Lewis', 'March 22, 2019'),
         ('thank u, next', 'Ariana Grande', 'February 8, 2019');
 
-INSERT INTO songs (album_id, song_name, track_number, rating)
+INSERT INTO songs (album_id, track_number, song_name, rating)
 VALUES  (1, 1, 'Welcome', 2.5),
         (1, 2, 'Crazy in Love', 4),
         (1, 3, 'Freedom', 4),
