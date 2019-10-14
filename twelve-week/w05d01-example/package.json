@@ -1,0 +1,19 @@
+{
+  "name": "w05d01-example",
+  "version": "1.0.0",
+  "description": "### To Do - [ ] Introduction to RDBMS - [ ] The Relational Data Model (Tables, Columns, Rows) - [ ] SELECT Statements - [ ] Filtering, ordering, limiting, etc. - [ ] Joining tables - [ ] Grouping records - [ ] Aggregate functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "faker": "^4.1.0",
+    "knex": "^0.19.5",
+    "knex-csv-seeder": "^0.4.1",
+    "pg": "^7.12.1"
+  }
+}

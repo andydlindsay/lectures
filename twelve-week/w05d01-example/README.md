@@ -49,6 +49,31 @@ SELECT username, email
 FROM users;
 ```
 
+### JOIN
+- We connect tables together using **JOIN**s
+- The tables are joined together using the primary key and foreign key
+- There are various types of joins:
+  - `INNER JOIN`: The default. Return only records that have matching records in the other table.
+  - `LEFT JOIN`: Return all records from the "left" table and only those from the other table that match.
+  - `RIGHT JOIN`: The same as a _LEFT JOIN_, but from the _RIGHT_ instead.
+  - `LEFT OUTER JOIN`: Return only records from the first table that don't match anything in the second table.
+  - `RIGHT OUTER JOIN`: The same as _LEFT OUTER JOIN_, but from the _RIGHT_ instead.
+  - `FULL OUTER JOIN`: Return only records from both tables that have no matches in the other table.
+
+```sql
+-- basic INNER JOIN
+SELECT *
+FROM table_one
+INNER JOIN table_two
+ON table_one.id = table_two.table_one_id;
+
+-- since it is the default, you don't have to specify "INNER"
+SELECT *
+FROM table_one
+JOIN table_two
+ON table_one.id = table_two.table_one_id;
+```
+
 ### SELECT Challenges
 
 1. Retrieve a specific record or records from a table that match a criteria.
@@ -75,13 +100,19 @@ FROM users;
 
 ```
 
-5. Group records together on common values.
+5. Return all records from one table and only those that match from a second table.
 
 ```sql
 
 ```
 
-6. Aggregation queries.
+6. Group records together on common values.
+
+```sql
+
+```
+
+7. Aggregation queries.
 
 ```sql
 
