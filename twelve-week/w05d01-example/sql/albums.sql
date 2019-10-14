@@ -20,7 +20,8 @@ INSERT INTO albums (album_name, artist_name, release_date)
 VALUES  ('Homecoming: The Live Album', 'Beyonce', 'April 17, 2019'),
         ('On the Line', 'Jenny Lewis', 'March 22, 2019'),
         ('thank u, next', 'Ariana Grande', 'February 8, 2019'),
-        ('the underrated youth', 'Yungblud', 'October 18, 2019');
+        ('the underrated youth', 'Yungblud', 'October 18, 2019'),
+        ('Hollywood''s Bleeding', 'Post Malone', 'September 6, 2019');
 
 INSERT INTO songs (album_id, track_number, song_name, rating)
 VALUES  (1, 1, 'Welcome', 2.5),
@@ -54,5 +55,20 @@ VALUES  (1, 1, 'Welcome', 2.5),
         (3, 7, 'make up', 3.5),
         (3, 8, 'ghostin', 2.5),
         (3, 9, 'in my head', 3.5),
-        (3, 10, '7 rings', 4.5),
-        (3, 11, 'thank you, next', 2);
+        (5, 1, 'Hollywood''s Bleeding', 3),
+        (5, 2, 'Saint-Tropez', 4.5),
+        (5, 3, 'Enemies(Ft. DaBaby)', 4),
+        (5, 4, 'Allergic', 4.5),
+        (5, 5, 'A Thousand Bad Times', 3.5),
+        (5, 6, 'Circles', 3.5),
+        (5, 7, 'Die For Me (Ft. Future & Halsey)', 2.5),
+        (5, 8, 'On the Road (Ft. Lil Baby & Meek Mill)', 3.5),
+        (5, 9, 'Take What You Want', 3),
+        (5, 10, 'I''m Gonna Be', 3.5),
+        (5, 11, 'Staring at the Sun (Ft. SZA)', 3),
+        (5, 12, 'Sunflower by Post Malone & Swae Lee', 3.5),
+        (5, 13, 'Internet', 4),
+        (5, 14, 'Goodbyes (Ft. Young Thug)', 3.5),
+        (5, 15, 'Myself', 2.5),
+        (5, 16, 'I Know', 3.5),
+        (5, 17, 'Wow.', 3);
