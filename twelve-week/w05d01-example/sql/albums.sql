@@ -19,7 +19,8 @@ CREATE TABLE songs (
 INSERT INTO albums (album_name, artist_name, release_date)
 VALUES  ('Homecoming: The Live Album', 'Beyonce', 'April 17, 2019'),
         ('On the Line', 'Jenny Lewis', 'March 22, 2019'),
-        ('thank u, next', 'Ariana Grande', 'February 8, 2019');
+        ('thank u, next', 'Ariana Grande', 'February 8, 2019'),
+        ('the underrated youth', 'Yungblud', 'October 18, 2019');
 
 INSERT INTO songs (album_id, track_number, song_name, rating)
 VALUES  (1, 1, 'Welcome', 2.5),
