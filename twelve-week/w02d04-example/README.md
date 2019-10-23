@@ -50,7 +50,7 @@ functionOneReturningPromise()
 ```js
 callbackOne((errOne, dataOne) => {
   if (errOne) {
-    throw errOne
+    throw errOne;
   }
   callbackTwo((errTwo, dataTwo) => {
     if (errTwo) {
