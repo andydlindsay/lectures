@@ -1,11 +1,11 @@
 # W2D4 - Promises
 
 ### To Do
-- [ ] Sequencing of async tasks without the "callback waterfall" (callback hell) problem
+- [ ] Illustrate the "callback waterfall" (callback hell) problem
 - [ ] Introduction to Promises
 - [ ] Error handling with Promises (vs callbacks)
-- [ ] Parallelizing async things (Promise.race and Promise.all)
 - [ ] Creating our own Promises
+- [ ] Parallelizing async things (Promise.race and Promise.all)
 
 ### Promises
 - An object that may (or may not) resolve to a value in the future
@@ -18,7 +18,7 @@
 
 ```js
 // nested callbacks
-callbackOne((dataOne) => {
+higherOrderFn((dataOne) => {
   callbackTwo((dataTwo) => {
     callbackThree((dataThree) => {
       callbackFour((dataFour) => {
@@ -48,7 +48,7 @@ functionOneReturningPromise()
 - A lot of Node callbacks use an _error-first_ approach where the first argument to the callback function is an error (if any) or null, and the second argument is the data. This can result in duplicated error handling logic in each callback in the chain.
 
 ```js
-callbackOne((errOne, dataOne) => {
+higherOrderFn((errOne, dataOne) => {
   if (errOne) {
     throw errOne;
   }

@@ -1,7 +1,7 @@
 {
   "name": "w02d04-example",
   "version": "1.0.0",
-  "description": "### To Do - [ ] Introduction to Promises - [ ] Sequencing of async tasks without the \"callback waterfall\" (callback hell) problem - [ ] Error handling with Promises (vs callbacks) - [ ] Parallelizing async things (Promise.race and Promise.all)",
+  "description": "Notes and example code for W2D4 lecture",
   "main": "survey-promise.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
