@@ -2,29 +2,38 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const path = require('path');
 const uuid = require('uuid/v4');
 
 const app = express();
-const port = 8000;
+const port = 3030;
 
 const users = [];
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
 
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/login.html'));
+  res.render('login');
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/register.html'));
+  res.render('register');
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/protected.html'));
+  if (!req.cookies.userId) {
+    return res.redirect('/login');
+  }
+  const { userId } = req.cookies;
+  const user = users.find((user) => user.id === userId);
+  if (!user) {
+    return res.redirect('/login');
+  }
+  res.render('protected', { user });
 });
 
 app.post('/login', (req, res) => {
@@ -53,6 +62,11 @@ app.post('/register', (req, res) => {
   });
   res.cookie('userId', userId);
   res.redirect('/protected');
+});
+
+app.post('/logout', (req, res) => {
+  res.clearCookie('userId');
+  res.redirect('/login');
 });
 
 app.listen(port, () => {
