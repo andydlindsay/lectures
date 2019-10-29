@@ -5,8 +5,7 @@ const cookieParser = require('cookie-parser');
 const uuid = require('uuid/v4');
 
 const app = express();
-const port = 3030;
-
+const port = 1234;
 const users = [];
 
 app.use(morgan('dev'));
