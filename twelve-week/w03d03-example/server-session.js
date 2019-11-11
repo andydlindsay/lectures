@@ -1,19 +1,24 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const uuid = require('uuid/v4');
+const cookieSession = require("cookie-session");
 
 const app = express();
 const port = 1234;
 const users = [];
 
+app.set('view engine', 'ejs');
+
+app.use(
+  cookieSession({
+    name: "lecture",
+    keys: ["key1", "key2"]
+  })
+);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static('public'));
-
-app.set('view engine', 'ejs');
 
 app.get('/login', (req, res) => {
   res.render('login');
@@ -24,10 +29,10 @@ app.get('/register', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  if (!req.cookies.userId) {
+  if (!req.session.userId) {
     return res.redirect('/login');
   }
-  const { userId } = req.cookies;
+  const { userId } = req.session;
   const user = users.find((user) => user.id === userId);
   if (!user) {
     return res.redirect('/login');
@@ -45,14 +50,14 @@ app.post('/login', (req, res) => {
   if (user.password !== password) {
     return res.status(401).send('Password incorrect');
   }
-  res.cookie('userId', user.id);
+  req.session.userId = user.id;
   res.redirect('/protected');
 });
 
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
   if (users.some((user) => user.email === email)) {
-    return res.status(400).send('User with that email already exists');
+    return res.status(403).send('User with that email already exists');
   }
   const userId = uuid().split('-')[0];
   users.push({
@@ -60,12 +65,12 @@ app.post('/register', (req, res) => {
     email,
     password
   });
-  res.cookie('userId', userId);
+  req.session.userId = userId;
   res.redirect('/protected');
 });
 
 app.post('/logout', (req, res) => {
-  res.clearCookie('userId');
+  req.session = null;
   res.redirect('/login');
 });
 

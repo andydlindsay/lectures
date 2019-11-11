@@ -22,13 +22,15 @@
 * **Hashing**:
   * The original string is passed into a function that performs some kind of transformation on it and returns a different string (the _hash_)
   * This is a one way process: a hashed value cannot be retrieved
+* We make hashing more secure by adding a _salt_ to the original string prior to hashing
+* This [helps to protect against Rainbow Table attacks](https://stackoverflow.com/questions/420843/how-does-password-salt-help-against-a-rainbow-table-attack)
 
 ### Encrypted Cookies
 * Plain text cookies can be manipulated by users
 * It's better practice to use _encrypted_ cookies
 * **Encryption**:
   * Similar to hashing, the string is scrambled/transformed by a function
-  * This is a two way process: encrypted strings can be decrypted by the intended recipient
+  * This is a two-way process: encrypted strings can be decrypted by the intended recipient
 
 ### HTTP Secure (HTTPS)
 * HTTPS uses Transport Layer Security (TLS) to encrypt communication between client and server
@@ -41,7 +43,7 @@
 * The client stores a unique session id which is used to access the session data on the server
 
 ### When to use...
-* Plain Cookies:
+* Plain Text Cookies:
   * Almost never use plain cookies
   * Maybe for:
     * Language selection

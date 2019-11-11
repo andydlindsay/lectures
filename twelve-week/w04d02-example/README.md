@@ -21,15 +21,19 @@
 
 ```js
 // we can use anonymous functions...
-document.querySelector('button').addEventListener('click', (event) => {
+document
+  .querySelector('button')
+  .addEventListener('click', (event) => {
   // do something
-});
+  });
 
 // or named functions
 const eventHandler = function (event) {
   // do something
 };
-document.querySelector('button').addEventListener('click', eventHandler);
+document
+  .querySelector('button')
+  .addEventListener('click', eventHandler);
 ```
 
 - There are a *lot* of [DOM events](https://developer.mozilla.org/en-US/docs/Web/Events)
@@ -41,10 +45,14 @@ document.querySelector('button').addEventListener('click', eventHandler);
 const clickHandler = function (event) {
   console.log(event.clientX, event.clientY);
 };
-document.querySelector('body').addEventListener('click', clickHandler);
+document
+  .querySelector('body')
+  .addEventListener('click', clickHandler);
 
 // we can also remove event handlers using a similar API
-document.querySelector('body').removeEventListener('click', clickHandler);
+document
+  .querySelector('body')
+  .removeEventListener('click', clickHandler);
 ```
 
 ### Other Useful Objects

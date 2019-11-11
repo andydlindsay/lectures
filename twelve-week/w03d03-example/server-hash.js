@@ -52,7 +52,7 @@ app.post('/login', (req, res) => {
 app.post('/register', (req, res) => {
   const { email, password } = req.body;
   if (users.some((user) => user.email === email)) {
-    return res.status(400).send('User with that email already exists');
+    return res.status(403).send('User with that email already exists');
   }
   const userId = uuid().split('-')[0];
   users.push({

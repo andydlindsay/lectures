@@ -14,21 +14,33 @@ const genPastDate = () => {
 };
 
 const authors = [];
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 20; i++) {
   authors.push(`${faker.name.firstName()} ${faker.name.lastName()}`);
 }
 
 const publishers = [];
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 10; i++) {
   publishers.push(faker.company.companyName());
 }
 
-const createFakeBook = () => {
-  const bookName = `The ${faker.commerce.productAdjective()} ${faker.commerce.product()}`;
+const createBookName = () => {
+  const nameType = genRandom(4);
+  switch (nameType) {
+    case 0:
+      return `The ${faker.commerce.productAdjective()} ${faker.commerce.product()}`;
+    case 1:
+      return `${faker.commerce.product()} is the Next ${faker.commerce.productAdjective()}`;
+    case 2:
+      return `101 ways to ${faker.commerce.productAdjective()} ${faker.commerce.productMaterial()}`;
+    case 3:
+      return `${faker.database.engine()}: From Pupa to Butterfly`;
+  }
+};
 
+const createFakeBook = () => {
   return {
     author_name: authors[genRandom(authors.length)],
-    book_name: bookName,
+    book_name: createBookName(),
     publisher: publishers[genRandom(publishers.length)],
     publication_date: genPastDate(),
     number_of_pages: faker.random.number(400) + 100
@@ -37,7 +49,7 @@ const createFakeBook = () => {
 
 exports.seed = async function (knex) {
   const fakeBooks = [];
-  const desiredFakeBooks = 50;
+  const desiredFakeBooks = 500;
   for (let i = 0; i < desiredFakeBooks; i++) {
     fakeBooks.push(createFakeBook());
   }

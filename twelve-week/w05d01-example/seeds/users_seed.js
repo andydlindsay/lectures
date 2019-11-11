@@ -4,9 +4,9 @@ const createFakeUser = () => ({
   first_name: faker.name.firstName(),
   last_name: faker.name.lastName(),
   email: faker.internet.email(),
-  age: faker.random.number(40),
+  age: faker.random.number(40) + 10,
   country: faker.address.country(),
-  payment_due_date: faker.date.between('Oct 1, 2019', 'Oct 31, 2019')
+  payment_due_date: faker.date.between('Nov 1, 2019', 'Nov 30, 2019')
 });
 
 exports.seed = async function(knex) {
@@ -15,5 +15,5 @@ exports.seed = async function(knex) {
   for (let i = 0; i < desiredFakeUsers; i++) {
     fakeUsers.push(createFakeUser());
   }
-  await knex('users').insert(fakeUsers);
+  return await knex('users').insert(fakeUsers);
 };

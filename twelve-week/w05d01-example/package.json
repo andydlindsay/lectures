@@ -1,7 +1,7 @@
 {
   "name": "w05d01-example",
   "version": "1.0.0",
-  "description": "### To Do - [ ] Introduction to RDBMS - [ ] The Relational Data Model (Tables, Columns, Rows) - [ ] SELECT Statements - [ ] Filtering, ordering, limiting, etc. - [ ] Joining tables - [ ] Grouping records - [ ] Aggregate functions",
+  "description": "Lecture notes for W5D1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
