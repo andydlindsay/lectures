@@ -4,7 +4,7 @@ const createFakeUser = () => ({
   first_name: faker.name.firstName(),
   last_name: faker.name.lastName(),
   email: faker.internet.email(),
-  age: faker.random.number(40) + 10,
+  age: faker.random.number(40),
   country: faker.address.country(),
   payment_due_date: faker.date.between('Nov 1, 2019', 'Nov 30, 2019')
 });
