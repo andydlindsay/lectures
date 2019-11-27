@@ -36,7 +36,9 @@ console.log(myString); // 'hello world'
 
 ### Objects!
 - Objects are data structures that allow us to store related data and functionality together
-- Objects are key/value pairs
+- Objects are made up of key/value pairs
+- The key in an object is always a string
+- The value can be any valid JavaScript value (primitive, array, object, or function)
 - In arrays, you use the index to access a value:
 
 ```js
@@ -56,7 +58,7 @@ const myObj = {
 // dot syntax
 console.log(myObj.firstName); // Lorem
 
-// and square bracket syntax
+// square bracket syntax
 console.log(myObj['lastName']); // Ipsum
 ```
 
@@ -76,18 +78,25 @@ changeName(name);
 console.log(name); // Murray
 ```
 
-- Objects are passed to functions by reference. This means that the internal values of the object can be changed by the function, but it cannot be reassigned.
+- Objects are passed to functions by reference. This means that the internal values of the object can be changed by the function, but the object itself cannot be reassigned.
 
 ```js
 const myObj = {
   firstName: 'Lorem',
   lastName: 'Ipsum'
 };
+
 const changeKey = function (obj) {
-  obj.firstName = 'Jane';
+  obj.firstName = 'Jane'; // this does change the value of the firstName key
 }
 changeKey(myObj);
 console.log(myObj.firstName); // Jane
+
+const replaceObj = function (obj) {
+  obj = {}; // this won't work
+}
+replaceObj(myObj);
+console.log(myObj); // { firstName: 'Jane', lastName: 'Ipsum' }
 ```
 
 ### Functions Inside Objects
@@ -116,6 +125,8 @@ const myObj = {
 }
 myObj.sayFullName(); // My full name is Lorem Ipsum
 ```
+
+- A function inside an object is often referred to as a `method`
 
 ### Useful Links
 * [MDN: Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
