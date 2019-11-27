@@ -60,8 +60,8 @@ console.log(myObj.firstName); // Lorem
 console.log(myObj['lastName']); // Ipsum
 ```
 
-- If you know the name of the property, use dot syntax
-- If the name of the property is dynamic (such as stored in a variable), use square bracket syntax
+- If you know the name of the property, use dot notation
+- If the name of the property is dynamic (eg. stored in a variable), use square bracket syntax
 
 ### Passing Values to Functions
 - Primitive types are passed to functions by value. This means that a copy is made and used by the function. The original value is unchanged.
@@ -90,6 +90,33 @@ changeKey(myObj);
 console.log(myObj.firstName); // Jane
 ```
 
+### Functions Inside Objects
+- Since objects are key/value pairs, and functions are values, we can store functions inside of an object
+
+```js
+const myObj = {
+  firstName: 'Lorem',
+  sayHello: function () {
+    console.log('hello');
+  }
+};
+myObj.sayHello(); // hello
+console.log(myObj); // { firstName: 'Lorem', sayHello: [Function: sayHello] }
+```
+
+- We can make reference to the other properties in an object by using `this` to refer to the object itself
+
+```js
+const myObj = {
+  firstName: 'Lorem',
+  lastName: 'Ipsum',
+  sayFullName: function () {
+    console.log(`My full name is ${this.firstName} ${this.lastName}`);
+  }
+}
+myObj.sayFullName(); // My full name is Lorem Ipsum
+```
 
 ### Useful Links
-* []()
+* [MDN: Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
+* [Dot Notation vs Square Brackets](https://codeburst.io/javascript-quickie-dot-notation-vs-bracket-notation-333641c0f781)
