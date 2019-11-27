@@ -20,4 +20,4 @@
 - Refine your Googling skills
 
 ## Imposter Syndrome
-- 
+- Everyone suffers from it at some point or another
