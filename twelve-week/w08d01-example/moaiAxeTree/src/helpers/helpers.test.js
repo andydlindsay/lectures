@@ -1,10 +1,6 @@
-import { chooseRobotItem, announceResult, genFeedbackMessage } from './helpers'
+import { announceResult } from './helpers'
 
 let fakeState;
-
-const setFakeState = function (newState) {
-  fakeState = newState();
-};
 
 beforeEach(() => {
   fakeState = {
@@ -13,60 +9,6 @@ beforeEach(() => {
     status: 'Waiting',
     cheating: false
   };
-});
-
-describe('chooseRobotItem function', () => {
-  test('sets compSelection to "Tree" if player is "Moai" and cheating is true', () => {
-    const fakeFn = jest.fn();
-    fakeFn.mockImplementation(setFakeState);
-    fakeState = {
-      ...fakeState,
-      cheating: true,
-      playerSelection: 'Moai'
-    };
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, fakeFn);
-    expect(fakeState.compSelection).toBe('Tree');
-  });
-
-  test('sets compSelection to null if player is null and cheating is true', () => {
-    fakeState = {
-      ...fakeState,
-      cheating: true
-    };
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, setFakeState);
-    expect(fakeState.compSelection).toBe(null);
-  });
-
-  test('sets compSelection to "Moai" if player is "Axe" and cheating is true', () => {
-    fakeState = {
-      ...fakeState,
-      cheating: true,
-      playerSelection: 'Axe'
-    };
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, setFakeState);
-    expect(fakeState.compSelection).toBe('Moai');
-  });
-
-  test('sets compSelection to "Axe" if player is "Tree" and cheating is true', () => {
-    fakeState = {
-      ...fakeState,
-      cheating: true,
-      playerSelection: 'Tree'
-    };
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, setFakeState);
-    expect(fakeState.compSelection).toBe('Axe');
-  });
-
-  test('sets compSelection to random valid value if cheating is false', () => {
-    fakeState = {
-      ...fakeState,
-      cheating: false,
-      playerSelection: 'Moai'
-    };
-    const validValues = ['Tree', 'Moai', 'Axe'];
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, setFakeState);
-    expect(validValues.includes(fakeState.compSelection)).toBe(true);
-  });
 });
 
 describe('announceResult function', () => {
@@ -90,17 +32,5 @@ describe('announceResult function', () => {
 
   test('returns "Waiting" if nothing is passed in', () => {
     expect(announceResult()).toBe('Waiting');
-  });
-});
-
-describe('genFeedbackMessage function', () => {
-  test('returns correct message when given a status', () => {
-    const loss = genFeedbackMessage('Lost');
-    const win = genFeedbackMessage('Won');
-    const tie = genFeedbackMessage('Tied');
-
-    expect(loss).toEqual('You lost!');
-    expect(win).toEqual('Good job!');
-    expect(tie).toEqual('Tie game!');
   });
 });

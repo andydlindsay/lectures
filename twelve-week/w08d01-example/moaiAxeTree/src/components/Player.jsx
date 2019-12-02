@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react';
-import { registerPlayerItem, chooseRobotItem, announceResult} from '../helpers/helpers';
+import { announceResult } from '../helpers/helpers';
 
 export default function Player(props) {
-  const {playerSelection, compSelection, cheating} = props.state
+  const {playerSelection, compSelection} = props.state
   const {setState} = props
-
-  useEffect(() => {
-    if (playerSelection) {
-      chooseRobotItem(cheating, playerSelection, setState);
-    }
-  }, [playerSelection, cheating, setState]);
 
   useEffect(() => {
     if(playerSelection && compSelection){
@@ -28,6 +22,10 @@ export default function Player(props) {
       }
     ));
   };
+
+  const registerPlayerItem = (value, updater) => {
+    return updater(prevState => ({ ...prevState, playerSelection: value }));
+  }
 
   return (
     <section className="player">

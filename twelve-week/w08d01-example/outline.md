@@ -1,48 +1,72 @@
-* Storybook is similar to manual testing
-* 3 Phases of Testing:
-  * Setup: setup the test environment and variables
-  * Change: provoke some kind of change to the application
-  * Verify: verify the desired outcome of the change
+1. helpers.js
 
 ```js
-test('sets compSelection to "Tree" if player is "Moai" and cheating is true', () => {
-  const fakeFn = jest.fn();
-  fakeFn.mockImplementation(setFakeState);
-  fakeState = {
-    ...fakeState,
-    cheating: true,
-    playerSelection: 'Moai'
+export const chooseRobotItem = (cheating, playerItem) => {
+  const lookup = {
+    'Tree': 'Axe',
+    'Moai': 'Tree',
+    'Axe': 'Moai'
   };
-  chooseRobotItem(fakeState.cheating, fakeState.playerSelection, fakeFn);
-  expect(fakeState.compSelection).toBe('Tree');
-});
+  if (cheating) {
+    return lookup[playerItem];
+  } else {
+    const choices = ["Moai", "Axe", "Tree"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+  }
+};
+```
 
-test('returns "Won" if player is "Axe" and comp is "Tree"', () => {
-  fakeState.playerSelection = 'Axe';
-  fakeState.compSelection = 'Tree';
-  expect(announceResult(fakeState.playerSelection, fakeState.compSelection)).toBe('Won');
-});
+2. helpers.js 
 
-test('Change cheat state when clicking on robot', () => {
-  const { getByTestId, getByText } = render(<Game />);
-  const robotIcon = getByTestId('robot-icon');
+```js
+export const genFeedbackMessage = (status) => {
+  switch (status) {
+    case 'Won':
+      return 'Good job!';
+    case 'Lost':
+      return 'You lost!';
+    case 'Tied':
+      return 'Tie game!';
+    default:
+      return 'Waiting for your call!';
+  }
+};
+```
 
-  fireEvent.click(getByText('🤖'));
-  expect(robotIcon).toHaveClass('cheating');
+3. Player.jsx 
 
-  fireEvent.click(getByText('🤖'));
-  expect(robotIcon).not.toHaveClass('cheating');
-});
+```js
+  useEffect(() => {
+    if (playerSelection) {
+       const compSelection = chooseRobotItem(cheating, playerSelection);
+       setState(prevState => ({ ...prevState, compSelection }));
+    }
+  }, [playerSelection, cheating, setState]);
+```
 
-test('Shows appropriate message when the status is "Waiting"', () => {
-  const fakeState = {
-    compSelection: null,
-    playerSelection: null,
-    status: 'Waiting',
-    cheating: false
+4. Game.test.jsx 
+
+```js
+  test('Change cheat state when clicking on robot', () => {
+    const { getByTestId, getByText } = render(<Game />);
+    const robotIcon = getByTestId('robot-icon');
+
+    fireEvent.click(getByText('🤖'));
+    expect(robotIcon).toHaveClass('cheating');
+
+    fireEvent.click(getByText('🤖'));
+    expect(robotIcon).not.toHaveClass('cheating');
+  });
+```
+  
+5. Computer.jsx 
+
+```js
+  const handleClick = () => {
+    return setState(prevState => (
+      { ...prevState, cheating: (prevState.cheating ? false : true) }
+    ));
   };
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your call !');
-});
+  className={state.cheating ? "cheating" : null}
 ```

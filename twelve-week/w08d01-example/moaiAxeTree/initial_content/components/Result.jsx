@@ -1,20 +1,11 @@
 import React from 'react';
+import { genFeedbackMessage } from '../helpers/helpers';
 
 export default function Result(props) {
+  const message = genFeedbackMessage(props.status);
   return(
-  <footer data-testid="result_footer">
-      { (props.status === "Waiting") && 
-        <h2>Waiting for your call !</h2>
-      }
-      {(props.status === "Won") &&
-        <h2>Good job !</h2>
-      }
-      {(props.status === "Lost") &&
-        <h2>Almost, lost to the machine :(</h2>
-      }
-      {(props.status === "Tied") &&
-        <h2>You tied !</h2>
-      }
+    <footer data-testid="result_footer">
+      <h2>{ message }</h2>
     </footer>
-  )
+  );
 }

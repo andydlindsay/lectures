@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { registerPlayerItem, chooseRobotItem, announceResult} from '../helpers/helpers';
+import { chooseRobotItem, announceResult } from '../helpers/helpers';
 
 export default function Player(props) {
   const {playerSelection, compSelection, cheating} = props.state
@@ -7,7 +7,8 @@ export default function Player(props) {
 
   useEffect(() => {
     if (playerSelection) {
-      chooseRobotItem(cheating, playerSelection, setState);
+       const compSelection = chooseRobotItem(cheating, playerSelection);
+       setState(prevState => ({ ...prevState, compSelection }));
     }
   }, [playerSelection, cheating, setState]);
 
@@ -28,6 +29,10 @@ export default function Player(props) {
       }
     ));
   };
+
+  const registerPlayerItem = (value, updater) => {
+    return updater(prevState => ({ ...prevState, playerSelection: value }));
+  }
 
   return (
     <section className="player">
