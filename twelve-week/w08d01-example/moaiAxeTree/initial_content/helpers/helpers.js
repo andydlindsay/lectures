@@ -1,7 +1,7 @@
 export const startRound = (value, state, updater) => {
   changeGameStatus("Active", updater)
   registerPlayerItem(value, updater)
-  chooseRobotItem(state.cheating, state.playerSelection, updater)
+  chooseRobotItem(checkCheatStatus(state), state.playerSelection, updater)
   announceResult(state.playerSelection, state.compSelection, updater)
 }
 
@@ -11,6 +11,11 @@ export const changeGameStatus = (status, updater) => {
 
 export const registerPlayerItem = (value, updater) => {
   return updater(prevState => ({ ...prevState, playerSelection: value }));
+}
+
+export const checkCheatStatus = (state) => {
+  //Verify if computer is cheating
+  return state.cheating
 }
 
 export const chooseRobotItem = (cheating, playerItem, updater) => {
@@ -49,16 +54,3 @@ export const announceResult = (playerSelection, compSelection) => {
   }
   return 'Tied';
 }
-
-export const genFeedbackMessage = (status) => {
-  switch (status) {
-    case 'Won':
-      return 'Good job!';
-    case 'Lost':
-      return 'You lost!';
-    case 'Tied':
-      return 'Tie game!';
-    default:
-      return 'Waiting for your call!';
-  }
-};

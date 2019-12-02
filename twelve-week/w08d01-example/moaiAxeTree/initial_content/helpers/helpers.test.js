@@ -1,4 +1,4 @@
-import { chooseRobotItem, announceResult, genFeedbackMessage } from './helpers'
+import { chooseRobotItem, checkCheatStatus, announceResult } from './helpers'
 
 let fakeState;
 
@@ -13,6 +13,10 @@ beforeEach(() => {
     status: 'Waiting',
     cheating: false
   };
+});
+
+test('validates the cheat properly', () => {
+  expect(checkCheatStatus(fakeState)).toBe(false);
 });
 
 describe('chooseRobotItem function', () => {
@@ -90,17 +94,5 @@ describe('announceResult function', () => {
 
   test('returns "Waiting" if nothing is passed in', () => {
     expect(announceResult()).toBe('Waiting');
-  });
-});
-
-describe('genFeedbackMessage function', () => {
-  test('returns correct message when given a status', () => {
-    const loss = genFeedbackMessage('Lost');
-    const win = genFeedbackMessage('Won');
-    const tie = genFeedbackMessage('Tied');
-
-    expect(loss).toEqual('You lost!');
-    expect(win).toEqual('Good job!');
-    expect(tie).toEqual('Tie game!');
   });
 });
