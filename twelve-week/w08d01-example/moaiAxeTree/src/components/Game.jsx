@@ -10,6 +10,7 @@ export default function Game(props) {
     status:'Waiting',
     cheating:false
   });
+  
   return (
     <div>
     <main className="game">

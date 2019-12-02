@@ -1,8 +1,8 @@
-import {changeGameStatus, registerPlayerItem, chooseRobotItem, checkCheatStatus, announceResult} from './helpers'
+import { chooseRobotItem, checkCheatStatus, announceResult } from './helpers'
 
 let fakeState;
 
-const setFakeState = function(newState) {
+const setFakeState = function (newState) {
   fakeState = newState();
 };
 
@@ -21,12 +21,14 @@ test('validates the cheat properly', () => {
 
 describe('chooseRobotItem function', () => {
   test('sets compSelection to "Tree" if player is "Moai" and cheating is true', () => {
+    const fakeFn = jest.fn();
+    fakeFn.mockImplementation(setFakeState);
     fakeState = {
       ...fakeState,
       cheating: true,
       playerSelection: 'Moai'
     };
-    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, setFakeState);
+    chooseRobotItem(fakeState.cheating, fakeState.playerSelection, fakeFn);
     expect(fakeState.compSelection).toBe('Tree');
   });
 

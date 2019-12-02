@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { registerPlayerItem, chooseRobotItem, announceResult} from '../helpers';
+import { registerPlayerItem, chooseRobotItem, announceResult} from '../helpers/helpers';
 
 export default function Player(props) {
   const {playerSelection, compSelection, cheating} = props.state

@@ -10,7 +10,7 @@ export const changeGameStatus = (status, updater) => {
 }
 
 export const registerPlayerItem = (value, updater) => {
-  return updater(prevState => ({...prevState, playerSelection: value }));
+  return updater(prevState => ({ ...prevState, playerSelection: value }));
 }
 
 export const checkCheatStatus = (state) => {
@@ -20,20 +20,20 @@ export const checkCheatStatus = (state) => {
 
 export const chooseRobotItem = (cheating, playerItem, updater) => {
   if (cheating) {
-    switch(playerItem){
+    switch (playerItem) {
       case "Moai":
-        return updater(prevState => ({...prevState, compSelection: "Tree"}));
+        return updater(prevState => ({ ...prevState, compSelection: "Tree" }));
       case "Axe":
-        return updater(prevState => ({...prevState, compSelection: "Moai"}));
+        return updater(prevState => ({ ...prevState, compSelection: "Moai" }));
       case "Tree":
-        return updater(prevState => ({...prevState, compSelection: "Axe"}));
+        return updater(prevState => ({ ...prevState, compSelection: "Axe" }));
       default:
-        return updater(prevState => ({...prevState, compSelection: null}));
+        return updater(prevState => ({ ...prevState, compSelection: null }));
     }
   } else {
     const choices = ["Moai", "Axe", "Tree"];
     const randomIndex = Math.floor(Math.random() * choices.length);
-    return updater(prevState => ({...prevState, compSelection: choices[randomIndex]}));
+    return updater(prevState => ({ ...prevState, compSelection: choices[randomIndex] }));
   }
 }
 
