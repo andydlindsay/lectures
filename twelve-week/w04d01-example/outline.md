@@ -1,5 +1,7 @@
 - semantic markup
   - make a page with all divs
+  - demo nesting elements
+  - discuss self-closing tags (like img, link)
   - visit https://guide.freecodecamp.org/html/html5-semantic-elements/
   - we use semantics with variable names in JavaScript
   - refactor code to be more semantic
@@ -7,9 +9,7 @@
     - img tags have src, alt, height, and/or width
     - https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
     - demo img width and height being applied
-  - discuss self-closing tags (like img, link)
   - show opening tags spanning multiple lines
-  - demo nesting elements
 
 - CSS
   - demo inline style
