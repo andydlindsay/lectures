@@ -138,8 +138,8 @@ div#my-id { ... }
 * [Interactive demo](http://guyroutledge.github.io/box-model/)
 
 ### Specificity
-* CSS styles are applied in order by least specific to most specific
-* This means that more specific styles will overwrite less-specific styles
+* CSS styles are applied in order from least specific to most specific
+* This means that more-specific styles will overwrite less-specific styles
 * We can take advantage of this fact to make sure that the styles that we want are applied correctly
 * Least specific to most specific: element => class => id => inline style
 
@@ -150,12 +150,12 @@ div {
   border-color: magenta;
 }
 
-/* class selector */
+/* element + class selector */
 div.green-border {
   border-color: green;
 }
 
-/* id selector */
+/* element + id selector */
 div#blue-border {
   border-color: blue;
 }
