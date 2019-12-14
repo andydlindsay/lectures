@@ -33,10 +33,10 @@
     - demo a reset file like https://github.com/necolas/normalize.css/blob/master/normalize.css
   - demo box-sizing: border-box
     - demo with http://guyroutledge.github.io/box-model/
+  - demo specificity
   - demo floats
   - demo inline-block
   - discuss !important
-  - demo specificity
 
 - Extras
   - pseudo selectors (:hover, :active)

@@ -9,6 +9,7 @@
 * [ ] Box Model
 * [ ] CSS Resets
 * [ ] Box-sizing
+* [ ] Specificity
 
 You'll notice that while this week has more new concepts (every week will), our approach to teaching with you will adjust a bit. Overall, as the weeks progress, there is less emphasis on giving you all the resources, functions, and tips that you need to complete an activity. There will be more expectation for you to poke around until you find an answer.
 
@@ -113,15 +114,62 @@ div#my-id { ... }
 * Make heavy use of the `Elements` tab and the `Styles` section
 
 ### Box Model
-* 
+* The HTML elements on a web page can be considered `boxes`
+* These `boxes` consist of (from outside-in) margin, border, padding, and content
+* **Margin**: controls the space between elements
+* **Border**: as it sounds, a border around the content and padding
+* **Padding**: the space between the elements content and its border
+* **Content**: the actual content of the element (eg. text or image)
 
+![w3schools box model image](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/box+model.png)
+*Image taken from [w3schools](https://www.w3schools.com/css/css_boxmodel.asp)*
+
+### CSS Resets
+* Browsers actually style every page that we visit using a special stylesheet called the **user agent stylesheet**
+* These styles are not consistent across browsers which can mean that our pages display differently on different browsers (obviously not ideal)
+* CSS resets are stylesheets that help to _reset_ or _normalize_ all styles on the page before we apply our own styles
+* This helps us present a more consistent style across various different browsers
+
+### Box Sizing
+* By default, the `width` and `height` of an element is only applied to its content
+* Any padding, border, and margin will then be **added** to the content width and height resulting in elements that take up more space than we had intended
+* Enter the `box-sizing` property which allows us to control this behaviour
+* If we set the `box-sizing` property to a value of `border-box`, then the `width` and `height` of the element will apply to the entire element (margin, border, padding, and content) resulting in elements with more predictable dimensions
+* [Interactive demo](http://guyroutledge.github.io/box-model/)
+
+### Specificity
+* CSS styles are applied in order by least specific to most specific
+* This means that more specific styles will overwrite less-specific styles
+* We can take advantage of this fact to make sure that the styles that we want are applied correctly
+* Least specific to most specific: element => class => id => inline style
+
+```css
+/* example styles of increasing specificity */
+/* element selector */
+div {
+  border-color: magenta;
+}
+
+/* class selector */
+div.green-border {
+  border-color: green;
+}
+
+/* id selector */
+div#blue-border {
+  border-color: blue;
+}
+```
+
+### Opinions
 
 ![opinions opinions opinions](https://media.makeameme.org/created/opinions-opinions-everywhere-j7cvn5.jpg)
 
-Front-end development is a chance for us to express our creativity. Creativity leads to many different ways of solving the same problem. Multiple ways of doing the same thing lead to people forming opinions about "the best way" to do something. Having opinions isn't a bad thing! Just keep in mind that the articles you read, videos you watch, and the mentors that help you, may have different, sometimes conflicting, approaches.
+Front-end development is a chance for us to express our creativity. Creativity leads to many different ways of solving the same problem. Different ways of solving the same problem lead to people forming opinions about "the best way" to do something. Having opinions isn't a bad thing! Just keep in mind that the articles you read, videos you watch, and the mentors that help you, may have different, sometimes conflicting, approaches.
 
 
 ### Useful Links
 * [MDN - Semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics)
 * [HTML5 Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
-* []
+* [MDN - Box Sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing)
+* [CSS Specificity](https://dev.to/emmawedekind/css-specificity-1kca)
