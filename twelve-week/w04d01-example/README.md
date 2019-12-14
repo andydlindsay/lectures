@@ -87,7 +87,7 @@ body {
 ### Selectors
 * CSS is based around using [selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) to apply certain styles to specific areas of the document
 
-```cs
+```css
 /* syntax */
 selector list {
   property: value;
