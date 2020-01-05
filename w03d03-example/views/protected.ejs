@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css"/>
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Protected Secrets!</h1>
+  <img src="https://cdn.dribbble.com/users/2190368/screenshots/4369474/gold-coins-treasure-chest-animated-icons.gif"/>
+
+  <h2>You are logged in as <%= user.email %></h2>
+
+  <form method="POST" action="/logout">
+    <button type="submit">Logout</button>
+  </form>
+
+</body>
+</html>

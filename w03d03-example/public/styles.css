@@ -1,0 +1,20 @@
+body {
+  background-color: lightgrey;
+  margin: 20px auto;
+  width: 600px;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 250px;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group input {
+  width: 100%;
+}

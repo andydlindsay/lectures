@@ -1,0 +1,15 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+}
+
+#main-list {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  margin: 10px auto;
+  list-style-type: none;
+}

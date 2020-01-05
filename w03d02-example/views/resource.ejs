@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resource</title>
+</head>
+<body>
+    <a href="/resources">Home</a>
+    <h1>Resource Detail</h1>
+    <h3>Id: <%= id %></h3>
+    <h3>Resource: <%= resource %></h3>
+
+    <form method="POST" action="/resources/<%= id %>">
+        <label for="resource">Resource</label>
+        <input type="text" name="resource" id="resource">
+        <button type="submit">Edit</button>
+    </form>
+    <form method="POST" action="/resources/<%= id %>/delete">
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>
