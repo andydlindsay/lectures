@@ -167,7 +167,6 @@ div#blue-border {
 
 Front-end development is a chance for us to express our creativity. Creativity leads to many different ways of solving the same problem. Different ways of solving the same problem lead to people forming opinions about "the best way" to do something. Having opinions isn't a bad thing! Just keep in mind that the articles you read, videos you watch, and the mentors that help you, may have different, sometimes conflicting, approaches.
 
-
 ### Useful Links
 * [MDN - Semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics)
 * [HTML5 Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
