@@ -1,4 +1,4 @@
-# W04D02 SQL from our Apps
+# W05D03 SQL from our Apps
 
 ### To Do
 - [ ] Create a database and query it using `psql` terminal

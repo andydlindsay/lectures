@@ -24,4 +24,4 @@ Keep in Mind
 - Show how MDN says things like Array.prototype.arrayMethod
 - Stack Overflow is often outdated
 
-Python Tutor
+### Python Tutor/JS Tutor
