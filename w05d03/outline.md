@@ -15,6 +15,8 @@ CREATE DATABASE villains;
 CREATE USER villains_user;
 GRANT ALL PRIVILEGES ON DATABASE villains TO villains_user;
 GRANT ALL PRIVILEGES ON TABLE villains TO villains_user;
+ALTER DATABASE villains OWNER TO villains_user;
+ALTER TABLE villains OWNER TO villains_user;
 ALTER USER villains_user WITH ENCRYPTED PASSWORD 'password';
 ```
 
@@ -69,7 +71,7 @@ client.connect((err) => {
 });
 ```
 
-5. demonstrate sql injection attack
+5. demonstrate sql injection attack (recall tweeter string interpolation hack)
 6. demonstrate sanitization technique
 
 ### Second Half
