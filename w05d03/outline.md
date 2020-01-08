@@ -5,7 +5,7 @@
 ```sql
 CREATE DATABASE villains;
 \c villains;
-\! clear -- clear the terminal
+\! clear -- clear the terminal or cmd + d
 ```
 
 2. use `\i` to include the `villains.sql`
@@ -31,10 +31,10 @@ npm i pg
 const pg = require('pg');
 
 const config = {
-    user: 'movie_user',
-    password: 'password',
-    database: 'movies',
-    host: 'localhost'
+  user: 'movie_user',
+  password: 'password',
+  database: 'movies',
+  host: 'localhost'
 };
 
 const client = new pg.Client(config);
@@ -46,8 +46,8 @@ client.query('SELECT * FROM movie_villains', (err, result) => console.log(err, r
 ```js
 client.connect((err) => {
   if (err) {
-      console.error(err);
-      return client.end();
+    console.error(err);
+    return client.end();
   }
 
   console.log('connected to database');
@@ -55,10 +55,7 @@ client.connect((err) => {
   switch (queryType) {
     case 'browse':
       client.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
-        if (err) {
-          console.error(err);
-          return false;
-        }
+        if (err) throw err;
         console.log(data.rows);
         client.end();
       });
@@ -91,7 +88,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', router);
 
 app.listen(3000, () => {
-    console.log('app is listening on port 3000');
+  console.log('app is listening on port 3000');
 });
 ```
 
@@ -105,9 +102,9 @@ const db = require('./db');
 module.exports = {  
   // browse
   getVillains: (cb) => {
-      db.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
-          return cb(err, data.rows);
-      });
+    db.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
+      return cb(err, data.rows);
+    });
   }
 };
 ```
@@ -122,8 +119,8 @@ router.get('/villains', (request, response) => {
   getVillains((err, villains) => {
     if (err) {
       return response.render('error', { err });
-        }
-        response.render('index', { villains });
+    }
+    response.render('index', { villains });
     });
 });
 
@@ -149,4 +146,12 @@ module.exports = router;
         </ul>
     <% } %>
 </body>
+
+<!-- error.ejs -->
+<% if (err) { %>
+  <h2><%= err.status %></h2>
+  <h2><%= err.stack %></h2>
+<% } %>
 ```
+
+9. refactor db credentials to use `dotenv`
