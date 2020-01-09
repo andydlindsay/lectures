@@ -28,7 +28,9 @@ Then we tell our client to connect to the database and we execute queries using 
 
 ```js
 client.connect();
-client.query('SELECT * FROM <table>', (err, result) => console.log(err, result));
+client
+  .query('SELECT * FROM <table>')
+  .then((result) => console.log(result));
 ```
 
 **NOTE:** `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the second argument will be the return value from our query.
@@ -72,7 +74,9 @@ We always want to sanitize any user-defined parameters in our SQL before running
 In `pg`, we use [prepared statements](https://en.wikipedia.org/wiki/Prepared_statement) and pass an array of values as the second argument to `client.query()`:
 
 ```js
-client.query('SELECT * FROM <table> WHERE id = $1', [<id>], (err, result) => console.log(err, result));
+client
+  .query('SELECT * FROM <table> WHERE id = $1', [<id>])
+  .then((result) => console.log(result));
 ```
 
 In the above example, the `id` from the array will be interpolated into the SQL query wherever `$1` appears.
