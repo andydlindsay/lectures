@@ -44,6 +44,7 @@
   - be prepared to discuss the code that you've written (copy and paste)
   - ask yourself what the employer is looking to get out of the challenge
   - focus on the MVP before moving on to stretch
+  - Review the requirements and make sure that you have met all of them
 
 ## Group Activity (20 minutes)
 
