@@ -10,11 +10,13 @@
 * You don't have to miss work like you would for a multi-hour white-boarding interview
 * You can go above and beyond the requirements
 * You may be able to publically display the challenge in your portfolio/github (always ask the employer first!); at the very least, it's green on github (contributions to private repos still show up in your github contributions)
+* You get to use a computer!
 
 ### The Cons
 
 * Time! Beware of scope creep and make sure to timebox yourself
 * You might have to get an app in an unfamiliar framework up and running from scratch which can be incredibly time consuming
+* You don't get a sense of the mentorship you will receive on the job
 
 ### Basic Types of Take Home Challenges
 
