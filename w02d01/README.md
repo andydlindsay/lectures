@@ -18,12 +18,12 @@
 
 ### Mocha
 - A testing framework
-- By default, looks in the test folder for test files to run
+- By default, looks in the `test` folder for test files to run
 
 ### Chai
-- An assetion library
-- We can use `assertions` to describe the desired outcome of our code
-- Offers three different interfaces `should`, `expect`, and `assert`
+- An **assertion** library
+- We can use _assertions_ to describe the desired outcome of our code
+- Chai offers three different interfaces `should`, `expect`, and `assert`
 - For most uses, choosing which interface to use is a matter of preference
 
 ```js
