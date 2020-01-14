@@ -1,0 +1,18 @@
+## Goals
+* Review important concepts from the weekend
+* Review ES6 features including object/array destructuring, spread and property shorthand
+* Convert interface designs to component-based UI
+* Create a project with Create React App
+* Build components in isolation with Storybook
+* Using components in an application
+
+## There are a lot of new concepts that the students will have read about on the weekend. Review the following topics before live coding.
+
+* Imperative vs Declarative
+* JSX, rules and errors
+* The role of Webpack and Babel
+* Anatomy of a React Component
+
+## Spend some time reviewing user interface designs and the component structures to match
+
+## Demo
