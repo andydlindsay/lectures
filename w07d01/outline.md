@@ -16,3 +16,6 @@
 ## Spend some time reviewing user interface designs and the component structures to match
 
 ## Demo
+* Create a new app using `create-react-app`
+* Remove unneeded files in preparation for building out the project
+* 
