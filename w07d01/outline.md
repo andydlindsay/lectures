@@ -19,3 +19,13 @@
 * Create a new app using `create-react-app`
 * Remove unneeded files in preparation for building out the project
 * 
+
+
+## What is React?
+- a framework for a website front end
+- for building UI
+- breaking down a webpage into (reusable) components
+
+## Components
+- core part of React
+- 
