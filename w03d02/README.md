@@ -5,17 +5,30 @@
 - [ ] Use forms to submit HTTP requests
 - [ ] Practice debugging Express
 
-### What is Express?
+### Express
 
 A framework that lets us create routes and write/include middleware.
 
-### What do CRUD and BREAD stand for?
+### CRUD and BREAD
 
-**CRUD** = **C**reate **R**ead **U**pdate **D**elete
+* There are 5 main operations that we can perform on a particular resource (or group of resources)
 
-**BREAD** = **B**rowse **R**ead **E**dit **A**dd **D**elete
+* Create/Add
+  * Create a new resource
+* Read/Browse
+  * Retrieve all of the resource
+* Read
+  * Retrieve a particular resource
+* Update/Edit
+  * Edit a particular resource
+* Delete
+  * Delete a resource
 
-### What is a route?
+* We use acronyms to help us remember these operations: **CRUD** and **BREAD**
+  * **CRUD**: **C**reate **R**ead **U**pdate **D**elete
+  * **BREAD**: **B**rowse **R**ead **E**dit **A**dd **D**elete
+
+### Routes
 
 A route is made up of a **VERB** and a **PATH**.
 
@@ -31,11 +44,11 @@ An API that uses the REST convention is said to be RESTful.
 
 RESTful routes look like:
 
-* Browse: GET  /resource
-* Read:   GET  /resource/:id
-* Edit:   POST /resource/:id
-* Add:    POST /resource
-* Delete: POST /resource/:id/delete
+* Browse: `GET  /resource`
+* Read:   `GET  /resource/:id`
+* Edit:   `POST /resource/:id`
+* Add:    `POST /resource`
+* Delete: `POST /resource/:id/delete`
 
 RESTful API's have some advantages:
 
@@ -52,5 +65,3 @@ RESTful API's have some advantages:
 * [Body-Parser](https://github.com/expressjs/body-parser)
 * [Delete Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
 * [HTTP Forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)
-
-### Inspired by [Sadie Freeman's](https://github.com/sadief) [lecture](https://github.com/sadief/lighthouse-labs-lectures/blob/master/crud-with-express/class-notes.md) on the same topic
