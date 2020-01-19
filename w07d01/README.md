@@ -3,10 +3,12 @@
 ### To Do
 - [ ] What the heck is React?
 - [ ] Components
-- [ ] What problems to components solve?
-- [ ] What are they made up of?
 - [ ] Building a project from scratch w React (using Storybook)
 - [ ] Combining components together
 
+### React
+- 
+
 ### Useful Links
+- [Storybook storiesOf API](https://storybook.js.org/docs/formats/storiesof-api/)
 - []()
