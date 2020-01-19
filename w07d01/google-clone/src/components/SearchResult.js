@@ -4,7 +4,7 @@ const SearchResult = (props) => {
   const { result } = props;
 
   return (
-    <div class="search-result">
+    <div className="search-result">
       <h2>{result.title}</h2>
       <p>{result.content}</p>
       <a
