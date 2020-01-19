@@ -23,7 +23,7 @@
 ### Chai
 - An **assertion** library
 - We can use _assertions_ to describe the desired outcome of our code
-- Chai offers three different interfaces `should`, `expect`, and `assert`
+- Chai offers three different interfaces: `should`, `expect`, and `assert`
 - For most uses, choosing which interface to use is a matter of preference
 
 ```js
