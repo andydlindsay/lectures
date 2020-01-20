@@ -62,10 +62,6 @@
 * Morgan is an excellent example of using middleware with Express
   * Reminder: middleware sits between the request and the response and is able to perform actions using the `request` and/or the `response` object including adding new keys/values (think `body-parser`)
 
-### The Network Tab
-* We can use the _Network_ tab in the Chrome DevTools to see incoming/outgoing network requests
-  ![Network Tab]()
-
 ### Useful Links
 * [REST](https://en.wikipedia.org/wiki/Representational_state_transfer)
 * [BREAD/CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
