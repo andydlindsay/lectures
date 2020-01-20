@@ -7,7 +7,8 @@ const App = () => {
   const [results, setResults] = useState(allResults);
 
   const filterResults = (searchTerm) => {
-    const filtered = allResults.filter(result => result.content.includes(searchTerm));
+    const filtered = allResults
+      .filter(result => result.content.includes(searchTerm));
     setResults(filtered);
   };
   
