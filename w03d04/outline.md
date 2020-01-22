@@ -5,8 +5,9 @@
   - hapi
   - sinatra (ruby)
   - django (python)
-3. Express Middleware
+3. Express Middleware (Date.now())
 4. Alternate methods (besides `GET` and `POST`)
-5. Method Override
+5. Method Override Package (`method-override`)
 6. Modular Routing
-7.
+7. JSON API's (like `cats`)
+8. 

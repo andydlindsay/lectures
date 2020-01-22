@@ -7,7 +7,7 @@
 - [ ] More HTTP methods
 - [ ] Method Override
 - [ ] Modular Routing
-- [ ] 
+- [ ] JSON API's
 
 ### REST (Representational State Transfer)
 
@@ -92,8 +92,13 @@
   app.use('/posts', postRouter);
   ```
 
+### JSON API's
+- So far, our servers have been returning server-side rendered templates, but our Express server can be configured to return different types of information including strings/objects (`res.send`), files (`res.sendFile`), and JSON (`res.json`)
+- JSON API's are concerned only with sending data (as opposed to HTML), so they are typically used when receiving AJAX requests
+
 ### Useful Links
 - [Resource Naming](https://restfulapi.net/resource-naming/)
 - [Express Middleware](https://expressjs.com/en/guide/using-middleware.html)
 - [Method Override Package](https://www.npmjs.com/package/method-override)
+- [Express Response Object](http://expressjs.com/en/api.html#res)
 - []()
