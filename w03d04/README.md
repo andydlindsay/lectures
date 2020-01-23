@@ -25,8 +25,8 @@
 
 * RESTful API's have some advantages:
   * If I know that your API is RESTful, then I can easily guess at what endpoints you have defined and I don't need to read your documentation to figure it out
-  * It also results in clean URLs (ie. /resource instead of /get-my-resource). The desired action is implied by the HTTP verb
-  * This method of specifying URLs is chainable (eg. /user/123, /user/123/resource or /user/123/resource/456)
+  * Results in clean URLs (ie. `/resource` instead of `/get-my-resource`). The desired action is implied by the HTTP verb
+  * This method of specifying URLs is chainable (eg. `/user/123`, `/user/123/resource` or `/user/123/resource/456`)
 
 * Selectors are always plural (eg. `/resources`, `/users`)
 * Actions are always singular (eg. `/login`, `/register`)
@@ -58,7 +58,7 @@
 - `PUT`: used to replace an existing resource
 - `PATCH`: update part of an exisiting resource
 - `DELETE`: delete an existing resource
-- The browser only uses `GET` and `POST`, however we can access these other methods via AJAX requests (we'll introduce you to AJAX in week 4) or by using the [`method-override`](https://www.npmjs.com/package/method-override) package
+- We can access these other methods via AJAX requests (we'll introduce you to AJAX in week 4) or by using the [`method-override`](https://www.npmjs.com/package/method-override) package
 - Using these new verbs, our routes table now looks like:
 
   | **Method** | **Path** | **Purpose** |
@@ -95,7 +95,7 @@
 
 ### JSON API's
 - So far, our servers have been returning server-side rendered templates, but our Express server can be configured to return different types of information including strings/objects (`res.send`), files (`res.sendFile`), and JSON (`res.json`)
-- JSON API's are concerned only with sending data (as opposed to HTML), so they are typically used when receiving AJAX requests
+- JSON API's are concerned only with sending data (as opposed to HTML), so they are typically consumed with AJAX requests
 
 ### Useful Links
 - [Resource Naming](https://restfulapi.net/resource-naming/)
