@@ -25,7 +25,8 @@
 
 * RESTful API's have some advantages:
   * If I know that your API is RESTful, then I can easily guess at what endpoints you have defined and I don't need to read your documentation to figure it out
-  * Results in clean URLs (ie. `/resource` instead of `/get-my-resource`). The desired action is implied by the HTTP verb
+  * Results in clean URLs (ie. `/resource` instead of `/get-my-resource`)
+  * The desired action is implied by the HTTP verb
   * This method of specifying URLs is chainable (eg. `/user/123`, `/user/123/resource` or `/user/123/resource/456`)
 
 * Selectors are always plural (eg. `/resources`, `/users`)
