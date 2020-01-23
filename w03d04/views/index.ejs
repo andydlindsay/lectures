@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="styles.css" />
+  <title>Weather</title>
+</head>
+<body>
+  <h1>Weather Forecast for your Location:</h1>
+
+  <table>
+    <tr>
+      <th>Day</th>
+      <th>Low</th>
+      <th>High</th>
+      <th>% Precipitation</th>
+      <th>Wind</th>
+      <th>Summary</th>
+    </tr>
+    <% for (const day of forecast) { %>
+      <tr>
+        <td><%= day.day %></td>
+        <td><%= day.low %></td>
+        <td><%= day.high %></td>
+        <td><%= `${day.precipitation * 100}%` %></td>
+        <td><%= `${day.wind} km/h` %></td>
+        <td><%= day.description %></td>
+      </tr>
+    <% } %>
+  </table>
+</body>
+</html>

@@ -10,4 +10,3 @@
 5. Method Override Package (`method-override`)
 6. Modular Routing
 7. JSON API's (like `cats`)
-8. 

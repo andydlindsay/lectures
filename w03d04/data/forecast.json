@@ -1,0 +1,42 @@
+[
+  {
+    "day": "Monday",
+    "low": 6,
+    "high": 10,
+    "precipitation": 0.75,
+    "wind": 10,
+    "description": "Cloudy with sunny periods"
+  },
+  {
+    "day": "Tuesday",
+    "low": 3,
+    "high": 5,
+    "precipitation": 0.9,
+    "wind": 15,
+    "description": "Freezing rain in the morning"
+  },
+  {
+    "day": "Wednesday",
+    "low": 8,
+    "high": 12,
+    "precipitation": 0,
+    "wind": 0,
+    "description": "Eerily still but warm nonetheless"
+  },
+  {
+    "day": "Thursday",
+    "low": 7,
+    "high": 13,
+    "precipitation": 0.2,
+    "wind": 5,
+    "description": "Sunny breaks in the afternoon"
+  },
+  {
+    "day": "Friday",
+    "low": 6,
+    "high": 8,
+    "precipitation": 0.5,
+    "wind": 12,
+    "description": "TGIF"
+  }
+]

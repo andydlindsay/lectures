@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= `${ forecast.day }'s Forecast` %></title>
+</head>
+<body>
+  <h1><%= `${ forecast.day }'s Forecast` %></h1>
+  <h3>Low: <%= forecast.low %></h3>
+  <h3>High: <%= forecast.high %></h3>
+  <h3>Precipitation %: <%= forecast.precipitation * 100 %>%</h3>
+  <h3>Wind: <%= forecast.wind %> km/h</h3>
+  <h3>Description: <%= forecast.description %></h3>
+
+  <a href="/">Home</a>
+</body>
+</html>

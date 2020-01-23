@@ -59,7 +59,7 @@
 - `PATCH`: update part of an exisiting resource
 - `DELETE`: delete an existing resource
 - The browser only uses `GET` and `POST`, however we can access these other methods via AJAX requests (we'll introduce you to AJAX in week 4) or by using the [`method-override`](https://www.npmjs.com/package/method-override) package
-- Using these new verbs, our table now looks like:
+- Using these new verbs, our routes table now looks like:
 
   | **Method** | **Path** | **Purpose** |
   |:---:|:---|:---|
@@ -101,4 +101,4 @@
 - [Express Middleware](https://expressjs.com/en/guide/using-middleware.html)
 - [Method Override Package](https://www.npmjs.com/package/method-override)
 - [Express Response Object](http://expressjs.com/en/api.html#res)
-- []()
+- [List of common Express middleware](https://expressjs.com/en/resources/middleware.html)
