@@ -2,17 +2,22 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const { getForecast, getForecastByDay } = require('./data/queries');
-const apiRouter = require('./routes/api');
+const forecastRouter = require('./routes/forecast');
+const breadRouter = require('./routes/breads');
 
 const port = process.env.PORT || 9876;
 const app = express();
 
 app.set('view engine', 'ejs');
 
+// middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(morgan('dev'));
-app.use('/api', apiRouter);
+
+// routes
+app.use('/api/forecast', forecastRouter);
+app.use('/api/breads', breadRouter);
 
 app.get('/forecast', (req, res) => {
   const forecast = getForecast();

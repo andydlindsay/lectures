@@ -3,8 +3,8 @@
 ### To Do
 - [ ] HTTP and cookies
 - [ ] Live Code: Register user with email and password
-- [ ] Storing passwords
 - [ ] Encrypted cookies
+- [ ] Storing passwords
 - [ ] HTTP Secure (HTTPS)
 - [ ] Server-side sessions
 
