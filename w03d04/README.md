@@ -65,7 +65,8 @@
   |:---:|:---|:---|
   | GET | /resources | Retrieve all of a resource (Browse) |
   | GET | /resources/:id | Retrieve a particular resource (Read) |
-  | PUT/PATCH | /resources/:id | Update a resource (Edit) |
+  | PUT | /resources/:id | Replace a resource (Edit) |
+  | PATCH | /resources/:id | Update a resource (Edit) |
   | POST | /resources | Create a new resource (Add) |
   | DELETE | /resources/:id | Delete an existing resource (Delete) |
 
