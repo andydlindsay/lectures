@@ -1,3 +1,44 @@
+## Types of Testing
+* Static
+* Unit
+* Feature/Integration
+* End-to-End
+* A/B
+* Regression
+
+## TDD
+* Kent Beck Test Driven Development
+* Rules:
+  * Write new code only if an automated test fails
+  * Eliminate duplication
+* Red Green Refactor
+
+## Considerations when writing tests
+- Setup & Teardown
+- Appropriate Scoping (scope your variables)
+- Code Coverage
+
+## Tools for Testing in React
+* Jest
+* testing-library
+* react testing-library
+* jest-dom
+
+## Note: getBy and queryBy
+
+## Tests
+- helper functions
+  - choose a valid response for the computer player
+  - determine the status message to display when the game is done
+- features
+  - clicking on the robot head will toggle the cheating boolean
+  - render appropriate message in Result component based on game status
+
+```bash
+% npm test -- --coverage
+% yarn test --coverage
+```
+
 1. helpers.js
 
 ```js
