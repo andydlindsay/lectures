@@ -1,3 +1,6 @@
+# bundle init
+# bundle add rainbow
+
 require 'rainbow'
 
 this = Rainbow('this').red

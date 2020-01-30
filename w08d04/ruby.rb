@@ -69,20 +69,20 @@ end
 
 puts
 
-# reverse if!
-hour = 7
-puts "good evening" if hour > 5 # outputs
-sunny = false
-puts "wear rain jacket" unless sunny # outputs
-
-puts
-
 # unless inverts the condition
 unless (first_name == "John")
   puts "choose a better name"
 else
   puts "you choose well"
 end
+
+puts
+
+# reverse if!
+hour = 7
+puts "good evening" if hour > 5 # outputs string
+sunny = false
+puts "wear rain jacket" unless sunny # outputs string
 
 puts
 
