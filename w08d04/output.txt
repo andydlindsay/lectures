@@ -1,0 +1,101 @@
+somethingsomething else
+"also works"
+
+4
+5
+
+John Stamos
+John Stamos
+#{first_name} #{last_name}
+
+6
+
+larger than two
+
+great name
+
+good evening
+wear rain jacket
+
+you choose well
+
+you are seeing the default message
+
+single digits
+
+1
+2
+3
+4
+5
+6
+
+1
+2
+3
+4
+5
+
+1
+2
+3
+4
+5
+6
+
+Hello Alice!
+Hello Bob!
+Hello Carol!
+Hello David!
+
+Goodbye Alice!
+Goodbye Bob!
+Goodbye Carol!
+Goodbye David!
+
+5
+6
+7
+8
+9
+10
+
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+hello world
+
+Integer
+String
+FalseClass
+
+John
+4
+true
+2
+JOHN
+john
+
+Array
+
+false
+true
+
+Yukihiro Matsumoto
+Yukihiro Matsumoto
+yukihiro matsumoto
+
+hello Bob, nice to meet you
+
+Ada Lovelace
+
+10
+10
+
+inside ruby2.rb
