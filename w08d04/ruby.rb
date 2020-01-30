@@ -73,7 +73,7 @@ puts
 unless (first_name == "John")
   puts "choose a better name"
 else
-  puts "you choose well"
+  puts "you chose well"
 end
 
 puts
