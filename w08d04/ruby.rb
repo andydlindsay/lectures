@@ -294,5 +294,19 @@ my_method(&say_something) # w/ parens
 
 puts
 
+# ruby is synchronous
+puts "before read"
+puts File.read('ruby2.rb') # long running processes will block execution
+puts "after read"
+
+puts
+
+# you can raise an exception (a form of error)
+# raise "whoa error"
+=begin
+Traceback (most recent call last):
+ruby.rb:305:in `<main>': whoa error (RuntimeError)
+=end
+
 # load ruby code from another file
 load "ruby2.rb"
