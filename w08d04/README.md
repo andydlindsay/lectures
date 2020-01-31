@@ -28,7 +28,7 @@ This allows you to write ruby code in your terminal.
 
 irb always shows the result/return of the expressions we run.  
 
-# Minimalist
+### Minimalist
 
 Ruby is a minimalist language you can remove extra syntax/noise in a lot of cases.
 
