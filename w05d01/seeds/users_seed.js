@@ -1,19 +1,24 @@
 const faker = require('faker');
+const moment = require('moment');
+
+const start = moment().startOf('month').format('MMM D, YYYY');
+const end = moment().endOf('month').format('MMM D, YYYY');
+const desiredFakeUsers = 10000;
+const maxAge = 40;
 
 const createFakeUser = () => ({
   first_name: faker.name.firstName(),
   last_name: faker.name.lastName(),
   email: faker.internet.email(),
-  age: faker.random.number(40),
+  age: faker.random.number(maxAge),
   country: faker.address.country(),
-  payment_due_date: faker.date.between('Nov 1, 2019', 'Nov 30, 2019')
+  payment_due_date: faker.date.between(start, end)
 });
 
-exports.seed = async function(knex) {
+exports.seed = (knex) => {
   const fakeUsers = [];
-  const desiredFakeUsers = 10000;
   for (let i = 0; i < desiredFakeUsers; i++) {
     fakeUsers.push(createFakeUser());
   }
-  return await knex('users').insert(fakeUsers);
+  return knex('users').insert(fakeUsers);
 };
