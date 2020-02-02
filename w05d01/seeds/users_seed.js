@@ -3,7 +3,7 @@ const moment = require('moment');
 
 const start = moment().startOf('month').format('MMM D, YYYY');
 const end = moment().endOf('month').format('MMM D, YYYY');
-const desiredFakeUsers = 50000;
+const desiredFakeUsers = process.argv[3] || 20000;
 const maxAge = 40;
 
 const createFakeUser = () => ({
