@@ -7,6 +7,17 @@ Goals
 Upfront
 - Students should not be trying to code-along during lecture
 - This is a discussion meant to facilitate a deeper learning of the coding concepts
+- Lecturers will make mistakes
+
+Curriculum
+- Week 1 && 2: Fundamentals (FOCAL)
+- Week 3: Web Servers
+- Week 4: JavaScript in the Browser
+- Week 5: Persistent Data
+- Week 6: Mid-terms
+- Week 7 && 8: Front-end Framework
+- Week 8 && 9: Legacy Codebase
+- Week 10 - 12: Finals
 
 Problem:
 > Write a node program that takes in an unlimited number of command line arguments, goes through each and prints out the sum of them. If any argument is not a whole number, skip it. Do support negative numbers though.

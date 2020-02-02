@@ -4,7 +4,7 @@
 - [ ] Curriculum overview
 - [ ] Example problem workflow
 - [ ] Problem solving tips
-- [ ] Review git workflow (init -> add -> commit -> push)
+- [ ] Review git workflow
 
 ### Curriculum Overview
 

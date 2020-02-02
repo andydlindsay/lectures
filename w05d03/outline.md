@@ -23,7 +23,7 @@ ALTER USER villains_user WITH ENCRYPTED PASSWORD 'password';
 4. initialize npm and install the `pg` package
 
 ```bash
-npm init
+npm init -y
 npm i pg
 ```
 
@@ -132,19 +132,19 @@ module.exports = router;
 ```html
 <!-- index.ejs -->
 <body>
-    <h1>All the best villains!</h1>
-    <a href="/villains/new">Create New Villain</a>
-    <% if (villains) { %>
-        <ul>
-            <% for (const villain of villains) { %>
-                <li>
-                    <a href="/villains/<%= villain.id %>">
-                        <h4><%= `${villain.villain} from ${villain.movie} (${villain.id})` %></h4>
-                    </a>
-                </li>
-            <% } %>
-        </ul>
-    <% } %>
+  <h1>All the best villains!</h1>
+  <a href="/villains/new">Create New Villain</a>
+  <% if (villains) { %>
+    <ul>
+      <% for (const villain of villains) { %>
+        <li>
+          <a href="/villains/<%= villain.id %>">
+            <h4><%= `${villain.villain} from ${villain.movie} (${villain.id})` %></h4>
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  <% } %>
 </body>
 
 <!-- error.ejs -->
