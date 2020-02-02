@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS songs;
+DROP TABLE IF EXISTS albums;
 
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
@@ -21,7 +21,9 @@ VALUES  ('Homecoming: The Live Album', 'Beyonce', 'April 17, 2019'),
         ('On the Line', 'Jenny Lewis', 'March 22, 2019'),
         ('thank u, next', 'Ariana Grande', 'February 8, 2019'),
         ('the underrated youth', 'Yungblud', 'October 18, 2019'),
-        ('Hollywood''s Bleeding', 'Post Malone', 'September 6, 2019');
+        ('Hollywood''s Bleeding', 'Post Malone', 'September 6, 2019'),
+        ('Manic', 'Halsey', 'January 17, 2020'),
+        ('Circles', 'Mac Miller', 'January 17, 2020');
 
 INSERT INTO songs (album_id, track_number, song_name, rating)
 VALUES  (1, 1, 'Welcome', 2.5),
@@ -71,4 +73,21 @@ VALUES  (1, 1, 'Welcome', 2.5),
         (5, 14, 'Goodbyes (Ft. Young Thug)', 3.5),
         (5, 15, 'Myself', 2.5),
         (5, 16, 'I Know', 3.5),
-        (5, 17, 'Wow.', 3);
+        (5, 17, 'Wow.', 3),
+        (6, 1, 'Ashley', 2.5),
+        (6, 2, 'Clementine', 3.5),
+        (6, 3, 'Graveyard', 4),
+        (6, 4, 'You Should Be Sad', 3),
+        (6, 5, 'Forever...', 3.5),
+        (6, 6, 'Dominic Interlude', 2.5),
+        (6, 7, 'I Hate Everybody', 3),
+        (6, 8, '3am', 2),
+        (6, 9, 'Without Me', 3),
+        (6, 10, 'Finally', 3.5),
+        (7, 1, 'Circles', 3),
+        (7, 2, 'Complicated', 3.5),
+        (7, 3, 'Blue World', 2.5),
+        (7, 4, 'Good News', 4),
+        (7, 5, 'I Can See', 4.5),
+        (7, 6, 'Everybody', 2),
+        (7, 7, 'Woods', 3);
