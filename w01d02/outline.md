@@ -19,6 +19,10 @@ Curriculum
 - Week 8 && 9: Legacy Codebase
 - Week 10 - 12: Finals
 
+- Fundamental Fridays (programming tests/comp sci/research & reflect)
+- Technical Interviews x 4 (W2, W3, W8, W9)
+- Career Services
+
 Problem:
 > Write a node program that takes in an unlimited number of command line arguments, goes through each and prints out the sum of them. If any argument is not a whole number, skip it. Do support negative numbers though.
 
@@ -34,5 +38,7 @@ Keep in Mind
 - Use the Node REPL to play with the code
 - Show how MDN says things like Array.prototype.arrayMethod
 - Stack Overflow is often outdated
+
+- Doing things with intention (you are not a passenger)
 
 ### Python Tutor/JS Tutor
