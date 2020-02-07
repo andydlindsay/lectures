@@ -1,6 +1,6 @@
 # W1D4 - Callbacks!
 
-## To Do
+### To Do
 - [ ] Functions as values
 - [ ] Function calling vs passing (reference to a function)
 - [ ] Callback functions and Higher Order functions
@@ -9,12 +9,12 @@
 - [ ] Arrow Functions (and their common use for callback functions)
 - [ ] Nested scope and "scope chain"
 
-## What is a callback?
+### What is a callback?
 - A callback is a function that gets passed to another function to be executed by that function
 - Callback functions are used all over the place in JavaScript
 - They encapsulate reusable code that can be passed around like any other JS variable
 
-## Functions are Values
+### Functions are Values
 - Just like everything else in JavaScript, functions are values
 - As a result, they can be stored in variables just like any other value
 
@@ -49,7 +49,7 @@ myHigherOrderFunction(myFunction);
 - We call the function that we pass as an argument a **callback**
 - We call the function that accepts a function as an argument a **higher order function**
 
-## Anonymous Functions
+### Anonymous Functions
 - We can pass callback functions _inline_ to a higher order function rather than storing the callback in a variable first
 
 ```js
@@ -64,7 +64,7 @@ myHigherOrderFunction(function() {
 - Anonymous functions are simply functions that do not have a name
 - [Naming things is hard](https://martinfowler.com/bliki/TwoHardThings.html)
 
-## Arrow Functions
+### Arrow Functions
 - Arrow functions give us a syntactic alternative to using the `function` keyword
 
 ```js
@@ -93,6 +93,6 @@ arr.forEach((element) => {
 });
 ```
 
-## Useful Links
+### Useful Links
 * [Wikipedia: Callbacks](https://en.wikipedia.org/wiki/Callback_(computer_programming))
 * [MDN: Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
