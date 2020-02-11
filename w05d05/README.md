@@ -82,7 +82,7 @@ app.get('/login/:id', (req, res) => {
 - You can choose one or the other or both
 
 ### Git
-- Use Git best practices
+- Use Git best practices (ask a mentor for clarification if you need it)
 - Use branches
 
 ### DO NOT CODE ON MASTER
