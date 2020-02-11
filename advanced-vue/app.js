@@ -2,11 +2,13 @@ const app = new Vue({
   el: '#root',
   data: {
     name: 'Alice',
-    likes: []
+    sports: [],
+    message: `You loaded this page on ${new Date().toLocaleString()}`,
+    visible: true
   },
   created() {
-    fetch('https://api.myjson.com/bins/7pb2o')
+    fetch('https://api.myjson.com/bins/9yppg')
       .then(res => res.json())
-      .then(data => this.likes = data);
+      .then(data => this.sports = data);
   }
 });
