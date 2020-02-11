@@ -6,7 +6,11 @@ const app = new Vue({
     message: `You loaded this page on ${new Date().toLocaleString()}`,
     visible: true,
     alert: 'Today is your day!!',
-    counter: 0
+    counter: 0,
+    form: {
+      username: '',
+      password: ''
+    }
   },
   created() {
     fetch('https://api.myjson.com/bins/9yppg')
@@ -19,6 +23,14 @@ const app = new Vue({
     },
     incrementCounter() {
       this.counter++;
+    },
+    onSubmit() {
+      console.log(this.form);
+    }
+  },
+  computed: {
+    reverseUsername() {
+      return this.form.username.split('').reverse().join('');
     }
   }
 });

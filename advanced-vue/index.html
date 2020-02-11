@@ -15,7 +15,17 @@
     <ul>
       <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
     </ul>
-  </div>  
+    <p>{{ reverseUsername }}</p>
+    <form>
+      <label for="username">Username</label>
+      <input type="text" id="username" v-model="form.username" />
+      <br/>
+      <label for="password">Password</label>
+      <input type="password" id="password" v-model="form.password" />
+      <br/>
+      <button type="button" @click.prevent="onSubmit">Log In!</button>
+    </form>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>

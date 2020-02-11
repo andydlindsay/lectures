@@ -60,6 +60,8 @@
   <p v-if="visible">I'm here!!!</p>
   ```
 
+  * open the console and set `app.visible = false;`
+
   * add the `methods` object and create a simple method for a click event
   * bind it to a DOM element using `v-on:click="functionName"`
 
@@ -78,12 +80,53 @@
 
   * we also have `mouseover`, `dblclick`, `mouseleave`
   * show off `@click.prevent` to prevent default behaviour
+
   * add a new prop to the `data` object called `counter` and initialize it to 0
   * add a method called `incrementCounter` that increments the counter by 1
   * add a button `index.html` and add a click handler to it
   * add a span to the html that displays the `counter` value
 
-* computed properties
+  * add a `form` object to the `data` object
+
+  ```js
+  data: {
+    form: {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    onSubmit() {
+      console.log(this.form);
+    }
+  }
+  ```
+
+  ```html
+  <form>
+    <label for="username">Username</label>
+    <input type="text" id="username" v-model="form.username" />
+    <br/>
+    <label for="password">Password</label>
+    <input type="password" id="password" v-model="form.password" />
+    <br/>
+    <button type="button" @click="onSubmit">Log In!</button>
+  </form>
+  ```
+
+  * intro `computed` property
+
+  ```js
+  computed: {
+    reverseUsername() {
+      return this.form.username.split('').reverse().join('');
+    }
+  }
+  ```
+
+  * intro `watch` property
+
+
 * vue devtools
 * separate out into components
 * vue-cli
