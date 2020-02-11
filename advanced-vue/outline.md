@@ -60,6 +60,29 @@
   <p v-if="visible">I'm here!!!</p>
   ```
 
+  * add the `methods` object and create a simple method for a click event
+  * bind it to a DOM element using `v-on:click="functionName"`
+
+  ```js
+  methods: {
+    sayHello() {
+      alert('hello!!!');
+    }
+  }
+  ```
+
+  ```html
+  <h2 v-bind:title="message" v-on:click="sayHello">Hello {{ name }}</h2>
+  <h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
+  ```
+
+  * we also have `mouseover`, `dblclick`, `mouseleave`
+  * show off `@click.prevent` to prevent default behaviour
+  * add a new prop to the `data` object called `counter` and initialize it to 0
+  * add a method called `incrementCounter` that increments the counter by 1
+  * add a button `index.html` and add a click handler to it
+  * add a span to the html that displays the `counter` value
+
 * computed properties
 * vue devtools
 * separate out into components

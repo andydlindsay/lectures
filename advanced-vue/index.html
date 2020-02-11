@@ -8,8 +8,10 @@
 </head>
 <body>
   <div id="root">
-    <h2 v-bind:title="message">Hello {{ name }}</h2>
+    <h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
     <p v-if="visible">I'm here!!!</p>
+    <button @click.prevent="incrementCounter">Click Me!</button>
+    <span>{{ counter }}</span>
     <ul>
       <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
     </ul>
