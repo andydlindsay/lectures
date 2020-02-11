@@ -20,3 +20,7 @@
 * [vue lifecycle](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 * computed properties
 * vue devtools
+* separate out into components
+* vue-cli
+* single file vue components
+* integrates with storybook
