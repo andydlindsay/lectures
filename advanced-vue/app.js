@@ -32,5 +32,10 @@ const app = new Vue({
     reverseUsername() {
       return this.form.username.split('').reverse().join('');
     }
+  },
+  watch: {
+    'form.username': function() {
+      console.log('updates!');
+    }
   }
 });

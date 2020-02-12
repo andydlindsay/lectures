@@ -1,11 +1,12 @@
 ## Lecture Order
-* introduction to vuejs
+
+### Introduction to Vue.js
   * progressive framework: you can plug it in to just a part of your application
   * smaller size compared to other front-end frameworks
   * component-based
   * reactive: when the data changes, the view re-renders
 
-* demo a simple app using the CDN
+### Demo a simple app using the CDN
 
   ```html
   <div id="root">
@@ -126,9 +127,22 @@
 
   * intro `watch` property
 
+  ```js
+  watch: {
+    'form.username': function() {
+      console.log('updates!');
+    }
+  }
+  ```
 
-* vue devtools
-* separate out into components
-* vue-cli
-* single file vue components
+### Demo separate components
+  * install vue-cli
+  * `npm i -g @vue/cli`
+  * `vue --version`
+  * `vue create my-project`
+  * explore the created project structure
+  * single file vue components
+  * demo vue devtools
+
+
 * integrates with storybook
