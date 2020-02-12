@@ -214,6 +214,37 @@
   <Slots>I am passing something to you</Slots>
   ```
 
+### Integrate with Storybook
 
+  * `npm install @storybook/vue --save-dev`
+  * `npm install vue --save`
+  * `npm install vue-loader vue-template-compiler @babel/core babel-loader babel-preset-vue --save-dev`
+  * add a new script to **package.json**: `"storybook": "start-storybook"`
+  * `mkdir .storybook`
+  * `touch .storybook/main.js`
+  
+  ```js
+  // .storybook/main.js
+  module.exports = {
+    stories: ['../src/**/*.stories.[tj]s'],
+  };
+  ```
 
-* integrates with storybook
+  * `mkdir src/stories`
+  * `touch src/stories/HelloWorld.stories.js`
+
+  ```js
+  import Vue from 'vue';
+  import HelloWorld from '../components/HelloWorld';
+
+  export default { title: 'Hello World Component' };
+
+  export const withText = () => '<hello-world>with text</hello-world>';
+
+  export const withEmoji = () => '<hello-world>😀 😎 👍 💯</hello-world>';
+
+  export const asAComponent = () => ({
+    components: { HelloWorld },
+    template: '<hello-world></hello-world>'
+  });
+  ```

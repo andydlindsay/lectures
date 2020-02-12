@@ -5,7 +5,7 @@
 * [ ] The Vue Instance
 * [ ] Vue Lifecycle Methods
 * [ ] Event Handling
-* [ ]
+* [ ] Custom Events
 
 ### Vue.js
 * The [official docs](https://vuejs.org/) describe Vue as being Approachable, Versatile, and Performant
@@ -80,34 +80,37 @@ const app = new Vue({
 
 ```js
 // inside child component
-const app = new Vue({
-  el: '#root',
+export default {
+  name: 'ChildComponent',
   data() {
     return {
       childMessage: ''
     }
   },
+  // accept props from parent
   props: ['msg', 'propTwo'],
   methods: {
     sendToParent() {
-      // emit a custom event named "message-stored"
+      // emit a custom event named "message-stored" with a payload of data
       this.$emit('message-stored', this.childMessage);
     }
   }
-});
+}
 ```
 
 ```html
-<!-- inside parent component attach an event handler to the child component -->
+<!-- inside parent component -->
+<!-- attach an event handler to the child component and pass down props -->
 <ChildComponent
   @message-stored="messageReceivedFromChild"
   msg="Welcome to Your Vue.js App"
   propTwo="how are you?"
 />
 ```
-  
+
 ### Useful Links
 - [Framework Popularity](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190)
 - [Framework Size Comparison](https://gist.github.com/Restuta/cda69e50a853aa64912d)
 - [Vue Lifecycle](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 - [Vue Parent/Child Communication](https://vegibit.com/vuejs-parent-child-communication/)
+- [Storybook for Vue](https://storybook.js.org/docs/guides/guide-vue/)
