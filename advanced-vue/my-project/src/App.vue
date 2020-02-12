@@ -1,17 +1,31 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App" propTwo="how are you?"/>
+    <HelloWorld @message-stored="messageFromChild" msg="Welcome to Your Vue.js App" propTwo="how are you?"/>
+    <p>Child Message: {{ parentMessage }}</p>
+    <Slots>I am passing something to you</Slots>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import Slots from './components/Slots.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    Slots
+  },
+  data() {
+    return {
+      parentMessage: ''
+    }
+  },
+  methods: {
+    messageFromChild(childMessage) {
+      this.parentMessage = childMessage;
+    }
   }
 }
 </script>

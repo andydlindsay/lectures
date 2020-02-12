@@ -1,6 +1,7 @@
 ## Lecture Order
 
 ### Introduction to Vue.js
+
   * progressive framework: you can plug it in to just a part of your application
   * smaller size compared to other front-end frameworks
   * component-based
@@ -26,9 +27,20 @@
   * show how it works just jQuery and must wait for the DOM to load to hook into it
   * show the Vue warning in the console that it cannot find the element to mount to
   * demonstrate name and that it can be updated in the console with `app.name = 'something else';`
+
   * add a sports array to the data object
   * render an unordered list using `v-for`
+
+  ```html
+  <ul>
+    <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
+  </ul>
+  ```
+
   * add a new item to the list using `app.sports.push({ name: 'Tennis' });`
+
+### Vue Lifecycle Methods
+
   * look at Vue lifecycle methods
   * introduce the `created(){}` lifecycle method and `fetch` the sports from an external API
 
@@ -41,13 +53,16 @@
   ```
 
   * demonstrate bound properties using `v-bind:` and then the short-hand
-  * hover over the `h2` to show the tooltip
-  * change the tooltip with `app.message = 'something else';`
 
   ```html
   <h2 v-bind:title="message">Hello {{ name }}</h2>
   <h2 :title="message">Hello {{ name }}</h2>
   ```
+
+  * hover over the `h2` to show the tooltip
+  * change the tooltip with `app.message = 'something else';`
+
+### Conditional Rendering
 
   * demonstrate `v-if`
 
@@ -59,9 +74,12 @@
 
   ```html
   <p v-if="visible">I'm here!!!</p>
+  <p v-else>I'm here instead!</p>
   ```
 
   * open the console and set `app.visible = false;`
+
+### Methods and Event Handling
 
   * add the `methods` object and create a simple method for a click event
   * bind it to a DOM element using `v-on:click="functionName"`
@@ -86,6 +104,8 @@
   * add a method called `incrementCounter` that increments the counter by 1
   * add a button `index.html` and add a click handler to it
   * add a span to the html that displays the `counter` value
+
+### Binding Data with v-model
 
   * add a `form` object to the `data` object
 
@@ -115,6 +135,8 @@
   </form>
   ```
 
+### Computed Properties
+
   * intro `computed` property
 
   ```js
@@ -124,6 +146,8 @@
     }
   }
   ```
+
+### Watch
 
   * intro `watch` property
 
@@ -135,14 +159,59 @@
   }
   ```
 
-### Demo separate components
+### App Creation with vue-cli
+
   * install vue-cli
   * `npm i -g @vue/cli`
   * `vue --version`
   * `vue create my-project`
   * explore the created project structure
   * single file vue components
+  * show prop passing from parent to child
+  * `npm run serve`
   * demo vue devtools
+
+### Custom Event Handling
+
+  * emit an event from the child component
+
+  ```js
+  data() {
+    return {
+      childMessage: ''
+    }
+  },
+  props: ['msg', 'propTwo'],
+  methods: {
+    sendToParent() {
+      this.$emit('message-stored', this.childMessage);
+    }
+  }
+  ```
+
+  * look in devtools to see the event and the payload
+  * listen for the event in the parent by attaching a custom event handler
+
+  ```html
+  <HelloWorld @message-stored="messageFromChild"/>
+  ```
+
+### Slots
+
+  * demo slots
+
+  ```js
+  // Slots.vue
+  <template>
+    <div class="slots">
+      <slot></slot>
+    </div>
+  </template>
+
+  // App.vue
+  <Slots>I am passing something to you</Slots>
+  ```
+
 
 
 * integrates with storybook

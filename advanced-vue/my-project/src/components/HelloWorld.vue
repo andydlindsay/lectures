@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>{{ propTwo }}</h2>
-    <input type="text" v-model="message"/>
+    <input type="text" v-model="childMessage"/>
     <button type="button" @click="sendToParent">Send Message</button>
   </div>
 </template>
@@ -12,13 +12,13 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      message: ''
+      childMessage: ''
     }
   },
   props: ['msg', 'propTwo'],
   methods: {
     sendToParent() {
-      this.$emit('message-stored', this.message);
+      this.$emit('message-stored', this.childMessage);
     }
   }
 }

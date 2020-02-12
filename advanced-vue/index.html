@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <title>Vue Experiments</title>
 </head>
+
 <body>
   <div id="root">
     <h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
+
     <p v-if="visible">I'm here!!!</p>
+    <p v-else>I'm here instead!</p>
+
     <button @click.prevent="incrementCounter">Click Me!</button>
     <span>{{ counter }}</span>
+
     <ul>
       <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
     </ul>
+
     <p>{{ reverseUsername }}</p>
+
     <form>
       <label for="username">Username</label>
       <input type="text" id="username" v-model="form.username" />
@@ -26,6 +34,8 @@
       <button type="button" @click.prevent="onSubmit">Log In!</button>
     </form>
   </div>
+
   <script src="app.js"></script>
 </body>
+
 </html>

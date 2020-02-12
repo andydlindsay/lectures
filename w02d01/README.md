@@ -69,6 +69,7 @@ const { myFunc } = require('./myFunc');
 ```
 
 ### Useful Links
+- [Node Wrapper Function](https://nodejs.org/api/modules.html#modules_the_module_wrapper)
 - [Mocha Docs](https://mochajs.org/)
 - [Chai Docs](https://www.chaijs.com/)
 - [Chai: Differences between should, expect, and assert](https://www.chaijs.com/guide/styles/#differences)
