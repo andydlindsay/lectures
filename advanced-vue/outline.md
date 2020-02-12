@@ -52,6 +52,8 @@
   }
   ```
 
+### Bound Properties
+
   * demonstrate bound properties using `v-bind:` and then the short-hand
 
   ```html

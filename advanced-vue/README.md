@@ -4,7 +4,8 @@
 * [ ] What is Vue.js?
 * [ ] The Vue Instance
 * [ ] Vue Lifecycle Methods
-* [ ] 
+* [ ] Event Handling
+* [ ]
 
 ### Vue.js
 * The [official docs](https://vuejs.org/) describe Vue as being Approachable, Versatile, and Performant
@@ -14,7 +15,7 @@
 * Versatile
   * Vue is a "progressive" web framework meaning that it can comprise a small part of an application or be a fully featured Vue web app, or anything in between
 * Performant
-  * Smaller file sizes than Angular or React [source](https://gist.github.com/Restuta/cda69e50a853aa64912d)
+  * Smaller file sizes than Angular or React ([source](https://gist.github.com/Restuta/cda69e50a853aa64912d))
   * Small file size means faster loading in browsers
 * Component-based framework (similar to React)
 * Reactive: When the data (state) changes, the view re-renders
@@ -32,7 +33,7 @@ const app = new Vue({
 ```
 
 * The `el` (short for _element_) is the DOM element that the Vue instance will be mounted to
-* The data object contains any state controlled by the component
+* The `data` object contains any state controlled by the component
 
 ### Vue Lifecycle Hooks
 * A lifecycle hook is a particular stage in the life of a component
@@ -57,10 +58,56 @@ const app = new Vue({
   }
 });
 ```
+
+### Event Handling
+* Any DOM event can be handled by adding a listener to the particular element
+* The syntax is `v-on:<event>="functionToCall"`
+
+```html
+<button v-on:click="onButtonClick">Click Me!</button>
+
+<!-- there's also a short hand for v-on -->
+<button @click="onButtonClick">Click Me!</button>
+```
+
+### Custom Events
+
+* In Vue, it's _data down, events up_
+* This means that you pass props down from parent to child (just like React)
+* Props are accepted via the `props` key in the child component
+* But you don't pass down behaviour (eg. React callback functions)
+* Instead, the child emits a custom event which the parent listens for
+
+```js
+// inside child component
+const app = new Vue({
+  el: '#root',
+  data() {
+    return {
+      childMessage: ''
+    }
+  },
+  props: ['msg', 'propTwo'],
+  methods: {
+    sendToParent() {
+      // emit a custom event named "message-stored"
+      this.$emit('message-stored', this.childMessage);
+    }
+  }
+});
+```
+
+```html
+<!-- inside parent component attach an event handler to the child component -->
+<ChildComponent
+  @message-stored="messageReceivedFromChild"
+  msg="Welcome to Your Vue.js App"
+  propTwo="how are you?"
+/>
+```
   
 ### Useful Links
 - [Framework Popularity](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190)
 - [Framework Size Comparison](https://gist.github.com/Restuta/cda69e50a853aa64912d)
 - [Vue Lifecycle](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 - [Vue Parent/Child Communication](https://vegibit.com/vuejs-parent-child-communication/)
-- []()
