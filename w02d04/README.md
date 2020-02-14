@@ -4,8 +4,8 @@
 - [ ] Illustrate the "callback waterfall" (callback hell) problem
 - [ ] Introduction to Promises
 - [ ] Error handling with Promises (vs callbacks)
-- [ ] Creating our own Promises
 - [ ] Parallelizing async things (Promise.race and Promise.all)
+- [ ] Creating our own Promises
 
 ### Promises
 - An object that may (or may not) resolve to a value in the future
