@@ -14,17 +14,9 @@ const Main = () => {
     <Router>
       <div>
         <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-          </ul>
+          <Link to="/">Home </Link>
+          <Link to="/about">About </Link>
+          <Link to="/products">Products</Link>
         </nav>
 
         <Switch>

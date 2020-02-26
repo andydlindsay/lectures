@@ -4,7 +4,8 @@ import './App.css';
 // import ClassBased from './components/class-based/ClassBased';
 // import StatefulComponent from './components/class-based/StatefulComponent';
 // import Main from './components/routing/Main';
-import UseContext from './components/use-context/UseContext';
+// import UseContext from './components/use-context/UseContext';
+import StyledComponent from './components/styled/StyledComponent';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       {/* <ClassBased name="Alice" /> */}
       {/* <StatefulComponent /> */}
       {/* <Main /> */}
-      <UseContext />
+      {/* <UseContext /> */}
+      <StyledComponent />
     </div>
   );
 }
