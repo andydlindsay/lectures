@@ -68,8 +68,8 @@ class StatefulComponent extends React.Component {
 ### React Router
 * Uses the `react-router-dom` package
 * Inside of a `Router` component, you can use `Link` components to provide clickable links to the user
-* A `Switch` component acts as the router and you define `Route` components within it
-* Whichever `Route` whose `path` attribute matches the path the user is trying to visit gets rendered
+* Inside of a `Switch`, the first `Route` whose `path` attribute matches the path the user is trying to visit gets rendered
+* Outside of a `Switch`, any `Route` whose `path` matches will render
 
 ```jsx
 <Router>
