@@ -91,7 +91,7 @@ class StatefulComponent extends React.Component {
 
 ### useContext
 * `useContext` can be used to share state without having to pass props from parent to child
-* Each component inside of a `Provider` can access the values through context
+* Any component that needs access to the shared state can simply import the context and pass it to `useContext`
 
 ```js
 // create the context to shared
@@ -126,7 +126,6 @@ const Paragraph = styled.p`
 * Why build it yourself if someone else already has??
 * Component libraries give us easy access to ready-built components that we can plug into our application
 * We can use as much or as little of the component library as we want
-* It is common practice to create custom components that wrap component library components
 * Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/)
 
 ### Useful Links
