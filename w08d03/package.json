@@ -1,0 +1,16 @@
+{
+  "name": "w08d03",
+  "version": "1.0.0",
+  "description": "### To Do - [ ]",
+  "main": "topic-giver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "readline-promise": "^1.0.4"
+  }
+}
