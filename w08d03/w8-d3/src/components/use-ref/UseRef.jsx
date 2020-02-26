@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 const UseRef = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef();
   const handleClick = () => {
     inputRef.current.focus();
   };

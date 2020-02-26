@@ -15,7 +15,7 @@
 
 ```js
 const UseRef = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef();
   const handleClick = () => {
     inputRef.current.focus();
   };
@@ -33,7 +33,7 @@ const UseRef = () => {
 
 ### Class Components
 * An alternative to creating functional components using ES6 classes
-* Used for making stateful components prior to the release of hooks (Feb '19)
+* Used for making stateful components prior to the release of hooks
 
 ```js
 // a simple class component
