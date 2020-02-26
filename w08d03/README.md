@@ -67,11 +67,35 @@ class StatefulComponent extends React.Component {
 ```
 
 ### React Router
-* **Not** built-in to React
 * Uses the `react-router-dom` package
+* Inside of a `Router` component, you can use `Link` components to provide clickable links to the user
+* A `Switch` component acts as the router and you define `Route` components within it
+* Whichever `Route` whose `path` attribute matches the path the user is trying to visit gets rendered
+
+```jsx
+<Router>
+  <Link to="/">Home</Link>
+  <Link to="/about">About</Link>
+  <Link to="/products">Products</Link>
+
+  <Switch>
+    <Route path="/about">
+      <About />
+    </Route>
+    { /* alternative syntax */ }
+    <Route path="/products" component={Products}/>
+    <Route path="/">
+      <Home />
+    </Route>
+  </Switch>
+<Router>
+```
+
+### useContext
 * 
 
 ### Useful Links
 * ["Best" React UI Component Libraries](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
 * [React.Component](https://reactjs.org/docs/react-component.html)
+* [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * []()

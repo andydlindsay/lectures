@@ -7,10 +7,10 @@ const UseRef = () => {
   };
 
   return (
-    <div class="use-ref">
+    <div className="use-ref">
       <p><code>useRef</code></p>
       <div>
-        <label for="input-field">Input Field:</label>
+        <label htmlFor="input-field">Input Field:</label>
         <input type="text" id="input-field" ref={inputRef} />
       </div>
       <div>
