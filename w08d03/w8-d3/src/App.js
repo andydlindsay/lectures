@@ -10,7 +10,7 @@ import UseRef from './components/use-ref/UseRef';
 function App() {
   return (
     <div className="App">
-      {/* <h1>React: Next Steps</h1> */}
+      <h1>React: Next Steps</h1>
       <UseRef />
       {/* <ClassBased name="Alice" /> */}
       {/* <StatefulComponent /> */}

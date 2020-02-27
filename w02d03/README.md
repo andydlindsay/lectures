@@ -54,7 +54,7 @@
 - _State-less_: no memory of any previous communication
 - Routes to resources are made up of methods (verbs) and paths
 - **METHODS**: GET, POST, PUT, PATCH, DELETE
-- **PATHS**: `www.example.com/users`, `/unicorns/123`
+- **PATHS**: `/users`, `/unicorns/123`
 - Returns status codes for each communication (eg. 200, 202, 302, 404, 500)
 - Response headers contain information about the response such as media type and content size
 - Reponse body contains the content (JSON, html, etc)

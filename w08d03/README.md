@@ -94,7 +94,7 @@ class StatefulComponent extends React.Component {
 * Any component that needs access to the shared state can simply import the context and pass it to `useContext`
 
 ```js
-// create the context to shared
+// create the context to be shared
 const MessageContext = React.createContext({ example: 'initial context' });
 
 // consume the context in another component through useContext
@@ -129,7 +129,6 @@ const Paragraph = styled.p`
 * Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/)
 
 ### Useful Links
-* ["Best" React UI Component Libraries](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
 * [React.Component](https://reactjs.org/docs/react-component.html)
 * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [Styled Components](https://styled-components.com/docs/basics)
