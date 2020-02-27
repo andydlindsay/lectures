@@ -113,9 +113,113 @@
 * A CSS preprocessor generates CSS using a [Domain Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
 * Popular preprocessors include [Sass](https://sass-lang.com/), [LESS](http://lesscss.org/), [Stylus](https://stylus-lang.com/), and [PostCSS](https://postcss.org/)
 
-### Sass
+### Intro to Sass
 * **S**yntactically **A**wesome **S**yle **S**heets
-* 
+* Sass gives us some useful features to make writing our CSS easier
+
+  #### Variables
+  * Sass utilizes variables like any other programming language: store a value and retrieve it later using the variables name
+
+  ```scss
+  // variables
+  $font-color: lightblue;
+  $font-size: 1.2rem;
+
+  p {
+    color: $font-color;
+  }
+  h1 {
+    font-size: $font-size;
+  }
+  ```
+
+  #### Nesting
+  * Nesting styles inside one another can help improve the readability and logical flow of our code
+
+  ```scss
+  // basic css
+  .container p {
+    color: magenta;
+    text-decoration: underline;
+  }
+  .container div {
+    border: 1px solid black;
+  }
+
+  // using nesting
+  .container {
+    p {
+      color: magenta;
+      text-decoration: underline;
+    }
+    div {
+      border: 1px solid black;
+    }
+  }
+  ```
+
+  #### Partials and `@import`
+  * We can use partials to store small amounts of code
+  * The convention for naming partials is to prepend the filename with an underscore (eg. `_variables.scss` or `_nav.scss`)
+  * Partials can be included into other Sass files using the `@import` syntax
+  * When importing, then leading underscore can be omitted from the filename
+
+  ```scss
+  // inside _variables.scss
+  $border-width: 2px;
+  $border-color: red;
+
+  // inside styles.scss
+  @import 'variables';
+  p {
+    border: $border-width solid $border-color;
+  }
+  ```
+
+  #### `@extend`
+  * When you have two or more elements that have very similar styles, you could style one and use it as the basis for the other element(s)
+  * Styles can be combined into other styles using `@extend`
+
+  ```scss
+  .header-text {
+    font-size: 2em;
+    font-family: 'sans-serif';
+  }
+
+  .heading {
+    @extend .header-text;
+    color: rebeccapurple;
+  }
+  ```
+
+  #### Mixins
+  * A **mixin** is like a function that returns a group of styles
+  * The _mixin_ can be included in any other style by using `@include`
+
+  ```scss
+  // declare the mixin
+  @mixin header-styles {
+    height: 50px;
+    background-color: $header-bg;
+  }
+
+  // include it in another style
+  header {
+    @include header-styles();
+  }
+
+  // mixins can take parameters as well
+  @mixin box-sizes($n) {
+    height: $n;
+    width: $n;
+    line-height: $n;
+  }
+
+  .box {
+    @include box-sizes(15px);
+    border: 1px solid green;
+  }
+  ```
 
 ### Useful Links
 * [MDN: CSS Preprocessor](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor)
@@ -123,4 +227,5 @@
 * [MDN: CSS Values and Units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
 * [MDN: Basic Concepts of Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
 * [CSS Tricks: A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* []()
+* [Sass Cheatsheet](https://devhints.io/sass)
+* [Sass CLI](https://sass-lang.com/documentation/cli/dart-sass)

@@ -14,14 +14,12 @@ header {
 
 section {
   border: 2px solid black;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
 }
 
-div {
+section div {
   height: 50px;
   width: 50px;
+  margin: 10px;
   line-height: 50px;
   display: inline-block;
   background-color: lightpink;
@@ -31,11 +29,4 @@ div {
 footer {
   background-color: burlywood;
   height: 30px;
-}
-
-@media only screen and (max-width: 375px) {
-  /* these styles will be applied if the screen width is less than 375px */
-  body {
-    background-color: lightblue;
-  }
 }
