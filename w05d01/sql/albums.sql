@@ -23,7 +23,8 @@ VALUES  ('Homecoming: The Live Album', 'Beyonce', 'April 17, 2019'),
         ('the underrated youth', 'Yungblud', 'October 18, 2019'),
         ('Hollywood''s Bleeding', 'Post Malone', 'September 6, 2019'),
         ('Manic', 'Halsey', 'January 17, 2020'),
-        ('Circles', 'Mac Miller', 'January 17, 2020');
+        ('Circles', 'Mac Miller', 'January 17, 2020'),
+        ('Changes', 'Justin Bieber', 'February 14, 2020');
 
 INSERT INTO songs (album_id, track_number, song_name, rating)
 VALUES  (1, 1, 'Welcome', 2.5),
@@ -90,4 +91,20 @@ VALUES  (1, 1, 'Welcome', 2.5),
         (7, 4, 'Good News', 4),
         (7, 5, 'I Can See', 4.5),
         (7, 6, 'Everybody', 2),
-        (7, 7, 'Woods', 3);
+        (7, 7, 'Woods', 3),
+        (8, 1, 'All Around Me', 3.5),
+        (8, 2, 'Habitual', 3),
+        (8, 3, 'Come Around Me', 3),
+        (8, 4, 'Intentions', 3),
+        (8, 5, 'Yummy', 3),
+        (8, 6, 'Available', 3),
+        (8, 7, 'Forever', 3),
+        (8, 8, 'Running Over', 3),
+        (8, 9, 'Take It Out On Me', 3),
+        (8, 10, 'Second Emotion', 3),
+        (8, 11, 'Get Me', 3),
+        (8, 12, 'E.T.A.', 3),
+        (8, 13, 'Changes', 3),
+        (8, 14, 'Confirmation', 3),
+        (8, 15, 'That''s What Love Is', 3),
+        (8, 16, 'At Least For Now', 3);
