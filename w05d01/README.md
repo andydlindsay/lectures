@@ -144,7 +144,7 @@ ON albums.id = songs.album_id;
 7. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
 
 ```sql
-SELECT albums.album_name, COUNT(songs.id) as num_songs
+SELECT albums.album_name, COUNT(songs.id) AS num_songs
 FROM albums
 JOIN songs
 ON albums.id = songs.album_id
@@ -154,7 +154,7 @@ GROUP BY albums.album_name;
 8. Enhance previous query to only include albums that have more than 10 songs (requires HAVING)
 
 ```sql
-SELECT albums.album_name, COUNT(songs.id) as num_songs
+SELECT albums.album_name, COUNT(songs.id) AS num_songs
 FROM albums
 JOIN songs
 ON albums.id = songs.album_id
@@ -194,7 +194,7 @@ GROUP BY albums.album_name;
 SELECT albums.album_name,
   songs.song_name,
   songs.rating,
-  (SELECT AVG(songs.rating) FROM songs WHERE songs.album_id = albums.id) as avg_rating
+  (SELECT AVG(songs.rating) FROM songs WHERE songs.album_id = albums.id) AS avg_rating
 FROM albums
 JOIN songs
 ON albums.id = songs.album_id
