@@ -1,9 +1,15 @@
 # W5D2 - Database Design
 
-### Relational Databases
-
-- Each table in a relational database is related to one or more of the other tables in the database
-- Tables are related through the use of `Primary Keys`
+### To Do
+- [ ] Primary Keys/Foreign Keys
+- [ ] Data Types
+- [ ] Relationship Types
+- [ ] Naming Conventions
+- [ ] Normalization
+- [ ] Design Concepts
+- [ ] Entity Relationship Diagrams
+- [ ] ERD #1: Convert 2 Spreadsheets
+- [ ] ERD #2: Student Suggestion
 
 ### Primary Key
 
