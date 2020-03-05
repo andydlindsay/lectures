@@ -1,20 +1,16 @@
 # W1D4 - Callbacks!
 
 ### To Do
+- [ ] Review of primitive values in JS
 - [ ] Functions as values
-- [ ] Function calling vs passing (reference to a function)
-- [ ] Callback functions and Higher Order functions
-- [ ] Intro to anonymous functions
-- [ ] Implementing our own forEach and/or our own filter
-- [ ] Arrow Functions (and their common use for callback functions)
-- [ ] Nested scope and "scope chain"
+- [ ] Function calling vs function passing
+- [ ] Callbacks and higher order functions
+- [ ] Anonymous functions
+- [ ] Arrow functions
+- [ ] Nested scope and the "scope chain"
+- [ ] Make our own higher order function (eg. forEach, filter, map)
 
-### What is a callback?
-- A callback is a function that gets passed to another function to be executed by that function
-- Callback functions are used all over the place in JavaScript
-- They encapsulate reusable code that can be passed around like any other JS variable
-
-### Functions are Values
+### Functions as Values
 - Just like everything else in JavaScript, functions are values
 - As a result, they can be stored in variables just like any other value
 
@@ -30,7 +26,9 @@ const myFunction = function() {
 const myFunction = function() {
   // do something
 }
+
 const myVar = myFunction;
+
 myVar(); // equivalent to calling myFunction()
 ```
 
@@ -40,14 +38,19 @@ myVar(); // equivalent to calling myFunction()
 const myFunction = function() {
   // do something
 }
+
 const myHigherOrderFunction = function(callback) {
   callback(); // equivalent to myFunction()
 }
+
 myHigherOrderFunction(myFunction);
 ```
 
-- We call the function that we pass as an argument a **callback**
-- We call the function that accepts a function as an argument a **higher order function**
+### Callbacks and Higher Order Functions
+- A callback is a function that gets passed to another function to be executed by that function
+- Callback functions are used all over the place in JavaScript
+- They encapsulate reusable code that can be passed around like any other JS variable
+- We call the function that accepts another function as an argument a **higher order function**
 
 ### Anonymous Functions
 - We can pass callback functions _inline_ to a higher order function rather than storing the callback in a variable first
@@ -56,9 +59,9 @@ myHigherOrderFunction(myFunction);
 const myHigherOrderFunction = function(callback) {
   callback();
 }
-myHigherOrderFunction(function() {
-  // do something
-});
+
+// the function we pass as an argument has no name
+myHigherOrderFunction(function() {});
 ```
 
 - Anonymous functions are simply functions that do not have a name
@@ -83,14 +86,10 @@ const myArrowFunc = () => {
 - Arrow functions are often used as callbacks because they are shorter/cleaner to type
 
 ```js
-arr.forEach(function(element) {
-  // do something
-});
+arr.forEach(function(element) {});
 
 // vs
-arr.forEach((element) => {
-  // do something
-});
+arr.forEach((element) => {});
 ```
 
 ### Useful Links
