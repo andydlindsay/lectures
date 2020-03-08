@@ -158,7 +158,7 @@ const returnsPromise = (name: string): Promise<string> => {
 ```
 
 ### Duck Typing
-* > "If it looks like a duck, walks like a duck, and quacks like a duck, then it's probably a duck."
+> "If it looks like a duck, walks like a duck, and quacks like a duck, then it's probably a duck." - idiom
 * If TypeScript can infer the type for us, then we don't need to specify it
 
 ```ts
