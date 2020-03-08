@@ -15,6 +15,10 @@
 * Writing JS in a separate file from HTML
 * 
 
+### New in Rails 5
+* `rails` wraps all `rake` commands (eg. `rails db:migrate`)
+* 
+
 ### Rails and CoffeeScript
 * Rails 6 uses JS (so no more `.coffee` files generated)
 * 
