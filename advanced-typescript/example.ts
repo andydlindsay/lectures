@@ -17,4 +17,22 @@ interface Author {
   isActive?: boolean;
 }
 
-const agatha: Author = {};
+const agatha: Author = {
+  name: 'Agatha Christie',
+  penName: 'the same'
+};
+
+const stephen: Author = {} as Author;
+
+const sayHello = (name: string): string => {
+  return `Hello ${name}`;
+};
+
+const sayHelloFn = function(name: string): string {
+  return `Hello ${name}`;
+  // return true;
+};
+
+const noReturn = function(name: string): void {
+  console.log(name);
+};

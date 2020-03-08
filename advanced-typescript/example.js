@@ -6,4 +6,18 @@ numTwo = 'hello';
 // numTwo = false;
 const arr = [1, 2, 3];
 arr.push(4);
-const agatha = {};
+const agatha = {
+    name: 'Agatha Christie',
+    penName: 'the same'
+};
+const stephen = {};
+const sayHello = (name) => {
+    return `Hello ${name}`;
+};
+const sayHelloFn = function (name) {
+    return `Hello ${name}`;
+    // return true;
+};
+const noReturn = function (name) {
+    console.log(name);
+};
