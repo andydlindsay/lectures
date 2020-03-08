@@ -203,10 +203,37 @@ error TS2345: Argument of type '{ username: string; }' is not assignable to para
 ```
 
 ### Generics
-* 
+* Generics allow us to pass a variable to a type
+* We specify the variable in between greater than (`<`) and less than (`>`) signs
+
+```ts
+interface Container<Type> {
+  title: string;
+  contents: Type
+}
+
+const numContainer: Container<number> = {
+  title: 'number container',
+  contents: 7
+};
+
+const stringContainer: Container<string> = {
+  title: 'string container',
+  contents: 'hello'
+};
+```
+
+* It is common to shorten `Type` to simply `T`
+
+```ts
+interface Container<T> {
+  contents: T
+}
+```
+
+* Generics are very powerful and can be quite complex
 
 ### Useful Links
 * [TypeScript Official Site](https://www.typescriptlang.org/)
 * [TypeScript Compiler Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 * [Sort of like a duck, but not a duck](https://birdersjourney.com/2015/03/01/nope-not-a-duck/)
-* []()
