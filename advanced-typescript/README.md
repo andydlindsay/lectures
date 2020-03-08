@@ -7,6 +7,7 @@
 * [ ] Arrays
 * [ ] Objects
 * [ ] Functions
+* [ ] Duck Typing
 * [ ] Generics
 
 ### What is TypeScript?
@@ -38,15 +39,12 @@ tsc index.ts --target es6 # compiles to es6 syntax JS
 * The compiler will scan our code and throw errors if any violations are found
 
 ### Primitive Types
-* Types can be specified using colon (:) syntax immediately after the variable name
+* Types can be specified using colon (`:`) syntax immediately after the variable name
 
 ```ts
 const str: string = 'hello world';
 const isLoggedIn: boolean = false;
 const num: number = 3.14;
-
-// for simple types, the type can be inferred and doesn't need to be specified
-const myStr = 'hello again';
 ```
 
 * If we try to assign a different type to a variable, the compiler will throw an error
@@ -65,11 +63,9 @@ error TS2322: Type '"hello"' is not assignable to type 'number'.
 ```ts
 // numTwo can be either a string or a number
 let numTwo: number | string = 4;
-numTwo = 'hello';
-// now no error
+numTwo = 'hello'; // no error
 
-numTwo = true;
-// error again!
+numTwo = true; // error!
 ```
 
 ```sh
@@ -110,7 +106,7 @@ const agatha: Author = {}; // error!
 error TS2739: Type '{}' is missing the following properties from type 'Author': name, penName
 ```
 
-* Note: The optional param `isActive` did not appear in the list of missing properties
+* **Note:** The optional param `isActive` did not appear in the list of missing properties
 * **Hack:** To force TypeScript to accept a type, use the `as` keyword
 
 ```ts
@@ -151,9 +147,66 @@ const noReturn = function(name: string): void {
 };
 ```
 
+* Functions that return a `Promise` (eg. `async` functions), wrap the return value in the `Promise` type
 
+```ts
+const returnsPromise = (name: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(name), 1000);
+  });
+};
+```
+
+### Duck Typing
+* "If it looks like a duck, walks like a duck, and quacks like a duck, then it's a duck"
+* TypeScript can infer a type for us
+
+```ts
+// no need to specify string type
+const name = 'Alice';
+```
+
+```ts
+// works with interfaces as well
+interface User {
+  username: string;
+  password: string;
+};
+
+// logInUser accepts a User type
+const logInUser = (user: User): boolean => {
+  return user.username === 'johnstamos';
+};
+
+// no type specified for potentialUser
+const potentialUser = {
+  username: 'johnstamos',
+  password: 'pass123',
+};
+
+// no problem passing potentialUser to logInUser
+const loggedIn = logInUser(potentialUser);
+```
+
+```ts
+// however, if the object is missing something...
+const potentialUser = {
+  username: 'johnstamos'
+};
+
+const loggedIn = logInUser(potentialUser); // error
+```
+
+```sh
+error TS2345: Argument of type '{ username: string; }' is not assignable to parameter of type 'User'.
+  Property 'password' is missing in type '{ username: string; }' but required in type 'User'.
+```
+
+### Generics
+* 
 
 ### Useful Links
 * [TypeScript Official Site](https://www.typescriptlang.org/)
 * [TypeScript Compiler Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+* [Sort of like a duck, but not a duck](https://birdersjourney.com/2015/03/01/nope-not-a-duck/)
 * []()

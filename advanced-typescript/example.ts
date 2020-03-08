@@ -36,3 +36,9 @@ const sayHelloFn = function(name: string): string {
 const noReturn = function(name: string): void {
   console.log(name);
 };
+
+const returnsPromise = (name: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(name), 1000);
+  });
+};
