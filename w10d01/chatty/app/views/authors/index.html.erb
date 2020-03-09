@@ -9,7 +9,7 @@
   <h1>All the Authors</h1>
   <% @authors.each do |author| %>
     <div>
-      <h2><%= "#{author.first_name} #{author.last_name}" %></h2>
+      <h2><%= "#{author.first_name} #{author.last_name}" %> - <%= link_to 'Books', author_books_path(author)  %></h2>
     </div>
   <% end %>
 </body>
