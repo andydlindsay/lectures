@@ -3,26 +3,66 @@
 ### To Do
 - [ ] "Rails Week" Conversation
 - [ ] MVC Review
-- [ ] Rails in the Wild
-- [ ] New Features in Rails 5 & 6
+- [ ] Rails Libraries
 - [ ] Nested Resources
 - [ ] Namespacing
 - [ ] Websockets in Rails (ActionCable)
 
-### "Rails Week" Conversation
-- 
-
 ### Model View Controller Review
-- 
+- **Model:** Responsible for handling data logic (eg. database queries)
+- **View:** Responsible for the UI (User Interface)
+- **Controller:** Ties the model and view together, talks to both and shares data between them
+- Rails also uses a router (`routes.rb`) sitting between the user requests and the controllers that respond to those requests
 
-### Rails in the Wild
-- 
+![MVC Diagram](https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week7/Day3/Lecture/assets/mvc-rails.png)
 
-### New Features in Rails 5 & 6
-- 
+### Rails Libraries
+- Rails is a framework made up of a collection of libraries
+- **Active Record**
+  - An Object Relational Mapper (ORM)
+  - Allows you to query and modify the application data in an intuitive way
+- **Action View**
+  - Handles template lookup and rendering
+  - Provides helpers for building forms and other UI elements
+- **Action Controller**
+  - Controller library
+  - Controller's make sense of the request and decide what should be returned to the client
+- **Action Dispatch**
+  - The Rails router
+  - Handles incoming requests and forwards them to the correct controller
+- **Active Support**
+  - Collection of helper methods for Ruby
+- **Action Mailer**
+  - Allows you to send emails
+- **Action Cable**
+  - Websockets for Rails
+- **Active Storage**
+  - For uploading files to storage in the cloud
+- Rails bundles all these libraries together to create a framework
 
-### Nested Resources
-- 
+### Nested Routes
+* We define the nesting in our routes. In routes.rb you say:
+
+```ruby
+resources :authors do
+  resources :books
+end
+```
+
+* Will generate:
+
+```sh
+ product_books        GET    /authors/:author_id/books(.:format)          books#index
+                      POST   /authors/:author_id/books(.:format)          books#create
+ new_product_review   GET    /authors/:author_id/books/new(.:format)      books#new
+ edit_product_review  GET    /authors/:author_id/books/:id/edit(.:format) books#edit
+ product_review       GET    /authors/:author_id/books/:id(.:format)      books#show
+                      PATCH  /authors/:author_id/books/:id(.:format)      books#update
+                      PUT    /authors/:author_id/books/:id(.:format)      books#update
+                      DELETE /authors/:author_id/books/:id(.:format) 
+```
+
+* Notice that these routes will be affected by the books Controller. All the logic will go there to work with these nested routes.
 
 ### Namespacing
 - 
@@ -31,4 +71,8 @@
 - 
 
 ### Useful Links
+- [react-rails gem](https://github.com/reactjs/react-rails)
+- [`dotenv` for Rails](https://github.com/bkeepers/dotenv)
 - []()
+
+## Some notes borrowed from Travis' [lecture](https://github.com/tborsa/lectures/blob/master/week10/day1/notes.md) and Vasiliy's [lecture](https://web.compass.lighthouselabs.ca/activities/433/lectures/3022)
