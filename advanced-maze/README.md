@@ -1,4 +1,4 @@
-# Advanced Lecture: Data Structures & Algorithms
+# Maze Generation Algorithm
 
 ### To Do
 - [ ] 
