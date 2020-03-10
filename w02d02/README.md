@@ -66,7 +66,7 @@ const interval = setInterval(() => {
   iterations++;
   console.log('hello there!');
 
-  if (iterations > 10) {
+  if (iterations === 10) {
     clearInterval(interval);
   }
 }, 1000);
