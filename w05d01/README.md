@@ -56,9 +56,7 @@ FROM users;
   - `INNER JOIN`: The default. Return only records that have matching records in the other table.
   - `LEFT JOIN`: Return all records from the "left" table and only those from the other table that match.
   - `RIGHT JOIN`: The same as a _LEFT JOIN_, but from the _RIGHT_ instead.
-  - `LEFT OUTER JOIN`: Return only records from the first table that don't match anything in the second table.
-  - `RIGHT OUTER JOIN`: The same as _LEFT OUTER JOIN_, but from the _RIGHT_ instead.
-  - `FULL OUTER JOIN`: Return only records from both tables that have no matches in the other table.
+  - `FULL OUTER JOIN`: Return all records from both tables.
 
 ```sql
 -- basic INNER JOIN
