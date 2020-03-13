@@ -3,9 +3,11 @@
 ### To Do
 - [ ] Review of Closures
 - [ ] What the heck is React?
+- [ ] Building a project from scratch w React
 - [ ] Components
-- [ ] Building a project from scratch w React (using Storybook)
 - [ ] Combining components together
+- [ ] Passing Props
+- [ ] Adding Storybook
 
 ### Review of Closures
 - From MDN:
@@ -13,7 +15,7 @@
 - In other words, functions remember where they were declared and what variables were in scope (they had access to) at the time they were declared
 - This allows us to preserve _state_ in between function calls (subsequent calls to the function can use the updated state value)
 - Contrasting with JS Classes (how we used to create React components): components as objects were instantiated from a Class and it was the same object that was used over and over again. Therefore it always had access to its own internal state. Functional components need some way of creating a _closure_ so that we can achieve the same result.
-- Enter `useState` (and other `use` functions) which keep track of state for us between function calls and allow us to retrieve and edit variables every time the function is invoked (the component is created/updated)
+- Enter `useState` (and other `use` functions) which keep track of state for us between function calls and allow us to retrieve and edit variables every time the function is invoked (eg. the component is created/updated)
 
 ### React
 - From the landing page of [React](https://reactjs.org/):
@@ -30,6 +32,45 @@
 - Ideally, components should be reusable (which means that their state should be passed into them via props rather than maintaining their own state)
 - Deciding which DOM elements become components and which don't is a skill that comes with practice and experience
 - We will be building all of our components using functions
+- The functions return value contains a mixture of HTML and JS; React calls this `JSX`
+
+```jsx
+// basic component
+import React from 'react';
+
+const MyComponent = () => {
+  return (
+    <div className="my-component">
+      <h1>Hello World</h1>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+### Passing Props
+- Child components can be passed pieces of state (data) from their parent component
+- These props are accepted in the child component as an argument (usually called `props`)
+
+```jsx
+// in parent component
+import MyComponent from './components/MyComponent.jsx';
+
+// inside the parent's return
+<MyComponent studentName="Alice"></MyComponent>
+
+// inside child component
+const MyComponent = (props) => {
+  return (
+    <div>
+      <h1>Hello { props.studentName }!</h1>
+    </div>
+  );
+};
+```
+
+- Props are not limited to JS primitives and data structures; you can also pass behaviour from parent-to-child in the form of functions
 
 ### Useful Links
 - [MDN: Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)

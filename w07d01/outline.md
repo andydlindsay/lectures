@@ -6,8 +6,8 @@
 4. Create react app
   * `npx create-react-app google-clone`
   * remove unnecessary code
-5. Add Storybook
+5. Build out Greeting component in App.js
+6. Add Storybook
   * `npx -p @storybook/cli sb init`
-6. Build out Greeting component in App.js
 7. Build out SearchBar, SearchResult, and SearchResults components and stories
 8. Highlight `key` warning in browser console
