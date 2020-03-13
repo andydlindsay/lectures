@@ -19,7 +19,7 @@
 ### Components
 - Components are the building blocks of a webpage (eg. search input, navigation bar, contact us form)
 - Ideally, components should be reusable (which means that their state should be passed into them via props rather than maintaining their own state)
-- Deciding what which DOM elements become components and which don't is a skill that comes with practice and experience
+- Deciding which DOM elements become components and which don't is a skill that comes with practice and experience
 - We will be building all of our components using functions
 
 ### Useful Links
