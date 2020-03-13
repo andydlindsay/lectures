@@ -1,6 +1,7 @@
 # W7D1 Component-Based UI w/ React
 
 ### To Do
+- [ ] Review of Closures
 - [ ] What the heck is React?
 - [ ] Components
 - [ ] Building a project from scratch w React (using Storybook)
