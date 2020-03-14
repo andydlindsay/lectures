@@ -3,7 +3,7 @@
 ### To Do
 - [ ] Review of Closures
 - [ ] What the heck is React?
-- [ ] Building a project from scratch w React
+- [ ] Building a project w/ Create-React-App
 - [ ] Components
 - [ ] Combining components together
 - [ ] Passing Props
@@ -72,6 +72,14 @@ const MyComponent = (props) => {
 
 - Props are not limited to JS primitives and data structures; you can also pass behaviour from parent-to-child in the form of functions
 
+### Storybook
+- From the [Storybook Docs](https://storybook.js.org/):
+> Storybook is an open source tool for developing UI components in isolation for React, Vue, and Angular.
+- Allows us to develop our components separate from each other (isolation)
+- Builds out a component library so new devs on the team can come up to speed quickly
+- Can show various different ways to render each component based on props passed in
+
 ### Useful Links
 - [MDN: Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+- [Storybook](https://storybook.js.org/)
 - [Storybook storiesOf API](https://storybook.js.org/docs/formats/storiesof-api/)
