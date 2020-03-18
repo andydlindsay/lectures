@@ -6,6 +6,7 @@
 - [ ] `useEffect`
 - [ ] Dependencies
 - [ ] Cleanup
+- [ ] The _Effect_ Flow
 
 ### Two Rules for Hooks
 1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions**
@@ -85,6 +86,31 @@ useEffect(() => {
   setCount(count + 1);
 }, [count]);
 ```
+
+### Cleanup
+- Sometimes side effects need to be cleaned up (eg. socket connections terminated)
+- To perform cleanup, return a function from your `useEffect`
+
+```jsx
+const [timer, setTimer] = useState(0);
+
+useEffect(() => {
+  // set up an interval to increment a timer
+  const myInterval = setInterval(() => {
+    setTimer(timer => timer + 1);
+  }, 1000);
+
+  // declare a cleanup function
+  const cleanup = () => {
+    clearInterval(myInterval);
+  };
+
+  return cleanup;
+}, []);
+```
+
+### The _Effect_ Flow
+- 
 
 ### Useful Links
 - [React Docs: Hook Rules](https://reactjs.org/docs/hooks-rules.html)

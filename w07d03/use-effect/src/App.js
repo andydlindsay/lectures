@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [count, setCount] = React.useState(0);
   const [name, setName] = React.useState('Alice');
-  // const [timer, setTimer] = React.useState(0);
+  const [timer, setTimer] = React.useState(0);
   const [todo, setTodo] = React.useState({});
 
   React.useEffect(() => {
@@ -26,15 +26,20 @@ function App() {
     }, 5000);
   };
 
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTimer(timer => timer + 1);
-  //   }, 500);
-  //   return () => {
-  //     console.log('interval cleared');
-  //     clearInterval(interval);
-  //   }
-  // }, []);
+  React.useEffect(() => {
+    document.getElementById('grab-me').innerHTML = `hello world ${count}`;
+  }, [count]);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(timer => timer + 1);
+    }, 500);
+    const cleanup = () => {
+      console.log('interval cleared');
+      clearInterval(interval);
+    }
+    return cleanup;
+  }, []);
 
   // React.useEffect(() => {
   //   setCount(count + 1);
@@ -51,7 +56,7 @@ function App() {
         <h2>Current count { count }</h2>
         <button onClick={ handleClick }>Increment Count</button>
         <button onClick={ delayClick }>Delay</button>
-        {/* <p>Timer: { timer }</p> */}
+        <p>Timer: { timer }</p>
       </div>
       <div>
         <input type="text" value={name} onChange={(event) => setName(event.target.value)}/>
@@ -59,6 +64,9 @@ function App() {
       <div>
         <h2>Here's my todo:</h2>
         <p>{ todo.title }</p>
+      </div>
+      <div>
+        <p id="grab-me"></p>
       </div>
     </div>
   );
