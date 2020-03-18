@@ -6,7 +6,7 @@
 - [ ] `useEffect`
 - [ ] Dependencies
 - [ ] Cleanup
-- [ ] The _Effect_ Flow
+- [ ] _useEffect_ Flow
 
 ### Two Rules for Hooks
 1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions**
@@ -109,8 +109,13 @@ useEffect(() => {
 }, []);
 ```
 
-### The _Effect_ Flow
-- 
+### _useEffect_ Flow
+1. React turns your JSX into HTML (client-side rendering) and updates the DOM
+2. The browser responds to the change by updating the UI
+3. Any cleanup for effects from the previous render are performed
+4. New effects for the current render are performed
+
+![_useEffect_ flow](https://raw.githubusercontent.com/andydlindsay/lectures/master/w07d03/useEffect%20Flow.png)
 
 ### Useful Links
 - [React Docs: Hook Rules](https://reactjs.org/docs/hooks-rules.html)
