@@ -70,7 +70,6 @@ const MyComponent = (props) => {
 ```jsx
 // will run every time the value of user.firstName changes
 useEffect(() => {
-  // set the document title to the current user's name
   document.title = `${user.firstName}'s Home Page`;
 }, [user.firstName]);
 

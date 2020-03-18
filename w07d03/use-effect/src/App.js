@@ -6,6 +6,7 @@ function App() {
   const [name, setName] = React.useState('Alice');
   const [timer, setTimer] = React.useState(0);
   const [todo, setTodo] = React.useState({});
+  const [user, setUser] = React.useState({ username: '', password: '' });
 
   React.useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -46,6 +47,10 @@ function App() {
   // }, [count]);
 
   React.useEffect(() => {
+    console.log('user.username was updated!');
+  }, [user.username]);
+
+  React.useEffect(() => {
     document.title = `${name} owns this page!`;
     // console.log(document.title);
   }, [name]);
@@ -67,6 +72,22 @@ function App() {
       </div>
       <div>
         <p id="grab-me"></p>
+      </div>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          value={user.username}
+          onChange={ e => setUser({ ...user, username: e.target.value }) }
+        />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password" 
+          id="password"
+          value={user.password}
+          onChange={ e => setUser({ ...user, password: e.target.value })}
+        />
       </div>
     </div>
   );
