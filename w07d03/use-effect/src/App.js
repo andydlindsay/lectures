@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import axios from 'axios';
 
 function App() {
   const [count, setCount] = React.useState(0);
@@ -9,11 +10,11 @@ function App() {
   const [user, setUser] = React.useState({ username: '', password: '' });
 
   React.useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(res => res.json())
+    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+      // .then(res => res.json())
       .then(json => {
         console.log(json);
-        setTodo(json);
+        setTodo(json.data);
       });
   }, []);
 
