@@ -22,5 +22,9 @@ const useDocumentTitle = (title) => {
 useDocumentTitle('My New Title');
 ```
 
+### Custom Hook Examples
+- [Browser Dimensions](https://codesandbox.io/s/custom-hooks-exercise-browser-dimensions-d5tv7)
+- [Mouse Position](https://codesandbox.io/s/eloquent-allen-dxfns?fontsize=14)
+
 ### Useful Links
 - [React Docs: Custom Hooks](https://reactjs.org/docs/hooks-custom.html)
