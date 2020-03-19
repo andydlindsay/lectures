@@ -6,6 +6,7 @@ import useDocumentTitle from './hooks/useDocumentTitle';
 // import useLocalStorage from './hooks/useLocalStorage';
 import useKeyPress from './hooks/useKeyPress';
 import useLocationData from './hooks/useLocationData';
+import useRequest from './hooks/useRequest';
 
 function App() {
   const { x, y } = useMousePosition();
@@ -13,6 +14,7 @@ function App() {
   useDocumentTitle(title);
   // const { get } = useLocalStorage(x);
   const coords = useLocationData();
+  const { data, loading } = useRequest('https://www.dnd5eapi.co/api/classes');
 
   const happyPress = useKeyPress('h');
   const sadPress = useKeyPress('s');
@@ -36,6 +38,12 @@ function App() {
       <div>
         { happyPress && <h2>Smile</h2> }
         { sadPress && <h2>Frown</h2> }
+      </div>
+      <div>
+        { loading && <p>Please wait...</p> }
+        { data.results && data.results.map(datum => (
+          <h4 key={datum.index}>{ datum.name }</h4>
+        )) }
       </div>
       <button onClick={buttonClickHandler}>See Your Location!</button>
     </div>
