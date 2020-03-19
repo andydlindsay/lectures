@@ -14,12 +14,3 @@ test('should be updateable with a new value', () => {
   act(() => result.current.onChange(fakeEvent));
   expect(result.current.value).toBe(newValue);
 });
-
-test('should be resetable back to initial value', () => {
-  const initialValue = 'hello world';
-  const fakeEvent = { target: { value: 'something new' } };
-  const { result } = renderHook(() => useInput(initialValue));
-  act(() => result.current.onChange(fakeEvent));
-  act(() => result.current.reset());
-  expect(result.current.value).toBe(initialValue);
-});
