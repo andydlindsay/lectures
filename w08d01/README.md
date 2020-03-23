@@ -34,11 +34,12 @@
 
 #### Setup & Teardown
 
-It's important when we write tests as close as possible to the real world usage to make sure the test reflects what will happen when a user or other code interacts with it. It's then important to properly setup the test conditions and make sure that once the test has been executed, you tear down all changes to leave no traces for the next test.
+- Tests should represent how a user (or other code) would interact with our application
+- It's then important to properly setup the test conditions and make sure that, once the test has been executed, you tear down all changes to leave no traces for the next test
 
 #### Appropriate Scoping
 
-Depending on how you will build your tests, it's important to scope your variables appropriately to make sure that there won't be leaks or interference with other tests.
+- Depending on how you will build your tests, it's important to scope your variables appropriately to make sure that there won't be leaks or interference with other tests
 
 #### Debugging
 
