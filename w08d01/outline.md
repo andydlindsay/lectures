@@ -7,7 +7,6 @@
 * Regression
 
 ## TDD
-* Kent Beck Test Driven Development
 * Rules:
   * Write new code only if an automated test fails
   * Eliminate duplication
@@ -39,7 +38,38 @@
 % yarn test --coverage
 ```
 
-1. helpers.js
+1. `src/helpers/__tests__/helpers.test.js`
+
+```js
+describe('chooseRobotItem function', () => {
+  test('given player choice and cheating is true, returns winning choice', () => {
+    const cheating = true;
+
+    let playerSelection = 'Axe';
+    let result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Moai');
+
+    playerSelection = 'Moai';
+    result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Tree');
+
+    playerSelection = 'Tree';
+    result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Axe');
+  });
+
+  test('Given player choice and cheating is false, returns a valid choice', () => {
+    const cheating = false;
+    const playerSelection = 'Axe';
+    
+    const result = chooseRobotItem(cheating, playerSelection);
+    const options = ['Axe', 'Tree', 'Moai'];
+    expect(options.includes(result)).toBeTruthy();
+  });
+});
+```
+
+2. `src/helpers/helpers.js`
 
 ```js
 export const chooseRobotItem = (cheating, playerItem) => {
@@ -58,7 +88,25 @@ export const chooseRobotItem = (cheating, playerItem) => {
 };
 ```
 
-2. helpers.js 
+3. `src/helpers/__tests__/helpers.test.js`
+
+```js
+describe('genFeedbackMessage function', () => {
+  test('returns correct message when given a status', () => {
+    const loss = genFeedbackMessage('Lost');
+    const win = genFeedbackMessage('Won');
+    const tie = genFeedbackMessage('Tied');
+    const waiting = genFeedbackMessage('Waiting');
+
+    expect(loss).toEqual('You lost!');
+    expect(win).toEqual('Good job!');
+    expect(tie).toEqual('Tie game!');
+    expect(waiting).toEqual('Waiting for your choice!');
+  });
+});
+```
+
+4. `src/helpers/helpers.js`
 
 ```js
 export const genFeedbackMessage = (status) => {
@@ -75,39 +123,39 @@ export const genFeedbackMessage = (status) => {
 };
 ```
 
-3. Player.jsx 
+5. `src/components/Player.jsx`
 
 ```js
-  useEffect(() => {
-    if (playerSelection) {
-       const compSelection = chooseRobotItem(cheating, playerSelection);
-       setState(prevState => ({ ...prevState, compSelection }));
-    }
-  }, [playerSelection, cheating]);
+useEffect(() => {
+  if (playerSelection) {
+      const compSelection = chooseRobotItem(cheating, playerSelection);
+      setState(prevState => ({ ...prevState, compSelection }));
+  }
+}, [playerSelection, cheating]);
 ```
 
-4. Game.test.jsx 
+6. `src/components/__tests__/Game.test.jsx`
 
 ```js
-  test('Change cheat state when clicking on robot', () => {
-    const { getByTestId, getByText } = render(<Game />);
-    const robotIcon = getByTestId('robot-icon');
+test('Change cheat state when clicking on robot', () => {
+  const { getByTestId, getByText } = render(<Game />);
+  const robotIcon = getByTestId('robot-icon');
 
-    fireEvent.click(getByText('🤖'));
-    expect(robotIcon).toHaveClass('cheating');
+  fireEvent.click(getByText('🤖'));
+  expect(robotIcon).toHaveClass('cheating');
 
-    fireEvent.click(getByText('🤖'));
-    expect(robotIcon).not.toHaveClass('cheating');
-  });
+  fireEvent.click(getByText('🤖'));
+  expect(robotIcon).not.toHaveClass('cheating');
+});
 ```
   
-5. Computer.jsx 
+7. `src/components/Computer.jsx`
 
 ```js
-  const handleClick = () => {
-    return setState(prevState => (
-      { ...prevState, cheating: (prevState.cheating ? false : true) }
-    ));
-  };
-  className={state.cheating ? "cheating" : null}
+const handleClick = () => {
+  return setState(prevState => (
+    { ...prevState, cheating: (prevState.cheating ? false : true) }
+  ));
+};
+className={state.cheating ? "cheating" : null}
 ```
