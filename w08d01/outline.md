@@ -26,10 +26,10 @@
 ## Note: getBy and queryBy
 
 ## Tests
-- helper functions
-  - choose a valid response for the computer player
+- helper functions (unit tests)
+  - choose a valid response for the computer player (currently hard-coded)
   - determine the status message to display when the game is done
-- features
+- features (integration tests)
   - clicking on the robot head will toggle the cheating boolean
   - render appropriate message in Result component based on game status
 
