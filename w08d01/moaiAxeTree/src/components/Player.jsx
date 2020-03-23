@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import { announceResult } from '../helpers/helpers';
 
 export default function Player(props) {
-  const {playerSelection, compSelection} = props.state
-  const {setState} = props
+  const {playerSelection, compSelection} = props.state;
+  const {setState} = props;
+  const options = [
+    ['Moai', '🗿'],
+    ['Axe', '🪓'],
+    ['Tree', '🌳']
+  ];
 
   useEffect(() => {
     if(playerSelection && compSelection){
@@ -33,9 +38,25 @@ export default function Player(props) {
       <div>
         <h1>Choose your destiny !</h1>
         <div className="choices">
-          <button onClick={() => registerPlayerItem("Moai", setState)} type="button" value="Moai"><span role="img" aria-label="moai">🗿</span></button>
-          <button onClick={() => registerPlayerItem("Axe", setState)} type="button" value="Axe"><span role="img" aria-label="axe">🪓</span></button>
-          <button onClick={() => registerPlayerItem("Tree", setState)} type="button" value="Tree"><span role="img" aria-label="tree">🌳</span></button>
+
+          { options.map((option) => {
+            return (
+              <button
+                onClick={() => registerPlayerItem(option[0], setState)}
+                type="button"
+                value={option[0]}
+                key={option[0]}
+              >
+                <span
+                  role="img"
+                  aria-label={option[0].toLowerCase()}
+                >
+                  {option[1]}
+                </span>
+              </button>
+            );
+          }) }
+
         </div>
       </div>
     </section>
