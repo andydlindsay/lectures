@@ -4,7 +4,7 @@ const Computer = (props) => {
   const {state} = props;
   
   return (
-   <section className="computer">
+    <section className="computer">
       <span
         data-testid="robot-icon"
         role="img" 
@@ -32,7 +32,7 @@ const Computer = (props) => {
           </button>
         </div>
       </div>
-   </section>
+    </section>
   )
 };
 

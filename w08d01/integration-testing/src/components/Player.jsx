@@ -19,14 +19,13 @@ const Player = (props) => {
 
   useEffect(() => {
     if (playerSelection) {
-        const compSelection = 'Moai';
-        setState(prevState => ({ ...prevState, compSelection }));
+      const compSelection = 'Moai';
+      setState(prevState => ({ ...prevState, compSelection }));
     }
   }, [playerSelection, cheating]);
 
   const handleClick = () => {
-    return setState(prevState => (
-      {
+    return setState(prevState => ({
         ...prevState,
         playerSelection: null,
         compSelection: null,
