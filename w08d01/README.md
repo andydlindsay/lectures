@@ -79,6 +79,20 @@
 - One small thing about `getBy` and `queryBy` to be aware of is that `getBy` will throw an error if the element is not found
 - `queryBy` will return only null, so it's up to the context to guide you which you should use.
 
+### Skipping Tests
+* For various reasons, you might want to skip a particular test
+* To skip a test, use either `xit` or `test.skip`
+
+```js
+// using test
+test('this test will run', () => {});
+test.skip('this test will be skipped', () => {});
+
+// using it
+it('this test will run', () => {});
+xit('this test will be skipped', () => {});
+```
+
 Notes and example app based on [Francis' lecture](https://github.com/FrancisBourgouin/lhl-12-w8d1)
 
 ### Useful Links

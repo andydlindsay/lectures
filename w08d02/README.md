@@ -1,34 +1,12 @@
 # W8D2 Real World React
 
 ### To Do
-- [ ] `useRef`
 - [ ] React Router
-- [ ] `useContext`
 - [ ] Styled Components
+- [ ] `useContext`
+- [ ] `useRef`
 - [ ] Component Libraries
-
-### `useRef`
-* Allows us to programmatically make reference to an element
-* References are attached to elements using the `ref` attribute
-* The `.current` property of a reference contains the DOM node the `ref` is attached to; React updates this value every time the component is re-rendered
-
-```js
-const UseRef = () => {
-  const inputRef = useRef();
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
-
-  return (
-    <div>
-      <label htmlFor="input-field">Input Field:</label>
-      <input type="text" id="input-field" ref={inputRef} />
-
-      <button type="button" onClick={handleClick}>Apply Focus</button>
-    </div>
-  );
-};
-```
+- [ ] Reducers
 
 ### React Router
 * Uses the `react-router-dom` package
@@ -54,6 +32,24 @@ const UseRef = () => {
 <Router>
 ```
 
+### Styled Components
+* Styled components allow us to embed our styles inside our JavaScript
+* Uses the `styled-components` package
+* Syntax is kinda weird...
+
+```js
+import styled from 'styled-components';
+
+const Paragraph = styled.p`
+  color: pink;
+  font-size: 24px;
+  text-decoration: underline;
+`;
+
+// inside component return
+<Paragraph>I look soooo good!</Paragraph>
+```
+
 ### useContext
 * `useContext` can be used to share state without having to pass props from parent to child
 * Any component that needs access to the shared state can simply import the context and pass it to `useContext`
@@ -69,22 +65,28 @@ const message = React.useContext(MessageContext);
 const { example } = React.useContext(MessageContext);
 ```
 
-### Styled Components
-* Styled components allow us to embed our styles inside our JavaScript
-* Uses the `styled-components` package
-* Syntax is kinda weird...
+### `useRef`
+* Allows us to programmatically make reference to an element or value
+* References are attached to elements using the `ref` attribute
+* The `.current` property of a reference contains the DOM node or value the `ref` is attached to
+* React updates this value every time the component is re-rendered
 
 ```js
-import styled from 'styled-components';
+const UseRef = () => {
+  const inputRef = useRef();
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
 
-const Paragraph = styled.p`
-  color: pink;
-  font-size: 24px;
-  text-decoration: underline;
-`;
+  return (
+    <div>
+      <label htmlFor="input-field">Input Field:</label>
+      <input type="text" id="input-field" ref={inputRef} />
 
-// inside the component's return
-<Paragraph>I look soooo good!</Paragraph>
+      <button type="button" onClick={handleClick}>Apply Focus</button>
+    </div>
+  );
+};
 ```
 
 ### Component Libraries
@@ -93,8 +95,11 @@ const Paragraph = styled.p`
 * We can use as much or as little of the component library as we want
 * Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/)
 
+### Reducers
+* 
+
 ### Useful Links
-* [React.Component](https://reactjs.org/docs/react-component.html)
 * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [Styled Components](https://styled-components.com/docs/basics)
 * [Top React UI Frameworks (opinionated)](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
+* [State Reducer Pattern](https://kentcdodds.com/blog/the-state-reducer-pattern-with-react-hooks)
