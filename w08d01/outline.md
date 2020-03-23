@@ -83,7 +83,7 @@ export const genFeedbackMessage = (status) => {
        const compSelection = chooseRobotItem(cheating, playerSelection);
        setState(prevState => ({ ...prevState, compSelection }));
     }
-  }, [playerSelection, cheating, setState]);
+  }, [playerSelection, cheating]);
 ```
 
 4. Game.test.jsx 
