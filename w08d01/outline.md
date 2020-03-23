@@ -36,6 +36,9 @@
 ```bash
 % npm test -- --coverage
 % yarn test --coverage
+
+% npm test -- --verbose
+% yarn test --verbose
 ```
 
 1. `src/helpers/__tests__/helpers.test.js`
@@ -58,7 +61,7 @@ describe('chooseRobotItem function', () => {
     expect(result).toBe('Axe');
   });
 
-  test('Given player choice and cheating is false, returns a valid choice', () => {
+  test('given player choice and cheating is false, returns a valid choice', () => {
     const cheating = false;
     const playerSelection = 'Axe';
     
@@ -118,26 +121,19 @@ export const genFeedbackMessage = (status) => {
     case 'Tied':
       return 'Tie game!';
     default:
-      return 'Waiting for your call!';
+      return 'Waiting for your choice!';
   }
 };
 ```
 
-5. `src/components/Player.jsx`
+5. `src/components/__tests__/Game.test.jsx`
 
 ```js
-useEffect(() => {
-  if (playerSelection) {
-      const compSelection = chooseRobotItem(cheating, playerSelection);
-      setState(prevState => ({ ...prevState, compSelection }));
-  }
-}, [playerSelection, cheating]);
-```
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import Game from '../Game';
 
-6. `src/components/__tests__/Game.test.jsx`
-
-```js
-test('Change cheat state when clicking on robot', () => {
+test('change cheat state when clicking on robot', () => {
   const { getByTestId, getByText } = render(<Game />);
   const robotIcon = getByTestId('robot-icon');
 
@@ -149,7 +145,7 @@ test('Change cheat state when clicking on robot', () => {
 });
 ```
   
-7. `src/components/Computer.jsx`
+6. `src/components/Computer.jsx`
 
 ```js
 const handleClick = () => {
@@ -157,5 +153,7 @@ const handleClick = () => {
     { ...prevState, cheating: (prevState.cheating ? false : true) }
   ));
 };
+
 className={state.cheating ? "cheating" : null}
+onClick={handleClick}
 ```
