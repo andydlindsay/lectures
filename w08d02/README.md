@@ -107,17 +107,20 @@ const MessageContext = React.createContext({ example: 'initial context' });
 // consume the context in another component through useContext
 import MessageContext from './MessageContext');
 const message = React.useContext(MessageContext);
+
 // or with destructuring
 const { example } = React.useContext(MessageContext);
 ```
 
 ### `useRef`
 * Allows us to programmatically make reference to an element or value
+* `useRef` returns the same object on every render so we have a consistent reference
 * References are attached to elements using the `ref` attribute
 * The `.current` property of a reference contains the DOM node or value the `ref` is attached to
 * React updates this value every time the component is re-rendered
 
 ```js
+// DOM node reference
 const UseRef = () => {
   const inputRef = useRef();
   const handleClick = () => {
@@ -130,6 +133,31 @@ const UseRef = () => {
       <input type="text" id="input-field" ref={inputRef} />
 
       <button type="button" onClick={handleClick}>Apply Focus</button>
+    </div>
+  );
+};
+```
+
+```jsx
+// current value reference
+const UseRef = () => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef();
+  countRef.current = count;
+
+  const handleAlert = () => {
+    setTimeout(() => {
+      alert(countRef.current);
+    }, 3000);
+  };
+
+  return (
+    <div>
+      <div>
+        <p>{count}</p>
+        <button onClick={() => setCount(count => count + 1)}>Increment</button>
+        <button onClick={handleAlert}>Show Alert</button>
+      </div>
     </div>
   );
 };
