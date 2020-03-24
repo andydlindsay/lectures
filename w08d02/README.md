@@ -2,6 +2,7 @@
 
 ### To Do
 - [ ] React Router
+- [ ] Advanced Routing
 - [ ] Styled Components
 - [ ] `useContext`
 - [ ] `useRef`
@@ -29,6 +30,52 @@
     <Route path="/" exact component={Home} />
   </Switch>
 <Router>
+```
+
+### Advanced Routing
+* It is possible to nest `Router` components
+* So that we can programmatically have access to the url the user has visited and any parameters (eg. `productId`), `react-router-dom` gives us a couple of _custom hooks_
+* `useRouteMatch` gives us the `url`, `path`, and `params` of the current url
+* `useParams` gives child components access to the parameters in the url
+
+```jsx
+// dynamic routing in parent component
+const Products = () => {
+  const match = useRouteMatch();
+
+  return (
+    <Router>
+      <nav>
+        <Link to={`${match.url}/2`}>Product #2</Link><br/>
+        <Link to={`${match.url}/3`}>Product #3</Link><br/>
+        <Link to={`${match.url}/4`}>Product #4</Link><br/>
+        <Link to={`${match.url}/5`}>Product #5</Link>
+      </nav>
+
+      <Switch>
+        <Route path={`${match.path}/:productId`}>
+          <Product />
+        </Route>
+        <Route path={match.path}>
+          <h3>Please select a product above</h3>
+        </Route>
+      </Switch>
+    </Router>
+  );
+};
+```
+
+```jsx
+// parameters inside child component
+const Product = () => {
+  const params = useParams();
+
+  return (
+    <div>
+      <h2>Product { params.productId }</h2>
+    </div>
+  );
+};
 ```
 
 ### Styled Components
