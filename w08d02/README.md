@@ -6,7 +6,6 @@
 - [ ] `useContext`
 - [ ] `useRef`
 - [ ] Component Libraries
-- [ ] Reducers
 
 ### React Router
 * Uses the `react-router-dom` package
@@ -93,10 +92,7 @@ const UseRef = () => {
 * Why build it yourself if someone else already has??
 * Component libraries give us easy access to ready-built components that we can plug into our application
 * We can use as much or as little of the component library as we want
-* Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/)
-
-### Reducers
-* 
+* Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/) 
 
 ### Useful Links
 * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
