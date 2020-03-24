@@ -1,31 +1,8 @@
-## Types of Testing
-* Static
-* Unit
-* Feature/Integration
-* End-to-End
-* A/B
-* Regression
+### Overview
+- This lecture has 90 mins of live-coding
+- Ensure the theory portion goes no longer than 30 mins
 
-## TDD
-* Rules:
-  * Write new code only if an automated test fails
-  * Eliminate duplication
-* Red Green Refactor
-
-## Considerations when writing tests
-- Setup & Teardown
-- Appropriate Scoping (scope your variables)
-- Code Coverage
-
-## Tools for Testing in React
-* Jest
-* testing-library
-* react testing-library
-* jest-dom
-
-## Note: getBy and queryBy
-
-## Tests
+### Add Features to App Following TDD
 - helper functions (unit tests)
   - choose a valid response for the computer player (currently hard-coded)
   - determine the status message to display when the game is done
@@ -134,23 +111,23 @@ import { render, fireEvent } from '@testing-library/react';
 import Game from '../Game';
 
 test('change cheat state when clicking on robot', () => {
-  const { getByTestId, getByText } = render(<Game />);
+  const { getByTestId } = render(<Game />);
   const robotIcon = getByTestId('robot-icon');
 
-  fireEvent.click(getByText('🤖'));
+  fireEvent.click(robotIcon);
   expect(robotIcon).toHaveClass('cheating');
 
-  fireEvent.click(getByText('🤖'));
+  fireEvent.click(robotIcon);
   expect(robotIcon).not.toHaveClass('cheating');
 });
 ```
-  
+
 6. `src/components/Computer.jsx`
 
 ```js
 const handleClick = () => {
   return setState(prevState => (
-    { ...prevState, cheating: (prevState.cheating ? false : true) }
+    { ...prevState, cheating: !prevState.cheating }
   ));
 };
 

@@ -50,7 +50,7 @@ const Paragraph = styled.p`
 <Paragraph>I look soooo good!</Paragraph>
 ```
 
-### useContext
+### `useContext`
 * `useContext` can be used to share state without having to pass props from parent to child
 * Any component that needs access to the shared state can simply import the context and pass it to `useContext`
 

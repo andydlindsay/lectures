@@ -5,6 +5,7 @@
 - [ ] Review: Test-Driven Development
 - [ ] Considerations when writing tests
 - [ ] Tools for testing React
+- [ ] Add Features to App Following TDD
 
 ### Types of Testing
 - **Static**
@@ -74,7 +75,7 @@
 
 - Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
 
-#### NOTE: getBy & queryBy
+### `getBy` & `queryBy`
 
 - One small thing about `getBy` and `queryBy` to be aware of is that `getBy` will throw an error if the element is not found
 - `queryBy` will return only null, so it's up to the context to guide you which you should use.
