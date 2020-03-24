@@ -96,7 +96,7 @@ const Paragraph = styled.p`
 <Paragraph>I look soooo good!</Paragraph>
 ```
 
-* Styled components can also accept props for condition styling
+* Styled components can also accept props for conditional styling
 
 ```js
 const Custom = styled.h2`
@@ -190,3 +190,4 @@ const UseRef = () => {
 * [Styled Components](https://styled-components.com/docs/basics)
 * [Top React UI Frameworks (opinionated)](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
 * [State Reducer Pattern](https://kentcdodds.com/blog/the-state-reducer-pattern-with-react-hooks)
+* [Tagged Template Literals](https://codeburst.io/javascript-es6-tagged-template-literals-a45c26e54761)
