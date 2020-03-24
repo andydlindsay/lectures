@@ -163,7 +163,7 @@ export default ChildOne;
 
 ```jsx
 // DOM node reference
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 const UseRef = () => {
   const inputRef = useRef();
