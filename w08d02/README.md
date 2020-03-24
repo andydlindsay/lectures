@@ -96,6 +96,21 @@ const Paragraph = styled.p`
 <Paragraph>I look soooo good!</Paragraph>
 ```
 
+* Styled components can also accept props for condition styling
+
+```js
+const Custom = styled.h2`
+  background: ${ props => props.electric ? 'black' : 'white' };
+  color: ${ props => props.electric ? 'yellow' : 'darkgrey' };
+
+  text-decoration: underline;
+`;
+
+// inside component return
+<Custom>Basic</Custom>
+<Custom electric>I'm Electric!!!</Custom>
+```
+
 ### `useContext`
 * `useContext` can be used to share state without having to pass props from parent to child
 * Any component that needs access to the shared state can simply import the context and pass it to `useContext`
@@ -119,10 +134,11 @@ const { example } = React.useContext(MessageContext);
 * The `.current` property of a reference contains the DOM node or value the `ref` is attached to
 * React updates this value every time the component is re-rendered
 
-```js
+```jsx
 // DOM node reference
 const UseRef = () => {
   const inputRef = useRef();
+
   const handleClick = () => {
     inputRef.current.focus();
   };
