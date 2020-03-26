@@ -26,7 +26,7 @@
 $.ajax({
   url: 'https://jsonplaceholder.typicode.com/posts',
   method: 'GET',
-  dataType: "json",
+  dataType: 'json',
   success: (data) => {
     console.log('this request succeeded and here\'s the data', data);
   },
