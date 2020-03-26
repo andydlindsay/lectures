@@ -3,7 +3,8 @@
 ### To Do
 - [ ] Intro to Web Servers
 - [ ] Intro to Express
-- [ ] What is "middleware?"
+- [ ] What is "Middleware?"
+- [ ] Custom Middleware
 - [ ] Server-side view templates with EJS
 
 ### Web Servers
@@ -52,10 +53,32 @@ const server = http.createServer((req, res) => {
 
 ### Express.js
 * A _framework_ for building web servers written in JavaScript
-* The main use for _Express_ is to 
+* The main use for _Express_ is to simplify the creation of route handlers
+
+```js
+// basic Express server
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('thanks for visiting "/"');
+});
+
+app.listen(port, () => {
+  console.log(`app is listening on port ${port}`);
+});
+```
 
 ### Middleware
 * _Middleware_ is code (in the form of functions) that runs between the incoming request and the outgoing response
+* ExpressJS on its own has very little functionality; it is through the use of middleware that the real power of Express comes out
+* There are many popular middleware packages available to us via NPM (or Yarn), for example:
+  * [`body-parser`](https://expressjs.com/en/resources/middleware/body-parser.html): Parses the _body_ of the incoming request, converting it to a JS object and attaching it to the `request` object (accessible with `req.body`)
+  * [`cookie-parser`](https://expressjs.com/en/resources/middleware/cookie-parser.html): Parses the _cookie_ header, converting it to an object and attaching it to the `request` object (accessible with `req.cookies`)
+  * [`morgan`](https://expressjs.com/en/resources/middleware/morgan.html): A logger than logs all requests/responses to the web servers console
+
+### Custom Middleware
 * 
 
 ### Template Engines and EJS
@@ -65,4 +88,5 @@ const server = http.createServer((req, res) => {
 - [MDN: What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
 - [Node Docs: http module](https://nodejs.org/api/http.html)
 - [ExpressJS](https://expressjs.com/)
+- [Popular Express Middleware](https://expressjs.com/en/resources/middleware.html)
 - []()
