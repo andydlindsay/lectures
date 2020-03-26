@@ -9,7 +9,7 @@
 
 ### Review ES6 Classes
 * Classes are [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for functions that return objects
-* You can make reference the objects own properties and methods using the `this` keyword
+* You can make reference to the objects own properties and methods using the `this` keyword
 
 ```js
 // class declaration
@@ -77,5 +77,47 @@ class StatefulComponent extends React.Component {
 }
 ```
 
+* Event handlers need to be bound to the component instance using the `bind` method
+* Binding the method makes sure that any references to `this` inside the function will point to the component instance
+
+```js
+class BoundComponent extends React.Component {
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    // do something using the `this` keyword
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={ this.handleClick }></button>
+      </div>
+    );
+  }
+}
+```
+
+### Handling Changes to State
+* Just like with functional components, we never want to mutate state directly
+
+```js
+// this is bad
+this.state.count = 5;
+```
+
+* Instead, we use the `this.setState` method to update state
+* The value passed to `setState` will be _merged_ into the components state
+
+```js
+
+```
+
 ### Useful Links
 - [ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [FCC: Why do we bind `this`?](https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/)
+- [React Docs: `setState`](https://reactjs.org/docs/react-component.html#setstate)
+- []()
