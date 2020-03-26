@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
 
-import ClassBased from './components/ClassBased';
+// import UpdateState from './components/state/UpdateState';
+// import Props from './components/props/Props';
+import Lifecycle from './components/lifecycle/Lifecycle';
 
 const App = () => {
   return (
     <div className="App">
-      <ClassBased />
+      {/* <UpdateState /> */}
+      {/* <Props /> */}
+      <Lifecycle />
     </div>
   );
 };
