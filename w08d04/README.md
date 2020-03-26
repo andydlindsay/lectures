@@ -3,9 +3,9 @@
 ### To Do
 - [ ] Review ES6 Classes
 - [ ] Intro to Class-based Components
-- [ ] Handling Changes to State
+- [ ] Passing Props
+- [ ] Handling Events and Changes to State
 - [ ] Lifecycle Methods
-- [ ] 
 
 ### Review ES6 Classes
 * Classes are [syntactic sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) for functions that return objects
@@ -71,13 +71,29 @@ class StateExample extends React.Component {
   render() {
     return (
       <div>
-        <h2>{ this.state.message }</h2>
+        <h2>{this.state.message}</h2>
       </div>
     );
   }
 }
 ```
 
+### Passing Props
+* Components can access props passed to them using `this.props`
+* Props are passed from parent-to-child via attributes
+
+```js
+// in parent component
+<HelloWorld message="hello there">
+  <p>Greetings and good day</p>
+</HelloWorld>
+
+// in child
+<p>Message: {this.props.message}</p>
+<div>{this.props.children}</div>
+```
+
+### Handling Events and Changes to State
 * Event handlers need to be bound to the component instance using the `bind` method
 * Binding the method makes sure that any references to `this` inside the function will point to the component instance
 
@@ -95,28 +111,13 @@ class BindExample extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={ this.handleClick }></button>
+        <button onClick={this.handleClick}></button>
       </div>
     );
   }
 }
 ```
 
-* Components can access props passed to them using `this.props`
-* Props are passed from parent-to-child via attributes
-
-```js
-// in parent component
-<HelloWorld message="hello there">
-  <p>Greetings and good day</p>
-</HelloWorld>
-
-// in child
-<p>Message: {this.props.message}</p>
-<div>{this.props.children}</div>
-```
-
-### Handling Changes to State
 * Just like with functional components, we never want to mutate state directly
 
 ```js
@@ -133,7 +134,7 @@ this.setState({ count: this.state.count + 1 });
 
 ### Lifecycle Methods
 * During a components _lifecycle_, it will go through several different events such as mounting, rendering, unmounting, and updating (not necessarily in that order)
-* Note: `render` is a lifecycle method
+* Note: `render` and `constructor` are lifecycle methods
 * The React API exposes various methods that allow us to write code that will run during these events
 
 ```js
@@ -158,4 +159,3 @@ componentWillUnmount() {}
 - [React Docs: `setState`](https://reactjs.org/docs/react-component.html#setstate)
 - [`super(props)` vs `super()`](https://overreacted.io/why-do-we-write-super-props/)
 - [Lifecycle Methods](https://programmingwithmosh.com/javascript/react-lifecycle-methods/)
-- []()
