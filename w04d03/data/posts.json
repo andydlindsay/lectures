@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Odit vitae temporibus iste obcaecati",
+    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, nam!",
+    "userId": 1
+  },
+  {
+    "id": 2,
+    "title": "Voluptate ad a beatae!",
+    "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas, molestiae?",
+    "userId": 3
+  },
+  {
+    "id": 3,
+    "title": "Exercitationem sunt quos quibusdam",
+    "body": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, reiciendis.",
+    "userId": 2
+  },
+  {
+    "id": 4,
+    "title": "Numquam facere consequatur quisquam",
+    "body": "Explicabo ex velit porro blanditiis tenetur dolorum ullam tempore aspernatur eveniet pariatur laudantium",
+    "userId": 4
+  },
+  {
+    "id": 5,
+    "title": "Quam facere voluptas officiis incidunt",
+    "body": "Vel nesciunt nobis magnam iure. Obcaecati hic fugit voluptatibus quam facere voluptas officiis incidunt",
+    "userId": 6
+  },
+  {
+    "id": 6,
+    "title": "Vel nesciunt nobis magnam iure",
+    "body": "Obcaecati recusandae minus, asperiores delectus in facere voluptas sint cupiditate. Facere perferendis error veniam aliquam est!",
+    "userId": 5
+  },
+  {
+    "id": 7,
+    "title": "Ullam tempore aspernatur eveniet",
+    "body": "Aliquam quos autem eligendi qui provident. Vero ipsa corrupti obcaecati.",
+    "userId": 6
+  },
+  {
+    "id": 8,
+    "title": "Corrupti id laborum necessitatibus ut?",
+    "body": "Perspiciatis animi praesentium obcaecati fugiat nihil dicta, dolor eligendi quidem vitae itaque et non veniam quos hic veritatis, cum, officia doloremque odit asperiores exercitationem possimus repudiandae.",
+    "userId": 5
+  },
+  {
+    "id": 9,
+    "title": "Dolorum deleniti delectus porro",
+    "body": "Tempore possimus voluptates deleniti? Doloribus dolorum ratione mollitia tenetur ipsum consequatur officiis placeat sapiente?",
+    "userId": 4
+  },
+  {
+    "id": 10,
+    "title": "Delectus error nemo autem praesentium",
+    "body": "Optio, iste. Esse, deserunt, aspernatur dicta debitis, animi dolores dolor ullam veritatis illo doloribus tempore odit nulla!",
+    "userId": 3
+  },
+  {
+    "id": 11,
+    "title": "Neque, tempore sed accusantium ",
+    "body": "Incidunt ullam doloremque voluptatibus sit dicta esse eius blanditiis sequi! Velit atque illo sequi tempore mollitia, quaerat aliquid debitis.",
+    "userId": 2
+  },
+  {
+    "id": 12,
+    "title": "Molestias exercitationem quisquam",
+    "body": "In vel illum saepe praesentium quae perferendis veritatis alias atque magni at hic facere commodi consectetur harum illo quam maiores, ipsam reprehenderit nihil dolore ipsum quos officiis minus laudantium.",
+    "userId": 1
+  }
+]
