@@ -61,7 +61,7 @@ class HelloWorld extends React.Component {
 * State is established in the constructor
 
 ```js
-class StatefulComponent extends React.Component {
+class StateExample extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -82,7 +82,7 @@ class StatefulComponent extends React.Component {
 * Binding the method makes sure that any references to `this` inside the function will point to the component instance
 
 ```js
-class BoundComponent extends React.Component {
+class BindExample extends React.Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
@@ -149,6 +149,8 @@ componentDidUpdate() {}
 // clear intervals and close connections; perform any cleanup necessary
 componentWillUnmount() {}
 ```
+
+![Lifecycle Methods](https://hackernoon.com/hn-images/1*sn-ftowp0_VVRbeUAFECMA.png)
 
 ### Useful Links
 - [ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
