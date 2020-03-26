@@ -77,16 +77,69 @@ app.listen(port, () => {
   * [`body-parser`](https://expressjs.com/en/resources/middleware/body-parser.html): Parses the _body_ of the incoming request, converting it to a JS object and attaching it to the `request` object (accessible with `req.body`)
   * [`cookie-parser`](https://expressjs.com/en/resources/middleware/cookie-parser.html): Parses the _cookie_ header, converting it to an object and attaching it to the `request` object (accessible with `req.cookies`)
   * [`morgan`](https://expressjs.com/en/resources/middleware/morgan.html): A logger than logs all requests/responses to the web servers console
+* We let our Express know to use the piece of middleware via the `.use` method
+
+```js
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+
+// let Express know to use the middleware
+app.use(bodyParser.urlEncoded({ extended: false }));
+app.use(morgan('dev'));
+```
 
 ### Custom Middleware
-* 
+* We aren't limited to using middleware that someone else has written, we can freely create our own
+* To define custom middleware, we pass a callback function to the `.use` method
+* The callback function is passed the `request` and `response` objects as well as a special function `next` which our custom middleware will call to indicate that the middleware has finished running
+
+```js
+app.use((req, res, next) => {
+  // do something with the request and/or response objects
+  console.log(`New request: ${req.method} ${req.url}`);
+
+  // call the next step in the middleware chain
+  next();
+});
+```
 
 ### Template Engines and EJS
-* 
+* From (the Express Docs)[https://expressjs.com/en/guide/using-template-engines.html]:
+> A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
+* We tell Express which _template engine_ to use with the `.set` method
+* Note: Express refers to the _template engine_ as a _view engine_
+
+```js
+app.set('view engine', 'ejs');
+```
+
+* By default, Express will look in a `views` directory for our templates
+* We specify which template to render using the `.render` method on the `response` object
+* The convention is to put all variables into an object called `templateVars` that will then get passed to the template
+
+```js
+const templateVars = {
+  some: 'data to pass to the template',
+  any: 'valid JavaScript values can be passed'
+};
+
+response.render('template-name', templateVars);
+```
+
+* EJS templates always end in `.ejs`
+* Inside the template, we use special tags to indicate where we want values to be used
+
+```ejs
+<h1><%= message %><h1>
+```
 
 ### Useful Links
 - [MDN: What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
 - [Node Docs: http module](https://nodejs.org/api/http.html)
 - [ExpressJS](https://expressjs.com/)
 - [Popular Express Middleware](https://expressjs.com/en/resources/middleware.html)
-- []()
+- [Writing Custom Middleware](https://expressjs.com/en/guide/writing-middleware.html)
+- [EJS](https://ejs.co/)
+- [Using Template Engined with Express](https://expressjs.com/en/guide/using-template-engines.html)
