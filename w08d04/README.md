@@ -150,7 +150,7 @@ componentDidUpdate() {}
 componentWillUnmount() {}
 ```
 
-![Lifecycle Methods](https://hackernoon.com/hn-images/1*sn-ftowp0_VVRbeUAFECMA.png)
+![Lifecycle Methods](https://miro.medium.com/max/4560/1*EnuAy1kb9nOcFuIzM49Srw.png)
 
 ### Useful Links
 - [ES6 Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
