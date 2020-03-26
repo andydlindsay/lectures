@@ -12,12 +12,50 @@
 * Communicates using the HTTP protocol which is a `request -> response` protocol
 * A web server listens for incoming requests and responds with a status code and (usually) content of some kind
 * Content can be virtually anything: images, videos, static files, dynamically rendered files, or just pure data (usually JSON)
+* We have 65,535 ports for each internet connection; we need to choose one for our web server to listen on
+
+```js
+// a basic web server built using Node's http module
+const http = require('http');
+const port = 3000;
+
+// create the server
+const server = http.createServer((request, response) => {
+  response.end('hello world');
+});
+
+// start the server listening on the specified port
+server.listen(port, () => {
+  console.log(`server listening on port ${port}`);
+});
+```
+
+* Instead of responding the same way to every request that comes in, we can program the web server to respond differently depending on the specifics of the request
+
+```js
+// add custom routes to the `createServer` function
+const server = http.createServer((req, res) => {
+  const route = `${req.method} ${req.url}`;
+
+  switch (route) {
+    case 'GET /':
+      res.end('This is a GET request to "/"');
+      break;
+    case 'GET /users':
+      res.end('This is a GET request to "/users"');
+      break;
+    default:
+      res.end('Route not found');
+  }
+});
+```
 
 ### Express.js
 * A _framework_ for building web servers written in JavaScript
 * The main use for _Express_ is to 
 
 ### Middleware
+* _Middleware_ is code (in the form of functions) that runs between the incoming request and the outgoing response
 * 
 
 ### Template Engines and EJS
