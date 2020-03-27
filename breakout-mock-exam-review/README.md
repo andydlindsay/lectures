@@ -11,4 +11,3 @@
 * Make the test(s) pass, then refactor your code to fix any `eslint` errors/warnings
 * Google for syntax!
 * If you wonder "is there a problem with the test or a problem with my code?"... there's a problem with your code :)
-* 
