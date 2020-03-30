@@ -115,7 +115,7 @@ GROUP BY cohort_id;
 
 | Function | Purpose | Example Usage
 | :-- | :-- | :-- |
-| `COUNT` | Return the number of records grouped together | `COUNT(*) as num_users` |
+| `COUNT` | Return the number of records grouped together | `COUNT(*) AS num_users` |
 | `SUM` | Add the values of the specified field together | `SUM(player_score) AS total_score` |
 | `MIN` | Return the minimum value from the field | `MIN(player_score) AS lowest_score` |
 | `MAX` | Return the maximum value | `MAX(player_score) AS high_score` |

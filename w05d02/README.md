@@ -23,7 +23,7 @@
 
 - Each field in a table **must** have a data type defined for it
 - The data type tells the database how much room to set aside to store the value _and_ allows the database to perform type validation on data before insertion (to protect the data integrity of the table)
-- Choosing the perfect data type is less of a concern nowadays because memory is now comparably cheap.
+- Choosing the perfect data type is less of a concern nowadays because memory is now comparably cheap
 
 ### Relationship Types
 
@@ -31,7 +31,7 @@
 - **One-to-Many**: One record in the first table is related to one or more records in the second table
 - **Many-to-Many**: One or more records in the first table are related to one or more records in the second table
 
-It could be argued that there is really only one relationship type: _One-to-Many_ as One-to-One's are extremely rare and Many-to-Many's are implemented using two _One-to-Many's_.
+- It could be argued that there is really only one relationship type: _One-to-Many_ as One-to-One's are extremely rare and Many-to-Many's are implemented using two _One-to-Many's_
 
 ### Naming Conventions
 
