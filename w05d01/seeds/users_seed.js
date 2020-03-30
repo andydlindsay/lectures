@@ -5,6 +5,7 @@ const start = moment().startOf('month').subtract(1, 'days').format('MMM D, YYYY'
 const end = moment().endOf('month').add(1, 'days').format('MMM D, YYYY');
 const desiredFakeUsers = process.argv[3] || 20000;
 const maxAge = 40;
+const batchSize = 5000;
 
 const createFakeUser = () => ({
   first_name: faker.name.firstName(),
@@ -19,7 +20,7 @@ exports.seed = async (knex) => {
   let fakeUsers = [];
   for (let i = 0; i < desiredFakeUsers; i++) {
     fakeUsers.push(createFakeUser());
-    if (fakeUsers.length > 10000) {
+    if (fakeUsers.length >= batchSize) {
       await knex('users').insert(fakeUsers);
       fakeUsers = [];
     }
