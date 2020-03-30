@@ -106,7 +106,7 @@ OFFSET 10;
 LIMIT 10 OFFSET 20;
 
 -- you can specify these in any order
-OFFEST 20 LIMIT 10;
+OFFSET 20 LIMIT 10;
 ```
 
 ### SELECT Challenges
