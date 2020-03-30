@@ -3,11 +3,12 @@
 ### To Do
 - [ ] Introduction to RDBMS
 - [ ] The Relational Data Model (Tables, Columns, Rows)
-- [ ] SELECT Statements
+- [ ] `SELECT` Statements
 - [ ] Filtering, ordering, limiting, etc.
 - [ ] Joining tables
 - [ ] Grouping records
 - [ ] Aggregate functions
+- [ ] `LIMIT` and `OFFSET`
 
 ### Relational Database Management System (RDBMS)
 - A program that serves, **and** controls interactions with, one or more _Relational Databases_
@@ -70,6 +71,42 @@ SELECT *
 FROM table_one
 JOIN table_two
 ON table_one.id = table_two.table_one_id;
+```
+
+### `LIMIT` and `OFFSET`
+- We can limit the amount of records returned from a query using `LIMIT`
+- `LIMIT` accepts an _integer_ as an argument
+
+```sql
+-- only return 50 records
+LIMIT 50;
+```
+
+- NOTE: `LIMIT` runs **after** `ORDER BY` (ie. sort your records then specify how many to return)
+
+```sql
+-- order by a field(s)
+ORDER BY avg_score DESC
+-- return the top 10
+LIMIT 10;
+```
+
+- We can skip any number of records using `OFFSET`
+- Like `LIMIT`, `OFFSET` accepts an _integer_ as an argument
+
+```sql
+-- skip the first 10 records
+OFFSET 10;
+```
+
+- `OFFSET` and `LIMIT` work hand-in-hand to create [pagination](https://en.wikipedia.org/wiki/Pagination)
+
+```sql
+-- skip the first 20 records, return the next 10
+LIMIT 10 OFFSET 20;
+
+-- you can specify these in any order
+OFFEST 20 LIMIT 10;
 ```
 
 ### SELECT Challenges
