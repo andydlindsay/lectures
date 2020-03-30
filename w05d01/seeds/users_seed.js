@@ -1,8 +1,8 @@
 const faker = require('faker');
 const moment = require('moment');
 
-const start = moment().startOf('month').format('MMM D, YYYY');
-const end = moment().endOf('month').format('MMM D, YYYY');
+const start = moment().startOf('month').subtract(1, 'days').format('MMM D, YYYY');
+const end = moment().endOf('month').add(1, 'days').format('MMM D, YYYY');
 const desiredFakeUsers = process.argv[3] || 20000;
 const maxAge = 40;
 

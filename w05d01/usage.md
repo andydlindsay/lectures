@@ -11,3 +11,6 @@ knex seed:run 10000
 ## Cleaning the Database
 
 * Run `node cleaner.js` or `npm run cleaner` to clean the db
+
+## Clean and Seed
+* Run `node cleaner.js && knex seed:run`
