@@ -3,7 +3,9 @@
 ### To Do
 - [ ] Create a database and query it using `psql` terminal
 - [ ] Perform `BREAD` actions on database from command line
+- [ ] Demonstrate a SQL Injection attack
 - [ ] Perform `BREAD` actions on database from the browser
+- [ ] Protecting your secrets with Environment Variables
 
 ### node-postgres
 
@@ -33,7 +35,7 @@ client
   .then((result) => console.log(result));
 ```
 
-**NOTE:** `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the second argument will be the return value from our query.
+**NOTE:** When using callbacks instead of promises: `pg` uses "error first" callbacks meaning that the first argument will always be the error (if any) or null and the second argument will be the return value from our query.
 
 ### SQL Syntax Review
 
@@ -81,10 +83,11 @@ client
 
 In the above example, the `id` from the array will be interpolated into the SQL query wherever `$1` appears.
 
+### Protecting Secrets with Environment Variables
+* 
+
 ### Useful Links
 * [node-postgres](https://node-postgres.com/)
 * [Postgres Numeric Data Types](https://www.postgresql.org/docs/11/datatype-numeric.html)
 * [Little Bobby Tables](https://xkcd.com/327/)
 * [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection)
-
-#### Inspired by [Sadie Freeman's](https://github.com/sadief) [lecture](https://github.com/sadief/lighthouse-labs-lectures/tree/may-21-19-sql/SQL_in_our_apps) on the same topic
