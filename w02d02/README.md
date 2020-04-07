@@ -1,17 +1,14 @@
 # W02D02 - Asynchronous Control Flow
 
 ### To Do
-* [ ] Review: Higher Order Functions
+* [ ] Breakout! 20 minutes
 * [ ] Asynchronous Programming
 * [ ] Blocking vs Non-Blocking
 * [ ] `setTimeout` and `setInterval`
 * [ ] File System Functions (`fs`)
 
-### Review: Higher Order Functions
-* Higher Order Functions (HOF):
-  * Accept another function as a parameter
-  * And/or return a function
-* HOF's allow us to defer behaviour until a condition is met (eg. an event occurs, a timer fires, the next element of the array is ready, etc)
+### Breakout (20 minutes)
+* In groups, run through the questions in this [gist](https://gist.github.com/andydlindsay/d586198046d7074d83e371ead76b4f4b)
 
 ### Asynchronous Programming
 * JavaScript is `synchronous`; executing one line of code after the previous one has completed
