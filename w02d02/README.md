@@ -24,7 +24,9 @@
 * The `setTimeout` function allows us to wait a specific number of milliseconds before executing some code
 
 ```js
-// setTimeout takes 2 arguments: a callback and an integer representing the number of milliseconds to wait before firing the callback
+// setTimeout takes 2 arguments:
+// a callback
+// an integer representing the number of ms to wait before firing the callback
 setTimeout(() => {
   console.log('hello world'); // prints "hello world" to the console after 2 seconds
 }, 2000);
