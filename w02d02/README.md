@@ -25,8 +25,8 @@
 
 ```js
 // setTimeout takes 2 arguments:
-// a callback
-// an integer representing the number of ms to wait before firing the callback
+// * a callback
+// * an integer representing the number of ms to wait before firing the callback
 setTimeout(() => {
   console.log('hello world'); // prints "hello world" to the console after 2 seconds
 }, 2000);
