@@ -46,9 +46,9 @@
 
   ```js
   created() {
-    fetch('https://api.myjson.com/bins/9yppg')
+    fetch('https://andydlindsay-pinterest-clone.herokuapp.com/api/public/posts')
       .then(res => res.json())
-      .then(data => this.sports = data);
+      .then(data => this.posts = data.posts);
   }
   ```
 

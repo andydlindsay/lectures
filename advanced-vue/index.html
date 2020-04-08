@@ -19,7 +19,10 @@
     <span>{{ counter }}</span>
 
     <ul>
-      <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
+      <li v-for="tweet of tweets">
+        {{ post.nickname }}: {{ post.title }}
+        <img :src="post.imageUrl" />
+      </li>
     </ul>
 
     <p>{{ reverseUsername }}</p>

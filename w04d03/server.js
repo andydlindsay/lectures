@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 8765;
@@ -8,6 +9,7 @@ const posts = require('./data/posts.json');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+app.use(cors);
 
 app.get('/api/users', (req, res) => {
   res.json(users);

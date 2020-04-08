@@ -2,7 +2,7 @@ const app = new Vue({
   el: '#root',
   data: {
     name: 'Alice',
-    sports: [],
+    posts: [],
     message: `You loaded this page on ${new Date().toLocaleString()}`,
     visible: true,
     alert: 'Today is your day!!',
@@ -13,9 +13,9 @@ const app = new Vue({
     }
   },
   created() {
-    fetch('https://api.myjson.com/bins/9yppg')
+    fetch('https://andydlindsay-pinterest-clone.herokuapp.com/api/public/posts')
       .then(res => res.json())
-      .then(data => this.sports = data);
+      .then(data => this.posts = data.posts);
   },
   methods: {
     sayHello: function() {
