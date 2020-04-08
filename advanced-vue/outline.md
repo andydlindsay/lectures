@@ -24,7 +24,7 @@
   </script>
   ```
 
-  * show how it works just jQuery and must wait for the DOM to load to hook into it
+  * show how it works just like jQuery and must wait for the DOM to load to hook into it
   * show the Vue warning in the console that it cannot find the element to mount to
   * demonstrate name and that it can be updated in the console with `app.name = 'something else';`
 
