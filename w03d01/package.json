@@ -1,7 +1,7 @@
 {
   "name": "w03d01",
   "version": "1.0.0",
-  "description": "### To Do - [ ] Intro to Web Servers - [ ] Intro to Express - [ ] What is \"middleware?\" - [ ] Server-side view templates with EJS",
+  "description": "Lecture notes and example code for W3D1 lecture",
   "main": "01-simple-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
