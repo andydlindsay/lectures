@@ -146,4 +146,4 @@ response.render('template-name', templateVars);
 - [Popular Express Middleware](https://expressjs.com/en/resources/middleware.html)
 - [Writing Custom Middleware](https://expressjs.com/en/guide/writing-middleware.html)
 - [EJS](https://ejs.co/)
-- [Using Template Engined with Express](https://expressjs.com/en/guide/using-template-engines.html)
+- [Using Template Engines with Express](https://expressjs.com/en/guide/using-template-engines.html)
