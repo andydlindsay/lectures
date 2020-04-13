@@ -77,7 +77,7 @@ app.listen(port, () => {
 * There are many popular middleware packages available to us via NPM (or Yarn), for example:
   * [`body-parser`](https://expressjs.com/en/resources/middleware/body-parser.html): Parses the _body_ of the incoming request, converting it to a JS object and attaching it to the `request` object (accessible with `req.body`)
   * [`cookie-parser`](https://expressjs.com/en/resources/middleware/cookie-parser.html): Parses the _cookie_ header, converting it to an object and attaching it to the `request` object (accessible with `req.cookies`)
-  * [`morgan`](https://expressjs.com/en/resources/middleware/morgan.html): A logger than logs all requests/responses to the web servers console
+  * [`morgan`](https://expressjs.com/en/resources/middleware/morgan.html): A _logger_ that logs all requests/responses to the web servers console
 * We let our Express know to use the piece of middleware via the `.use` method
 
 ```js
