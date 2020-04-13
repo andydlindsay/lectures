@@ -110,7 +110,7 @@ app.use((req, res, next) => {
 * Clone this [repo](https://github.com/andydlindsay/w03d01-breakout) and follow the instructions in `README.md`
 
 ### Template Engines and EJS
-* From (the Express Docs)[https://expressjs.com/en/guide/using-template-engines.html]:
+* From [the Express Docs](https://expressjs.com/en/guide/using-template-engines.html):
 > A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
 * We tell Express which _template engine_ to use with the `.set` method
 * Note: Express refers to the _template engine_ as a _view engine_
