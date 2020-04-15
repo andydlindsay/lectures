@@ -31,6 +31,10 @@ const UseEffect = () => {
     return cleanup;
   }, [count]);
 
+  // React.useEffect(() => {
+  //   setCount(count + 1);
+  // }, [count]);
+
   React.useEffect(() => {
     axios
       .get('http://hn.algolia.com/api/v1/items/1')

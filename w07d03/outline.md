@@ -163,4 +163,12 @@ React.useEffect(() => {
 </div>
 ```
 
+17. Beware the infinite loop!
+
+```jsx
+useEffect(() => {
+  setCount(count + 1);
+}, [count]);
+```
+
 17. Talk through the [`useEffect` flow diagram](https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU)
