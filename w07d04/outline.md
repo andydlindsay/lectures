@@ -33,7 +33,7 @@ const Title = () => {
 
 ```jsx
 const useDocumentTitle = (title) => {
-  useEffect(() => {
+  React.useEffect(() => {
     document.title = title;
   }, [title]);
 };
@@ -130,6 +130,14 @@ const Input = () => {
     alert(`Thanks for logging in ${username} with password: ${password}`);
   };
 
+  const onChangeUsername = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <div>
       <h2>Input Hook</h2>
@@ -139,7 +147,7 @@ const Input = () => {
           type="text"
           id="username"
           value={username}
-          onChange={(event) => setUsername(event.target.value)}
+          onChange={onChangeUsername}
         />
         <br/>
         <label htmlFor="password">Password:</label>
@@ -147,7 +155,7 @@ const Input = () => {
           type="text"
           id="password"
           value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          onChange={onChangePassword}
         />
         <br/>
         <button type="submit">Login!</button>
