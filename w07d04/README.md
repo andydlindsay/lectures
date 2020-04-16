@@ -2,6 +2,12 @@
 
 ### To Do
 - [ ] Custom Hooks
+- [ ] `useDocumentTitle`
+- [ ] `useMousePosition`
+- [ ] `useInput`
+- [ ] `useLocationData`
+- [ ] `useRequest`
+- [ ] `useKeyPress`
 
 ### Custom Hooks
 - From the [React Docs](https://reactjs.org/docs/hooks-custom.html):
