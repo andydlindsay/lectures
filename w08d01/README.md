@@ -5,7 +5,9 @@
 - [ ] Review: Test-Driven Development
 - [ ] Considerations when writing tests
 - [ ] Tools for testing React
-- [ ] Add Features to App Following TDD
+- [ ] Coverage Reports
+- [ ] Add Features to our App Following TDD
+- [ ] `debug()` and `prettyDOM`
 
 ### Types of Testing
 - **Static**
@@ -36,7 +38,8 @@
 #### Setup & Teardown
 
 - Tests should represent how a user (or other code) would interact with our application
-- It's then important to properly setup the test conditions and make sure that, once the test has been executed, you tear down all changes to leave no traces for the next test
+- It's important to properly setup the test conditions and make sure that
+- Once the test has been executed, tear down all changes to leave no traces for the next test
 
 #### Appropriate Scoping
 
@@ -49,7 +52,7 @@
 #### Coverage
 
 - A coverage report shows us how much of our code is covered by the tests we've written
-- It's important to think about the code coverage of our tests, but it's more important to have solid tests with a little less coverage than easy tests with a lot of coverage
+- The code coverage of our tests is important, but it's more important to have solid tests with a little less coverage than easy tests with a lot of coverage
 - It's okay to not have 100% coverage, it's almost impossible!
 
 ### Tools for testing React
@@ -58,14 +61,14 @@
 
 - Jest is the framework we use to run our tests
 - Helps us manipulate the DOM, render our React elements when using external libraries, and gives us a way to see our code coverage
-- Readily available in create-react-app, so no need to configure
+- Readily available in `create-react-app`, so no need to configure
 
 - `npm run test` will start Jest in watch mode and run the tests
-- `npm run test -- --coverage` will start Jest in watch mode and show your coverage status after each test 
+- `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
 
 #### JestDOM
 
-- JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help you target elements in the DOM to facilitate your testing
+- JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
 #### DOM Testing Library
 

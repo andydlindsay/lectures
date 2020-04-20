@@ -11,11 +11,14 @@
   - render appropriate message in Result component based on game status
 
 ```bash
+% npm test -- --verbose
+% yarn test --verbose
+
 % npm test -- --coverage
 % yarn test --coverage
 
-% npm test -- --verbose
-% yarn test --verbose
+% npm test -- --coverage --watchAll=false
+% yarn test --coverage --watchAll=false
 ```
 
 1. `src/helpers/__tests__/helpers.test.js`
@@ -131,6 +134,13 @@ const handleClick = () => {
   ));
 };
 
-className={state.cheating ? "cheating" : null}
-onClick={handleClick}
+<span
+  data-testid="robot-icon"
+  role="img" 
+  aria-label="robot" 
+  className={state.cheating ? "cheating" : null}
+  onClick={handleClick}
+>
+  🤖
+</span>
 ```
