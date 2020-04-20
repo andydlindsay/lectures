@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getByTestId, fireEvent, waitForElement } from '@testing-library/react';
+import { render, getByTestId, fireEvent } from '@testing-library/react';
 import Result from '../Result';
 import axios from 'axios';
 
@@ -27,13 +27,13 @@ test('shows appropriate message when the status is "Waiting"', () => {
 });
 
 test('gets the high scores', async () => {
-  const { getByTestId, getByText } = render(<Result status="Waiting" />);
+  const { getByTestId, findByText } = render(<Result status="Waiting" />);
 
   const button = getByTestId('high-scores');
   axios.get.mockResolvedValueOnce({ data });
   fireEvent.click(button);
 
-  await waitForElement(() => getByText('Bob'));
+  await findByText('Bob');
 });
 
 test('fake function call', () => {
