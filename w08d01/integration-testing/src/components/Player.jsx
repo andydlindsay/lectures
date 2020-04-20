@@ -24,8 +24,8 @@ const Player = (props) => {
     }
   }, [playerSelection, cheating, setState]);
 
-  const handleClick = () => {
-    return setState(prevState => ({
+  const resetState = () => {
+    setState(prevState => ({
         ...prevState,
         playerSelection: null,
         compSelection: null,
@@ -40,7 +40,11 @@ const Player = (props) => {
 
   return (
     <section className="player">
-      <span role="img" aria-label="player" onClick={handleClick}>👤</span>
+      <span
+        role="img"
+        aria-label="player"
+        onClick={resetState}
+      >👤</span>
       <div>
         <h1>Choose your destiny !</h1>
         <div className="choices">
