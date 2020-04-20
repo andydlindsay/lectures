@@ -66,7 +66,7 @@
 ```
 
 - We can run these scripts with `npm run script-name` or `yarn script-name`
-- We can pass [flags](https://gobyexample.com/command-line-flags) to our scripts
+- We can also pass [flags](https://gobyexample.com/command-line-flags) to our scripts
 - Using `npm`, we have to add `--` before passing flags
 
 ```bash
