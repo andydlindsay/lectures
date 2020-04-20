@@ -8,6 +8,7 @@
 - [ ] Coverage Reports
 - [ ] Add Features to our App Following TDD
 - [ ] `debug()` and `prettyDOM()`
+- [ ] Mocking AJAX Requests
 
 ### Types of Testing
 - **Static**
@@ -90,3 +91,4 @@ Notes and example app based on [Francis' lecture](https://github.com/FrancisBour
 * [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 * [Which query should I use?](https://testing-library.com/docs/guide-which-query)
 * [Jest-DOM](https://github.com/testing-library/jest-dom)
+* [Testing Library Async Functions](https://testing-library.com/docs/dom-testing-library/api-async)

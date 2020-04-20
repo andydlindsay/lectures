@@ -199,3 +199,72 @@ console.log(prettyDOM(container));
 const { container, debug } = render(<Result status={fakeState.status} />);
 debug();
 ```
+
+9. Mock `axios`
+
+```js
+// src/components/__tests__/Result.test.js
+import React from 'react';
+import { render, getByTestId, fireEvent, waitForElement } from '@testing-library/react';
+import Result from '../Result';
+import axios from 'axios';
+
+jest.mock('axios');
+
+const data = {
+  resultCount: 3,
+  results: [
+    { id: 1, name: 'Alice', score: 10 },
+    { id: 2, name: 'Bob', score: 5 },
+    { id: 3, name: 'Carol', score: 2 }
+  ]
+};
+
+test('gets the high scores', async () => {
+  const { getByTestId, getByText } = render(<Result status="Waiting" />);
+
+  const button = getByTestId('high-scores');
+  axios.get.mockResolvedValueOnce({ data });
+  fireEvent.click(button);
+
+  await waitForElement(() => getByText('Bob'));
+});
+```
+
+10. Update the Result component to make the AJAX request on button click
+
+```jsx
+const [highScores, setHighScores] = React.useState([]);
+
+const fetchHighScores = () => {
+  axios
+    .get('/high-scores')
+    .then(data => setHighScores(data.data.results))
+    .catch(err => console.error(err));
+};
+
+return(
+  <footer data-testid="result_footer">
+    <h2>Waiting for your choice!</h2>
+    <button onClick={fetchHighScores} data-testid="high-scores">High Scores!</button>
+    { highScores.map(highScore => <li key={highScore.id}>{highScore.name}</li>) }
+  </footer>
+);
+```
+
+11. Function mock example
+
+```js
+const mock = jest.fn();
+let result = mock('foo');
+
+expect(result).toBeUndefined();
+expect(mock).toHaveBeenCalled();
+expect(mock).toHaveBeenCalledTimes(1);
+expect(mock).toHaveBeenCalledWith('foo');
+
+const mockTwo = jest.fn(() => 'bar');
+result = mockTwo('foo');
+
+expect(result).toBe('bar');
+```
