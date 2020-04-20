@@ -1,9 +1,9 @@
 # W8D1 - Unit & Integration Testing
 
 ### To Do
-- [ ] Review: Different types of testing
-- [ ] Review: Test-Driven Development
-- [ ] Considerations when writing tests
+- [ ] Review: Types of testing
+- [ ] Review: Test-Driven Development (TDD)
+- [ ] Setup & Teardown
 - [ ] Tools for testing React
 - [ ] Coverage Reports
 - [ ] Add Features to our App Following TDD
@@ -33,53 +33,39 @@
 - Green: The test is passing
 - Refactor: Improve the existing code safe in the knowledge that the functionality is testable
 
-### Considerations when writing tests
-
-#### Setup & Teardown
-
+### Setup & Teardown
 - Tests should represent how a user (or other code) would interact with our application
-- It's important to properly setup the test conditions and make sure that
-- Once the test has been executed, tear down all changes to leave no traces for the next test
+- It's important to properly setup the test conditions to isolate the piece of functionality under test 
+- Once the test has been executed, tear down all setup to leave no traces for the next test
+- It's important to scope variables appropriately to make sure that there won't be leaks or interference with other tests
 
-#### Appropriate Scoping
+### Tools for testing React
+- [Jest](https://jestjs.io/)
+  * Jest is the framework we use to run our tests
+  * Comes with `create-react-app`, so no need to configure
+  * `npm run test` will start Jest in watch mode and run the tests
+  * `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+  * A set of tools to help target DOM elements
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+  * Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
+- [JestDOM](https://github.com/testing-library/jest-dom)
+  * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
-- Depending on how you will build your tests, it's important to scope your variables appropriately to make sure that there won't be leaks or interference with other tests
-
-#### Debugging
-
-- If a test is not working and it's hard to know why, you can use the `debug()` function or the `prettyDOM` function (from `dom-testing-library`) to output elements and see how the page was built and seen from the eyes of the jest DOM
-
-#### Coverage
-
+### Coverage Reports
 - A coverage report shows us how much of our code is covered by the tests we've written
 - The code coverage of our tests is important, but it's more important to have solid tests with a little less coverage than easy tests with a lot of coverage
 - It's okay to not have 100% coverage, it's almost impossible!
 
-### Tools for testing React
-
-#### Jest
-
-- Jest is the framework we use to run our tests
-- Helps us manipulate the DOM, render our React elements when using external libraries, and gives us a way to see our code coverage
-- Readily available in `create-react-app`, so no need to configure
-
-- `npm run test` will start Jest in watch mode and run the tests
-- `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
-
-#### JestDOM
-
-- JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
-
-#### DOM Testing Library
-
-- DOM Testing Library is a set of tools to help you target DOM elements
-
-#### React Testing Library
-
-- Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
+### Add Features to our App Following TDD
+- Helper functions (unit tests)
+  - Choose a valid response for the computer player
+  - Determine the status message to display when the game is done
+- Features (integration tests)
+  - Clicking on the robot head will toggle the cheating boolean
+  - Render appropriate message in Result component based on game status
 
 ### `getBy` & `queryBy`
-
 - One small thing about `getBy` and `queryBy` to be aware of is that `getBy` will throw an error if the element is not found
 - `queryBy` will return only null, so it's up to the context to guide you which you should use.
 

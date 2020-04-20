@@ -2,6 +2,12 @@
 - This lecture has 90 mins of live-coding
 - Ensure the theory portion goes no longer than 30 mins
 
+### Important Links
+- [Jest Homepage](https://jestjs.io/)
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [JestDOM](https://github.com/testing-library/jest-dom)
+
 ### Add Features to App Following TDD
 - helper functions (unit tests)
   - choose a valid response for the computer player (currently hard-coded)
@@ -143,4 +149,42 @@ const handleClick = () => {
 >
   🤖
 </span>
+```
+
+7. `src/components/__tests__/Result.test.js`
+
+```js
+// convert this test to use beforeEach and write out the tests for other statuses
+test('shows appropriate message when the status is "Waiting"', () => {
+  const fakeState = {
+    compSelection: null,
+    playerSelection: null,
+    status: 'Waiting',
+    cheating: false
+  };
+  
+  const { container } = render(<Result status={fakeState.status} />);
+
+  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
+});
+```
+
+```js
+let fakeState;
+
+beforeEach(() => {
+  fakeState = {
+    compSelection: null,
+    playerSelection: null,
+    status: 'Waiting',
+    cheating: false
+  };
+});
+
+test('shows appropriate message when the status is "Waiting"', () => {
+  fakeState.status = 'Waiting';
+  const { container } = render(<Result status={fakeState.status} />);
+
+  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
+});
 ```

@@ -12,7 +12,6 @@
 * search around in devtools console for various interesting functions/objects
   * `navigator.getGamepads()`
 
-
 ## Web-GL
 * web-gl presentation
 * web-gl code review
