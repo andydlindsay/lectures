@@ -45,7 +45,6 @@
   * Jest is the framework we use to run our tests
   * Comes with `create-react-app`, so no need to configure
   * `npm run test` will start Jest in watch mode and run the tests
-  * `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
 - [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
   * A set of tools to help target DOM elements
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
@@ -53,10 +52,41 @@
 - [JestDOM](https://github.com/testing-library/jest-dom)
   * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
+### Passing Flags to Scripts
+- We can define our own scripts in `package.json`
+
+```json
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "list": "ls"
+}
+```
+
+- We can run these scripts with `npm run script-name` or `yarn script-name`
+- We can pass [flags](https://gobyexample.com/command-line-flags) to our scripts
+- Using `npm`, we have to add `--` before passing flags
+
+```bash
+npm run script-name -- --flag-name
+
+yarn script-name --flag-name
+```
+
+- Eg. to pass "-la" to our `list` script, we'd use `npm run list -- -la` or `yarn list -la` (try it yourself!)
+
 ### Coverage Reports
 - A coverage report shows us how much of our code is covered by the tests we've written
 - The code coverage of our tests is important, but it's more important to have solid tests with a little less coverage than easy tests with a lot of coverage
 - It's okay to not have 100% coverage, it's almost impossible!
+- `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
+- If you notice that your coverage report is empty, add the `watchAll=false` flag
+
+```bash
+npm run test -- --coverage --watchAll=false
+```
 
 ### Add Features to our App Following TDD
 - Helper functions (unit tests)
