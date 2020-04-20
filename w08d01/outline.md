@@ -7,6 +7,7 @@
 - [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [JestDOM](https://github.com/testing-library/jest-dom)
+- [Which query should I use?](https://testing-library.com/docs/guide-which-query)
 
 ### Add Features to App Following TDD
 - helper functions (unit tests)
