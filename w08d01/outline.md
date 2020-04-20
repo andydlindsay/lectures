@@ -189,3 +189,13 @@ test('shows appropriate message when the status is "Waiting"', () => {
   expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
 });
 ```
+
+8. Demonstrate `prettyDOM` and `debug`
+
+```js
+import { render, getByTestId, prettyDOM } from '@testing-library/react';
+console.log(prettyDOM(container));
+
+const { container, debug } = render(<Result status={fakeState.status} />);
+debug();
+```
