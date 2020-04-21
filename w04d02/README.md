@@ -1,9 +1,9 @@
 # W04D02 - Client Side JavaScript & jQuery
 
 ### To Do
-- [ ] Intro to the DOM
-- [ ] DOM events
-- [ ] Browser objects: `event`, `window`, `navigator`, and `document`
+- [ ] JavaScript in the Browser
+- [ ] Browser objects: `window`, `navigator`, `document`, and `event`
+- [ ] The Document Object Model (DOM)
 - [ ] Intro to jQuery
 - [ ] Element creation and DOM manipulation with jQuery
 - [ ] Event handling with jQuery
@@ -14,6 +14,23 @@
 - Our HTML is turned into a data structure that we call the **D**ocument **O**bject **M**odel or the **DOM**
 - The DOM is stored as a [`tree`](https://en.wikipedia.org/wiki/Tree_(data_structure)) data structure with parent/child/sibling relationships between various parts of the page
 - The DOM allows us to interact with the web page using JavaScript
+
+### Useful Browser Objects
+- **`window` object**
+  - Represents the window that holds the DOM object
+  - Each tab in a browser is a _window_ with its own `window` object
+  - Contains (among other things) information about the size of the window and screen
+- **`navigator` object**
+  - Contains information about the browser such as browser version, browser name, and geographic location
+- **`document` object**
+  - Represents the DOM
+  - Can be seen in the browser console by running `console.dir(document)`
+
+```js
+// you can also access navigator and document as props on the window object
+window.navigator === navigator; // true
+window.document === document; // true
+```
 
 ### DOM Events
 - An event is a notification that some action has occurred (eg. a button is clicked, the mouse pointer is moved, a key is pressed)
@@ -53,23 +70,6 @@ document
 document
   .querySelector('body')
   .removeEventListener('click', clickHandler);
-```
-
-### Other Useful Objects
-- **`window` object**
-  - Represents the window that holds the DOM object
-  - Each tab in a browser is a _window_ with its own `window` object
-  - Contains (among other things) information about the size of the window and screen
-- **`navigator` object**
-  - Contains information about the browser such as browser version, browser name, and geographic location
-- **`document` object**
-  - Represents the DOM
-  - Can be seen in the browser console by running `console.dir(document)`
-
-```js
-// you can also access navigator and document as props on the window object
-window.navigator === navigator; // true
-window.document === document; // true
 ```
 
 ### jQuery

@@ -1,105 +1,157 @@
-## Difference between server-side JS and client-side JS
-* `process` object in node
-  * `.argv`
-  * `.env`
-* `window` object in browser
-  * `.BatteryManager`
+### External Resources
 
-## Browser Objects
-* MDN batterymanager
-* `navigator.geolocation`
-  * `.getCurrentPosition`
-* search around in devtools console for various interesting functions/objects
+- [draw.io DOM](https://www.draw.io/#G1pXmS7n8_IbCslvVcVdERQlHvew0VmsYq)
+
+### Outline
+
+1. Show off `process` object in Node REPL
+
+2. Show off `window` object in browser console
+  * `window.innerWidth`
+
+3. Walk through `index.html` and load it in a browser
+
+4. The `navigator` object represents the browser:
+  * `navigator.geolocation.getCurrentPosition(cb)`
   * `navigator.getGamepads()`
+  * `navigator.getBattery()`
 
-## Web-GL
-* web-gl presentation
-* web-gl code review
-* pep talk
+5. Visit MDN for the `navigator` object
 
-## Document Object
-* `document` object
-  * `.URL`
-  * `.body`
-  * `.readyState`
+6. The `document` object represents the webpage
+  * `document.URL`
+  * `document.body`
+  * `document.readyState`
+  * `console.log(document)` vs `console.dir(document)`
 
-## The DOM
-* show `index.html`
-* introduce the DOM
-* show draw.io DOM representation of `index.html`
+7. Visit MDN for the `document` object
 
-## Adding Styles
-* create `styles.css`
-* `<link rel="stylesheet" href="styles.css" />`
-* is CSS a programming language?
-* we can grab things and style them with CSS
-* wouldn't it be great if we could do that with JS?
+8. Draw.io DOM diagram
+  * https://www.draw.io/#G1pXmS7n8_IbCslvVcVdERQlHvew0VmsYq
 
+9. Add some styles
+  * create `styles.css`
+  * `<link rel="stylesheet" href="styles.css" />`
 
-## getElementById
-* `document.getElementById('main-list')`
-* `const ul = document.getElementById('main-list')`
-* search 'add html dom node'
-* copy example from W3 schools (https://www.w3schools.com/jsref/met_node_appendchild.asp)
-* text nodes
+```css
+html {
+  margin: 0;
+  padding: 0;
+}
 
-## Remove a child node
-* search 'removechild javascript'
-* `.childNodes`
+body {
+  text-align: center;
+}
 
-## Event Handling
-* `document.body.onmousemove = (e) => console.log(e)`
-* `console.log(event)`
-* `console.log(event.x, event.y)`
-* search mdn dom events
+#main-list {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  margin: 10px auto;
+  list-style-type: none;
+}
+```
 
-## Click Event
-* `const h1 = document.querySelector('h1');`
-* search 'attach event listener dom'
-* `h1.addEventListener('click', e => console.log(e));`
+10. `document` queries
+  * `document.getElementById('main-list')`
+  * `document.getElementsByClassName('content');`
+  * `const ul = document.getElementById('main-list')`
 
-## Various console object methods
-* `console.error(DOMError)`
-* `console.warn(DOMError)`
-* `console.log(document)`
-* `console.dir(document)` "disclosure triangles!"
+11. Search "add html dom node"
+  * copy example from [W3 schools](https://www.w3schools.com/jsref/met_node_appendchild.asp)
 
-## Window History
-* go to wikipedia and navigate around
-* `window.history`
-* `window.history === history`
-* `history.back()`
-* `history.forward()`
+```js
+const node = document.createElement("li");
+const textnode = document.createTextNode("Water");
+node.appendChild(textnode);
+const list = document.getElementById("main-list");
+list.appendChild(node);
+```
 
-## Window Location
-* `window.location = 'https://www.google.com';`
+12. Search "remove child node"
 
-## DOM Interaction
-* grab random article link
-* `document.getElementById('n-randompage');`
-* search 'get child element of dom node'
-* `document.getElementById('n-randompage').childNodes[0].click();`
+```js
+list.childNodes;
+list.removeChild(list.childNodes[0]);
+```
 
-# BREAK
+13. Event handling
+  * `document.body.onmousemove = (e) => console.log(e)`
+  * `console.log(event)`
+  * `console.log(event.x, event.y)`
+  * search "mdn dom events"
 
-## Adding Script Files
-* touch `script.js`
-* `<script src="script.js"></script>`
-* page is loaded from the top down
+```js
+document.addEventListener('mousemove', (event) => console.log(event));
 
-## Code in other files
-* create a variable in `script.js`
-* console.log that variable in `script.js`
-* include both files in `index.html`
-* swap them around and show what happens
+const h1 = document.querySelector('h1');
+h1.addEventListener('click', (event) => {
+	console.log(event);
+	alert('h1 clicked');
+});
+```
 
-## jQuery
-* jQuery
-* talk about CDN's
-* look at jQuery code
-* search 'do you need jquery'
-* `jQuery === $`
+14. Window History
+  * go to wikipedia and navigate around
+  * `window.history`
+  * `window.history === history`
+  * `history.back()`
+  * `history.forward()`
 
-## jQuery Selectors
-* show jQuery uses CSS selectors
-* `const div = jQuery('div.content');`
+15. Window Location
+  * `window.location = 'https://www.google.com';`
+
+16. DOM Interaction
+  * grab random article link
+  * `document.getElementById('n-randompage');`
+  * `document.getElementById('n-randompage').childNodes[0].click();`
+
+### BREAK
+
+17. Adding Script Files
+  * touch `script.js`
+  * `<script src="script.js"></script>`
+  * page is loaded from the top down
+
+18. Code in other files
+  * create a variable in `script.js`
+  * console.log that variable in `script.js`
+  * include both files in `index.html`
+  * swap them around and show what happens
+
+19. Visit jQuery Docs
+  * talk about CDN's
+  * search 'do you need jquery'
+  * `jQuery === $`
+
+20. jQuery Selectors
+  * show jQuery uses CSS selectors
+  * `const div = jQuery('div.content');`
+  * do what was done before
+
+```js
+// create a DOM node with a text node
+const li = $('<li>').text('Water');
+const list = $('#main-list');
+list.append(li);
+list.append('<li>Gravy</li>');
+
+const h1 = $('h1');
+h1.on('click', (event) => {
+  console.log(event);
+  alert('h1 clicked');
+});
+h1.addClass('header');
+```
+
+21. Document ready
+
+```js
+$(document).ready(() => {
+  console.log('ready');
+});
+
+// or
+$(() => {
+  console.log('ready');
+});
+```
