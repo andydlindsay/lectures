@@ -1,4 +1,8 @@
-## Intro (30 minutes)
+### External Resources
+
+- [Challenges](https://gist.github.com/andydlindsay/ae55c3ab41a11b9d2d12ca7bcb280748)
+
+### Intro (30 minutes)
 
 - overview of take home challenges
 
@@ -46,9 +50,11 @@
   - focus on the MVP before moving on to stretch
   - Review the requirements and make sure that you have met all of them
 
-## Group Activity (20 minutes)
+### Group Activity (20 minutes)
 
-## Wrap Up && Reflect (10 minutes)
+- [Challenges](https://gist.github.com/andydlindsay/ae55c3ab41a11b9d2d12ca7bcb280748)
+
+### Wrap Up && Reflect (10 minutes)
 
 - time for questions and recap of various approaches
 - Writing automated tests or talking about why you didn't have time to do them but how you’d approach them
