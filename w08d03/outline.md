@@ -104,24 +104,15 @@ describe('Text Input', () => {
 15. Add another test to handle backspace
 
 ```js
-describe('Text Input', () => {
-  it('accepts text input', () => {
-    cy.get('.search')
-      .find('.search__form')
-      .find('input')
-      .type('Carrie Underwood', { delay: 100 });
-  });
-
-  it('can handle backspace', () => {
-    cy.get('.search')
-      .find('.search__form')
-      .find('input')
-      .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
-  });
+it('can handle backspace', () => {
+  cy.get('.search')
+    .find('.search__form')
+    .find('input')
+    .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
 });
 ```
 
-16. Refactor the test to use `beforeEach`
+16. Refactor the tests to use `beforeEach`
 
 ```js
 describe('Text Input', () => {
@@ -171,7 +162,7 @@ describe('Display Results', () => {
 
     // get the search input and type into it
     cy.get('.search__form')
-      .find('input:first')
+      .find('input')
       .type('Daft Punk')
       .should('have.value', 'Daft Punk')
       
