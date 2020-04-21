@@ -2,7 +2,6 @@ describe('Text Input', () => {
 
   beforeEach(() => {
     cy.visit('/');
-
     // use `as` to alias vars and reference them with @varName
     cy.get('.search')
       .find('.search__form')
@@ -11,17 +10,12 @@ describe('Text Input', () => {
   });
 
   it('accepts text input', () => {
-    cy.get('.search')
-      .find('.search__form')
-      .find('input')
+    cy.get('@searchField')
       .type('Carrie Underwood', { delay: 100 });
   });
 
   it('can handle backspace', () => {
-    cy.get('.search')
-      .find('.search__form')
-      .find('input')
+    cy.get('@searchField')
       .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
   });
-
 });

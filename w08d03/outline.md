@@ -1,8 +1,12 @@
+### External Resources
+
+### Outline
 1. Install Cypress with `npm install --save-dev cypress`
 2. Open Cypress with `node_modules/.bin/cypress open`
 3. Create a script called `cypress` to run the above
 4. Remove the example tests
-5. Create a new file `cypress/integration/init.spec.js`
+
+5. Create a new file `cypress/integration/01_cypress.spec.js`
 
 ```js
 describe('Cypress', () => {
@@ -20,7 +24,7 @@ it('can visit the home page', () => {
 });
 ```
 
-7. Add a new spec file `cypress/integration/filters.spec.js`
+7. Add a new spec file `cypress/integration/02_filters.spec.js`
 
 ```js
 describe('Filters', () => {
@@ -81,5 +85,117 @@ it('toggles the checkbox by clicking on the label', () => {
     .click()
     .siblings('input')
     .should('be.checked');
+});
+```
+
+14. Add a new spec file `cypress/integration/03_text-input.spec.js`
+
+```js
+describe('Text Input', () => {
+  it('accepts text input', () => {
+    cy.get('.search')
+      .find('.search__form')
+      .find('input')
+      .type('Carrie Underwood', { delay: 100 });
+  });
+});
+```
+
+15. Add another test to handle backspace
+
+```js
+describe('Text Input', () => {
+  it('accepts text input', () => {
+    cy.get('.search')
+      .find('.search__form')
+      .find('input')
+      .type('Carrie Underwood', { delay: 100 });
+  });
+
+  it('can handle backspace', () => {
+    cy.get('.search')
+      .find('.search__form')
+      .find('input')
+      .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
+  });
+});
+```
+
+16. Refactor the test to use `beforeEach`
+
+```js
+describe('Text Input', () => {
+
+  beforeEach(() => {
+    cy.visit('/');
+    // use `as` to alias vars and reference them with @varName
+    cy.get('.search')
+      .find('.search__form')
+      .find('input')
+      .as('searchField');
+  });
+
+  it('accepts text input', () => {
+    cy.get('@searchField')
+      .type('Carrie Underwood', { delay: 100 });
+  });
+
+  it('can handle backspace', () => {
+    cy.get('@searchField')
+      .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
+  });
+});
+```
+
+17. Add a new spec file `cypress/integration/03_display-results.spec.js`
+
+```js
+describe('Display Results', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+
+  it('loads results from an API', () => {
+    // load the hardcoded data as @itunesResponse
+    cy.fixture('itunes.json').as('itunesResponse');
+
+    // create a server for requests to be made to
+    cy.server();
+    // route all requests that match to the cypress server
+    cy.route({
+      method: 'GET',
+      url: 'search*',
+      delay: 500,
+      response: '@itunesResponse'
+    }).as('getSearch');
+
+    // get the search input and type into it
+    cy.get('.search__form')
+      .find('input:first')
+      .type('Daft Punk')
+      .should('have.value', 'Daft Punk')
+      
+    // get the spinner that should be visible
+    cy.get('.spinner').as('spinner')
+      .should('be.visible');
+
+    // wait while the search results come back then verify them
+    cy.wait('@getSearch')
+      .get('main')
+      .contains('Homework')
+      .should('be.visible');
+
+    // get the spinner and it shouldn't be visible
+    cy.get('@spinner')
+      .should('not.be.visible');
+
+    // untick the Explicit box to remove one album
+    cy.contains('Explicit')
+      .click();
+
+    // check that that album has been removed
+    cy.get('article.album')
+      .should('not.contain', 'Daft Club');
+  });
 });
 ```
