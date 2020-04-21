@@ -4,7 +4,15 @@
 1. Install Cypress with `npm install --save-dev cypress`
 2. Open Cypress with `node_modules/.bin/cypress open`
 3. Create a script called `cypress` to run the above
-4. Remove the example tests
+4. Remove the example tests, edit `cypress.json`
+
+```json
+{
+  "baseUrl": "http://localhost:8765",
+  "viewportWidth": 1280,
+  "viewportHeight": 1200
+}
+```
 
 5. Create a new file `cypress/integration/01_cypress.spec.js`
 

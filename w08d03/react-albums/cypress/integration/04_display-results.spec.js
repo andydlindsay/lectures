@@ -18,7 +18,7 @@ describe('Display Results', () => {
     cy.get('.search__form')
       .find('input:first')
       .type('Daft Punk')
-      .should('have.value', 'Daft Punk')
+      .should('have.value', 'Daft Punk');
       
     cy.get('.spinner').as('spinner')
       .should('be.visible');

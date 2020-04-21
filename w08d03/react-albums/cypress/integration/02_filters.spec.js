@@ -1,5 +1,4 @@
 describe('Filters', () => {
-
   beforeEach(() => {
     cy.visit('/');
   });
@@ -31,5 +30,4 @@ describe('Filters', () => {
       .siblings('input')
       .should('be.checked');
   });
-
 });
