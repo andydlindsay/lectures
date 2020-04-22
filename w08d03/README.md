@@ -58,7 +58,7 @@ npm run cypress
 * Feel free to change the width and height values if developing for a mobile-first site
 
 ### Some Old Friends
-* Cypress is built on top of Mocha
+* Cypress is built on top of Mocha and uses Chai assertions
 * Cypress comes with jQuery installed (accessible with `Cypress.$();`)
 
 ### Useful Links
