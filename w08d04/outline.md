@@ -1,6 +1,9 @@
 ### External Resources
 
 * [Lifecycle Methods](https://miro.medium.com/max/4560/1*EnuAy1kb9nOcFuIzM49Srw.png)
+* [The Road to React 1.0 Blog](https://reactjs.org/blog/2014/03/28/the-road-to-1.0.html)
+* [React Version Dates](https://en.wikipedia.org/wiki/React_(web_framework)#History)
+* [EcmaScript Version Dates](https://flaviocopes.com/ecmascript/)
 
 ### Outline
 1. ES6 Class review
