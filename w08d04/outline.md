@@ -78,7 +78,7 @@ class StateExample extends React.Component {
 }
 ```
 
-9. Pass props as attributes
+6. Pass props as attributes
 
 ```js
 const [message] = React.useState('hello from the parent component');
@@ -89,7 +89,7 @@ const [counter] = React.useState(2);
 </ClassBased>
 ```
 
-8. `src/components/ClassBased.jsx`
+7. `src/components/ClassBased.jsx`
 
 ```js
 import React, { Component } from 'react';
@@ -119,7 +119,7 @@ const ClassBased = class extends Component {
 export default ClassBased;
 ```
 
-6. Bind event handlers to `this`
+8. Bind event handlers to `this`
 
 ```js
 constructor() {
@@ -140,7 +140,7 @@ render() {
 }
 ```
 
-7. `this.setState` merges changes into state
+9. `this.setState` merges changes into state
 
 ```js
 // this is bad
@@ -227,7 +227,7 @@ const Lifecycle = class extends Component {
 export default Lifecycle;
 ```
 
-12. Add a router to demonstrate component unmounting and mounting
+13. Add a router to demonstrate component unmounting and mounting
 
 ```js
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
