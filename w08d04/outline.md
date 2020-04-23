@@ -78,6 +78,17 @@ class StateExample extends React.Component {
 }
 ```
 
+9. Pass props as attributes
+
+```js
+const [message] = React.useState('hello from the parent component');
+const [counter] = React.useState(2);
+
+<ClassBased message={message} counter={counter}>
+  <div>I am the children</div>
+</ClassBased>
+```
+
 8. `src/components/ClassBased.jsx`
 
 ```js
@@ -106,14 +117,6 @@ const ClassBased = class extends Component {
 };
 
 export default ClassBased;
-```
-
-9. Pass props as attributes
-
-```js
-<ClassBased message={message} counter={counter}>
-  <div>I am the children</div>
-</ClassBased>
 ```
 
 6. Bind event handlers to `this`
@@ -150,6 +153,22 @@ this.setState({ count: this.state.count + 1 });
   * https://miro.medium.com/max/4560/1*EnuAy1kb9nOcFuIzM49Srw.png
 
 11. Explore lifecycle methods
+
+```js
+// the component has mounted successfully
+// set up timers or create socket connections in this method
+componentDidMount() {}
+
+// runs every time the component updates
+// run logic that depends on state or props
+componentDidUpdate() {}
+
+// runs right before the component unmounts
+// clear intervals and close connections; perform any cleanup necessary
+componentWillUnmount() {}
+```
+
+12. `src/components/Lifecycle.jsx`
 
 ```js
 import React, { Component } from 'react';
