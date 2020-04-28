@@ -84,7 +84,33 @@ client
 In the above example, the `id` from the array will be interpolated into the SQL query wherever `$1` appears.
 
 ### Protecting Secrets with Environment Variables
-* 
+* We **NEVER** want to push keys/secrets to Github
+* There are bots that crawl Github looking through repos for keys
+* In order to protect our secrets, we want to inject them into our application at runtime (rather than storing them in variables inside our code)
+* We use environment variables to accomplish this task
+* Environment variables are either specified when the application starts
+
+```bash
+# environment variables are specified before the application is started
+PORT=3000 node server.js
+# this PORT variable is accessible using process.env.PORT
+```
+
+* Or use a package like `dotenv` to progammatically include them
+
+```bash
+npm i dotenv
+```
+
+```bash
+# inside .env
+PORT=3000 
+```
+
+```js
+// inside server.js
+require('dotenv').config();
+```
 
 ### Useful Links
 * [node-postgres](https://node-postgres.com/)

@@ -9,14 +9,6 @@
 - Schoodle
 - Food Pick-up Ordering
 
-### Where to Start?
-- Data
-- Everything revolves around the data
-- Ask yourself/team:
-  - What is the data you can access or acquire?
-  - Can you correlate that data to something else?
-  - How can you pivot that data to add value?
-
 ### User Stories
 - A _user story_ describes how users will interact with your application
 - They have the form: As a ______, I want to ______, because ______.
