@@ -2,20 +2,15 @@
 
 ### Pick a Project
 - Wiki Map
-- Card Game
+- Quiz App
+- Story Creator
 - Decision Maker
-- Smart To-Do List
+- PasswordKeepR
+- Smart TODO List
 - Resource Wall
+- Buy/Sell Listing Website
 - Schoodle
 - Food Pick-up Ordering
-
-### Where to Start?
-- Data
-- Everything revolves around the data
-- Ask yourself/team:
-  - What is the data you can access or acquire?
-  - Can you correlate that data to something else?
-  - How can you pivot that data to add value?
 
 ### User Stories
 - A _user story_ describes how users will interact with your application
