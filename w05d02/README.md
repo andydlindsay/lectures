@@ -8,8 +8,8 @@
 - [ ] Normalization
 - [ ] Design Concepts
 - [ ] Entity Relationship Diagrams
-- [ ] ERD #1: Convert 2 Spreadsheets
-- [ ] ERD #2: Student Suggestion
+- [ ] Breakout: Convert 2 Spreadsheets [20 mins]
+- [ ] Student Suggestion ERD(s)
 
 ### Primary Key
 
@@ -61,17 +61,11 @@
 - Extremely useful for reasoning about how the database should be structured
 - Can be created using pen and paper, a whiteboard, or using an online application
 
-### ERD #1 Convert 2 Spreadsheets
-We started with these two spreadsheets:
+### Breakout: Convert Two Spreadsheets
+- [Gist with instruction](https://gist.github.com/andydlindsay/20e7305e853bad7b587f294b054cf8de)
 
-![Two Spreadsheets](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/bookAndAuthorsTables.png)
-
-And turned them into a relational db:
-
-![Books and Authors](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/books+and+authors.png)
-
-### ERD #2 Uber/Ride Hailing
-Then we created an ERD for a fictional Uber competitor:
+### Student Suggestion: Uber/Ride Hailing
+We created an ERD for a fictional Uber competitor:
 
 ![Uber](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/uber.png)
 
