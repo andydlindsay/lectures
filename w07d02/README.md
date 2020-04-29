@@ -87,12 +87,15 @@ console.log(newObj); // { name: 'Bob', age: 27 }
 const [numbers, setNumbers] = React.useState([1, 2, 3]);
 
 // setNumbers can take either a value or a callback function
+// the callback function is passed the previous state as an argument (prevNumbers)
 setNumbers((prevNumbers) => {
-  // the callback function is passed the previous state as an argument
-  setNumbers([...prevNumbers, 4]);
-  console.log(prevNumbers); // [1, 2, 3];
-  console.log(numbers); // [1, 2, 3, 4];
-  // the previous state is copied, not mutated
+  const newState = [...prevNumbers, 4];
+
+  // previous state is not affected
+  console.log(prevNumbers); // [1, 2, 3]
+  console.log(newState); // [1, 2, 3, 4]
+
+  return newState;
 });
 ```
 
