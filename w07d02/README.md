@@ -79,10 +79,24 @@ console.log(newObj); // { name: 'Bob', age: 27 }
 ```
 
 ### Updating Complex State
-- 
+- It is common to maintain complex state in a component (eg. object, array, object with arrays/objects inside it)
+- Updating complex state can be challenging
+- We need to remember to copy the previous state before updating it
+
+```js
+const [numbers, setNumbers] = React.useState([1, 2, 3]);
+
+// setNumbers can take either a value or a callback function
+setNumbers((prevNumbers) => {
+  // the callback function is passed the previous state as an argument
+  setNumbers([...prevNumbers, 4]);
+  console.log(prevNumbers); // [1, 2, 3];
+  console.log(numbers); // [1, 2, 3, 4];
+  // the previous state is copied, not mutated
+});
+```
 
 ### Useful Links
 - [Wikipedia: Persistent Data](https://en.wikipedia.org/wiki/Persistent_data_structure)
 - [Why Does "Delta" Represent Change?](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity)
 - [ES6 Spread Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
-- []()
