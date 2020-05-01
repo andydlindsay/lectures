@@ -24,7 +24,7 @@
 - They have the form: Given _____, when ______, then ______.
 - eg. Given _that I am logged in_, when _I click favourite on a post_, then _it is added to my favourites_.
 - You can also chain on an _and_ to user stories/scenarios
-- eg. eg. Given _that I am logged in_, when _I click favourite on a post_, then _it is added to my favourites_ **and** _the save icon will change to indicate success_.
+- eg. Given _that I am logged in_, when _I click favourite on a post_, then _it is added to my favourites_ **and** _the save icon will change to indicate success_.
 
 ### ERD
 - The user stories provide you with nouns (eg. user, posts, favourites)
@@ -45,10 +45,8 @@
 - Draw out the structure of your web pages
 - This will make it much easier to build out these pages later
 - This is also a great opportunity to get input from all of the team members
-
-### Design
 - Design matters... however you are a developer, not a designer
-- Use resources like Dribble, FolioFocus, and Smashing to get inspiration
+- Get inspiration from websites you visit
 
 ### User Login
 - Don't do it
