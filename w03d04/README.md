@@ -1,6 +1,9 @@
-# W3D4 Real World HTTP Servers
+# W3D4 Security & Real World HTTP Servers
 
 ### To Do
+- [ ] Storing passwords
+- [ ] Encrypted cookies
+- [ ] HTTP Secure (HTTPS)
 - [ ] REST
 - [ ] Alternatives to ExpressJS
 - [ ] Express Middleware
