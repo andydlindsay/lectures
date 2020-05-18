@@ -54,7 +54,8 @@ describe('chooseRobotItem function', () => {
     
     const result = chooseRobotItem(cheating, playerSelection);
     const options = ['Axe', 'Tree', 'Moai'];
-    expect(options.includes(result)).toBeTruthy();
+    // expect(options.includes(result)).toBeTruthy();
+    expect(options).toContain(result);
   });
 });
 ```
@@ -220,13 +221,18 @@ const data = {
   ]
 };
 
-test('gets the high scores', async () => {
+// this function must be marked as `async` in order to use `await` within it
+test('Axios test', async () => {
   const { getByTestId, findByText } = render(<Result status="Waiting" />);
+  const button = getByTestId('fetch-highscores');
 
-  const button = getByTestId('high-scores');
+  // mock any calls to axios.get with hardcoded return value `data`
   axios.get.mockResolvedValueOnce({ data });
+
+  // firing this event causes the axios call to happen
   fireEvent.click(button);
 
+  // findBy functions return a promise which we can `await`
   await findByText('Bob');
 });
 ```
@@ -239,7 +245,7 @@ const [highScores, setHighScores] = React.useState([]);
 const fetchHighScores = () => {
   axios
     .get('/high-scores')
-    .then(data => setHighScores(data.data.results))
+    .then(response => setHighScores(response.data.results))
     .catch(err => console.error(err));
 };
 
