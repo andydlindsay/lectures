@@ -8,6 +8,12 @@
 
 2. Show off `window` object in browser console
   * `window.innerWidth`
+  * go to wikipedia and navigate around
+  * `window.history`
+  * `window.history === history`
+  * `history.back()`
+  * `history.forward()`
+  * `window.location = 'https://www.google.com';`
 
 3. Walk through `index.html` and load it in a browser
 
@@ -88,42 +94,31 @@ h1.addEventListener('click', (event) => {
 	console.log(event);
 	alert('h1 clicked');
 });
+
+setTimeout(() => {
+  h1.click();
+}, 3000);
 ```
-
-14. Window History
-  * go to wikipedia and navigate around
-  * `window.history`
-  * `window.history === history`
-  * `history.back()`
-  * `history.forward()`
-
-15. Window Location
-  * `window.location = 'https://www.google.com';`
-
-16. DOM Interaction
-  * grab random article link
-  * `document.getElementById('n-randompage');`
-  * `document.getElementById('n-randompage').childNodes[0].click();`
 
 ### BREAK
 
-17. Adding Script Files
+14. Adding Script Files
   * touch `script.js`
   * `<script src="script.js"></script>`
   * page is loaded from the top down
 
-18. Code in other files
+15. Code in other files
   * create a variable in `script.js`
   * console.log that variable in `script.js`
   * include both files in `index.html`
   * swap them around and show what happens
 
-19. Visit jQuery Docs
+16. Visit jQuery Docs
   * talk about CDN's
   * search 'do you need jquery'
   * `jQuery === $`
 
-20. jQuery Selectors
+17. jQuery Selectors
   * show jQuery uses CSS selectors
   * `const div = jQuery('div.content');`
   * do what was done before
@@ -143,7 +138,7 @@ h1.on('click', (event) => {
 h1.addClass('header');
 ```
 
-21. Document ready
+18. Document ready
 
 ```js
 $(document).ready(() => {
