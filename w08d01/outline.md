@@ -234,6 +234,12 @@ test('Axios test', async () => {
 
   // findBy functions return a promise which we can `await`
   await findByText('Bob');
+
+  // we could get jest to wait instead
+  return expect(findByText('Bob')).resolves.toBeTruthy();
+
+  // or we could return a promise
+  return findByText('Bob');
 });
 ```
 
