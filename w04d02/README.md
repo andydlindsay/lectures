@@ -15,6 +15,29 @@
 - The DOM is stored as a [`tree`](https://en.wikipedia.org/wiki/Tree_(data_structure)) data structure with parent/child/sibling relationships between various parts of the page
 - The DOM allows us to interact with the web page using JavaScript
 
+- eg. The browser turns your HTML into the DOM
+
+```html
+<html>
+  <head>
+    <title>My Page</title>
+  </head>
+  <body>
+    <h1>Welcome to my page!</h1>
+    <div class="content">
+      <p>My Favourite Numbers</p>
+      <ul id="main-list">
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    </div>
+  </body>
+</html>
+```
+
+![DOM example](https://raw.githubusercontent.com/andydlindsay/lectures/master/w04d02/dom-example.png)
+
 ### Useful Browser Objects
 - **`window` object**
   - Represents the window that holds the DOM object
