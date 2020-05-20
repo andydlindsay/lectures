@@ -96,7 +96,6 @@ it('toggles a check box by clicking on the label', () => {
 
 ```js
 describe('Text Input', () => {
-
   beforeEach(() => {
     cy.visit('/');
   });
@@ -125,7 +124,6 @@ it('can handle backspace', () => {
 
 ```js
 describe('Text Input', () => {
-
   beforeEach(() => {
     cy.visit('/');
     // use `as` to alias vars and reference them with @varName
