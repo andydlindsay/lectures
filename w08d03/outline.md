@@ -52,7 +52,7 @@ describe('Filters', () => {
 8. Add the `baseUrl` key to `cypress.json`
 
 ```json
-"baseUrl": "http://localhost:8765"
+"baseUrl": "http://localhost:3000"
 ```
 
 9. Convert affected files to use `cy.visit('/');` instead
