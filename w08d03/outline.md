@@ -153,11 +153,9 @@ describe('Text Input', () => {
 
 ```js
 describe('Display Results', () => {
-  beforeEach(() => {
+  it('displays results from an API', () => {
     cy.visit('/');
-  });
 
-  it('loads results from an API', () => {
     // load the hardcoded data as @itunesResponse
     cy.fixture('itunes.json')
       .as('itunesResponse');
