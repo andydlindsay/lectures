@@ -8,7 +8,6 @@
 
 ```json
 {
-  "baseUrl": "http://localhost:8765",
   "viewportWidth": 1280,
   "viewportHeight": 1200
 }
@@ -28,7 +27,7 @@ describe('Cypress', () => {
 
 ```js
 it('can visit the home page', () => {
-  cy.visit('http://localhost:8002');
+  cy.visit('http://localhost:3000');
 });
 ```
 
@@ -43,9 +42,6 @@ describe('Filters', () => {
     cy.get('.filters__form-group')
       .first()
       .find('input')
-      .as('explicitCheck');
-
-    cy.get('@explicitCheck')
       .uncheck()
       .should('not.be.checked');
   });
@@ -87,11 +83,11 @@ beforeEach(() => {
 13. Demonstrate clicking a label to toggle a checkbox
 
 ```js
-it('toggles the checkbox by clicking on the label', () => {
-  cy.get('.filters__form-group')
-    .contains('EP')
-    .click()
-    .siblings('input')
+it('toggles a check box by clicking on the label', () => {
+  cy.contains('EP')
+    .click();
+
+  cy.get('#EP')
     .should('be.checked');
 });
 ```
@@ -100,11 +96,16 @@ it('toggles the checkbox by clicking on the label', () => {
 
 ```js
 describe('Text Input', () => {
+
+  beforeEach(() => {
+    cy.visit('/');
+  });
+
   it('accepts text input', () => {
-    cy.get('.search')
-      .find('.search__form')
+    cy.get('.search__form')
       .find('input')
-      .type('Carrie Underwood', { delay: 100 });
+      .type('Carrie Underwood', { delay: 100 })
+      .should('have.value', 'Carrie Underwood');
   });
 });
 ```
@@ -113,10 +114,10 @@ describe('Text Input', () => {
 
 ```js
 it('can handle backspace', () => {
-  cy.get('.search')
-    .find('.search__form')
+  cy.get('.search__form')
     .find('input')
-    .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
+    .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 })
+    .should('have.value', 'Bee Gees');
 });
 ```
 
@@ -128,25 +129,27 @@ describe('Text Input', () => {
   beforeEach(() => {
     cy.visit('/');
     // use `as` to alias vars and reference them with @varName
-    cy.get('.search')
-      .find('.search__form')
+    cy.get('.search__form')
       .find('input')
       .as('searchField');
   });
 
   it('accepts text input', () => {
     cy.get('@searchField')
-      .type('Carrie Underwood', { delay: 100 });
+      .type('Carrie Underwood', { delay: 100 })
+      .should('have.value', 'Carrie Underwood');
   });
 
   it('can handle backspace', () => {
     cy.get('@searchField')
-      .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 });
+      .type('Beee{backspace}ge{backspace}{backspace} Gees', { delay: 150 })
+      .should('have.value', 'Bee Gees');
   });
 });
 ```
 
-17. Add a new spec file `cypress/integration/03_display-results.spec.js`
+17. Add `itunes.json` to `cypress/fixtures`
+18. Add a new spec file `cypress/integration/04_display-results.spec.js`
 
 ```js
 describe('Display Results', () => {
@@ -156,7 +159,8 @@ describe('Display Results', () => {
 
   it('loads results from an API', () => {
     // load the hardcoded data as @itunesResponse
-    cy.fixture('itunes.json').as('itunesResponse');
+    cy.fixture('itunes.json')
+      .as('itunesResponse');
 
     // create a server for requests to be made to
     cy.server();
@@ -175,7 +179,8 @@ describe('Display Results', () => {
       .should('have.value', 'Daft Punk')
       
     // get the spinner that should be visible
-    cy.get('.spinner').as('spinner')
+    cy.get('.spinner')
+      .as('spinner')
       .should('be.visible');
 
     // wait while the search results come back then verify them
