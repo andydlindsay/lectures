@@ -1,12 +1,12 @@
-### External Resources
+# External Resources
 
 * [Lifecycle Methods](https://miro.medium.com/max/4560/1*EnuAy1kb9nOcFuIzM49Srw.png)
 * [The Road to React 1.0 Blog](https://reactjs.org/blog/2014/03/28/the-road-to-1.0.html)
 * [React Version Dates](https://en.wikipedia.org/wiki/React_(web_framework)#History)
 * [EcmaScript Version Dates](https://flaviocopes.com/ecmascript/)
 
-### Outline
-1. ES6 Class review
+# Outline
+## ES6 Class review
 
 ```js
 // class declaration
@@ -16,7 +16,7 @@ class Rectangle {}
 const Cube = class {};
 ```
 
-2. Properties, constructor fn, and `this`
+## Properties, constructor fn, and `this`
 
 ```js
 const Rectangle = class {
@@ -24,14 +24,14 @@ const Rectangle = class {
     this.length = length;
     this.width = width;
   }
-}
+};
 
 // arguments are passed to the constructor fn
 const rectangle = new Rectangle(2, 3);
 console.log(rectangle); // Rectangle { length: 2, width: 3 }
 ```
 
-3. Methods
+## Methods
 
 ```js
 const Cube = class {
@@ -50,38 +50,38 @@ const cube = new Cube(2, 3, 4);
 console.log(cube.volume()); // 24
 ```
 
-4. Class Components
+## Class Components
 
 ```js
 // render is the only required method
-class HelloWorld extends React.Component {
+class ClassBased extends React.Component {
   render() {
     return <h1>Hello World</h1>;
   }
 }
 ```
 
-5. State is established in the constructor
+## State is established in the constructor
 
 ```js
-class StateExample extends React.Component {
+class ClassBased extends React.Component {
   constructor() {
     super(); // call the constructor of the parent
     this.state = {
-      message: 'hello world'
+      greeting: 'hello world'
     };
   }
   render() {
     return (
       <div>
-        <h2>{this.state.message}</h2>
+        <h2>{this.state.greeting}</h2>
       </div>
     );
   }
 }
 ```
 
-6. Pass props as attributes
+## Pass props as attributes
 
 ```js
 const [message] = React.useState('hello from the parent component');
@@ -92,7 +92,7 @@ const [counter] = React.useState(2);
 </ClassBased>
 ```
 
-7. `src/components/ClassBased.jsx`
+## Props are received as `this.props`
 
 ```js
 import React, { Component } from 'react';
@@ -101,7 +101,8 @@ const ClassBased = class extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      greeting: 'hello world',
+      counter: 0,
       internalCounter: props.counter * 2
     };
   }
@@ -109,8 +110,8 @@ const ClassBased = class extends Component {
   render() {
     return (
       <div className="class-based">
-        <h2>hello there</h2>
-        <p>Count: {this.state.count}</p>
+        <h2>{this.state.greeting}</h2>
+        <p>Counter: {this.state.counter}</p>
         <p>Message: {this.props.message}</p>
         <p>Internal Counter: {this.state.internalCounter}</p>
         {this.props.children}
@@ -122,40 +123,35 @@ const ClassBased = class extends Component {
 export default ClassBased;
 ```
 
-8. Bind event handlers to `this`
+## Bind event handlers to `this`
 
 ```js
 constructor() {
   super();
-  this.handleClick = this.handleClick.bind(this);
+  this.incrementCounter = this.incrementCounter.bind(this);
 }
 
-handleClick(event) {
-  // do something using the `this` keyword
+incrementCounter(event) {
+  // this is bad
+  this.state.counter = this.state.counter + 1;
+
+  // setState merges changes into state
+  this.setState({ counter: this.state.counter + 1 });
 }
 
 render() {
   return (
     <div>
-      <button onClick={this.handleClick}></button>
+      <button onClick={this.incrementCounter}>Plus One!</button>
     </div>
   );
 }
 ```
 
-9. `this.setState` merges changes into state
-
-```js
-// this is bad
-this.state.count = this.state.count + 1;
-
-this.setState({ count: this.state.count + 1 });
-```
-
-10. Lifecycle methods diagram
+## Lifecycle methods diagram
   * https://miro.medium.com/max/4560/1*EnuAy1kb9nOcFuIzM49Srw.png
 
-11. Explore lifecycle methods
+## Explore lifecycle methods
 
 ```js
 // the component has mounted successfully
@@ -164,14 +160,14 @@ componentDidMount() {}
 
 // runs every time the component updates
 // run logic that depends on state or props
-componentDidUpdate() {}
+componentDidUpdate(prevProps, prevState) {}
 
 // runs right before the component unmounts
 // clear intervals and close connections; perform any cleanup necessary
 componentWillUnmount() {}
 ```
 
-12. `src/components/Lifecycle.jsx`
+## `src/components/Lifecycle.jsx`
 
 ```js
 import React, { Component } from 'react';
@@ -180,48 +176,52 @@ const Lifecycle = class extends Component {
   constructor() {
     super();
     this.state = {
-      counter: 0,
+      title: '',
       interval: null
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
-  handleClick() {
-    this.setState({ counter: this.state.counter + 1 });
+  handleInput(e) {
+    this.setState({ title: e.target.value });
   }
 
   componentDidMount() {
     // fetch data from an external API, talk to the database
     // establish a socket connection, set up timers
     console.log('the component has mounted');
+
     const interval = setInterval(() => {
-      this.setState({ counter: this.state.counter + 1 });
       console.log('interval fired');
     }, 1000);
     this.setState({ interval });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     // listen for updates to the component
-    if (this.state.counter === 10) {
-      alert('you win! enter your credit card to play again');
-    }
     console.log('component has updated');
   }
 
   componentWillUnmount() {
     // cleanup
-    clearInterval(this.state.interval);
     console.log('component will be removed from the DOM');
+
+    clearInterval(this.state.interval);
   }
 
   render() {
     return (
       <div>
         <h2>Lifecycle Methods</h2>
-        <button onClick={this.handleClick}>Increment!</button>
-        <h2>Counter: {this.state.counter}</h2>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          onChange={this.handleInput}
+          value={this.state.title}
+        />
+        <h2>Title: {this.state.title}</h2>
       </div>
     );
   }
@@ -230,7 +230,7 @@ const Lifecycle = class extends Component {
 export default Lifecycle;
 ```
 
-13. Add a router to demonstrate component unmounting and mounting
+## Add a router to demonstrate component unmounting and mounting
 
 ```js
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
