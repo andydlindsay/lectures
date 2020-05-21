@@ -14,7 +14,7 @@
 
 ```js
 // class declaration
-class Square {
+class Rectangle {
   constructor(length, width) {
     this.length = length; // 2
     this.width = width; // 3
@@ -25,8 +25,8 @@ class Square {
   }
 }
 
-const square = new Square(2, 3);
-console.log(square.area()); // 6
+const rectangle = new Rectangle(2, 3);
+console.log(rectangle.area()); // 6
 
 // class expression
 const Cube = class {

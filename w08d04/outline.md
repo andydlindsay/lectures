@@ -10,7 +10,7 @@
 
 ```js
 // class declaration
-class Square {}
+class Rectangle {}
 
 // class expression
 const Cube = class {};
@@ -19,7 +19,7 @@ const Cube = class {};
 2. Properties, constructor fn, and `this`
 
 ```js
-const Square = class {
+const Rectangle = class {
   constructor(length, width) {
     this.length = length;
     this.width = width;
@@ -27,8 +27,8 @@ const Square = class {
 }
 
 // arguments are passed to the constructor fn
-const square = new Square(2, 3);
-console.log(square); // Square { length: 2, width: 3 }
+const rectangle = new Rectangle(2, 3);
+console.log(rectangle); // Rectangle { length: 2, width: 3 }
 ```
 
 3. Methods
