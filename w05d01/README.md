@@ -220,11 +220,19 @@ WHERE country = 'Canada'
 AND payment_due_date < NOW();
 ```
 
+6. List all the countries users live in (don't repeat any)
+
+```sql
+SELECT DISTINCT country
+FROM users
+ORDER BY country;
+```
+
 For the rest of the queries, we'll be using the `albums` and `songs` tables.
 
 ![albums and songs](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/albums-and-songs.png)
 
-6. List all albums along with their songs (INNER JOIN)
+7. List all albums along with their songs (INNER JOIN)
 
 ```sql
 SELECT *
@@ -232,7 +240,7 @@ FROM albums
 JOIN songs
 ON albums.id = songs.album_id;
 ```
-7. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
+8. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
 
 ```sql
 SELECT albums.album_name, COUNT(songs.id) AS num_songs
@@ -242,7 +250,7 @@ ON albums.id = songs.album_id
 GROUP BY albums.album_name;
 ```
 
-8. Enhance previous query to only include albums that have more than 10 songs (requires HAVING)
+9. Enhance previous query to only include albums that have more than 10 songs (requires HAVING)
 
 ```sql
 SELECT albums.album_name, COUNT(songs.id) AS num_songs
@@ -253,7 +261,7 @@ GROUP BY albums.album_name
 HAVING COUNT(songs.id) > 10;
 ```
 
-9. List ALL albums in the database, along with their songs if any (need LEFT JOIN so that all albums are included)
+10. List ALL albums in the database, along with their songs if any (need LEFT JOIN so that all albums are included)
 
 ```sql
 SELECT *
@@ -269,7 +277,7 @@ ON albums.id = songs.album_id
 WHERE songs.album_id IS NULL;
 ```
 
-10. List albums along with average song rating (AVG)
+11. List albums along with average song rating (AVG)
 
 ```sql
 SELECT albums.album_name, AVG(songs.rating) AS avg_rating
@@ -279,7 +287,7 @@ ON albums.id = songs.album_id
 GROUP BY albums.album_name;
 ```
 
-11. List albums and songs with rating higher than album average (subquery)
+12. List albums and songs with rating higher than album average (subquery)
 
 ```sql
 SELECT albums.album_name,
