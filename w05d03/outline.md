@@ -48,39 +48,44 @@ client
 ### Switch over the query type to execute BREAD operations
 
 ```js
-  switch (queryType) {
-    case 'browse':
-      client
-        .query('SELECT * FROM movie_villains ORDER BY id ASC')
-        .then((data) => {
-          console.log(data.rows);
-          client.end();
-        });
-      break;
+switch (queryType) {
+  case 'browse':
+    client
+      .query('SELECT * FROM movie_villains ORDER BY id ASC')
+      .then((data) => {
+        console.log(data.rows);
+        client.end();
+      });
+    break;
 
-    default:
-      client.end();
-      break;
-  }
-});
+  default:
+    client.end();
+    break;
+}
 ```
 
-### demonstrate sql injection attack (recall tweeter string interpolation hack)
-### demonstrate sanitization technique
+### Demonstrate sql injection attack (recall tweeter string interpolation hack)
+### Demonstrate sanitization technique
 
 # Second Half
 
-### create a new directory called `web`
+### Create a new directory called `web`
 
 ```bash
 mkdir web
 cd web
 npm init -y
-npm i express ejs morgan
+npm i express ejs morgan pg
 touch server.js
 ```
 
 ```js
+const express = require('express');
+const morgan = require('morgan');
+const villainRouter = require('./routes/villain-router);
+
+const app = express();
+
 // get port from env
 const port = process.env.PORT || 6789;
 
@@ -91,7 +96,7 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 
 // routes
-app.use('/', router);
+app.use('/villains', villainRouter);
 
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
