@@ -80,9 +80,9 @@ touch server.js
 ```
 
 ```js
+// server.js
 const express = require('express');
 const morgan = require('morgan');
-const villainRouter = require('./routes/villain-router);
 
 const app = express();
 
@@ -95,74 +95,140 @@ app.set('view engine', 'ejs');
 // middleware
 app.use(morgan('dev'));
 
-// routes
-app.use('/villains', villainRouter);
-
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
 ```
 
 ### Create a directory called `db`
-5. move database connection information into `db/db.js`
-6. create a file called `queries.js` and build out the queries
 
 ```js
-const db = require('./db');
+// db/db.js
+const pg = require('pg');
+const Client = pg.Client;
 
-module.exports = {  
-  // browse
-  getVillains: (cb) => {
-    db.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
-      return cb(err, data.rows);
+const options = {
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
+};
+
+const client = new Client(options);
+
+client
+  .connect()
+  .then(() => {
+    console.log(`connected to the database!!`);
+  });
+
+module.exports = client;
+```
+
+### Create a file called `queries.js` and build out the queries
+
+```js
+// db/villain-queries.js
+const client = require('./client');
+
+const getVillains = (cb) => {
+  client
+    .query('SELECT * FROM movie_villains')
+    .then((result) => {
+      cb(result.rows);
     });
-  }
+};
+
+const getVillainById = (id) => {
+  return client
+    .query('SELECT * FROM movie_villains WHERE id = $1', [id])
+    .then(result => {
+      return result.rows[0];
+    });
+};
+
+module.exports = {
+  getVillains,
+  getVillainById
 };
 ```
 
-7. create the `routes` directory
+### Create the `routes` directory
 
 ```js
+// routes/villain-router.js
 const express = require('express');
 const router = express.Router();
+const { getVillains, getVillainById } = require('../db/queries');
 
-router.get('/villains', (request, response) => {
-  getVillains((err, villains) => {
-    if (err) {
-      return response.render('error', { err });
-    }
-    response.render('index', { villains });
+router.get('/', (req, res) => {
+  getVillains((villains) => {
+    res.render('villains', { villains });
+  });
+});
+
+router.get('/:id', (req, res) => {
+  getVillainById(req.params.id)
+    .then((villain) => {
+      res.render('villain', { villain });
     });
 });
 
 module.exports = router;
 ```
 
-8. create the `views` directory
+### Create the `views` directory
 
 ```html
-<!-- index.ejs -->
+<!-- views/villains.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All of our Villains</title>
+</head>
 <body>
-  <h1>All the best villains!</h1>
-  <a href="/villains/new">Create New Villain</a>
-  <% if (villains) { %>
-    <ul>
-      <% for (const villain of villains) { %>
-        <li>
-          <a href="/villains/<%= villain.id %>">
-            <h4><%= `${villain.villain} from ${villain.movie} (${villain.id})` %></h4>
-          </a>
-        </li>
-      <% } %>
-    </ul>
+  <h1>All the Villains!</h1>
+  <% for (const villain of villains) { %>
+    <h2>Villain: <%= villain.villain %> from <%= villain.movie %></h2>
   <% } %>
 </body>
+</html>
+```
 
-<!-- error.ejs -->
+```html
+<!-- views/villain.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just one Villain!</title>
+</head>
+<body>
+  <h2>One Villain! More than enough???</h2>
+  <h2>Villain: <%= villain.villain %></h2>
+  <h2>Movie: <%= villain.movie %></h2>
+</body>
+</html>
+```
+
+```html
+<!-- views/error.ejs -->
 <% if (err) { %>
   <h2><%= err.status %></h2>
   <h2><%= err.stack %></h2>
 <% } %>
 ```
 
-9. refactor db credentials to use `dotenv`
+### Refactor db credentials to use `dotenv`
+
+```js
+const options = {
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
+};
+```
