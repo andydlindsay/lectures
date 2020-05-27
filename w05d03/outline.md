@@ -1,31 +1,15 @@
-### First Half
+# First Half
 
-1. log into `psql` and create a database called `villains` and connect to it
+### Create a database on ElephantSQL and run one of the sql files
 
-```sql
-CREATE DATABASE villains;
-\c villains;
-\! clear -- clear the terminal or cmd + d
-```
-
-2. use `\i` to include the `villains.sql`
-3. create a new user `villains_user` and give them appropriate permissions and a password
-
-```sql
-CREATE USER villains_user;
-GRANT ALL PRIVILEGES ON DATABASE villains TO villains_user;
-GRANT ALL PRIVILEGES ON TABLE villains TO villains_user;
-ALTER DATABASE villains OWNER TO villains_user;
-ALTER TABLE villains OWNER TO villains_user;
-ALTER USER villains_user WITH ENCRYPTED PASSWORD 'password';
-```
-
-4. initialize npm and install the `pg` package
+### Initialize npm and install the `pg` package
 
 ```bash
 npm init -y
 npm i pg
 ```
+
+### Require and configure the Client
 
 ```js
 const pg = require('pg');
@@ -38,27 +22,40 @@ const config = {
 };
 
 const client = new pg.Client(config);
-
-client.connect();
-client.query('SELECT * FROM movie_villains', (err, result) => console.log(err, result));
 ```
 
+### Connect to db and run a simple query
+
 ```js
-client.connect((err) => {
-  if (err) {
-    console.error(err);
-    return client.end();
-  }
+client.connect();
+client
+  .query('SELECT * FROM movie_villains')
+  .then((result) => {
+    console.log(err, result)
+  });
+```
 
-  console.log('connected to database');
+### Log connection message when connect resolves
 
+```js
+client
+  .connect()
+  .then(() => {
+    console.log('connected to database');
+  });
+```
+
+### Switch over the query type to execute BREAD operations
+
+```js
   switch (queryType) {
     case 'browse':
-      client.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
-        if (err) throw err;
-        console.log(data.rows);
-        client.end();
-      });
+      client
+        .query('SELECT * FROM movie_villains ORDER BY id ASC')
+        .then((data) => {
+          console.log(data.rows);
+          client.end();
+        });
       break;
 
     default:
@@ -68,31 +65,40 @@ client.connect((err) => {
 });
 ```
 
-5. demonstrate sql injection attack (recall tweeter string interpolation hack)
-6. demonstrate sanitization technique
+### demonstrate sql injection attack (recall tweeter string interpolation hack)
+### demonstrate sanitization technique
 
-### Second Half
+# Second Half
 
-1. create a new directory called `web`
-2. `npm init` and then install `express morgan body-parser ejs`
-3. create `server.js` and check if app works
+### create a new directory called `web`
+
+```bash
+mkdir web
+cd web
+npm init -y
+npm i express ejs morgan
+touch server.js
+```
 
 ```js
+// get port from env
+const port = process.env.PORT || 6789;
+
 // server.js
 app.set('view engine', 'ejs');
 
+// middleware
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // routes
 app.use('/', router);
 
-app.listen(3000, () => {
-  console.log('app is listening on port 3000');
+app.listen(port, () => {
+  console.log(`app is listening on port ${port}`);
 });
 ```
 
-4. create a directory called `db`
+### Create a directory called `db`
 5. move database connection information into `db/db.js`
 6. create a file called `queries.js` and build out the queries
 

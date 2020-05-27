@@ -1,10 +1,11 @@
+require('dotenv').config();
 const pg = require('pg');
 
 const config = {
-    user: 'movie_user',
-    password: 'password',
-    database: 'movies',
-    host: 'localhost'
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST
 };
 
 const client = new pg.Client(config);
@@ -12,81 +13,83 @@ const client = new pg.Client(config);
 const queryType = process.argv.slice(2)[0];
 let id = null;
 
-client.connect((err) => {
-    if (err) {
-        console.error(err);
-        return client.end();
-    }
+client.connect().then(() => console.log('here'));
 
-    console.log('connected to database');
+// client.connect((err) => {
+//     if (err) {
+//         console.error(err);
+//         return client.end();
+//     }
 
-    switch (queryType) {
+//     console.log('connected to database');
 
-        case 'browse':
-            client.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return false;
-                }
-                console.log(data.rows);
-                client.end();
-            });
-            break;
+//     switch (queryType) {
 
-        case 'read':
-            id = process.argv.slice(2)[1];
-            client.query('SELECT * FROM movie_villains WHERE id = $1', [id], (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return false;
-                }
-                console.log(data.rows);
-                client.end();
-            });
-            break;
+//         case 'browse':
+//             client.query('SELECT * FROM movie_villains ORDER BY id ASC', (err, data) => {
+//                 if (err) {
+//                     console.error(err);
+//                     return false;
+//                 }
+//                 console.log(data.rows);
+//                 client.end();
+//             });
+//             break;
 
-        case 'edit':
-            id = process.argv.slice(2)[1];
-            const newName = process.argv.slice(2)[2];
-            client.query('UPDATE movie_villains SET villain = $1 WHERE id = $2', [newName, id], (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return false;
-                }
-                console.log(data.rows);
-                client.end();
-            });
-            break;
+//         case 'read':
+//             id = process.argv.slice(2)[1];
+//             client.query('SELECT * FROM movie_villains WHERE id = $1', [id], (err, data) => {
+//                 if (err) {
+//                     console.error(err);
+//                     return false;
+//                 }
+//                 console.log(data.rows);
+//                 client.end();
+//             });
+//             break;
 
-        case 'add':
-            const villain = process.argv.slice(2)[1];
-            const movie = process.argv.slice(2)[2];
-            client.query('INSERT INTO movie_villains (villain, movie) VALUES ($1, $2)', [villain, movie], (err) => {
-                if (err) {
-                    console.error(err);
-                    return false;
-                }
-                console.log('record created!');
-                client.end();
-            });
-            break;
+//         case 'edit':
+//             id = process.argv.slice(2)[1];
+//             const newName = process.argv.slice(2)[2];
+//             client.query('UPDATE movie_villains SET villain = $1 WHERE id = $2', [newName, id], (err, data) => {
+//                 if (err) {
+//                     console.error(err);
+//                     return false;
+//                 }
+//                 console.log(data.rows);
+//                 client.end();
+//             });
+//             break;
 
-        case 'delete':
-            id = process.argv.slice(2)[1];
-            client.query('DELETE FROM movie_villains WHERE id = $1', [id], (err) => {
-                if (err) {
-                    console.error(err);
-                    return false;
-                }
-                console.log('record deleted!');
-                client.end();
-            });
-            break;
+//         case 'add':
+//             const villain = process.argv.slice(2)[1];
+//             const movie = process.argv.slice(2)[2];
+//             client.query('INSERT INTO movie_villains (villain, movie) VALUES ($1, $2)', [villain, movie], (err) => {
+//                 if (err) {
+//                     console.error(err);
+//                     return false;
+//                 }
+//                 console.log('record created!');
+//                 client.end();
+//             });
+//             break;
 
-        default:
-            client.end();
-            break;
+//         case 'delete':
+//             id = process.argv.slice(2)[1];
+//             client.query('DELETE FROM movie_villains WHERE id = $1', [id], (err) => {
+//                 if (err) {
+//                     console.error(err);
+//                     return false;
+//                 }
+//                 console.log('record deleted!');
+//                 client.end();
+//             });
+//             break;
 
-    }
+//         default:
+//             client.end();
+//             break;
+
+//     }
     
-});
+// });

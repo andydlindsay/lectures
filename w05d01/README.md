@@ -220,7 +220,7 @@ WHERE country = 'Canada'
 AND payment_due_date < NOW();
 ```
 
-6. List all the countries users live in (don't repeat any)
+6. List all the countries users live in; don't repeat any countries (DISTINCT)
 
 ```sql
 SELECT DISTINCT country

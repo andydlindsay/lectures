@@ -1,11 +1,11 @@
 # W05D03 SQL from our Apps
 
 ### To Do
-- [ ] Create a database and query it using `psql` terminal
-- [ ] Perform `BREAD` actions on database from command line
-- [ ] Demonstrate a SQL Injection attack
+- [ ] Create a database
+- [ ] Perform `BREAD` actions on database via command line app
+- [ ] Demonstrate an SQL Injection attack
 - [ ] Serve database content to the browser
-- [ ] Protecting your secrets with Environment Variables
+- [ ] Protecting secrets with Environment Variables
 
 ### node-postgres
 
@@ -113,6 +113,7 @@ require('dotenv').config();
 ```
 
 ### Useful Links
+* ["SQL is demon spawn"](https://youtu.be/Hh6CbrDr0Lk)
 * [node-postgres](https://node-postgres.com/)
 * [Postgres Numeric Data Types](https://www.postgresql.org/docs/11/datatype-numeric.html)
 * [Little Bobby Tables](https://xkcd.com/327/)
