@@ -1,5 +1,10 @@
 # Outline
 
+### Reading Code/Run It in Your Head
+* Always have a guess about what the code will do before you run it
+* Try to read the code as the computer would; not necessarily from top to bottom
+* It's fine to be wrong; adjust your next guess accordingly
+
 ### Blocking Code
 
 ```js
@@ -24,7 +29,7 @@ const elapsedTime = endTime - startTime;
 console.log(`that took ${elapsedTime}ms to complete`);
 ```
 
-### Non-Blocking AKA Intro to setTimeout
+### Intro to setTimeout
 * Part of the breakout
 
 ```js
@@ -35,6 +40,30 @@ setTimeout(() => {
 setTimeout(() => {
   console.log('hey hey');
 }, 2000);
+```
+
+### Non-Blocking Code
+* Part of the breakout
+
+```js
+console.log('before the setTimeout');
+
+setTimeout(() => {
+  console.log('inside the setTimeout');
+}, 1000);
+
+console.log('after the setTimeout');
+```
+
+```js
+// what about with zero delay?
+console.log('before the setTimeout');
+
+setTimeout(() => {
+  console.log('inside the setTimeout');
+}, 0);
+
+console.log('after the setTimeout');
 ```
 
 ### Returning Values from Async Code
