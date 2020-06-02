@@ -141,3 +141,13 @@ interface Container<T> {
   contents: T
 }
 ```
+
+### Adding TS to React
+* [React Docs: Adding TypeScript](https://create-react-app.dev/docs/adding-typescript/)
+
+```sh
+npx create-react-app my-app --template typescript
+
+# or
+yarn create react-app my-app --template typescript
+```
