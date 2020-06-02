@@ -36,6 +36,13 @@ console.log(`that took ${elapsedTime}ms to complete`);
 setTimeout(() => {
   console.log('woop woop');
 }, 3000);
+```
+
+```js
+// declare a timeout with a shorter delay after the first
+setTimeout(() => {
+  console.log('woop woop');
+}, 3000);
 
 setTimeout(() => {
   console.log('hey hey');
@@ -67,6 +74,7 @@ console.log('after the setTimeout');
 ```
 
 ### Returning Values from Async Code
+* Don't read this code from top to bottom
 
 ```js
 const higherOrderFn = (cb) => {
@@ -125,13 +133,20 @@ const myFn = (delays, cb, isAsc = true) => {
   setTimeout(() => cb(sorted), maxDelay + 1);
 };
 
-myFn(nums, (asc) => console.log('asc', asc));
-myFn(nums, (desc) => console.log('desc', desc), false);
+myFn(nums, (sorted) => console.log(sorted));
+myFn(nums, (sorted) => console.log(sorted), false);
 ```
 
 ### setInterval
 
 ```js
+setInterval(() => {
+  console.log('hello there!');
+}, 1000);
+```
+
+```js
+// clear the interval
 let iterations = 0;
 
 const interval = setInterval(() => {
