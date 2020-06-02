@@ -12,10 +12,9 @@ console.log('all done?');
 ```
 
 ```js
-const stop = 10000;
 const startTime = new Date().getTime();
 
-for (let i = 0; i < stop; i++) {
+for (let i = 0; i < 10000; i++) {
   const date = new Date();
   console.log(date);
 }
@@ -23,6 +22,19 @@ for (let i = 0; i < stop; i++) {
 const endTime = new Date().getTime();
 const elapsedTime = endTime - startTime;
 console.log(`that took ${elapsedTime}ms to complete`);
+```
+
+### Non-Blocking AKA Intro to setTimeout
+* Part of the breakout
+
+```js
+setTimeout(() => {
+  console.log('woop woop');
+}, 3000);
+
+setTimeout(() => {
+  console.log('hey hey');
+}, 2000);
 ```
 
 ### Returning Values from Async Code
