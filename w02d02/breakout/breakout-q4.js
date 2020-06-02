@@ -7,4 +7,3 @@ for (i = 0; i < 3; i++) {
 }
 
 // what will the above code output?
-

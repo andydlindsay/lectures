@@ -45,7 +45,7 @@ console.log('I am printed second');
 ```
 
 * `setInterval` is similar to `setTimeout`, but continues to fire the callback on an interval rather than being executed only once
-* `setInterval` returns a value to us so that we can later make reference to the interval (eg. in order to cancel it)
+* Like `setTimeout`, `setInterval` returns a value to us so that we can later make reference to the interval (eg. in order to cancel it)
 
 ```js
 // this will log "hello there!" to the console every second until stopped
@@ -53,7 +53,7 @@ const interval = setInterval(() => {
   console.log('hello there!');
 }, 1000);
 
-// to stop an interval use clearInterval
+// to stop an interval use clearInterval, for timeouts use clearTimeout
 clearInterval(interval);
 ```
 

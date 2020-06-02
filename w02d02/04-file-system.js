@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const data = fs.readFileSync('./my-doc.txt', { encoding: 'utf8' });
+const data = fs.readFileSync('./index.html', { encoding: 'utf8' });
 console.log(data);
 
 const cb = (err, data) => {
@@ -8,6 +8,6 @@ const cb = (err, data) => {
   console.log(data);
 };
 
-fs.readFile('./my-doc.txt', { encoding: 'utf8' }, cb);
+fs.readFile('./index.html', { encoding: 'utf8' }, cb);
 
 console.log('I am here');
