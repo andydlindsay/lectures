@@ -7,7 +7,9 @@ tsc index.ts # produces index.js
 tsc index.ts --outFile my-index.js # produces my-index.js
 tsc index.ts --target es6 # compiles to es6 syntax JS
 tsc index.ts --watch # watches for changes to index.ts
+```
 
+```sh
 tsc --init # will create a tsconfig.json file in the current directory
 tsc # looks for a tsconfig.json file
 ```
@@ -94,9 +96,6 @@ const returnsPromise = (name: string): Promise<string> => {
 * "If it looks like a duck, walks like a duck, and quacks like a duck, then it's probably a duck."
 
 ```ts
-// no need to specify string type
-const name = 'Alice';
-
 // works with interfaces as well
 interface User {
   username: string;
