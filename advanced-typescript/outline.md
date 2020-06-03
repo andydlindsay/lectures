@@ -50,7 +50,6 @@ myArr.push(false); // error!
 ### Objects
 
 ```ts
-// the interface specifies which keys an object will have and what type the values will be
 interface Author {
   name: string;
   penName: string;
@@ -89,6 +88,22 @@ const returnsPromise = (name: string): Promise<string> => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve(name), 1000);
   });
+};
+```
+
+### Object Methods
+
+```ts
+interface Author {
+  name: string;
+  writeBook: (title: string) => boolean;
+}
+
+const agatha: Author = {
+  name: 'Agatha',
+  writeBook: (title) => {
+    return false;
+  }
 };
 ```
 

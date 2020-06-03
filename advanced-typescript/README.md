@@ -6,7 +6,7 @@
 * [ ] Primitive Types
 * [ ] Arrays
 * [ ] Objects
-* [ ] Functions
+* [ ] Functions and Methods
 * [ ] Duck Typing
 * [ ] Generics
 
@@ -33,6 +33,10 @@ tsc index.ts --watch # watches for changes to index.ts
 
 # the target flag allows us to specify the version of JS we are compiling to
 tsc index.ts --target es6 # compiles to es6 syntax JS
+
+tsc --init # will create a tsconfig.json file in the current directory
+# after initializing, running `tsc` will use the configuration specified in the file
+tsc
 ```
 
 * The compiler can be customized and supports [many command line options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
@@ -97,13 +101,15 @@ interface Author {
   penName: string;
   // optional params are marked with a question mark (?)
   isActive?: boolean;
+  // function types need the type of the arguments and the return type
+  writeBook: (title: string) => boolean;
 }
 
 const agatha: Author = {}; // error!
 ```
 
 ```sh
-error TS2739: Type '{}' is missing the following properties from type 'Author': name, penName
+error TS2739: Type '{}' is missing the following properties from type 'Author': name, penName, writeBook
 ```
 
 * **Note:** The optional param `isActive` did not appear in the list of missing properties
@@ -230,8 +236,6 @@ interface Container<T> {
   contents: T
 }
 ```
-
-* Generics are very powerful and can be quite complex
 
 ### Useful Links
 * [TypeScript Official Site](https://www.typescriptlang.org/)
