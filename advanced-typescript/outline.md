@@ -107,6 +107,17 @@ const agatha: Author = {
 };
 ```
 
+### Higher Order Functions
+
+```ts
+// 
+const runMyFunction = (cb: (x: number) => boolean) => {
+    cb(2);
+};
+
+runMyFunction((num) => num === 3);
+```
+
 ### Duck Typing
 * "If it looks like a duck, walks like a duck, and quacks like a duck, then it's probably a duck."
 
