@@ -110,12 +110,11 @@ const agatha: Author = {
 ### Higher Order Functions
 
 ```ts
-// 
-const runMyFunction = (cb: (x: number) => boolean) => {
+const runMyFunction = (cb: (x: number) => void) => {
     cb(2);
 };
 
-runMyFunction((num) => num === 3);
+runMyFunction((num) => console.log(num));
 ```
 
 ### Duck Typing
