@@ -43,11 +43,6 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-### Commit Code
-* Run `git status` and see `node_modules` folder
-* Create `.gitignore` and add `node_modules`
-* Run status, add, status, and commit
-
 ### Basic Express Server
 
 ```js
@@ -63,6 +58,11 @@ app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
 ```
+
+### Commit Code
+* Run `git status` and see `node_modules` folder
+* Create `.gitignore` and add `node_modules`
+* Run status, add, status, and commit
 
 ### We Can Send Static Files
 * Create a simple `index.html`
