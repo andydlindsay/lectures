@@ -15,6 +15,10 @@ const http = require('http');
 const port = 3000;
 
 const server = http.createServer((request, response) => {
+  response.write('hello world');
+  response.end();
+
+  // can just use .end instead
   response.end('hello world');
 });
 
@@ -86,10 +90,8 @@ app.use((req, res, next) => {
 ### Other People's Middleware
 
 ```js
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 ```
 
