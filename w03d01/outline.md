@@ -1,5 +1,16 @@
+# Outline
+
+### Intro to Web Servers
+* Uses the HTTP protocol which is a `request -> response` protocol
+* Responds with a status code and (usually) content of some kind
+* Content examples: images, videos, static files, dynamically rendered files, or JSON
+* An HTTP request needs a host and a port (discuss DNS servers)
+* Each request is a combination of verb/method and endpoint (eg. `GET /users`)
+* 65,535 ports for each internet connection for server to listen on
+
+### Simple Web Server using `http` module
+
 ```js
-// 01-simple-server.js
 const http = require('http');
 const port = 3000;
 
@@ -12,11 +23,9 @@ server.listen(port, () => {
 });
 ```
 
-```js
-// 02-adding-routes.js
-const http = require('http');
-const port = 3000;
+### Add Some Routes
 
+```js
 // add custom routes to the `createServer` function
 const server = http.createServer((req, res) => {
   const route = `${req.method} ${req.url}`;
@@ -32,15 +41,16 @@ const server = http.createServer((req, res) => {
       res.end('Route not found');
   }
 });
-
-server.listen(port, () => {
-  console.log(`server listening on port ${port}`);
-});
 ```
 
+### Commit Code
+* Run `git status` and see `node_modules` folder
+* Create `.gitignore` and add `node_modules`
+* Run status, add, status, and commit
+
+### Basic Express Server
+
 ```js
-// 03-simple-express-server.js
-// basic Express server
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -54,56 +64,38 @@ app.listen(port, () => {
 });
 ```
 
+### We Can Send Static Files
+* Create a simple `index.html`
+
 ```js
-// 04-middleware.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const port = 1234;
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan('dev'));
-
 app.use('/', (req, res) => {
-  res.send('hello world');
-});
-
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
+  // res.send('hello world');
+  res.sendFile(`${__dirname}/index.html`);
 });
 ```
 
-```js
-// 05-custom-middleware.js
-const express = require('express');
-const app = express();
-const port = 9876;
+### Intro to Middleware
 
+```js
 app.use((req, res, next) => {
   console.log(`Incoming Request: ${req.method} ${req.url}`);
   next();
 });
-
-app.get('/', (req, res) => {
-  res.send('hello world');
-});
-
-app.get('/users', (req, res) => {
-  res.send('the users endpoint');
-});
-
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
-});
 ```
 
-```js
-// 06-templates-and-ejs.js
-const express = require('express');
-const app = express();
-const port = 12345;
+### Other People's Middleware
 
+```js
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('dev'));
+```
+
+### Intro to Templating
+
+```js
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
@@ -114,10 +106,6 @@ app.get('/', (req, res) => {
   };
 
   res.render('index', templateVars);
-});
-
-app.listen(port, () => {
-  console.log(`app is listening on port ${port}`);
 });
 ```
 

@@ -5,7 +5,6 @@
 - [ ] Intro to Express
 - [ ] What is "Middleware?"
 - [ ] Custom Middleware
-- [ ] Breakout! Coding exercise
 - [ ] Server-side view templates with EJS
 
 ### Web Servers
@@ -105,9 +104,6 @@ app.use((req, res, next) => {
   next();
 });
 ```
-
-### Breakout! Coding Exercise
-* Clone this [repo](https://github.com/andydlindsay/w03d01-breakout) and follow the instructions in `README.md`
 
 ### Template Engines and EJS
 * From [the Express Docs](https://expressjs.com/en/guide/using-template-engines.html):
