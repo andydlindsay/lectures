@@ -78,7 +78,7 @@ const newObj = { ...myObj, name: 'Bob' };
 console.log(newObj); // { name: 'Bob', age: 27 }
 ```
 
-- The spread operator makes a shallow copy only (the reference to child objects/arrays is copied instead of copying the object/array)
+- The spread operator makes a shallow copy only (the reference to child objects/arrays is copied instead of duplicating the object/array)
 
 ```js
 const objOne = {
