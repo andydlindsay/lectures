@@ -1,4 +1,4 @@
-# W7D2 Immutable Data
+# W7D2 Immutable Update Patterns
 
 ### To Do
 - [ ] Recap: Components, Props, and State
@@ -76,6 +76,56 @@ newObj.name = 'Bob'; // myObj not affected
 const myObj = { name: 'Alice', age: 27 };
 const newObj = { ...myObj, name: 'Bob' };
 console.log(newObj); // { name: 'Bob', age: 27 }
+```
+
+- The spread operator makes a shallow copy only (the reference to child objects/arrays is copied instead of copying the object/array)
+
+```js
+const objOne = {
+  key: 'value',
+  childObj: {
+    name: 'Alice',
+    likes: ['pizza']
+  }
+};
+
+// shallow copy
+const objTwo = {...objOne};
+
+objTwo.childObj.name = 'Bob';
+console.log(objOne.childObj.name); // 'Bob' ooooops!!
+
+objTwo.childObj.likes.push('pineapple');
+console.log(objOne.childObj.likes); // ['pizza', 'pineapple'] uh oh
+```
+
+- To make sure that we get a true copy, we need to spread each child object and array
+
+```js
+const objOne = {
+  key: 'value',
+  childObj: {
+    name: 'Alice',
+    likes: ['pizza']
+  }
+};
+
+// deep copy
+const objTwo = { 
+  ...objOne,
+  childObj: {
+    ...objOne.childObj,
+    likes: [
+      ...objOne.childObj.likes
+    ]
+  }
+};
+
+objTwo.childObj.name = 'Bob';
+console.log(objOne.childObj.name); // 'Alice' 😅
+
+objTwo.childObj.likes.push('pineapple');
+console.log(objOne.childObj.likes); // ['pizza']
 ```
 
 ### Updating Complex State
