@@ -2,7 +2,7 @@
 
 ### To Do
 - [ ] Recap: Components, Props, and State
-- [ ] Immutability
+- [ ] Immutable Update Patterns
 - [ ] Benefits of Immutability
 - [ ] Immutable Data Patterns with Arrays and Objects
 - [ ] Updating Complex State
@@ -22,7 +22,7 @@
   - Can be passed down to child components as props
   - For state to persist in a functional component, we need to use the `useState` hook
 
-### Immutability
+### Immutable Update Patterns
 - Immutability is an important concept in functional programming
 - From [Wikipedia](https://en.wikipedia.org/wiki/Persistent_data_structure):
 > In computing, a persistent data structure is a data structure that always preserves the previous version of itself when it is modified. Such data structures are effectively immutable, as their operations do not (visibly) update the structure in-place, but instead always yield a new updated structure.
@@ -34,7 +34,7 @@
 - Makes it possible to compare the current data to the previous version to see what has changed ([the delta](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity))
 
 ### Immutable Data Patterns with Arrays and Objects
-- Arrays and objects in JavaScript are passed by reference which means that we can easily change the original object/array without meaning to
+- Arrays and objects in JavaScript are stored as references which means that we can easily change the original object/array without meaning to
 
 ```js
 const myObj = { name: 'Alice' };

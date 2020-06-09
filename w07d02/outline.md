@@ -108,6 +108,83 @@ const clickHandler = () => {
 };
 ```
 
+### Immutable Update Patterns
+* Never mutate data directly
+* Instead, overwrite it with all new data (clone it and change it)
+
+### Why Immutability?
+- Immutable data structures are simpler to construct, test, and use
+- Immutable data is side-effect free (avoids weird bugs in our app)
+- Makes it possible to compare the current data to the previous version to see what has changed
+
+### Create `immutable.js`
+
+```js
+// objects/arrays are references
+const user = {
+  name: 'Alice',
+  age: 30
+};
+const otherUser = user; // otherObj has the same reference as myObj
+otherUser.name = 'Bob';
+console.log(user); // { name: 'Bob' } oops!!
+```
+
+```js
+// copy the object using the spread operator
+const user = {
+  name: 'Alice',
+  age: 30
+};
+const otherUser = { ...user };
+otherUser.name = 'Bob';
+console.log(user);
+```
+
+```js
+// update the `name` key at the same time
+const otherUser = { ...user, name: 'Bob' };
+console.log(otherUser);
+```
+
+### Spread operator only makes a shallow copy
+
+```js
+// user is still being updated
+const user = {
+  name: 'Alice',
+  age: 30,
+  likes: ['pizza']
+};
+const otherUser = { ...user, name: 'Bob' };
+otherUser.likes.push('bananas');
+console.log(user);
+```
+
+```js
+// spread child arrays/objects as well
+const otherUser = {
+  ...user,
+  name: 'Bob',
+  likes: [
+    ...user.likes
+  ]
+};
+otherUser.likes.push('bananas');
+```
+
+```js
+// insert 'bananas' at the same time
+const otherUser = {
+  ...user,
+  name: 'Bob',
+  likes: [
+    ...user.likes,
+    'bananas'
+  ]
+};
+```
+
 ### Create a `Pizza` component
 
 ```js
@@ -126,7 +203,7 @@ const Pizza = () => {
     <div>
       <h2>Create Your Own Pizza! <span role="img" aria-label="pizza slice emoji">🍕</span></h2>
 
-      <label for="new-topping">New Topping:</label>
+      <label htmlFor="new-topping">New Topping:</label>
       <input
         type="text"
         id="new-topping"
@@ -136,8 +213,8 @@ const Pizza = () => {
       <button onClick={onAddToppingClick}>Add Topping!</button>
 
       <h3>Current Toppings:</h3>
-      { toppings.map(topping => {
-        return (<p>{topping}</p>);
+      { toppings.map((topping, index) => {
+        return (<p key={index}>{topping}</p>);
       }) }
     </div>
   );
@@ -146,7 +223,98 @@ const Pizza = () => {
 export default Pizza;
 ```
 
+### Add more complex state
 
+```js
+const [crust, setCrust] = React.useState('thin');
+
+<div>
+  <label htmlFor="crust">Crust:</label>
+  <input
+    type="text"
+    id="crust"
+    value={crust}
+    onChange={(event) => setCrust(event.target.value)}
+  />
+</div>
+
+<h3>Crust Type: {crust}</h3>
+```
+
+### Refactor state into a single object
+
+```js
+const [pizza, setPizza] = React.useState({
+  toppings: ['cheese'],
+  crust: 'thin'
+});
+```
+
+```js
+// update the crust first
+const onChangeCrust = (crust) => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      crust
+    }
+  });
+};
+
+<div>
+  <label htmlFor="crust">Crust:</label>
+  <input
+    type="text"
+    id="crust"
+    value={pizza.crust}
+    onChange={(event) => onChangeCrust(event.target.value)}
+  />
+</div>
+```
+
+```js
+// update the toppings
+const onAddToppingClick = () => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      toppings: [
+        ...prevPizza.toppings,
+        newTopping
+      ]
+    }
+  });
+  setNewTopping('');
+};
+```
+
+### Add more keys to the pizza: `size`, `isGlutenFree`, etc
+
+```js
+const onChangeSize = (size) => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      size
+    }
+  });
+};
+
+<div>
+  <label htmlFor="size">Size:</label>
+  <select
+    id="size"
+    value={pizza.size}
+    onChange={(event) => onChangeSize(event.target.value)}
+  >
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select>
+</div>
+```
+
+### Helper functions
 
 ```js
 const genRandomId = () => {
@@ -155,11 +323,3 @@ const genRandomId = () => {
     .substring(2, 6);
 };
 ```
-
-pizza
-  - crust
-    - type (thick, thin, pan)
-    - isStuffed (boolean)
-    - size (small, medium, large)
-    - isGlutenFree (boolean)
-  - toppings[]
