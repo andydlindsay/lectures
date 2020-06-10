@@ -343,3 +343,12 @@ const getUserByEmail = (users, email) => {
   return null;
 };
 ```
+
+### Create `post` for logout
+
+```js
+app.post('/logout', (req, res) => {
+  res.clearCookie('userId');
+  res.redirect('/login');
+});
+```
