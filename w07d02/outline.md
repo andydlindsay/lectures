@@ -201,7 +201,7 @@ const Pizza = () => {
 
   return (
     <div>
-      <h2>Create Your Own Pizza! <span role="img" aria-label="pizza slice emoji">🍕</span></h2>
+      <h2>Create Your Own Pizza!</h2>
 
       <label htmlFor="new-topping">New Topping:</label>
       <input

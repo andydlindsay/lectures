@@ -1,0 +1,34 @@
+{
+  "homeHeadings": {
+    "en": "Greetings! Hello and welcome!",
+    "fr": "Salutations! Bonjour et bienvenue!",
+    "ja": "こんにちは！こんにちは、ようこそ！",
+    "ko": "인사말! 안녕하세요, 환영합니다!",
+    "es": "¡Saludos! ¡Hola y bienvenido!",
+    "so": "Salaan! Salaan yo soo dhawow!"
+  },
+  "homeBodies": {
+    "en": "This is the greatest site ever. But you must log in before proceeding.",
+    "fr": "C'est le meilleur site de tous les temps. Mais vous devez vous connecter avant de continuer.",
+    "ja": "これは史上最高のサイトです。ただし、続行する前にログインする必要があります。",
+    "ko": "이것은 가장 큰 사이트입니다. 그러나 계속 진행하기 전에 로그인해야합니다.",
+    "es": "Este es el mejor sitio de la historia. Pero debe iniciar sesión antes de continuar.",
+    "so": "Kani waa goobta ugu weyn abid. Laakiin waa inaad gasho ka hor intaadan sii wadin."
+  },
+  "aboutHeadings": {
+    "en": "About Us",
+    "fr": "À propos de nous",
+    "ja": "私たちに関しては",
+    "ko": "회사 소개",
+    "es": "Sobre nosotras",
+    "so": "Nagu saabsan"
+  },
+  "aboutBodies": {
+    "en": "We are a small group of indie developers. A group can be one person. Who said it can't?",
+    "fr": "Nous sommes un petit groupe de développeurs indépendants. Un groupe peut être une seule personne. Qui a dit que non?",
+    "ja": "私たちはインディー開発者の小さなグループです。グループは1人にすることができます。だめだと誰が言ったの？",
+    "ko": "우리는 소규모 인디 개발자 그룹입니다. 그룹은 한 사람이 될 수 있습니다. 누가 할 수 없다고 했어요?",
+    "es": "Somos un pequeño grupo de desarrolladores independientes. Un grupo puede ser una persona. ¿Quién dijo que no puede?",
+    "so": "Waxaan nahay koox yar oo horumariya indie. Kooxdu waxay noqon kartaa hal qof. Kumaa yiri ma awoodi karto?"
+  }
+}
