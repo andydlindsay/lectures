@@ -50,7 +50,7 @@ const languages = require('./languages.json');
 console.log(languages);
 ```
 
-### Create the `views` directory and add a `home` and `about` template
+### Create the `home` and `about` templates
 
 ```html
 <!DOCTYPE html>
@@ -271,14 +271,14 @@ app.post('/login', (req, res) => {
     }
   }
   
-  // if no user, return 401
+  // if no user, return 400 (bad request)
   if (!foundUser) {
-    return res.status(401).send('no user with that email found');
+    return res.status(400).send('no user with that email found');
   }
 
   // compare user password to request password
   if (foundUser.password !== password) {
-    return res.status(401).send('incorrect password');
+    return res.status(400).send('incorrect password');
   } else {
     res.cookie('userId', foundUser.id);
     res.redirect('/protected');
@@ -314,7 +314,7 @@ app.post('/register', (req, res) => {
     }
   }
   if (foundUser) {
-    return res.status(401).send('a user with that email already exists');
+    return res.status(400).send('a user with that email already exists');
   }
 
   // generate a unique identifier and add the new user to users object
