@@ -1,17 +1,24 @@
-### External Resources
+# External Resources
 
 ### Packages Needed
 
-* `npm i @testing-library/react-hooks`
-* `react-test-renderer`
+* `yarn add @testing-library/react-hooks react-test-renderer axios`
 
-### Outline
+# Outline
 
-1. Create a component called `Title` with logic to change the document title
+### Custom Hooks
+- From the [React Docs](https://reactjs.org/docs/hooks-custom.html):
+> Building your own Hooks lets you extract component logic into reusable functions.
+- We can pull repetitive or complex code out of our components and move it into _custom hooks_
+- _Custom hooks_ are just JavaScript functions that can use React hooks
+- They must start with the prefix `use` so that React knows they are hooks
+- Multiple components using the same custom hook **do not share state**
+
+### Create a component called `Title` with logic to change the document title
 
 ```jsx
 const Title = () => {
-  const [title, setTitle] = React.useState('Custom Hooks');
+  const [title, setTitle] = React.useState('Hooks are neato!');
 
   React.useEffect(() => {
     document.title = title;
@@ -19,7 +26,7 @@ const Title = () => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      setTitle('Hello World');
+      setTitle('I luv hooks!');
     }, 3000);
   }, []);
 
@@ -29,7 +36,7 @@ const Title = () => {
 };
 ```
 
-2. Create a `useDocumentTitle` hook
+### Create a `useDocumentTitle` hook
 
 ```jsx
 const useDocumentTitle = (title) => {
@@ -39,13 +46,13 @@ const useDocumentTitle = (title) => {
 };
 ```
 
-3. Refactor the `Title` component to use the new hook
+### Refactor the `Title` component to use the new hook
 
 ```jsx
 useDocumentTitle(title);
 ```
 
-4. Create a component called `Mouse` with logic to listen for the mouse position
+### Create a component called `Mouse` with logic to listen for the mouse position
 
 ```jsx
 const Mouse = () => {
@@ -70,27 +77,37 @@ const Mouse = () => {
 };
 ```
 
-5. Show `useMousePosition.test.js` and unskip the tests
+### Show `useMousePosition.test.js` and unskip the tests
 
-6. Create `useMousePosition.js` and move the mouse logic into it
+### Create `useMousePosition.js` and move the mouse logic into it
 
 ```js
+import React from 'react';
+
 const useMousePosition = () => {
   const [coords, setCoords] = React.useState({ x: 0, y: 0 });
 
   React.useEffect(() => {
-    document.addEventListener('mousemove', e => {
-      setCoords({ x: e.clientX, y: e.clientY});
-    });
+    const mouseHandler = (event) => {
+      setCoords({ x: event.clientX, y: event.clientY });
+    };
+
+    document.addEventListener('mousemove', mouseHandler);
+
+    return () => document.removeEventListener('mousemove', mouseHandler);
   }, []);
 
   return coords;
 };
+
+export default useMousePosition;
 ```
 
-7. Import the new hook into the `Mouse` component
+### Import the new hook into the `Mouse` component
 
 ```js
+import useMousePosition from '../hooks/useMousePosition';
+
 const coords = useMousePosition();
 
 const style = {
@@ -102,7 +119,7 @@ const style = {
 };
 ```
 
-8. Import the hook into the `Title` component
+### Import the hook into the `Title` component
 
 ```js
 const Title = () => {
@@ -118,9 +135,11 @@ const Title = () => {
 };
 ```
 
-9. Create the `Input` component and give it some form handling logic
+### Create the `Input` component and give it some form handling logic
 
 ```jsx
+import React from 'react';
+
 const Input = () => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -163,13 +182,17 @@ const Input = () => {
     </div>
   );
 };
+
+export default Input;
 ```
 
-10. Show `useInput.test.js`
+### Show `useInput.test.js`
 
-11. Create `useInput.js` hook
+### Create `useInput.js` hook
 
 ```js
+import React from 'react';
+
 const useInput = (initialValue) => {
   const [value, setValue] = React.useState(initialValue);
 
@@ -177,40 +200,43 @@ const useInput = (initialValue) => {
     setValue(event.target.value);
   };
 
-  return [value, onChange];
+  return { value, onChange };
 };
+
+export default useInput;
 ```
 
-12. Refactor the `Input` component to use the new hook
+### Refactor the `Input` component to use the new hook
 
 ```jsx
+import React from 'react';
+import useInput from '../hooks/useInput';
+
 const Input = () => {
-  const [username, onChangeUsername] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const usernameInput = useInput('');
+  const passwordInput = useInput('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`Thanks for logging in ${username} with password: ${password}`);
+    alert(`Thanks for logging in ${usernameInput.value} with password: ${passwordInput.value}`);
   };
 
   return (
     <div>
       <h2>Input Hook</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="usernameInput">Username:</label>
         <input 
           type="text"
           id="username"
-          value={username}
-          onChange={onChangeUsername}
+          {...usernameInput}
         />
         <br/>
         <label htmlFor="password">Password:</label>
         <input 
-          type="text"
+          type="password"
           id="password"
-          value={password}
-          onChange={onChangePassword}
+          {...passwordInput}
         />
         <br/>
         <button type="submit">Login!</button>
@@ -218,11 +244,13 @@ const Input = () => {
     </div>
   );
 };
+
+export default Input;
 ```
 
-13. Discuss how the value could be reset inside the hook to extend the functionality
+### Discuss how the value could be reset inside the hook to extend the functionality
 
-14. Create the `useLocationData` hook
+### Create the `useLocationData` hook
 
 ```js
 const useLocationData = () => {
@@ -238,7 +266,7 @@ const useLocationData = () => {
 };
 ```
 
-15. Create the `Location` component to use the new hook
+### Create the `Location` component to use the new hook
 
 ```jsx
 import useLocationData from '../hooks/useLocationData';
@@ -257,6 +285,46 @@ const Location = () => {
 };
 ```
 
-16. Review `useRequest` hook
+### Review `useRequest` hook
 
-17. Review `useKeyPress` hook
+```jsx
+import React from 'react';
+import useRequest from '../hooks/useRequest';
+
+const Request = () => {
+  const { data, loading } = useRequest('https://www.dnd5eapi.co/api/classes');
+
+  return (
+    <div>
+      <h2>D&D Classes</h2>
+      { loading && <p>Please wait...</p> }
+      { data.results && data.results.map(datum => (
+        <p key={datum.index}>{ datum.name }</p>
+      )) }
+    </div>
+  );
+};
+
+export default Request;
+```
+
+### Review `useKeyPress` hook
+
+```jsx
+import React from 'react';
+import useKeyPress from '../hooks/useKeyPress';
+
+const KeyPress = () => {
+  const happyPress = useKeyPress('h');
+  const sadPress = useKeyPress('s');
+
+  return (
+    <div>
+      { happyPress && <h2>Smile</h2> }
+      { sadPress && <h2>Frown</h2> }
+    </div>
+  );
+};
+
+export default KeyPress;
+```
