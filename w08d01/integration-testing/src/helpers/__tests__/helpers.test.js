@@ -1,17 +1,17 @@
 import { announceResult } from '../helpers'
 
-let fakeState;
-
-beforeEach(() => {
-  fakeState = {
-    compSelection: null,
-    playerSelection: null,
-    status: 'Waiting',
-    cheating: false
-  };
-});
-
 describe('announceResult function', () => {
+  let fakeState;
+
+  beforeEach(() => {
+    fakeState = {
+      compSelection: null,
+      playerSelection: null,
+      status: 'Waiting',
+      cheating: false
+    };
+  });
+  
   test('returns "Won" if player is "Axe" and comp is "Tree"', () => {
     fakeState.playerSelection = 'Axe';
     fakeState.compSelection = 'Tree';

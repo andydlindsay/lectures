@@ -6,7 +6,6 @@ const Computer = (props) => {
   return (
     <section className="computer">
       <span
-        data-testid="robot-icon"
         role="img" 
         aria-label="robot" 
       >
@@ -33,7 +32,7 @@ const Computer = (props) => {
         </div>
       </div>
     </section>
-  )
+  );
 };
 
 export default Computer;

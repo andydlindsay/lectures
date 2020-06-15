@@ -9,6 +9,18 @@
 - [JestDOM](https://github.com/testing-library/jest-dom)
 - [Which query should I use?](https://testing-library.com/docs/guide-which-query)
 
+### Tools for testing React
+- [Jest](https://jestjs.io/)
+  * Jest is the framework we use to run our tests
+  * Comes with `create-react-app`, so no need to configure
+  * `npm run test` will start Jest in watch mode and run the tests
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+  * A set of tools to help target DOM elements and trigger DOM events
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+  * Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
+- [JestDOM](https://github.com/testing-library/jest-dom)
+  * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
+
 ### Add Features to App Following TDD
 - helper functions (unit tests)
   - choose a valid response for the computer player (currently hard-coded)
