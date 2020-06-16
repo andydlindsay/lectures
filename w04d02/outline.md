@@ -92,8 +92,8 @@ document.addEventListener('mousemove', (event) => console.log(event));
 
 const h1 = document.querySelector('h1');
 h1.addEventListener('click', (event) => {
-	console.log(event);
-	alert('h1 clicked');
+  console.log(event);
+  alert('h1 clicked');
 });
 
 setTimeout(() => {
@@ -104,12 +104,12 @@ setTimeout(() => {
 # BREAK
 
 ### Adding Script Files
-* touch `script.js`
+* create `script.js`
 * `<script src="script.js"></script>`
 * page is loaded from the top down
 
 ### Code in other files
-* create a variable in `script.js`
+* create a variable in `script2.js`
 * console.log that variable in `script.js`
 * include both files in `index.html`
 * swap them around and show what happens
@@ -126,17 +126,17 @@ setTimeout(() => {
 
 ```js
 // create a DOM node with a text node
-const li = $('<li>').text('Water');
-const list = $('#main-list');
-list.append(li);
-list.append('<li>Gravy</li>');
+const $li = $('<li>').text('Water');
+const $list = $('#main-list');
+$list.append($li);
+$list.append('<li>Gravy</li>');
 
-const h1 = $('h1');
-h1.on('click', (event) => {
+const $h1 = $('h1');
+$h1.on('click', (event) => {
   console.log(event);
   alert('h1 clicked');
 });
-h1.addClass('header');
+$h1.addClass('header');
 ```
 
 ### Document ready
