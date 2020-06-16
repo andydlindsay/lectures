@@ -7,6 +7,7 @@
 - [ ] Intro to jQuery
 - [ ] Element creation and DOM manipulation with jQuery
 - [ ] Event handling with jQuery
+- [ ] Document ready
 
 ### The **D**ocument **O**bject **M**odel
 - From [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction):
@@ -150,6 +151,24 @@ $('button').on('click', clickHandler);
 $('button').click(clickHandler);
 $('form').submit(submitHandler);
 $('input').focus(focusHandler);
+```
+
+### Document Ready
+* We usually want to wait for the document to finish being loaded before our JavaScript runs
+* jQuery gives us a simple interface for wrapping our code
+* Once the document has finished loading, our callback is called
+
+```js
+$(document).ready(() => {
+  // this callback runs once the document is "ready"
+  console.log('ready');
+});
+
+// or
+$(() => {
+  // passing a callback to jQuery is a shorthand for $(document).ready()
+  console.log('ready');
+});
 ```
 
 ### Useful Links

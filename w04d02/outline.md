@@ -1,43 +1,43 @@
-### External Resources
+# External Resources
 
 - [draw.io DOM](https://www.draw.io/#G1pXmS7n8_IbCslvVcVdERQlHvew0VmsYq)
 
-### Outline
+# Outline
 
-1. Show off `process` object in Node REPL
+### Show off `process` object in Node REPL
 
-2. Show off `window` object in browser console
-  * `window.innerWidth`
-  * go to wikipedia and navigate around
-  * `window.history`
-  * `window.history === history`
-  * `history.back()`
-  * `history.forward()`
-  * `window.location = 'https://www.google.com';`
+### Show off `window` object in browser console
+* `window.innerWidth`
+* go to wikipedia and navigate around
+* `window.history`
+* `window.history === history`
+* `history.back()`
+* `history.forward()`
+* `window.location = 'https://www.google.com';`
 
-3. Walk through `index.html` and load it in a browser
+### Walk through `index.html` and load it in a browser
 
-4. The `navigator` object represents the browser:
-  * `navigator.geolocation.getCurrentPosition(cb)`
-  * `navigator.getGamepads()`
-  * `navigator.getBattery()`
+### The `navigator` object represents the browser:
+* `navigator.geolocation.getCurrentPosition(cb)`
+* `navigator.getGamepads()`
+* `navigator.getBattery()`
 
-5. Visit MDN for the `navigator` object
+### Visit MDN for the `navigator` object
 
-6. The `document` object represents the webpage
-  * `document.URL`
-  * `document.body`
-  * `document.readyState`
-  * `console.log(document)` vs `console.dir(document)`
+### The `document` object represents the webpage
+* `document.URL`
+* `document.body`
+* `document.readyState`
+* `console.log(document)` vs `console.dir(document)`
 
-7. Visit MDN for the `document` object
+### Visit MDN for the `document` object
 
-8. Draw.io DOM diagram
-  * https://www.draw.io/#G1pXmS7n8_IbCslvVcVdERQlHvew0VmsYq
+### Draw.io DOM diagram
+* https://www.draw.io/#G1pXmS7n8_IbCslvVcVdERQlHvew0VmsYq
 
-9. Add some styles
-  * create `styles.css`
-  * `<link rel="stylesheet" href="styles.css" />`
+### Add some styles
+* create `styles.css`
+* `<link rel="stylesheet" href="styles.css" />`
 
 ```css
 html {
@@ -57,13 +57,13 @@ body {
 }
 ```
 
-10. `document` queries
-  * `document.getElementById('main-list')`
-  * `document.getElementsByClassName('content');`
-  * `const ul = document.getElementById('main-list')`
+### `document` queries
+* `document.getElementById('main-list')`
+* `document.getElementsByClassName('content');`
+* `const ul = document.getElementById('main-list')`
 
-11. Search "add html dom node"
-  * copy example from [W3 schools](https://www.w3schools.com/jsref/met_node_appendchild.asp)
+### Google "add html dom node"
+* copy example from [W3 schools](https://www.w3schools.com/jsref/met_node_appendchild.asp)
 
 ```js
 const node = document.createElement("li");
@@ -73,18 +73,19 @@ const list = document.getElementById("main-list");
 list.appendChild(node);
 ```
 
-12. Search "remove child node"
+### Google "remove child node"
 
 ```js
 list.childNodes;
 list.removeChild(list.childNodes[0]);
 ```
 
-13. Event handling
-  * `document.body.onmousemove = (e) => console.log(e)`
-  * `console.log(event)`
-  * `console.log(event.x, event.y)`
-  * search "mdn dom events"
+### Event handling
+* `document.body.onmousemove = (e) => console.log(e)`
+* `console.log(event)`
+* `console.log(event.x, event.y)`
+
+### Google "mdn dom events"
 
 ```js
 document.addEventListener('mousemove', (event) => console.log(event));
@@ -100,28 +101,28 @@ setTimeout(() => {
 }, 3000);
 ```
 
-### BREAK
+# BREAK
 
-14. Adding Script Files
-  * touch `script.js`
-  * `<script src="script.js"></script>`
-  * page is loaded from the top down
+### Adding Script Files
+* touch `script.js`
+* `<script src="script.js"></script>`
+* page is loaded from the top down
 
-15. Code in other files
-  * create a variable in `script.js`
-  * console.log that variable in `script.js`
-  * include both files in `index.html`
-  * swap them around and show what happens
+### Code in other files
+* create a variable in `script.js`
+* console.log that variable in `script.js`
+* include both files in `index.html`
+* swap them around and show what happens
 
-16. Visit jQuery Docs
-  * talk about CDN's
-  * search 'do you need jquery'
-  * `jQuery === $`
+### Visit jQuery Docs
+* talk about CDN's
+* search 'do you need jquery'
+* `jQuery === $`
 
-17. jQuery Selectors
-  * show jQuery uses CSS selectors
-  * `const div = jQuery('div.content');`
-  * do what was done before
+### jQuery Selectors
+* show jQuery uses CSS selectors
+* `const div = jQuery('div.content');`
+* do what was done before
 
 ```js
 // create a DOM node with a text node
@@ -138,7 +139,7 @@ h1.on('click', (event) => {
 h1.addClass('header');
 ```
 
-18. Document ready
+### Document ready
 
 ```js
 $(document).ready(() => {
