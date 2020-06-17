@@ -188,7 +188,6 @@ describe('Display Results', () => {
       
     // get the spinner that should be visible
     cy.get('.spinner')
-      .as('spinner')
       .should('be.visible');
 
     // wait while the search results come back then verify them
@@ -198,7 +197,7 @@ describe('Display Results', () => {
       .should('be.visible');
 
     // get the spinner and it shouldn't be visible
-    cy.get('@spinner')
+    cy.get('.spinner')
       .should('not.be.visible');
 
     // untick the Explicit box to remove one album
