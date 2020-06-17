@@ -1,10 +1,10 @@
-### External Resources
+# Outline
 
-### Outline
-1. Install Cypress with `npm install --save-dev cypress`
-2. Open Cypress with `node_modules/.bin/cypress open`
-3. Create a script called `cypress` to run the above
-4. Remove the example tests, edit `cypress.json`
+### Install Cypress
+* `npm install --save-dev cypress`
+* Open Cypress with `node_modules/.bin/cypress open`
+* Create a script called `cypress` to run the above
+* Remove the example tests, edit `cypress.json`
 
 ```json
 {
@@ -13,7 +13,7 @@
 }
 ```
 
-5. Create a new file `cypress/integration/01_cypress.spec.js`
+### Create a new file `cypress/integration/01_cypress.spec.js`
 
 ```js
 describe('Cypress', () => {
@@ -23,7 +23,7 @@ describe('Cypress', () => {
 });
 ```
 
-6. Start the app server running and add a new test to visit the site
+### Start the app server running and add a new test to visit the site
 
 ```js
 it('can visit the home page', () => {
@@ -31,7 +31,7 @@ it('can visit the home page', () => {
 });
 ```
 
-7. Add a new spec file `cypress/integration/02_filters.spec.js`
+### Add a new spec file `cypress/integration/02_filters.spec.js`
 
 ```js
 describe('Filters', () => {
@@ -49,15 +49,16 @@ describe('Filters', () => {
 });
 ```
 
-8. Add the `baseUrl` key to `cypress.json`
+### Add the `baseUrl` key to `cypress.json`
 
 ```json
 "baseUrl": "http://localhost:3000"
 ```
 
-9. Convert affected files to use `cy.visit('/');` instead
-10. Show the changes in Cypress in Settings => Configuration highlighting the `baseUrl` key
-11. Add another checkbox test
+### Convert affected files to use `cy.visit('/');` instead
+* Show the changes in Cypress in Settings => Configuration highlighting the `baseUrl` key
+
+### Add another checkbox test
 
 ```js
 it('can toggle the 1900s check box', () => {
@@ -72,7 +73,7 @@ it('can toggle the 1900s check box', () => {
 });
 ```
 
-12. Pull the repeating `cy.visit('/');` out to a `beforeEach`
+### Pull the repeating `cy.visit('/');` out to a `beforeEach`
 
 ```js
 beforeEach(() => {
@@ -80,7 +81,7 @@ beforeEach(() => {
 });
 ```
 
-13. Demonstrate clicking a label to toggle a checkbox
+### Demonstrate clicking a label to toggle a checkbox
 
 ```js
 it('toggles a check box by clicking on the label', () => {
@@ -92,7 +93,7 @@ it('toggles a check box by clicking on the label', () => {
 });
 ```
 
-14. Add a new spec file `cypress/integration/03_text-input.spec.js`
+### Add a new spec file `cypress/integration/03_text-input.spec.js`
 
 ```js
 describe('Text Input', () => {
@@ -109,7 +110,7 @@ describe('Text Input', () => {
 });
 ```
 
-15. Add another test to handle backspace
+### Add another test to handle backspace
 
 ```js
 it('can handle backspace', () => {
@@ -120,7 +121,7 @@ it('can handle backspace', () => {
 });
 ```
 
-16. Refactor the tests to use `beforeEach`
+### Refactor the tests to use `beforeEach`
 
 ```js
 describe('Text Input', () => {
@@ -146,8 +147,9 @@ describe('Text Input', () => {
 });
 ```
 
-17. Add `itunes.json` to `cypress/fixtures`
-18. Add a new spec file `cypress/integration/04_display-results.spec.js`
+### Add `itunes.json` to `cypress/fixtures`
+
+### Add a new spec file `cypress/integration/04_display-results.spec.js`
 
 ```js
 describe('Display Results', () => {
