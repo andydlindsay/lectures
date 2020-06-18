@@ -92,7 +92,7 @@ p.relative {
 * Media queries allow us to make changes to our design based on the user's device
 * There are two parts to a media query: a **media type** and a **media feature**
 * The options for _media types_ are `screen`, `print`, `speech`, and `all`
-* _Media features_ include things like `aspect-ratio`, `device-height`, and `orientation`
+* _Media features_ include things like `aspect-ratio`, `device-height`, `light-level`, and `orientation`
 * We can use multiple media queries to target various device sizes and orientations
 
 ```css
@@ -116,11 +116,118 @@ p.relative {
 <link rel="stylesheet" media="screen and (min-width: 1200px)" href="large.css">
 ```
 
+### CSS Preprocessors
+* A CSS preprocessor generates CSS using a [Domain Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
+* Styles are written in this _language_ and then [transpiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) into CSS before being served to the client
+* Popular preprocessors include [Sass](https://sass-lang.com/), [LESS](http://lesscss.org/), [Stylus](https://stylus-lang.com/), and [PostCSS](https://postcss.org/)
 
-- [ ] CSS Preprocessors
-- [ ] Intro to Sass/SCSS
-  - [ ] Variables
-  - [ ] Nesting
-  - [ ] Partials
-  - [ ] Extending Styles
-  - [ ] Mixins
+### Intro to Sass
+* **S**yntactically **A**wesome **S**yle **S**heets
+* Sass gives us some useful features to make writing our CSS easier
+* **SCSS** or _Sassy CSS_ is a superset of CSS
+* A superset is a language that extends another language by adding new features
+* But the browser doesn't understand SCSS, so we have to transpile our SCSS into CSS before serving it
+
+### Sass CLI
+* [npm sass](https://www.npmjs.com/package/sass)
+
+```sh
+npm i -g sass
+
+sass --watch input.scss output.css
+
+# source folder:output folder
+sass --watch app/sass:public/stylesheets
+
+# no source map
+sass --watch input.scss output.css --sourcemap=none
+```
+
+### Variables
+
+```scss
+// variables
+$font-color: lightblue;
+$font-size: 1.2rem;
+
+p {
+  color: $font-color;
+}
+h1 {
+  font-size: $font-size;
+}
+```
+
+### Nesting
+
+```scss
+// using nesting
+.container {
+  p {
+    color: magenta;
+    text-decoration: underline;
+  }
+  div {
+    border: 1px solid black;
+  }
+}
+```
+
+### Partials
+
+```scss
+// _variables.scss
+$font-size: 24px;
+$border-width: 10px;
+$border-color: hotpink;
+$border-style: dotted;
+$border: $border-width $border-style $border-color;
+```
+
+```scss
+// styles.scss
+@import '_variables';
+```
+
+### Extending Styles
+
+```scss
+.header-text {
+  font-size: 2em;
+  font-family: 'sans-serif';
+}
+
+.heading {
+  @extend .header-text;
+  color: rebeccapurple;
+}
+```
+
+#### Mixins
+* A **mixin** is like a function that returns a group of styles
+* The _mixin_ can be included in any other style by using `@include`
+
+```scss
+// declare the mixin
+@mixin header-styles {
+  height: 50px;
+  background-color: $header-bg;
+}
+
+// include it in another style
+header {
+  @include header-styles();
+}
+
+// mixins can take parameters as well
+@mixin box-sizes($n) {
+  height: $n;
+  width: $n;
+  line-height: $n;
+}
+
+.box {
+  @include box-sizes(15px);
+  border: 1px solid green;
+}
+```
