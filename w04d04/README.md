@@ -2,9 +2,20 @@
 
 ### To Do
 - [ ] Responsive Design
-- [ ] CSS Responsive Design Features
+- [ ] Viewport Meta Tag
+- [ ] Relative Units
+  - [ ] Percentages
+  - [ ] `vh` and `vw`
+  - [ ] `em` and `rem`
+- [ ] `max-width` and `min-width`
+- [ ] Media Queries
 - [ ] CSS Preprocessors
-- [ ] Intro to Sass
+- [ ] Intro to Sass/SCSS
+  - [ ] Variables
+  - [ ] Nesting
+  - [ ] Partials
+  - [ ] Extending Styles
+  - [ ] Mixins
 
 ### Responsive Design
 * From [Wikipedia](https://en.wikipedia.org/wiki/Responsive_web_design):
