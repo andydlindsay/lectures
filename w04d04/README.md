@@ -102,11 +102,15 @@ p.relative {
 
 ### CSS Preprocessors
 * A CSS preprocessor generates CSS using a [Domain Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
+* Styles are written in this _language_ and then [transpiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) into CSS before being served to the client
 * Popular preprocessors include [Sass](https://sass-lang.com/), [LESS](http://lesscss.org/), [Stylus](https://stylus-lang.com/), and [PostCSS](https://postcss.org/)
 
 ### Intro to Sass
 * **S**yntactically **A**wesome **S**yle **S**heets
 * Sass gives us some useful features to make writing our CSS easier
+* **SCSS** or _Sassy CSS_ is a superset of CSS
+* A superset is a language that extends another language by adding new features
+* But the browser doesn't understand SCSS, so we have to transpile our SCSS into CSS before serving it
 
 #### Variables
 * Sass utilizes variables like any other programming language: store a value and retrieve it later using the variables name
@@ -214,11 +218,7 @@ header {
 
 ### Useful Links
 * [MDN: CSS Preprocessor](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor)
+* [What is the viewport?](https://www.w3schools.com/css/css_rwd_viewport.asp)
 * [W3 Schools: Meta Tags](https://www.w3schools.com/tags/tag_meta.asp)
 * [MDN: CSS Values and Units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units)
-* [MDN: Basic Concepts of Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
-* [CSS Tricks: A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-* [Sass Cheatsheet](https://devhints.io/sass)
 * [Sass CLI](https://sass-lang.com/documentation/cli/dart-sass)
-
-* [What is the viewport?](https://www.w3schools.com/css/css_rwd_viewport.asp)
