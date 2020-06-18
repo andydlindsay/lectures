@@ -141,6 +141,9 @@ sass --watch app/sass:public/stylesheets
 
 # no source map
 sass --watch input.scss output.css --sourcemap=none
+
+# get rid of .sass-cache
+sass main.scss output.css --sourcemap=none --no-cache  
 ```
 
 ### Variables
