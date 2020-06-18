@@ -3,7 +3,6 @@
 ### To Do
 - [ ] Responsive Design
 - [ ] CSS Responsive Design Features
-- [ ] Flexbox
 - [ ] CSS Preprocessors
 - [ ] Intro to Sass
 
@@ -90,25 +89,6 @@ p.relative {
 }
 ```
 
-### Flexbox
-* [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) is a great tool for creating one-dimensional designs (eg. left-to-right, top-to-bottom)
-* We create **flex containers** by adding the property `display: flex;` or `display: inline-flex;` to an element
-* The direct children of the _flex container_ are referred to as **flex items**
-* The majority of the styling is applied to the _flex container_
-* We can control things like:
-  * The direction of the axis (up/down or left/reft)
-  * The order that the _flex items_ are displayed
-  * The alignment of the _flex items_ (start/end)
-  * The space between/around the _flex items_
-
-```css
-.container {
-  display: flex;
-  flex-direction: row;
-  /* flex-direction: column; */
-}
-```
-
 ### CSS Preprocessors
 * A CSS preprocessor generates CSS using a [Domain Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
 * Popular preprocessors include [Sass](https://sass-lang.com/), [LESS](http://lesscss.org/), [Stylus](https://stylus-lang.com/), and [PostCSS](https://postcss.org/)
@@ -162,7 +142,7 @@ h1 {
 * We can use partials to store small amounts of code
 * The convention for naming partials is to prepend the filename with an underscore (eg. `_variables.scss` or `_nav.scss`)
 * Partials can be included into other Sass files using the `@import` syntax
-* When importing, then leading underscore can be omitted from the filename
+* When importing, the leading underscore can be omitted from the filename
 
 ```scss
 // inside _variables.scss
@@ -229,3 +209,5 @@ header {
 * [CSS Tricks: A Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 * [Sass Cheatsheet](https://devhints.io/sass)
 * [Sass CLI](https://sass-lang.com/documentation/cli/dart-sass)
+
+* [What is the viewport?](https://www.w3schools.com/css/css_rwd_viewport.asp)
