@@ -1,11 +1,13 @@
 # W02D01 - TDD with Mocha & Chai
 
 ### To Do
+- [ ] Manual testing
+- [ ] Making assertions
+- [ ] Bringing in outside packages
+- [ ] Mocha test runner
+- [ ] Chai assertion library
 - [ ] What is TDD?
 - [ ] Practice unit testing
-- [ ] Demonstrate the Mocha test framework
-- [ ] Demonstrate the Chai assertion library
-- [ ] Export and import JS using Node's default syntax
 
 ### TDD
 - **T**est **D**riven **D**evelopment
