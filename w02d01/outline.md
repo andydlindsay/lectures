@@ -123,6 +123,14 @@ describe('sayHello Tests', () => {
 });
 ```
 
+### Ignoring things
+* Git can be told to ignore things using `.gitignore`
+* We should ignore the `node_modules` directory so it doesn't end up in our Github/source control
+
+```
+node_modules
+```
+
 ### Enter `chai`
 * Node's assertion library is limited
 * `Chai` gives us a bunch more things we can test for
