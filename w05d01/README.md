@@ -240,6 +240,7 @@ FROM albums
 JOIN songs
 ON albums.id = songs.album_id;
 ```
+
 8. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
 
 ```sql
