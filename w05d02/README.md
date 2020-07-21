@@ -8,7 +8,7 @@
 - [ ] Normalization
 - [ ] Design Concepts
 - [ ] Entity Relationship Diagrams
-- [ ] Breakout: Convert 2 Spreadsheets [20 mins]
+- [ ] Breakout: Convert 2 Spreadsheets [15 mins]
 - [ ] Student Suggestion ERD(s)
 
 ### Primary Key
