@@ -1,9 +1,11 @@
-# W02D01 - TDD with Mocha & Chai
+# W02D01 - TDD, CommonJS, and NPM
 
 ### To Do
 - [ ] Manual testing
 - [ ] Making assertions
-- [ ] Bringing in outside packages
+- [ ] Bringing in outside code
+- [ ] Exporting our code
+- [ ] Intro to NPM: a Node package manager
 - [ ] Mocha test runner
 - [ ] Chai assertion library
 - [ ] What is TDD?
@@ -72,6 +74,7 @@ const { myFunc } = require('./myFunc');
 ```
 
 ### Useful Links
+- [Node Modules](https://nodejs.org/docs/latest/api/modules.html)
 - [Node Wrapper Function](https://nodejs.org/api/modules.html#modules_the_module_wrapper)
 - [Mocha Docs](https://mochajs.org/)
 - [Chai Docs](https://www.chaijs.com/)

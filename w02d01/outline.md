@@ -1,13 +1,19 @@
 ### Quick About Me
 * Alumni
-* Manager for many years >>> lead by example
+* Manager for many years >>> lead by example (hate hypocrisy)
 * Conversation not Talking At
 * Start with To Do's
+
+### 3 big goals of today
+1. Introduction to testing
+2. Exporting/importing code
+3. External packages and NPM
 
 ### `sayHello` function
 * A simple function for us to test
 
 ```js
+// say-hello.js
 const sayHello = () => {
   return `hello there`;
 };
@@ -46,6 +52,16 @@ assert.strictEqual(1, '1');
 // can add .strict onto require to make equal act like strictEqual
 const assert = require('assert').strict;
 ```
+
+### Let's export our code to clean up this file
+* Update `say-hello.js`
+  * Remove all test code
+  * Export the function
+
+### Create a test file and import the function
+* Create `say-hello-test.js` and paste in the test code
+* Import the function from `say-hello.js`
+* Run the test(s)
 
 ### Bringing in outside packages
 * We want to install `mocha` as our test runner
