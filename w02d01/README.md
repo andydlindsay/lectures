@@ -7,6 +7,7 @@
 - [ ] Exporting our code
 - [ ] Intro to NPM: a Node package manager
 - [ ] Mocha test runner
+- [ ] Ignoring files/folders
 - [ ] Chai assertion library
 - [ ] What is TDD?
 - [ ] Practice unit testing
@@ -72,6 +73,21 @@ const myFunc = require('./myFunc');
 // if the file exports an object, we can use ES6 destructuring
 const { myFunc } = require('./myFunc');
 ```
+
+### Ignoring files/folders
+* Sometimes there are files or folders that we do not want git to track for us
+* These files might contain sensitive information such as passwords or API keys
+* They might also be folders such as `node_modules` which should always be ignored
+* We can tell git to ignore certain files/folders by using a special file called `.gitignore` (note the leading period)
+* Any files that we specify inside of `.gitignore` will be ignored by git
+
+```
+# inside .gitignore
+node_modules
+my-file.js
+```
+
+* Using the above file, the `node_modules` folder and the file `my-file.js` will not be tracked by git
 
 ### Useful Links
 - [Node Modules](https://nodejs.org/docs/latest/api/modules.html)
