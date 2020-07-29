@@ -1,3 +1,8 @@
+# External Resources
+
+* [State of the Octoverse "Top languages"](https://octoverse.github.com/)
+* [Microsoft owns TS](https://github.com/microsoft/TypeScript)
+
 # Outline
 
 ### TypeScript Compiler

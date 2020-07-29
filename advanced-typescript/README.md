@@ -241,3 +241,4 @@ interface Container<T> {
 * [TypeScript Official Site](https://www.typescriptlang.org/)
 * [TypeScript Compiler Options](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 * [Sort of like a duck, but not a duck](https://birdersjourney.com/2015/03/01/nope-not-a-duck/)
+* [TypeScript in 5 Minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
