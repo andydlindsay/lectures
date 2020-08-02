@@ -72,7 +72,7 @@ app.listen(port, () => {
 * Create a simple `index.html`
 
 ```js
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   // res.send('hello world');
   res.sendFile(`${__dirname}/index.html`);
 });
