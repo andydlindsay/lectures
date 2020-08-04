@@ -1,4 +1,4 @@
-# W3D4 Security & Real World HTTP Servers
+# W03D04 - Security & Real World HTTP Servers
 
 ### To Do
 - [ ] Storing passwords

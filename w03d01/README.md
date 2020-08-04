@@ -1,4 +1,4 @@
-# W3D1 Web Servers 101
+# W03D01 - Web Servers 101
 
 ### To Do
 - [ ] Intro to Web Servers
