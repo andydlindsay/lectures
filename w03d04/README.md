@@ -5,12 +5,11 @@
 - [ ] Encrypted cookies
 - [ ] HTTP Secure (HTTPS)
 - [ ] REST
-- [ ] Alternatives to ExpressJS
-- [ ] Express Middleware
 - [ ] More HTTP methods
 - [ ] Method Override
 - [ ] Modular Routing
 - [ ] JSON API's
+- [ ] Alternatives to ExpressJS
 
 ### REST (Representational State Transfer)
 
@@ -41,20 +40,6 @@
 - [Hapi (JS)](https://hapi.dev/api/?v=19.0.5)
 - [Sinatra (Ruby)](http://sinatrarb.com/documentation.html)
 - [Django (Python)](https://www.djangoproject.com/)
-
-### Express Middleware
-- We can bring in third-party middleware (functions) or we can define our own
-
-  ```js
-  app.use((req, res, next) => {
-    // do something (eg. console.log the current time)
-    console.log('Time:', Date.now());
-    // call next() when the middleware is finished
-    next();
-  });
-  ```
-
-- Frequently used Express middleware includes loggers (`morgan`) and parsers (`cookie-parser` or `body-parser`)
 
 ### More HTTP Methods
 - We have more [*verbs*](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) available to us than just `GET` and `POST`

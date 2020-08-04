@@ -1,11 +1,15 @@
-1. Demo example app
-2. There are 3 things insecure about it:
-  * Plain text passwords
-  * Non-encrypted cookies
-  * Not using HTTPS
-3. Plain text offenders list
+# Outline
 
-4. Convert the app to use hashed passwords with `bcryptjs`
+### Demo example app
+
+### There are 3 things insecure about it:
+* Plain text passwords
+* Non-encrypted cookies
+* Not using HTTPS
+
+### [Plain text offenders list](https://github.com/plaintextoffenders/plaintextoffenders/blob/master/offenders.csv)
+
+### Convert the app to use hashed passwords with `bcryptjs`
 
 ```js
 const bcrypt = require('bcryptjs');
@@ -23,7 +27,7 @@ bcrypt.hash(password, 10)
   });
 ```
 
-5. Switch to using `cookie-session` package
+### Switch to using `cookie-session` package
 
 ```js
 const cookieSession = require("cookie-session");
@@ -40,17 +44,22 @@ if (!req.session.username) {
 req.session.username = user.username;
 ```
 
-6. Discuss HTTPS
-7. Get example resource and create RESTful routes for it
+### Discuss HTTPS
 
-8. Alternate methods (besides `GET` and `POST`)
+### Get example resource and create RESTful routes for it
+
+Browse  GET  /resource
+Read    GET  /resource/:id
+Edit    POST /resource/:id
+Add     POST /resource
+Delete  POST /resource/:id/delete
+
+### Alternate methods (besides `GET` and `POST`)
   - `PUT`: used to replace an existing resource
   - `PATCH`: update part of an exisiting resource
   - `DELETE`: delete an existing resource
 
-9. Show a more complex RESTful example
-
-10. Method Override Package (`method-override`)
+### Method Override Package (`method-override`)
 
 ```js
 const methodOverride = require('method-override')
@@ -61,7 +70,7 @@ app.use(methodOverride('_method'))
 <form method="POST" action="/resource?_method=PUT">
 ```
 
-12. Modular Routing && JSON API's
+### Modular Routing && JSON API's
 
 ```js
 // router file
@@ -86,7 +95,7 @@ const resourceRouter = require('./routes/resource');
 app.use('/api/resource', resourceRouter);
 ```
 
-14. Express Alternatives
+### Express Alternatives
   - restify
   - koajs
   - hapi
