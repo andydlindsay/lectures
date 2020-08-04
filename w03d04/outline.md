@@ -61,17 +61,6 @@ app.use(methodOverride('_method'))
 <form method="POST" action="/resource?_method=PUT">
 ```
 
-11. Express Middleware (`Date.now()`)
-
-```js
-app.use((req, res, next) => {
-  // do something (eg. console.log the current time)
-  console.log('Time:', Date.now());
-  // call next() when the middleware is finished
-  next();
-});
-```
-
 12. Modular Routing && JSON API's
 
 ```js

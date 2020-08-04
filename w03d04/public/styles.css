@@ -1,17 +1,25 @@
-table, th, td {
-  border: 1px solid black;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 15px;
+body {
+  background-color: paleturquoise;
+  margin: 20px auto;
+  width: 600px;
   text-align: center;
+  font-family: 'Kanit', sans-serif;
 }
 
-tr:hover {
-  background-color: antiquewhite;
+.container {
+  margin: 0 auto;
+  text-align: center;
+  width: 250px;
+}
+
+.heading {
+  font-family: 'Raleway', sans-serif;
+}
+
+.input-group {
+  text-align: left;
+}
+
+.input-group input {
+  width: 100%;
 }

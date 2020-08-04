@@ -1,39 +1,88 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const { getForecast, getForecastByDay } = require('./data/queries');
-const forecastRouter = require('./routes/forecast');
-const breadRouter = require('./routes/breads');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-const port = process.env.PORT || 9876;
 const app = express();
+const port = process.env.PORT || 9876;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(morgan('dev'));
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-// middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public'));
-app.use(morgan('dev'));
+// user database
+const users = {
+  jstamos: {
+    username: 'jstamos',
+    password: '1234'
+  },
+  alice: {
+    username: 'alice',
+    password: '5678'
+  }
+};
 
-// routes
-app.use('/api/forecast', forecastRouter);
-app.use('/api/breads', breadRouter);
-
-app.get('/forecast', (req, res) => {
-  const forecast = getForecast();
-  res.render('index', { forecast });
+app.get('/login', (req, res) => {
+  res.render('login');
 });
 
-app.get('/forecast/:day', (req, res) => {
-  const forecast = getForecastByDay(req.params.day);
-  if (!forecast.length) {
-    return res.redirect('/');
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+app.get('/protected', (req, res) => {
+  const username = req.cookies.username;
+  if (!username) {
+    return res.redirect('/login');
   }
-  res.render('daily', { forecast: forecast[0] });
+
+  const user = users[username];
+  if (!user) {
+    return res.redirect('/register');
+  }
+
+  res.render('protected', { user });
 });
 
 app.get('*', (req, res) => {
-  res.redirect('/forecast');
+  res.redirect('/login');
+});
+
+app.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  const user = users[username];
+  if (!user) {
+    return res.status(401).send('No user with that username found');
+  }
+
+  if (password !== user.password) {
+    return res.status(401).send('Password incorrect');
+  }
+
+  res.cookie('username', user.username);
+  res.redirect('/protected');
+});
+
+app.post('/register', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  users[username] = {
+    username,
+    password
+  };
+
+  res.redirect('/login');
+});
+
+app.post('/logout', (req, res) => {
+  res.clearCookie('username');
+  res.redirect('/login');
 });
 
 app.listen(port, () => {

@@ -4,12 +4,12 @@
 - [ ] Rules for Hooks
 - [ ] Pure Functions and Side Effects
 - [ ] `useEffect`
-- [ ] Dependencies
 - [ ] Cleanup
+- [ ] Dependencies
 - [ ] _useEffect_ Flow
 
 ### Two Rules for Hooks
-1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions**
+1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions.**
 2. Only call Hooks from React functions.
 
 ### Pure Functions
