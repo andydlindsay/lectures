@@ -11,6 +11,11 @@
 * Github API:
   * https://api.github.com/users/andydlindsay/repos
 
+* Chef Andy:
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/ingredients
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipes
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipe-ingredients
+
 * `useEffect` Flow Diagram
   * https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU
 
