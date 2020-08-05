@@ -166,17 +166,13 @@ React.useEffect(() => {
 const [userInfo, setUserInfo] = React.useState({});
 
 React.useEffect(() => {
-  axios
-    .get('http://hn.algolia.com/api/v1/items/1')
+  axios.get('http://hn.algolia.com/api/v1/items/1')
     .then(res => {
       setItem(res.data);
       const { author } = res.data;
-
-      axios
-        .get(`https://hn.algolia.com/api/v1/users/${author}`)
-        .then(response => {
-          setUserInfo(response.data);
-        });
+      return axios.get(`https://hn.algolia.com/api/v1/users/${author}`);
+    .then(res => {
+      setUserInfo(res.data);
     });
 }, []);
 
