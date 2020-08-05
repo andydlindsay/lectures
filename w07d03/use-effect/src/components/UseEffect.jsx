@@ -37,16 +37,17 @@ const UseEffect = () => {
 
   React.useEffect(() => {
     axios
-      .get('http://hn.algolia.com/api/v1/items/1')
+      .get('https://my-json-server.typicode.com/andydlindsay/chef-andy/ingredients')
       .then(res => {
-        setItem(res.data);
-        const { author } = res.data;
+        // setItem(res.data);
+        console.log(res);
+        // const { author } = res.data;
 
-        axios
-          .get(`https://hn.algolia.com/api/v1/users/${author}`)
-          .then(response => {
-            setUserInfo(response.data);
-          });
+        // axios
+        //   .get(`https://hn.algolia.com/api/v1/users/${author}`)
+        //   .then(response => {
+        //     setUserInfo(response.data);
+        //   });
       });
   }, []);
 
