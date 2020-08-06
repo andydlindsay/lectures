@@ -61,11 +61,13 @@ req.session = null
 
 ### Get example resource and create RESTful routes for it
 
-Browse  GET  /resource  
-Read    GET  /resource/:id  
-Edit    POST /resource/:id  
-Add     POST /resource  
-Delete  POST /resource/:id/delete  
+| **Method** | **Path** | **Purpose** |
+|:---:|:---|:---|
+| GET | /resources | Retrieve all of a resource (Browse) |
+| GET | /resources/:id | Retrieve a particular resource (Read) |
+| POST | /resources/:id | Update a resource (Edit) |
+| POST | /resources | Create a new resource (Add) |
+| POST | /resources/:id/delete | Delete an existing resource (Delete) |
 
 ### Alternate methods (besides `GET` and `POST`)
   - `PUT`: used to replace an existing resource
