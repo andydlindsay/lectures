@@ -54,10 +54,16 @@ if (!req.session.username) {
 
 req.session.username = user.username;
 
-req.session = null
+req.session = null;
 ```
 
 ### Discuss HTTPS
+* HTTPS uses Transport Layer Security (TLS) to encrypt communication between client and server
+* Encrypted using asymmetric cryptography which uses a public key and private key system
+* The public key is available to anyone who wants it and is used to encrypt the communication
+* The private key is known only to the receiver and is used to decrypt the communication
+
+* [HTTP to HTTPS infographic](https://www.brafton.com/wp-content/uploads/2019/11/Infographic-How-to-convert-HTTP-to-HTTPS-750x3872.png)
 
 ### Get example resource and create RESTful routes for it
 
@@ -68,6 +74,9 @@ req.session = null
 | POST | /resources/:id | Update a resource (Edit) |
 | POST | /resources | Create a new resource (Add) |
 | POST | /resources/:id/delete | Delete an existing resource (Delete) |
+
+* Selectors are always plural (eg. `/resources`, `/users`)
+* Actions are always singular (eg. `/login`, `/register`)
 
 ### Route Generator
 
@@ -85,8 +94,15 @@ console.log();
 routeGenerator('cats');
 console.log();
 routeGenerator('strawberries');
+```
 
-// with patch and delete
+### Alternate methods (besides `GET` and `POST`)
+  - `PUT`: used to replace an existing resource
+  - `PATCH`: update part of an exisiting resource
+  - `DELETE`: delete an existing resource
+
+```js
+// routes with patch and delete as an option
 const routeGenerator = (resourceName, useAlternateMethods = false) => {
   if (useAlternateMethods) {
     console.log(`Browse\tGET\t/${resourceName}`);
@@ -107,11 +123,6 @@ routeGenerator('dinosaurs');
 console.log();
 routeGenerator('dinosaurs', true);
 ```
-
-### Alternate methods (besides `GET` and `POST`)
-  - `PUT`: used to replace an existing resource
-  - `PATCH`: update part of an exisiting resource
-  - `DELETE`: delete an existing resource
 
 ### Method Override Package (`method-override`)
 
