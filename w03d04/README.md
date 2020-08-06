@@ -120,8 +120,13 @@
 - JSON API's are concerned only with sending data (as opposed to HTML), so they are typically consumed with AJAX requests
 
 ### Useful Links
-- [Resource Naming](https://restfulapi.net/resource-naming/)
-- [Express Middleware](https://expressjs.com/en/guide/using-middleware.html)
-- [Method Override Package](https://www.npmjs.com/package/method-override)
-- [Express Response Object](http://expressjs.com/en/api.html#res)
-- [List of common Express middleware](https://expressjs.com/en/resources/middleware.html)
+* [Plain Text Offenders](https://github.com/plaintextoffenders/plaintextoffenders/blob/master/offenders.csv)
+* [How Does Encryption Work?](https://medium.com/searchencrypt/what-is-encryption-how-does-it-work-e8f20e340537)
+* [What is HTTPS?](https://www.cloudflare.com/learning/ssl/what-is-https/)
+* [Asymmetric Cryptography](https://searchsecurity.techtarget.com/definition/asymmetric-cryptography)
+* [Client Session vs Server Session](http://www.rodsonluo.com/client-session-vs-server-session)
+* [Resource Naming](https://restfulapi.net/resource-naming/)
+* [Express Middleware](https://expressjs.com/en/guide/using-middleware.html)
+* [Method Override Package](https://www.npmjs.com/package/method-override)
+* [Express Response Object](http://expressjs.com/en/api.html#res)
+* [List of common Express middleware](https://expressjs.com/en/resources/middleware.html)
