@@ -53,17 +53,19 @@ if (!req.session.username) {
 }
 
 req.session.username = user.username;
+
+req.session = null
 ```
 
 ### Discuss HTTPS
 
 ### Get example resource and create RESTful routes for it
 
-Browse  GET  /resource
-Read    GET  /resource/:id
-Edit    POST /resource/:id
-Add     POST /resource
-Delete  POST /resource/:id/delete
+Browse  GET  /resource  
+Read    GET  /resource/:id  
+Edit    POST /resource/:id  
+Add     POST /resource  
+Delete  POST /resource/:id/delete  
 
 ### Alternate methods (besides `GET` and `POST`)
   - `PUT`: used to replace an existing resource
