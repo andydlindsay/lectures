@@ -2,6 +2,7 @@
 
 * https://guide.freecodecamp.org/html/html5-semantic-elements/
 * https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
+* http://xahlee.info/js/html5_non-closing_tag.html
 * http://guyroutledge.github.io/box-model/
 * https://gist.githubusercontent.com/DavidWells/18e73022e723037a50d6/raw/31b030534440f31f3ddcd72c4916cc47eb1be520/reset.css
 * https://github.com/necolas/normalize.css/blob/master/normalize.css
@@ -15,7 +16,6 @@
 
 ### Make a page with all divs
 * Demo nesting elements
-* Discuss self-closing tags (like img, link)
 
 ```html
 <div>
@@ -86,6 +86,8 @@
 
 * https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
 * Demo img width and height being applied
+* Discuss self-closing tags (like img, link)
+* http://xahlee.info/js/html5_non-closing_tag.html
 
 ### Tags spanning multiple lines
 * Show opening tags spanning multiple lines

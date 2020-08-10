@@ -164,6 +164,8 @@ div#blue-border {
 }
 ```
 
+![Specificity](https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week3/Day1/Breakout/assets/specificity1.png)
+
 ### Opinions
 
 ![opinions opinions opinions](https://media.makeameme.org/created/opinions-opinions-everywhere-j7cvn5.jpg)
