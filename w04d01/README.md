@@ -2,12 +2,15 @@
 
 ### To Do
 * [ ] Demo this week's project
-* [ ] Semantic HTML
+* [ ] Semantic Tags
+* [ ] Attributes
 * [ ] Intro to CSS
+* [ ] Inline styles
+* [ ] Style element
 * [ ] Selectors
 * [ ] DevTools
 * [ ] Box Model
-* [ ] CSS Resets
+* [ ] CSS Resets/Normalize
 * [ ] Box-sizing
 * [ ] Specificity
 

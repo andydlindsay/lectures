@@ -1,43 +1,140 @@
-- semantic markup
-  - make a page with all divs
-  - demo nesting elements
-  - discuss self-closing tags (like img, link)
-  - visit https://guide.freecodecamp.org/html/html5-semantic-elements/
-  - we use semantics with variable names in JavaScript
-  - refactor code to be more semantic
-  - discuss attributes on html elements
-    - img tags have src, alt, height, and/or width
-    - https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
-    - demo img width and height being applied
-  - show opening tags spanning multiple lines
+# External Links
 
-- CSS
-  - demo inline style
-  - give a div width, height, background-color, and border
-  - refactor to use style element
-    - talk about selectors
-    - demo id selectors (there can only be one id per element)
-    - demo classes
-    - discuss id's and how each element can only have one
-    - comma separated selectors
-  - refactor to external stylesheet
-  - demo Chrome DevTools
-    - show picker tool
-    - show margin around divs
-    - show user agent stylesheet in devtools
-    - show style toggling
-    - show class/state toggling
-    - discuss box-model
-      - margin ~> border ~> padding ~> content
-  - CSS reset
-    - demo a reset file like https://github.com/necolas/normalize.css/blob/master/normalize.css
-  - demo box-sizing: border-box
-    - demo with http://guyroutledge.github.io/box-model/
-  - demo specificity
-  - demo floats
-  - demo inline-block
-  - discuss !important
+* https://guide.freecodecamp.org/html/html5-semantic-elements/
+* https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
+* http://guyroutledge.github.io/box-model/
+* https://gist.githubusercontent.com/DavidWells/18e73022e723037a50d6/raw/31b030534440f31f3ddcd72c4916cc47eb1be520/reset.css
+* https://github.com/necolas/normalize.css/blob/master/normalize.css
+* https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week3/Day1/Breakout/assets/specificity1.png
 
-- Extras
-  - pseudo selectors (:hover, :active)
-  - demo position
+# Outline
+
+## Demo the Tweeter app
+
+## Part One: Semantic Markup
+
+### Make a page with all divs
+* Demo nesting elements
+* Discuss self-closing tags (like img, link)
+
+```html
+<div>
+  <div>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact Us</li>
+    </ul>
+  </div>
+  <div>
+    <h1>Welcome to my page!</h1>
+  </div>
+  <div>
+    <p>More about me</p>
+  </div>
+  <div>
+    <p>A blog post of mine</p>
+  </div>
+  <div>
+    <p>Copyright &copy; 2020 Andy Lindsay</p>
+  </div>
+</div>
+```
+
+### Semantic tags
+* Visit https://guide.freecodecamp.org/html/html5-semantic-elements/
+* Refactor code to be more semantic (aside, section, footer, header)
+
+```html
+<div>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact Us</li>
+    </ul>
+  </nav>
+  <header>
+    <h1>Welcome to my page!</h1>
+  </header>
+  <section>
+    <p>More about me</p>
+  </section>
+  <aside>
+    <p>A blog post of mine</p>
+  </aside>
+  <footer>
+    <p>Copyright &copy; 2020 Andy Lindsay</p>
+  </footer>
+</div>
+```
+
+### Attributes
+* Discuss attributes on html elements
+* img tags have src, alt, height, and/or width
+* anchor tags have an href
+
+```html
+<a href="https://www.w3schools.com">Visit W3Schools</a>
+<img
+  src="https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg"
+  alt="profile image"
+  height="50px"
+  width="75px"
+>
+```
+
+* https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/profile.jpeg
+* Demo img width and height being applied
+
+### Tags spanning multiple lines
+* Show opening tags spanning multiple lines
+
+## Part Two: CSS
+
+### Demo inline style
+* Give a div width, height, background-color, and border
+
+### Refactor to use style element and selectors
+* Talk about selectors
+* Demo classes
+* Demo id selectors (there can only be one id per element)
+
+### More selectors
+* Comma separated selectors
+
+### DevTools
+* Demo Chrome DevTools
+  * show picker tool
+  * show margin around divs
+  * show user agent stylesheet in devtools
+  * show style toggling
+  * show class/state toggling
+
+### Box Model
+* Discuss box-model
+  * margin ~> border ~> padding ~> content
+* Demo box-sizing: border-box
+  * Demo with http://guyroutledge.github.io/box-model/
+
+### External Stylesheets
+* Refactor to external stylesheet
+
+### Reset and Normalize
+* A reset is removing any default browser styling, often called the user agent stylesheet. The Goal is to remove any browser inconsistencies.
+* Demo a reset file like https://gist.githubusercontent.com/DavidWells/18e73022e723037a50d6/raw/31b030534440f31f3ddcd72c4916cc47eb1be520/reset.css
+* "normalize.css retains many useful default browser styles. This means that you don’t have to redeclare styles for all the common typographic elements."
+* Demo a normalize file like https://github.com/necolas/normalize.css/blob/master/normalize.css
+  
+### Demo specificity
+* Least specific to most specific: element => class => id => inline style
+* https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week3/Day1/Breakout/assets/specificity1.png
+
+### Block vs Inline
+* demo inline-block
+
+### What not to do
+* discuss !important
+
+### Pseudo Selectors
+* pseudo selectors (:hover, :active)
