@@ -18,27 +18,17 @@
 * Demo nesting elements
 
 ```html
-<div>
+<body>
+  <div>My Awesome Page</div>
   <div>
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact Us</li>
-    </ul>
+    <div>
+      <img src="https://via.placeholder.com/150" />
+      <div>A picture of me</div>
+    </div>
   </div>
-  <div>
-    <h1>Welcome to my page!</h1>
-  </div>
-  <div>
-    <p>More about me</p>
-  </div>
-  <div>
-    <p>A blog post of mine</p>
-  </div>
-  <div>
-    <p>Copyright &copy; 2020 Andy Lindsay</p>
-  </div>
-</div>
+  <div>More about me</div>
+  <div>Copyright &copy; 2020</div>
+</body>
 ```
 
 ### Semantic tags
@@ -46,27 +36,17 @@
 * Refactor code to be more semantic (aside, section, footer, header)
 
 ```html
-<div>
-  <nav>
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact Us</li>
-    </ul>
-  </nav>
-  <header>
-    <h1>Welcome to my page!</h1>
-  </header>
-  <section>
-    <p>More about me</p>
-  </section>
-  <aside>
-    <p>A blog post of mine</p>
-  </aside>
-  <footer>
-    <p>Copyright &copy; 2020 Andy Lindsay</p>
-  </footer>
-</div>
+<body>
+  <header>My Awesome Page</header>
+  <main>
+    <figure>
+      <img src="https://via.placeholder.com/150" />
+      <figcaption>A picture of me</figcaption>
+    </figure>
+  </main>
+  <aside>More about me</aside>
+  <footer>Copyright &copy; 2020</footer>
+</body>
 ```
 
 ### Attributes
