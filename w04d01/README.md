@@ -137,7 +137,7 @@ div#my-id { ... }
 * By default, the `width` and `height` of an element is only applied to its content
 * Any padding, border, and margin will then be **added** to the content width and height resulting in elements that take up more space than we had intended
 * Enter the `box-sizing` property which allows us to control this behaviour
-* If we set the `box-sizing` property to a value of `border-box`, then the `width` and `height` of the element will apply to the entire element (margin, border, padding, and content) resulting in elements with more predictable dimensions
+* If we set the `box-sizing` property to a value of `border-box`, then the `width` and `height` of the element will apply to the entire element (border, padding, and content) resulting in elements with more predictable dimensions
 * [Interactive demo](http://guyroutledge.github.io/box-model/)
 
 ### Specificity
