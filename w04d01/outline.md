@@ -130,6 +130,8 @@
 * Least specific to most specific: element => class => id => inline style
 * https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week3/Day1/Breakout/assets/specificity1.png
 
+## Extras
+
 ### Block vs Inline
 * demo inline-block
 
@@ -138,3 +140,5 @@
 
 ### Pseudo Selectors
 * pseudo selectors (:hover, :active)
+
+### Flexbox

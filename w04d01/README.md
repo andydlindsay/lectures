@@ -9,9 +9,9 @@
 * [ ] Style element
 * [ ] Selectors
 * [ ] DevTools
-* [ ] Box Model
+* [ ] Box Model and Box Sizing
+* [ ] External Stylesheets
 * [ ] CSS Resets/Normalize
-* [ ] Box-sizing
 * [ ] Specificity
 
 You'll notice that while this week has more new concepts (every week will), our approach to teaching with you will adjust a bit. Overall, as the weeks progress, there is less emphasis on giving you all the resources, functions, and tips that you need to complete an activity. There will be more expectation for you to poke around until you find an answer.
