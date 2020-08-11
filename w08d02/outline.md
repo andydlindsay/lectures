@@ -98,6 +98,8 @@ export default Product;
 ### Styled Components
 * `yarn add styled-components`
 
+### Presentation Components
+
 ```jsx
 import React from 'react';
 import styled from 'styled-components';
@@ -131,6 +133,36 @@ const StyledComponent = () => {
 };
 
 export default StyledComponent;
+```
+
+### Any Component
+
+```jsx
+// Custom.jsx
+import React from 'react'
+
+const Custom = ({className}) => {
+  return (
+    <div>
+      <p className={className}>Do I have some style?</p>
+    </div>
+  )
+}
+
+export default Custom
+```
+
+```jsx
+// StyledComponent.jsx
+import Custom from './Custom';
+
+const WrappedCustom = styled(Custom)`
+  color: palevioletred;
+  font-weight: bold;
+`;
+
+<Custom />
+<WrappedCustom />
 ```
 
 ## `useContext`
@@ -182,6 +214,7 @@ export default ChildOne;
 ```
 
 ```jsx
+// ChildTwo.jsx
 import React, { useContext } from 'react';
 import CountContext from './CountContext';
 
@@ -248,6 +281,7 @@ export default UseRef;
 ```
 
 ### Avoid stale state
+* https://reactjs.org/docs/hooks-reference.html#useref
 
 ```jsx
 import React, { useRef, useState } from 'react';

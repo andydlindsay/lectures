@@ -4,6 +4,7 @@ import Product from './Product';
 
 const Products = () => {
   const match = useRouteMatch();
+  console.log(match);
 
   return (
     <Router>
