@@ -218,6 +218,8 @@ export default Inbetween;
 
 ## `useRef`
 
+### Set focus :p
+
 ```jsx
 // DOM node reference
 import React, { useRef } from 'react';
@@ -237,6 +239,36 @@ const UseRef = () => {
       </div>
       <div>
         <button onClick={handleClick}>Set Focus</button>
+      </div>
+    </div>
+  );
+};
+
+export default UseRef;
+```
+
+### Avoid stale state
+
+```jsx
+import React, { useRef, useState } from 'react';
+
+const UseRef = () => {
+  const [count, setCount] = useState(0);
+
+  const handleAlert = () => {
+    setTimeout(() => {
+      alert(count);
+    }, 3000);
+  };
+
+  return (
+    <div>
+      <p>useRef</p>
+
+      <div>
+        <p>{count}</p>
+        <button onClick={() => setCount(count => count + 1)}>Increment</button>
+        <button onClick={handleAlert}>Show Alert</button>
       </div>
     </div>
   );
