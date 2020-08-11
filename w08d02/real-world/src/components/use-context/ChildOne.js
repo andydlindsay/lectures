@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import MessageContext from './MessageContext';
 
 const ChildOne = () => {
-  const messages = useContext(MessageContext);
+  const {count} = useContext(MessageContext);
   return (
     <div>
       <h2>I'm child one</h2>
-      <p>{ messages[0].text }</p>
+      {/* <p>{ messages[0].text }</p> */}
+      <h3>The count is: {count}</h3>
     </div>
   );
 };

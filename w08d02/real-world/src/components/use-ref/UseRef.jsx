@@ -4,8 +4,8 @@ const UseRef = () => {
   const inputRef = useRef();
 
   const [count, setCount] = useState(0);
-  const countRef = useRef();
-  countRef.current = count;
+  // const countRef = useRef();
+  // countRef.current = count;
 
   const handleClick = () => {
     inputRef.current.focus();
@@ -13,7 +13,8 @@ const UseRef = () => {
 
   const handleAlert = () => {
     setTimeout(() => {
-      alert(countRef.current);
+      // alert(countRef.current);
+      alert(count);
     }, 3000);
   };
 

@@ -1,6 +1,12 @@
 `rafce`
 
-### Routing
+# External Resources
+* `yarn add react-router-dom`
+* `yarn add styled-components`
+
+# Outline
+
+## Routing
 * `yarn add react-router-dom`
 
 ```jsx
@@ -38,7 +44,7 @@ const Routing = () => {
 export default Routing;
 ```
 
-### Advanced Routing
+## Advanced Routing
 
 ```jsx
 import React from 'react';
@@ -127,31 +133,47 @@ const StyledComponent = () => {
 export default StyledComponent;
 ```
 
-### `useContext`
+## `useContext`
 
 ```js
-export default React.createContext([
-  {
-    id: 1,
-    text: 'hello there from message one'
-  },
-  {
-    id: 2,
-    text: 'this is inside of message two'
-  }
-]);
+// CountContext.js
+import React from 'react';
+
+export default React.createContext();
+```
+
+```js
+// UseContext.jsx
+import React from 'react';
+import ChildOne from './ChildOne';
+import ChildTwo from './ChildTwo';
+import CountContext from './CountContext';
+
+const UseContext = () => {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <CountContext.Provider value={{count, setCount}}>
+      <ChildOne />
+      <ChildTwo />
+    </CountContext.Provider>
+  )
+};
+
+export default UseContext;
 ```
 
 ```jsx
+// ChildOne.jsx
 import React, { useContext } from 'react';
-import MessageContext from './MessageContext';
+import CountContext from './CountContext';
 
 const ChildOne = () => {
-  const messages = useContext(MessageContext);
+  const {count} = useContext(CountContext);
   return (
     <div>
       <h2>I'm child one</h2>
-      <p>{ messages[0].text }</p>
+      <h3>The count is: {count}</h3>
     </div>
   );
 };
@@ -159,7 +181,42 @@ const ChildOne = () => {
 export default ChildOne;
 ```
 
-### `useRef`
+```jsx
+import React, { useContext } from 'react';
+import CountContext from './CountContext';
+
+const ChildTwo = () => {
+  const {setCount} = useContext(CountContext);
+  return (
+    <div>
+      <h2>I'm child two</h2>
+      <button onClick={() => setCount(prev => prev + 1)}>Click me</button>
+    </div>
+  );
+};
+
+export default ChildTwo;
+```
+
+### Add another child in between UseContext and ChildOne
+
+```jsx
+import React from 'react';
+import ChildOne from './ChildOne';
+
+const Inbetween = () => {
+  return (
+    <div>
+      <h2>I am in between!!</h2>
+      <ChildOne />
+    </div>
+  );
+};
+
+export default Inbetween;
+```
+
+## `useRef`
 
 ```jsx
 // DOM node reference
