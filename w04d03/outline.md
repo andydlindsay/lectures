@@ -1,5 +1,11 @@
 [https://reqres.in/](https://reqres.in/)
 
+# External Resources
+
+* http://my-json-server.typicode.com/andydlindsay/chef-andy
+
+# Outline
+
 * AJAX history
 * XML Http request object
 * XML explanation
