@@ -2,10 +2,9 @@
 
 ### To Do
 - [ ] Primary Keys/Foreign Keys
+- [ ] Naming Conventions
 - [ ] Data Types
 - [ ] Relationship Types
-- [ ] Naming Conventions
-- [ ] Normalization
 - [ ] Design Concepts
 - [ ] Entity Relationship Diagrams
 - [ ] Breakout: Convert 2 Spreadsheets [15 mins]
@@ -18,6 +17,13 @@
 - The usual data type is auto-incrementing integer (`INTEGER` or `BIGINT`)
 - A Primary Key stored in another table is known as a `Foreign Key`
 - The Primary Key and Foreign Key **MUST** be the same data type
+
+### Naming Conventions
+
+- Table and field names are written in `snake_case`
+- Table names are always pluralized
+- The primary key for each table will simply be called `id`
+- A foreign key is made up of the singular of the primary keys table and the suffix `_id` (eg. `user_id` is the foreign key for the `id` field in the `users` table)
 
 ### Data Types
 
@@ -32,19 +38,6 @@
 - **Many-to-Many**: One or more records in the first table are related to one or more records in the second table
 
 - It could be argued that there is really only one relationship type: _One-to-Many_ as One-to-One's are extremely rare and Many-to-Many's are implemented using two _One-to-Many's_
-
-### Naming Conventions
-
-- Table and field names are written in `snake_case`
-- Table names are always pluralized
-- The primary key for each table will simply be called `id`
-- A foreign key is made up of the singular of the primary keys table and the suffix `_id` (eg. `user_id` is the foreign key for the `id` field in the `users` table)
-
-### Normalization
-
-- The process of designing (and redesigning) a relational database to reduce duplicated data
-- This will help to improve the structure of the data
-- Beware: taking this process too far can result in extremely complex queries to retrieve related data
 
 ### Design Concepts
 
