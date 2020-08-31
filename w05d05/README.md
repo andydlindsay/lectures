@@ -1,4 +1,4 @@
-# W5D5 Mid-term Project Kickoff
+# W05D05 - Mid-term Project Kickoff
 
 ### Pick a Project
 - Wiki Map

@@ -1,4 +1,4 @@
-# W04D03 AJAX
+# W04D03 - AJAX
 
 ### To Do
 - [ ] AJAX

@@ -1,4 +1,4 @@
-# W7D1 Component-Based UI w/ React
+# W07D01 - Component-Based UI w/ React
 
 ### To Do
 - [ ] Review of Closures

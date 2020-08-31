@@ -1,4 +1,4 @@
-# W5D2 - Database Design
+# W05D02 - Database Design
 
 ### To Do
 - [ ] Primary Keys/Foreign Keys

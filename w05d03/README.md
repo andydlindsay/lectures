@@ -1,4 +1,4 @@
-# W05D03 SQL from our Apps
+# W05D03 - SQL from our Apps
 
 ### To Do
 - [ ] Create a database

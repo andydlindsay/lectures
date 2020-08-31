@@ -1,4 +1,4 @@
-# W2D4 - Promises
+# W02D04 - Promises
 
 ### To Do
 - [ ] Illustrate the "callback waterfall" (callback hell) problem

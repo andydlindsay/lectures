@@ -1,4 +1,4 @@
-# W8D4 - Class-based Components
+# W08D04 - Class-based Components
 
 ### To Do
 - [ ] Review ES6 Classes

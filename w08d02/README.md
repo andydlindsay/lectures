@@ -1,4 +1,4 @@
-# W8D2 Real World React
+# W08D02 - Real World React
 
 ### To Do
 - [ ] React Router

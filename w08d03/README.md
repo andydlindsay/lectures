@@ -1,4 +1,4 @@
-# W8D3 End-to-End Testing with Cypress
+# W08D03 - End-to-End Testing with Cypress
 
 ### To Do
 - [ ] Jest vs Cypress

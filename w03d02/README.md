@@ -1,4 +1,4 @@
-# W02D03 CRUD with Express
+# W03D02 - CRUD with Express
 
 ### To Do
 - [ ] Implement CRUD over HTTP with Express

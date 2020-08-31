@@ -1,4 +1,4 @@
-# W1D3 - Objects in JS
+# W01D03 - Objects in JS
 
 ### To Do
 - [ ] Review primitive types

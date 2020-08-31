@@ -1,4 +1,4 @@
-# W1D2 The Dev Workflow
+# W01D02 - The Dev Workflow
 
 ### To Do
 - [ ] Curriculum overview

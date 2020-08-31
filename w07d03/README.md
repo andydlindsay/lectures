@@ -1,4 +1,4 @@
-# W7D3 - Data Fetching & Other Side Effects
+# W07D03 - Data Fetching & Other Side Effects
 
 ### To Do
 - [ ] Rules for Hooks

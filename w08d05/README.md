@@ -1,4 +1,4 @@
-# W8D5 Intro to Ruby
+# W08D05 - Intro to Ruby
 
 ### Why ruby and rails?
 

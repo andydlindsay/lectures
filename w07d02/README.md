@@ -1,4 +1,4 @@
-# W7D2 Immutable Update Patterns
+# W07D02 - Immutable Update Patterns
 
 ### To Do
 - [ ] Recap: Components, Props, and State
