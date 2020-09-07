@@ -50,6 +50,34 @@ const cube = new Cube(2, 3, 4);
 console.log(cube.volume()); // 24
 ```
 
+## Extends
+
+```js
+const Animal = class {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+}
+
+const Cat = class extends Animal {
+  constructor(name, age, toy) {
+    super(name, age);
+    this.toy = toy;
+  }
+}
+
+const cat = new Cat('Tiddles', 7, 'bangles');
+cat.eat('fancy feast');
+console.log(cat);
+// Cat { name: 'Tiddles', age: 7, stomach: [ 'turkey' ], toy: 'bangles' }
+```
+
 ## Class Components
 
 ```js
