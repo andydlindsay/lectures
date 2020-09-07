@@ -100,6 +100,9 @@ const compSelection = chooseRobotItem();
 
 // to
 const compSelection = chooseRobotItem(cheating, playerSelection);
+
+// update useEffect dependency array
+}, [playerSelection, cheating, setState]);
 ```
 
 ### `src/components/__tests__/Game.test.jsx`
