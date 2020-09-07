@@ -119,3 +119,4 @@ Notes and example app based on [Francis' lecture](https://github.com/FrancisBour
 * [Which query should I use?](https://testing-library.com/docs/guide-which-query)
 * [Jest-DOM](https://github.com/testing-library/jest-dom)
 * [Testing Library Async Functions](https://testing-library.com/docs/dom-testing-library/api-async)
+* [Jest --coverage issue](https://github.com/facebook/jest/issues/9723)

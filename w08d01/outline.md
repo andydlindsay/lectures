@@ -1,13 +1,15 @@
-### Overview
+# Overview
 - This lecture has 90 mins of live-coding
 - Ensure the theory portion goes no longer than 30 mins
 
-### Important Links
+## External Resources
 - [Jest Homepage](https://jestjs.io/)
 - [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [JestDOM](https://github.com/testing-library/jest-dom)
 - [Which query should I use?](https://testing-library.com/docs/guide-which-query)
+
+## Outline
 
 ### Tools for testing React
 - [Jest](https://jestjs.io/)
@@ -24,7 +26,6 @@
 ### Add Features to App Following TDD
 - helper functions (unit tests)
   - choose a valid response for the computer player (currently hard-coded)
-  - determine the status message to display when the game is done
 - features (integration tests)
   - clicking on the robot head will toggle the cheating boolean
   - render appropriate message in Result component based on game status
@@ -40,7 +41,7 @@
 % yarn test --coverage --watchAll=false
 ```
 
-1. `src/helpers/__tests__/helpers.test.js`
+### `src/helpers/__tests__/helpers.test.js`
 
 ```js
 describe('chooseRobotItem function', () => {
@@ -72,7 +73,7 @@ describe('chooseRobotItem function', () => {
 });
 ```
 
-2. `src/helpers/helpers.js`
+### `src/helpers/helpers.js`
 
 ```js
 export const chooseRobotItem = (cheating, playerItem) => {
@@ -91,42 +92,17 @@ export const chooseRobotItem = (cheating, playerItem) => {
 };
 ```
 
-3. `src/helpers/__tests__/helpers.test.js`
+### Update function call in `Player.jsx`
 
 ```js
-describe('genFeedbackMessage function', () => {
-  test('returns correct message when given a status', () => {
-    const loss = genFeedbackMessage('Lost');
-    const win = genFeedbackMessage('Won');
-    const tie = genFeedbackMessage('Tied');
-    const waiting = genFeedbackMessage('Waiting');
+// from
+const compSelection = chooseRobotItem();
 
-    expect(loss).toEqual('You lost!');
-    expect(win).toEqual('Good job!');
-    expect(tie).toEqual('Tie game!');
-    expect(waiting).toEqual('Waiting for your choice!');
-  });
-});
+// to
+const compSelection = chooseRobotItem(cheating, playerSelection);
 ```
 
-4. `src/helpers/helpers.js`
-
-```js
-export const genFeedbackMessage = (status) => {
-  switch (status) {
-    case 'Won':
-      return 'Good job!';
-    case 'Lost':
-      return 'You lost!';
-    case 'Tied':
-      return 'Tie game!';
-    default:
-      return 'Waiting for your choice!';
-  }
-};
-```
-
-5. `src/components/__tests__/Game.test.jsx`
+### `src/components/__tests__/Game.test.jsx`
 
 ```js
 import React from 'react';
@@ -145,7 +121,7 @@ test('change cheat state when clicking on robot', () => {
 });
 ```
 
-6. `src/components/Computer.jsx`
+### `src/components/Computer.jsx`
 
 ```js
 const handleClick = () => {
@@ -165,7 +141,7 @@ const handleClick = () => {
 </span>
 ```
 
-7. `src/components/__tests__/Result.test.js`
+### `src/components/__tests__/Result.test.js`
 
 ```js
 // convert this test to use beforeEach and write out the tests for other statuses
@@ -184,6 +160,10 @@ test('shows appropriate message when the status is "Waiting"', () => {
 ```
 
 ```js
+import React from 'react';
+import { render, getByTestId } from '@testing-library/react';
+import Result from '../Result';
+
 let fakeState;
 
 beforeEach(() => {
@@ -201,19 +181,57 @@ test('shows appropriate message when the status is "Waiting"', () => {
 
   expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
 });
+
+test('shows appropriate message when the status is "Won"', () => {
+  fakeState.status = 'Won';
+  const { container } = render(<Result status={fakeState.status} />);
+
+  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Good job!');
+});
+
+test('shows appropriate message when the status is "Lost"', () => {
+  fakeState.status = 'Lost';
+  const { container } = render(<Result status={fakeState.status} />);
+
+  expect(getByTestId(container, 'result_footer')).toHaveTextContent('You lost!');
+});
+
+test('shows appropriate message when the status is "Tied"', () => {
+  fakeState.status = 'Tied';
+  const { container } = render(<Result status={fakeState.status} />);
+
+  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Tie game!');
+});
 ```
 
-8. Demonstrate `prettyDOM` and `debug`
+### Update Result component
+
+```js
+import React from 'react';
+import { genFeedbackMessage } from '../helpers/helpers';
+
+const Result = (props) => {    
+  return(
+    <footer data-testid="result_footer">
+      <h2>{genFeedbackMessage(props.status)}</h2>
+    </footer>
+  );
+}
+
+export default Result;
+```
+
+### Demonstrate `prettyDOM` and `debug`
 
 ```js
 import { render, getByTestId, prettyDOM } from '@testing-library/react';
-console.log(prettyDOM(container));
 
 const { container, debug } = render(<Result status={fakeState.status} />);
-debug();
+console.log(prettyDOM(container)); // have to log the return from prettyDOM
+debug(); // logs for us
 ```
 
-9. Mock `axios`
+### Mock `axios`
 
 ```js
 // src/components/__tests__/Result.test.js
@@ -255,7 +273,7 @@ test('Axios test', async () => {
 });
 ```
 
-10. Update the Result component to make the AJAX request on button click
+### Update the Result component to make the AJAX request on button click
 
 ```jsx
 const [highScores, setHighScores] = React.useState([]);
@@ -270,13 +288,13 @@ const fetchHighScores = () => {
 return(
   <footer data-testid="result_footer">
     <h2>Waiting for your choice!</h2>
-    <button onClick={fetchHighScores} data-testid="high-scores">High Scores!</button>
+    <button onClick={fetchHighScores} data-testid="fetch-highscores">High Scores!</button>
     { highScores.map(highScore => <li key={highScore.id}>{highScore.name}</li>) }
   </footer>
 );
 ```
 
-11. Function mock example
+### Function mock example
 
 ```js
 const mock = jest.fn();
