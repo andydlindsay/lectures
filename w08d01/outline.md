@@ -262,6 +262,15 @@ test('Axios test', async () => {
   // mock any calls to axios.get with hardcoded return value `data`
   axios.get.mockResolvedValueOnce({ data });
 
+  // also works with a delay
+  axios.get.mockImplementationOnce(() => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({ data });
+      }, 2000);
+    });
+  });
+
   // firing this event causes the axios call to happen
   fireEvent.click(button);
 
