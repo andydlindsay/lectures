@@ -299,6 +299,7 @@ end
 * Update books controller
 
 ```rb
+# app/controllers/books_controller.rb
 class BooksController < ApplicationController
   def index
     @author = Author.find(params[:author_id]);
@@ -334,4 +335,16 @@ end
     </div>
   <% end %>
 </body>
+```
+
+### What if we want to send back JSON instead?
+
+```rb
+# app/controllers/authors_controller.rb
+class AuthorsController < ApplicationController
+  def index
+    @authors = Author.all
+    render json: @authors
+  end
+end
 ```
