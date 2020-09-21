@@ -39,7 +39,7 @@
 - Rails bundles all these libraries together to create a framework
 
 ### Nested Routes
-* We define the nesting in our routes. In routes.rb you say:
+* We define the nesting in our routes. In routes.rb:
 
 ```ruby
 resources :authors do

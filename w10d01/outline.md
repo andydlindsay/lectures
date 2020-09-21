@@ -1,3 +1,186 @@
+# External Resources
+
+* [dotenv gem](https://github.com/bkeepers/dotenv)
+
+# Outline
+
+* Generate a new rails application
+`rails new <app-name>`
+
+* Specify postgres as database
+`rails new <app-name> --database=postgresql`
+
+* API only rails app
+`rails new <app-name> --api`
+
+* Start a rails app
+`rails server`
+
+* Update `config/database.yml`
+
+```yml
+development:
+  <<: *default
+  database: database-name
+
+  # The specified database role being used to connect to postgres.
+  # To create additional roles in postgres see `$ createuser --help`.
+  # When left blank, postgres will use the default role. This is
+  # the same name as the operating system user that initialized the database.
+  username: database-user
+
+  # The password associated with the postgres role (username).
+  password: database-password
+
+  # Connect on a TCP socket. Omitted by default since the client uses a
+  # domain socket that doesn't need configuration. Windows does not have
+  # domain sockets, so uncomment these lines.
+  host: database-host
+
+  # The TCP port the server listens on. Defaults to 5432.
+  # If your server runs on a different port number, change accordingly.
+  port: database-port
+```
+
+* Use environment variables instead
+
+```bash
+touch .env
+```
+
+```Gemfile
+gem 'dotenv-rails', groups: [:development, :test]
+```
+
+```bash
+bundle
+```
+
+```env
+DATABASE_URL=database-connection-string
+```
+
+```yml
+# comment out the unneeded connection info
+development:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+```
+
+### Generate models from the command line
+
+```bash
+rails g model Author
+rails g model Book
+```
+
+* Update migrations
+
+```rb
+# db/migrate/..._create_authors.rb
+class CreateAuthors < ActiveRecord::Migration[6.0]
+  def change
+    create_table :authors do |t|
+      t.string :first_name
+      t.string :last_name
+      t.timestamps
+    end
+  end
+end
+```
+
+```rb
+# db/migrate/..._create_books.rb
+class CreateBooks < ActiveRecord::Migration[6.0]
+  def change
+    create_table :books do |t|
+      t.string :title
+      t.integer :num_pages
+      t.references :author, index: true, foreign_key: true
+      t.timestamps
+    end
+  end
+end
+```
+
+```rb
+# app/models/author.rb
+class Author < ApplicationRecord
+  has_many :books
+end
+```
+
+```rb
+# app/models/book.rb
+class Book < ApplicationRecord
+  belongs_to :author
+end
+```
+
+* Update seed file
+
+```rb
+# db/seeds.rb
+puts "Seeding Data..."
+
+agatha = Author.create(first_name: 'Agatha', last_name: 'Christie')
+stephen = Author.create(first_name: 'Stephen', last_name: 'King')
+jay_kay = Author.create(first_name: 'J.K.', last_name: 'Rowling')
+
+Book.create(title: 'Murder on the Orient Express', num_pages: 347, author_id: agatha.id)
+Book.create(title: 'A Pocket Full of Rye', num_pages: 220, author_id: agatha.id)
+Book.create(title: 'Death on the Nile', num_pages: 335, author_id: agatha.id)
+
+Book.create(title: 'It', num_pages: 1035, author_id: stephen.id)
+Book.create(title: 'The Shining', num_pages: 640, author_id: stephen.id)
+Book.create(title: 'Misery', num_pages: 805, author_id: stephen.id)
+Book.create(title: 'The Green Mile', num_pages: 2324, author_id: stephen.id)
+
+Book.create(title: "Harry Potter and the Philosopher's Stone", num_pages: 375, author_id: jay_kay.id)
+Book.create(title: "Harry Potter and the Deathly Hallows", num_pages: 575, author_id: jay_kay.id)
+Book.create(title: "Harry Potter and the Chamber of Secrets", num_pages: 643, author_id: jay_kay.id)
+
+puts "Done!"
+```
+
+* Run migrations
+
+```shell
+rails db:migrate
+```
+
+* Run seeds
+
+```shell
+rails db:seed
+```
+
+### Generate controllers
+
+```shell
+rails g controller authors
+rails g controller books
+```
+
+```rb
+# app/controllers/authors_controller.rb
+class AuthorsController < ApplicationController
+  def index
+    @authors = Author.all
+  end
+end
+```
+
+```rb
+# app/controllers/books_controller.rb
+class BooksController < ApplicationController
+  def index
+    @author = Author.find(params[:author_id])
+    @books = @author.books
+  end
+end
+```
+
 ### Outline
 * How does everyone feel about Rails/Ruby?
 * Compare and contrast with JS/React/EJS (MVC vs MVVM: React is the view, but also contains business logic in a mini controller)
