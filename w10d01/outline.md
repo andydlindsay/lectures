@@ -119,6 +119,10 @@ development:
 ```bash
 rails g model Author
 rails g model Book
+
+# or with scaffold
+rails g scaffold authors
+rails g scaffold books
 ```
 
 ### Update migrations
