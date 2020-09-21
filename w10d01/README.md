@@ -4,6 +4,7 @@
 - [ ] "Rails Week" Conversation
 - [ ] MVC Review
 - [ ] Rails Libraries
+- [ ] Quickly build simple Rails app
 - [ ] Nested Resources
 
 ### Model View Controller Review

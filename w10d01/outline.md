@@ -1,22 +1,69 @@
 # External Resources
 
 * [dotenv gem](https://github.com/bkeepers/dotenv)
+* [MVC Diagram](https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week7/Day3/Lecture/assets/mvc-rails.png)
 
 # Outline
 
-* Generate a new rails application
-`rails new <app-name>`
+## Rails Week Review
+* How does everyone feel about Rails/Ruby?
+* Compare and contrast with JS/React/EJS (MVC vs MVVM: React is the view, but also contains business logic in a mini controller)
+* What were the expected learning outcomes for the "Rails week"?
+* What were the actual learning outcomes?
+* Rails for your final? Rails on your resume?
+* Migrations (source control for your database)
 
-* Specify postgres as database
-`rails new <app-name> --database=postgresql`
+## Model View Controller Review
+- **Model:** Responsible for handling data logic (eg. database queries)
+- **View:** Responsible for the UI (User Interface)
+- **Controller:** Ties the model and view together, talks to both and shares data between them
+- Rails also uses a router (`routes.rb`) sitting between the user requests and the controllers that respond to those requests
 
-* API only rails app
-`rails new <app-name> --api`
+![MVC Diagram](https://raw.githubusercontent.com/tborsa/LighthouseLabs/master/lectures/Week7/Day3/Lecture/assets/mvc-rails.png)
 
-* Start a rails app
-`rails server`
+## Rails Libraries
+- Rails is a framework made up of a collection of libraries
+- **Active Record**
+  - An Object Relational Mapper (ORM)
+  - Allows you to query and modify the application data in an intuitive way
+- **Action View**
+  - Handles template lookup and rendering
+  - Provides helpers for building forms and other UI elements
+- **Action Controller**
+  - Controller library
+  - Controller's make sense of the request and decide what should be returned to the client
+- **Action Dispatch**
+  - The Rails router
+  - Handles incoming requests and forwards them to the correct controller
+- **Active Support**
+  - Collection of helper methods for Ruby
+- **Action Mailer**
+  - Allows you to send emails
+- **Action Cable**
+  - Websockets for Rails
+- **Active Storage**
+  - For uploading files to storage in the cloud
+- Rails bundles all these libraries together to create a framework
 
-* Update `config/database.yml`
+## Rails App
+
+### Create the rails app from the command line
+
+```shell
+# Generate a new rails application
+% rails new <app-name>
+
+# Specify postgres as database
+% rails new <app-name> --database=postgresql
+
+# API only rails app
+% rails new <app-name> --api
+
+# Start a rails app
+% rails server
+```
+
+### Update `config/database.yml`
 
 ```yml
 development:
@@ -42,10 +89,10 @@ development:
   port: database-port
 ```
 
-* Use environment variables instead
+### Use environment variables instead
 
 ```bash
-touch .env
+% touch .env
 ```
 
 ```Gemfile
@@ -53,7 +100,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 ```
 
 ```bash
-bundle
+% bundle
 ```
 
 ```env
@@ -74,7 +121,7 @@ rails g model Author
 rails g model Book
 ```
 
-* Update migrations
+### Update migrations
 
 ```rb
 # db/migrate/..._create_authors.rb
@@ -117,7 +164,7 @@ class Book < ApplicationRecord
 end
 ```
 
-* Update seed file
+### Update seed file
 
 ```rb
 # db/seeds.rb
@@ -143,13 +190,14 @@ Book.create(title: "Harry Potter and the Chamber of Secrets", num_pages: 643, au
 puts "Done!"
 ```
 
-* Run migrations
+### Run migrations
+* `schema_migrations` table holds the migration history (empty it to reset the migrations)
 
 ```shell
 rails db:migrate
 ```
 
-* Run seeds
+### Run seeds
 
 ```shell
 rails db:seed
@@ -175,53 +223,115 @@ end
 # app/controllers/books_controller.rb
 class BooksController < ApplicationController
   def index
-    @author = Author.find(params[:author_id])
+    @books = Book.all
+  end
+end
+```
+
+### Update routes
+
+```rb
+# config/routes.rb
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :authors do
+  end
+
+  resources :books do
+  end
+end
+```
+
+### Create views
+
+```rb
+# app/views/authors/index.html.erb
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authors</title>
+</head>
+<body>
+  <h1>All the Authors</h1>
+  <% @authors.each do |author| %>
+    <div>
+      <h2><%= "#{author.first_name} #{author.last_name}" %></h2>
+    </div>
+  <% end %>
+</body>
+</html>
+```
+
+```rb
+# app/views/books/index.html.erb
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books</title>
+</head>
+<body>
+  <h1>All the Books</h1>
+  <% @books.each do |book| %>
+    <div>
+      <%= book.title %>
+    </div>
+  <% end %>
+</body>
+</html>
+```
+
+### Use nested routes
+
+```rb
+# config/routes.rb
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :authors do
+    resources :books
+  end
+end
+```
+
+* Update books controller
+
+```rb
+class BooksController < ApplicationController
+  def index
+    @author = Author.find(params[:author_id]);
     @books = @author.books
   end
 end
 ```
 
-### Outline
-* How does everyone feel about Rails/Ruby?
-* Compare and contrast with JS/React/EJS (MVC vs MVVM: React is the view, but also contains business logic in a mini controller)
-* What were the expected learning outcomes for the "Rails week"?
-* What were the actual learning outcomes?
-* Rails for your final? Rails on your resume?
-* Migrations (source control for your database)
-* Problem solving outside of programming/development?
+* Update books index view
 
-* MVC review
+```rb
+# app/views/books/index.html.erb
+<body>
+  <h2>Books for <%= @author.first_name + ' ' + @author.last_name %></h2>
+  <%= link_to 'Home', authors_path  %>
+  <% @books.each do |book| %>
+    <div>
+      <%= book.title %>
+    </div>
+  <% end %>
+</body>
+```
 
-* Rails in the wild (ecosystem, popular gems, open source projects, job opportunities)
-* New features for Rails 5 & 6
-* Nested resources
-* Namespacing
-* Review: Websockets
-* Websockets in Rails (ActionCable)
+* Update authors index view
 
-`rails _5.1.5_ new chatty --database=postgresql -T --no-rdoc --no-ri`
-
-Google "rails gem dotenv"
-Copy the line of code into the Gemfile
-`touch .env`
-Edit `/config/database.yml`
-Copy connection string from ElephantSQL and paste into `.env`
-
-`rails db:migrate`
-
-`rails g model Author`
-`rails g model Book`
-
-`schema_migrations` table holds the migration history (empty it to reset the migrations)
-
-`rails routes -E`
-
-`rails g controller authors`
-`rails g controller books`
-
-```ruby
-# config/routes.rb
-resources :authors do
-  resources :books
-end
+```rb
+# app/views/authors/index.html.erb
+<body>
+  <h1>All the Authors</h1>
+  <% @authors.each do |author| %>
+    <div>
+      <h2><%= "#{author.first_name} #{author.last_name}" %> - <%= link_to 'Books', author_books_path(author)  %></h2>
+    </div>
+  <% end %>
+</body>
 ```
