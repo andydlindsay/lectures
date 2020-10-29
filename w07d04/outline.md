@@ -18,20 +18,19 @@
 
 ```jsx
 const Title = () => {
-  const [title, setTitle] = React.useState('Hooks are neato!');
+  const [title, setTitle] = useState('Hooks are neato!');
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = title;
   }, [title]);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setTitle('I luv hooks!');
-    }, 3000);
-  }, []);
-
   return (
-    <h1>Document Title</h1>
+    <div>
+      <h2>Document Title</h2>
+
+      <label>New title:</label>
+      <input value={title} onChange={event => setTitle(event.target.value)} />
+    </div>
   );
 };
 ```
@@ -40,7 +39,7 @@ const Title = () => {
 
 ```jsx
 const useDocumentTitle = (title) => {
-  React.useEffect(() => {
+  useEffect(() => {
     document.title = title;
   }, [title]);
 };
@@ -56,9 +55,9 @@ useDocumentTitle(title);
 
 ```jsx
 const Mouse = () => {
-  const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('mousemove', e => {
       setCoords({ x: e.clientX, y: e.clientY});
     });
@@ -82,12 +81,12 @@ const Mouse = () => {
 ### Create `useMousePosition.js` and move the mouse logic into it
 
 ```js
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const useMousePosition = () => {
-  const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-  React.useEffect(() => {
+  useEffect(() => {
     const mouseHandler = (event) => {
       setCoords({ x: event.clientX, y: event.clientY });
     };
@@ -141,8 +140,8 @@ const Title = () => {
 import React from 'react';
 
 const Input = () => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -194,7 +193,7 @@ export default Input;
 import React from 'react';
 
 const useInput = (initialValue) => {
-  const [value, setValue] = React.useState(initialValue);
+  const [value, setValue] = useState(initialValue);
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -254,9 +253,9 @@ export default Input;
 
 ```js
 const useLocationData = () => {
-  const [coords, setCoords] = React.useState({ lat: 0, lon: 0 });
+  const [coords, setCoords] = useState({ lat: 0, lon: 0 });
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.navigator.geolocation.getCurrentPosition((navInfo) => {
       setCoords({ lat: navInfo.coords.latitude, lon: navInfo.coords.longitude });    
     });
