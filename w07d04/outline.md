@@ -137,7 +137,6 @@ const Title = () => {
 ### Create the `Input` component and give it some form handling logic
 
 ```jsx
-import React from 'react';
 
 const Input = () => {
   const [username, setUsername] = useState('');
@@ -190,7 +189,6 @@ export default Input;
 ### Create `useInput.js` hook
 
 ```js
-import React from 'react';
 
 const useInput = (initialValue) => {
   const [value, setValue] = useState(initialValue);
@@ -208,7 +206,6 @@ export default useInput;
 ### Refactor the `Input` component to use the new hook
 
 ```jsx
-import React from 'react';
 import useInput from '../hooks/useInput';
 
 const Input = () => {
@@ -287,7 +284,6 @@ const Location = () => {
 ### Review `useRequest` hook
 
 ```jsx
-import React from 'react';
 import useRequest from '../hooks/useRequest';
 
 const Request = () => {
@@ -310,7 +306,6 @@ export default Request;
 ### Review `useKeyPress` hook
 
 ```jsx
-import React from 'react';
 import useKeyPress from '../hooks/useKeyPress';
 
 const KeyPress = () => {
