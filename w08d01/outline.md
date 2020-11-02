@@ -8,6 +8,7 @@
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [JestDOM](https://github.com/testing-library/jest-dom)
 - [Which query should I use?](https://testing-library.com/docs/guide-which-query)
+- https://my-json-server.typicode.com/andydlindsay/moai-axe-tree/high-scores
 
 ## Outline
 
@@ -23,12 +24,7 @@
 - [JestDOM](https://github.com/testing-library/jest-dom)
   * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
-### Add Features to App Following TDD
-- helper functions (unit tests)
-  - choose a valid response for the computer player (currently hard-coded)
-- features (integration tests)
-  - clicking on the robot head will toggle the cheating boolean
-  - render appropriate message in Result component based on game status
+### Coverage Reports
 
 ```bash
 % npm test -- --verbose
@@ -40,6 +36,44 @@
 % npm test -- --coverage --watchAll=false
 % yarn test --coverage --watchAll=false
 ```
+
+### Add Features/Tests to App
+- existing code test
+  - test the `genFeedbackMessage` function
+- TDD: unit test
+  - choose a valid response for the computer player (currently hard-coded)
+- TDD: integration test
+  - clicking on the robot head will toggle the cheating boolean
+- mocking
+  - test fetching high scores (mock Axios)
+
+### Test `genFeedbackMessage` function
+
+```js
+describe('genFeedbackMessage function', () => {
+  test('returns appropriate message when given "Lost"', () => {
+    const loss = genFeedbackMessage('Lost');
+    expect(loss).toEqual('You lost!');
+  });
+
+  test('returns appropriate message when given "Won"', () => {
+    const win = genFeedbackMessage('Won');
+    expect(win).toEqual('Good job!');
+  });
+
+  test('returns appropriate message when given "Tied"', () => {
+    const tie = genFeedbackMessage('Tied');
+    expect(tie).toEqual('Tie game!');
+  });
+
+  test('returns appropriate message when given "Waiting"', () => {
+    const waiting = genFeedbackMessage('Waiting');
+    expect(waiting).toEqual('Waiting for your choice!');
+  });
+});
+```
+
+### Add `genFeedbackMessage` to Result component
 
 ### `src/helpers/__tests__/helpers.test.js`
 
@@ -127,6 +161,8 @@ test('change cheat state when clicking on robot', () => {
 ### `src/components/Computer.jsx`
 
 ```js
+const {state, setState} = props;
+
 const handleClick = () => {
   return setState(prevState => (
     { ...prevState, cheating: !prevState.cheating }
@@ -144,86 +180,6 @@ const handleClick = () => {
 </span>
 ```
 
-### `src/components/__tests__/Result.test.js`
-
-```js
-// convert this test to use beforeEach and write out the tests for other statuses
-test('shows appropriate message when the status is "Waiting"', () => {
-  const fakeState = {
-    compSelection: null,
-    playerSelection: null,
-    status: 'Waiting',
-    cheating: false
-  };
-  
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
-});
-```
-
-```js
-import React from 'react';
-import { render, getByTestId } from '@testing-library/react';
-import Result from '../Result';
-
-let fakeState;
-
-beforeEach(() => {
-  fakeState = {
-    compSelection: null,
-    playerSelection: null,
-    status: 'Waiting',
-    cheating: false
-  };
-});
-
-test('shows appropriate message when the status is "Waiting"', () => {
-  fakeState.status = 'Waiting';
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
-});
-
-test('shows appropriate message when the status is "Won"', () => {
-  fakeState.status = 'Won';
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Good job!');
-});
-
-test('shows appropriate message when the status is "Lost"', () => {
-  fakeState.status = 'Lost';
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('You lost!');
-});
-
-test('shows appropriate message when the status is "Tied"', () => {
-  fakeState.status = 'Tied';
-  const { container } = render(<Result status={fakeState.status} />);
-
-  expect(getByTestId(container, 'result_footer')).toHaveTextContent('Tie game!');
-});
-```
-
-### Update Result component
-
-```js
-import React from 'react';
-import { genFeedbackMessage } from '../helpers/helpers';
-
-const Result = (props) => {    
-  return(
-    <footer data-testid="result_footer">
-      <h2>{genFeedbackMessage(props.status)}</h2>
-    </footer>
-  );
-}
-
-export default Result;
-```
-
 ### Demonstrate `prettyDOM` and `debug`
 
 ```js
@@ -232,78 +188,6 @@ import { render, getByTestId, prettyDOM } from '@testing-library/react';
 const { container, debug } = render(<Result status={fakeState.status} />);
 console.log(prettyDOM(container)); // have to log the return from prettyDOM
 debug(); // logs for us
-```
-
-### Mock `axios`
-
-```js
-// src/components/__tests__/Result.test.js
-import React from 'react';
-import { render, getByTestId, fireEvent } from '@testing-library/react';
-import Result from '../Result';
-import axios from 'axios';
-
-jest.mock('axios');
-
-const data = {
-  resultCount: 3,
-  results: [
-    { id: 1, name: 'Alice', score: 10 },
-    { id: 2, name: 'Bob', score: 5 },
-    { id: 3, name: 'Carol', score: 2 }
-  ]
-};
-
-// this function must be marked as `async` in order to use `await` within it
-test('Axios test', async () => {
-  const { getByTestId, findByText } = render(<Result status="Waiting" />);
-  const button = getByTestId('fetch-highscores');
-
-  // mock any calls to axios.get with hardcoded return value `data`
-  axios.get.mockResolvedValueOnce({ data });
-
-  // also works with a delay
-  axios.get.mockImplementationOnce(() => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve({ data });
-      }, 2000);
-    });
-  });
-
-  // firing this event causes the axios call to happen
-  fireEvent.click(button);
-
-  // findBy functions return a promise which we can `await`
-  await findByText('Bob');
-
-  // we could get jest to wait instead
-  return expect(findByText('Bob')).resolves.toBeTruthy();
-
-  // or we could return a promise
-  return findByText('Bob');
-});
-```
-
-### Update the Result component to make the AJAX request on button click
-
-```jsx
-const [highScores, setHighScores] = React.useState([]);
-
-const fetchHighScores = () => {
-  axios
-    .get('/high-scores')
-    .then(response => setHighScores(response.data.results))
-    .catch(err => console.error(err));
-};
-
-return(
-  <footer data-testid="result_footer">
-    <h2>Waiting for your choice!</h2>
-    <button onClick={fetchHighScores} data-testid="fetch-highscores">High Scores!</button>
-    { highScores.map(highScore => <li key={highScore.id}>{highScore.name}</li>) }
-  </footer>
-);
 ```
 
 ### Function mock example
@@ -321,4 +205,59 @@ const mockTwo = jest.fn(() => 'bar');
 result = mockTwo('foo');
 
 expect(result).toBe('bar');
+```
+
+### Mock `axios`
+
+```js
+import React from 'react';
+import { render } from '@testing-library/react';
+import HighScores from '../HighScores';
+import axios from 'axios';
+
+jest.mock('axios');
+
+const data = [
+  {
+    "id": 1,
+    "name": "Alice",
+    "points": 15
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "points": 10
+  },
+  {
+    "id": 3,
+    "name": "Carol",
+    "points": 5
+  }
+];
+
+// this function must be marked as `async` in order to use `await` within it
+test('Axios test', async () => {
+  // mock any calls to axios.get with hardcoded return value `data`
+  axios.get.mockResolvedValueOnce({ data });
+
+  // also works with a delay
+  // axios.get.mockImplementationOnce(() => {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve({ data });
+  //     }, 2000);
+  //   });
+  // });
+
+  const { findByText } = render(<HighScores />);
+
+  // we could return a promise
+  return findByText('Bob', { exact: false });
+
+  // or we could get jest to wait instead
+  // return expect(findByText('Bob', { exact: false })).resolves.toBeTruthy();
+
+  // or findBy functions return a promise which we can `await`
+  // await findByText('Bob', { exact: false });
+});
 ```

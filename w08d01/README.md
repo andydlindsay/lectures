@@ -3,33 +3,9 @@
 ### To Do
 - [ ] Tools for testing React
 - [ ] Coverage Reports
-- [ ] Add Features to our App Following TDD
+- [ ] Add Features/Tests to our App
 - [ ] `debug()` and `prettyDOM()`
 - [ ] Mocking AJAX Requests and Functions
-
-### Types of Testing
-- **Static**
-  * Mostly about the linter
-  * Syntax testing, variable names, etc
-  * Linter/prettifier rules are defined by the company you work for
-  * Cheap
-- **Unit**
-  * Testing the mechanics of a function making sure that the output is consistent
-  * Cheap
-- **Integration**
-  * Making sure that different parts of the code work together
-  * How the user will interact with a specific component or feature and making sure it works well with other functions
-  * Expensive
-- **End-to-end**
-  * Closely based on your user flow (user experience), making sure that the workflow of your app is working through multiple features
-  * Expensive
-
-### Test-Driven Development
-- Tests are written before the code is written
-- We use a process called Red-Green-Refactor
-- Red: The test is failing
-- Green: The test is passing
-- Refactor: Improve the existing code safe in the knowledge that the functionality is testable
 
 ### Setup & Teardown
 - Tests should represent how a user (or other code) would interact with our application
@@ -85,16 +61,19 @@ yarn script-name --flag-name
 npm run test -- --coverage --watchAll=false
 ```
 
-### Add Features to our App Following TDD
-- Helper functions (unit tests)
-  - Choose a valid response for the computer player
-- Features (integration tests)
-  - Clicking on the robot head will toggle the cheating boolean
-  - Render appropriate message in Result component based on game status
+### Add Features/Tests to App
+- existing code test
+  - test the `genFeedbackMessage` function
+- TDD: unit test
+  - choose a valid response for the computer player (currently hard-coded)
+- TDD: integration test
+  - clicking on the robot head will toggle the cheating boolean
+- mocking
+  - test fetching high scores (mock Axios)
 
 ### `getBy` & `queryBy`
 - One small thing about `getBy` and `queryBy` to be aware of is that `getBy` will throw an error if the element is not found
-- `queryBy` will return only null, so it's up to the context to guide you which you should use.
+- `queryBy` will return only null, so it's up to the context to guide you which you should use
 
 ### Skipping Tests
 * For various reasons, you might want to skip a particular test
