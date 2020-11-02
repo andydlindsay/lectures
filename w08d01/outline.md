@@ -210,6 +210,7 @@ expect(result).toBe('bar');
 ### Mock `axios`
 
 ```js
+// `src/components/__tests__/HighScores.test.jsx`
 import React from 'react';
 import { render } from '@testing-library/react';
 import HighScores from '../HighScores';
