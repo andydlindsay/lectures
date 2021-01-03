@@ -210,14 +210,15 @@ ORDER BY age DESC, last_name ASC;
 ```sql
 SELECT *
 FROM users
-WHERE country = 'Canada'
-AND payment_due_date < '2019-10-14';
+WHERE country = 'Canada' AND payment_due_date < '2020-11-23';
 
--- we can also use the SQL function NOW() to refer to the current time
+SELECT *,
+FROM users
+WHERE country = 'Canada' AND payment_due_date < NOW();
+
 SELECT *
 FROM users
-WHERE country = 'Canada'
-AND payment_due_date < NOW();
+WHERE country = 'Canada' AND payment_due_date < CURRENT_DATE;
 ```
 
 6. List all the countries users live in; don't repeat any countries (DISTINCT)
