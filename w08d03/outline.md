@@ -11,17 +11,10 @@
   * Used for integration and E2E testing (mostly)
 
 ### Install Cypress
-* `npm install --save-dev cypress`
+* `npm install --save-dev cypress` or `yarn add --dev cypress`
 * Open Cypress with `node_modules/.bin/cypress open`
 * Create a script called `cypress` to run the above
-* Remove the example tests, edit `cypress.json`
-
-```json
-{
-  "viewportWidth": 1280,
-  "viewportHeight": 1200
-}
-```
+* Remove the example tests
 
 ### Create a new file `cypress/integration/01_cypress.spec.js`
 
@@ -33,11 +26,20 @@ describe('Cypress', () => {
 });
 ```
 
+### Edit `cypress.json`
+
+```json
+{
+  "viewportWidth": 1280,
+  "viewportHeight": 1200
+}
+```
+
 ### Start the app server running and add a new test to visit the site
 
 ```js
 it('can visit the home page', () => {
-  cy.visit('http://localhost:3000');
+  cy.visit('http://localhost:8765');
 });
 ```
 
@@ -62,26 +64,11 @@ describe('Filters', () => {
 ### Add the `baseUrl` key to `cypress.json`
 
 ```json
-"baseUrl": "http://localhost:3000"
+"baseUrl": "http://localhost:8765"
 ```
 
 ### Convert affected files to use `cy.visit('/');` instead
 * Show the changes in Cypress in Settings => Configuration highlighting the `baseUrl` key
-
-### Add another checkbox test
-
-```js
-it('can toggle the 1900s check box', () => {
-  cy.visit('/');
-
-  cy.get('.filters__form-group')
-    .contains('1900s')
-    .parent()
-    .find('input')
-    .uncheck()
-    .should('not.be.checked');
-});
-```
 
 ### Pull the repeating `cy.visit('/');` out to a `beforeEach`
 
@@ -162,23 +149,31 @@ describe('Text Input', () => {
 ### Add a new spec file `cypress/integration/04_display-results.spec.js`
 
 ```js
+// load the hardcoded data as @itunesResponse
+cy.fixture('itunes.json')
+  .as('itunesResponse');
+
+// create a server for requests to be made to
+cy.server();
+
+// route all requests that match to the cypress server
+cy.route({
+  method: 'GET',
+  url: 'search*',
+  delay: 500,
+  response: '@itunesResponse'
+}).as('getSearch');
+```
+
+```js
 describe('Display Results', () => {
   it('displays results from an API', () => {
+    // visit the app
     cy.visit('/');
 
-    // load the hardcoded data as @itunesResponse
-    cy.fixture('itunes.json')
-      .as('itunesResponse');
-
-    // create a server for requests to be made to
-    cy.server();
-    // route all requests that match to the cypress server
-    cy.route({
-      method: 'GET',
-      url: 'search*',
-      delay: 500,
-      response: '@itunesResponse'
-    }).as('getSearch');
+    // intercept the GET request and provide the fixture as response
+    cy.intercept('GET', '/search', { fixture: 'itunes' })
+      .as('getSearch');
 
     // get the search input and type into it
     cy.get('.search__form')
@@ -195,10 +190,6 @@ describe('Display Results', () => {
       .get('main')
       .contains('Homework')
       .should('be.visible');
-
-    // get the spinner and it shouldn't be visible
-    cy.get('.spinner')
-      .should('not.be.visible');
 
     // untick the Explicit box to remove one album
     cy.contains('Explicit')
