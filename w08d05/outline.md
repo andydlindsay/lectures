@@ -1,15 +1,3 @@
-* How is Ruby different to JS & Node?
-  * Conventions
-  * Paradigms
-  * Usage In The Wild
-  * Concurrency Model
-  * Inheritance Model
-* Debugging Tips
-  * Using raise with .inspect
-
-### Interactive Ruby
-- We have `irb` in the terminal to open the REPL for Ruby
-
 ### Why Ruby/Rails week?
 - more like the real world
 - you get an existing codebase and have to make updates to it
@@ -34,6 +22,7 @@
 ### Ruby Basics
 - Ruby files end in `.rb`
 - Run your files with `$ ruby file.rb`
+- Variables are `snake_case`
 
 ```bash
 $ touch basics.rb
@@ -190,6 +179,12 @@ names.each do |name|
   puts "Goodbye #{name}!"
 end
 
+# select === filter
+list = [1, 2, 3, 4, 5]
+list.select do |num|
+  num >= 3
+end
+
 # ranges
 (5..10).each do |num|
   puts num # prints 5 through 10
@@ -272,6 +267,7 @@ puts num # 10
 
 ```rb
 # hashes
+# associative array... a way of storing key/value pairs
 user = {
   "username" => "johns",
   "password" => "1234",
@@ -298,6 +294,12 @@ user = {
   logged_in: true
 }
 puts user[:username] # "bobh"
+
+# what about dynamic keys?
+my_key = 'username'
+user[my_key] # nil
+# convert the string to a symbol
+user[my_key.to_sym] # 'bobh'
 ```
 
 ### Blocks and Lambdas
