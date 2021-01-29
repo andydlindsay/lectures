@@ -36,20 +36,22 @@ $ ruby 01_variables.rb
 ### Comments and Printing to Standard Out
 
 ```rb
-# single line comment
-
-=begin
-multi-line
-comment
-=end
-
 # print something to the console
 print "something" # no new line
 puts "something else" # new line
 p "also works" # returns the value printed
 
 # put a blank line in the console
+puts "I need space"
 puts
+puts "no problem"
+
+# single line comment
+
+=begin
+multi-line
+comment
+=end
 ```
 
 ### Variables
@@ -78,6 +80,9 @@ NAME = 'Andy'
 ```rb
 # we don't have == to just check value regardless of type
 puts 2 == '2' # false
+
+# === works the same as == for the most part
+puts 2 === '2' # false
 
 # casting values
 num = "4"
@@ -167,21 +172,21 @@ end
 
 # while
 i = 0
-while i < 5 # prints 1 through 5
+while i < 5 do # prints 1 through 5
   i += 1
   puts i
 end
 
 # until
 i = 0
-until i > 5 # prints 1 through 6
+until i > 5 do # prints 1 through 6
   i += 1
   puts i
 end
 
 # for..in === for..of ¯\_(ツ)_/¯
 names = ['Alice', 'Bob', 'Carol', 'David']
-for name in names
+for name in names do
   puts "Hello #{name}!"
 end
 
@@ -415,24 +420,24 @@ load "ruby2.rb"
 
 ### Gems
 
-* rubygems.org  
+* [rubygems.org]()
 * RubyGems is a package manager for ruby libraries and programs called gems. Similar to node packages and NPM.
+* `bundle init` creates a Gemfile, equivalent to `npm init -y`
+* __Gemfile:__ a file that works with bundler to track and load a list of dependencies
 
-```bash
-$ gem install gem_name
+```rb
+# bundle init
+# bundle add rainbow
+
+require 'rainbow'
+
+this = Rainbow('this').red
+is = Rainbow('is').green
+neat = Rainbow('neat').orange
+
+puts this + " " + is + " " + neat
+puts "#{this} #{is} #{neat}"
 ```
-
-__gemspec:__ file defines the gem, like a readme with info on author, version summary...  for gems
-
-__Gemfile:__ a file that works with bundler to track and load a list of dependencies.
-for ruby projects.
-
-```bash
-$ bundle init
-$ bundle install
-```
-
-will install all of a projects dependencies. 
 
 ### String Methods
 
