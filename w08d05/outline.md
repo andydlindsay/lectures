@@ -27,9 +27,11 @@
 - Variables are `snake_case`
 
 ```bash
-$ touch basics.rb
-$ ruby basics.rb
+$ touch 01_variables.rb
+$ ruby 01_variables.rb
 ```
+
+## `01_variables.rb`
 
 ### Comments and Printing to Standard Out
 
@@ -95,6 +97,8 @@ puts "#{first_name} #{last_name}"
 puts '#{first_name} #{last_name}'
 ```
 
+## `02_conditionals.rb`
+
 ### Conditionals
 
 ```rb
@@ -145,6 +149,8 @@ end
 num = 7
 puts (num < 10) ? "single digits" : "multiple digits"
 ```
+
+## `03_loops.rb`
 
 ### Loops
 
@@ -199,32 +205,7 @@ end
 10.times { puts "hello world" }
 ```
 
-### String Methods
-
-```rb
-first_name = 'John'
-
-puts first_name # "John"
-puts first_name.size # 4
-puts first_name.include?("Joh") # true
-puts first_name.index("h") # 2
-puts first_name.upcase # JOHN
-puts first_name.downcase # john
-
-ruby_creator = "Yukihiro Matsumoto"
-puts ruby_creator.split(' ').class # array
-
-# methods ending in ? return a boolean
-puts ruby_creator.nil? # false
-puts ruby_creator.start_with?("Yuki") # true
-
-# methods ending in ! modify an object in place
-puts ruby_creator # "Yukihiro Matsumoto"
-ruby_creator.downcase
-puts ruby_creator # "Yukihiro Matsumoto"
-ruby_creator.downcase!
-puts ruby_creator # "yukihiro matsumoto"
-```
+## `04_methods.rb`
 
 ### Methods
 - Ruby uses implicit return, returning the last line of code in the method if there is no explicit `return`
@@ -268,6 +249,8 @@ change_it(num)
 puts num # 10
 ```
 
+## `05_hashes.rb`
+
 ### Hashes
 
 ```rb
@@ -307,6 +290,8 @@ user[my_key] # nil
 user[my_key.to_sym] # 'bobh'
 ```
 
+## `06_lambdas.rb`
+
 ### Blocks and Lambdas
 
 ```rb
@@ -339,6 +324,8 @@ end
 my_method &say_something # w/o parens
 my_method(&say_something) # w/ parens
 ```
+
+## `07_classes.rb`
 
 ### Classes
 
@@ -446,3 +433,30 @@ $ bundle install
 ```
 
 will install all of a projects dependencies. 
+
+### String Methods
+
+```rb
+first_name = 'John'
+
+puts first_name # "John"
+puts first_name.size # 4
+puts first_name.include?("Joh") # true
+puts first_name.index("h") # 2
+puts first_name.upcase # JOHN
+puts first_name.downcase # john
+
+ruby_creator = "Yukihiro Matsumoto"
+puts ruby_creator.split(' ').class # array
+
+# methods ending in ? return a boolean
+puts ruby_creator.nil? # false
+puts ruby_creator.start_with?("Yuki") # true
+
+# methods ending in ! modify an object in place
+puts ruby_creator # "Yukihiro Matsumoto"
+ruby_creator.downcase
+puts ruby_creator # "Yukihiro Matsumoto"
+ruby_creator.downcase!
+puts ruby_creator # "yukihiro matsumoto"
+```
