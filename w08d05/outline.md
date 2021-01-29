@@ -341,7 +341,7 @@ class Car
 end
 ```
 
-__Initialize__
+#### __Initialize__
 * Initialize is a special method in classes that is called when a class object is created with .new
 * Initialize methods are used to set the initial state of an object.
 
@@ -357,8 +357,7 @@ end
 my_car = Car.new("red", 2007, "matrix")
 ```
 
-__Accesor && Readers__
-
+#### __Accesor && Readers__
 * You can set default read and write methods for instance variables with accessor and readers.
 
 ```rb
@@ -397,31 +396,16 @@ end
 
 ## Bonus (time allowing)
 
-### Errors and Imports
+### Imports
 
 ```rb
-# ruby is synchronous
-puts "before read"
-puts File.read('ruby2.rb') # long running processes will block execution
-puts "after read"
-
-puts
-
-# you can raise an exception (a form of error)
-raise "whoa error"
-=begin
-Traceback (most recent call last):
-ruby.rb:305:in `<main>': whoa error (RuntimeError)
-=end
-
 # load ruby code from another file
 load "ruby2.rb"
 ```
 
 ### Gems
 
-* [rubygems.org]()
-* RubyGems is a package manager for ruby libraries and programs called gems. Similar to node packages and NPM.
+* [rubygems.org](https://rubygems.org/)
 * `bundle init` creates a Gemfile, equivalent to `npm init -y`
 * __Gemfile:__ a file that works with bundler to track and load a list of dependencies
 
@@ -429,6 +413,7 @@ load "ruby2.rb"
 # bundle init
 # bundle add rainbow
 
+# external packages are required; not loaded
 require 'rainbow'
 
 this = Rainbow('this').red
@@ -437,6 +422,18 @@ neat = Rainbow('neat').orange
 
 puts this + " " + is + " " + neat
 puts "#{this} #{is} #{neat}"
+```
+
+### Errors
+
+```rb
+# you can raise an exception (a form of error)
+raise "whoa error"
+
+=begin
+Traceback (most recent call last):
+ruby.rb:305:in `<main>': whoa error (RuntimeError)
+=end
 ```
 
 ### String Methods
