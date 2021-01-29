@@ -1,3 +1,5 @@
+## Outline
+
 ### Why Ruby/Rails week?
 - more like the real world
 - you get an existing codebase and have to make updates to it
@@ -72,6 +74,9 @@ NAME = 'Andy'
 ### Casting Values
 
 ```rb
+# we don't have == to just check value regardless of type
+puts 2 == '2' # false
+
 # casting values
 num = "4"
 puts num.to_i # 4
@@ -221,7 +226,7 @@ ruby_creator.downcase!
 puts ruby_creator # "yukihiro matsumoto"
 ```
 
-### Functions/Methods
+### Methods
 - Ruby uses implicit return, returning the last line of code in the method if there is no explicit `return`
 - Methods are not first-class citizens in Ruby as they are in JS
 - We cannot pass them around as callbacks (for instance)
@@ -335,48 +340,6 @@ my_method &say_something # w/o parens
 my_method(&say_something) # w/ parens
 ```
 
-### Errors and Imports
-
-```rb
-# ruby is synchronous
-puts "before read"
-puts File.read('ruby2.rb') # long running processes will block execution
-puts "after read"
-
-puts
-
-# you can raise an exception (a form of error)
-raise "whoa error"
-=begin
-Traceback (most recent call last):
-ruby.rb:305:in `<main>': whoa error (RuntimeError)
-=end
-
-# load ruby code from another file
-load "ruby2.rb"
-```
-
-### Gems
-
-* rubygems.org  
-* RubyGems is a package manager for ruby libraries and programs called gems. Similar to node packages and NPM.
-
-```bash
-$ gem install gem_name
-```
-
-__gemspec:__ file defines the gem, like a readme with info on author, version summary...  for gems
-
-__Gemfile:__ a file that works with bundler to track and load a list of dependencies.
-for ruby projects.
-
-```bash
-$ bundle init
-$ bundle install
-```
-
-will install all of a projects dependencies. 
-
 ### Classes
 
 * Declare a class in Ruby with the class keyword.
@@ -439,3 +402,47 @@ class Car
  end
 end
 ```
+
+## Bonus (time allowing)
+
+### Errors and Imports
+
+```rb
+# ruby is synchronous
+puts "before read"
+puts File.read('ruby2.rb') # long running processes will block execution
+puts "after read"
+
+puts
+
+# you can raise an exception (a form of error)
+raise "whoa error"
+=begin
+Traceback (most recent call last):
+ruby.rb:305:in `<main>': whoa error (RuntimeError)
+=end
+
+# load ruby code from another file
+load "ruby2.rb"
+```
+
+### Gems
+
+* rubygems.org  
+* RubyGems is a package manager for ruby libraries and programs called gems. Similar to node packages and NPM.
+
+```bash
+$ gem install gem_name
+```
+
+__gemspec:__ file defines the gem, like a readme with info on author, version summary...  for gems
+
+__Gemfile:__ a file that works with bundler to track and load a list of dependencies.
+for ruby projects.
+
+```bash
+$ bundle init
+$ bundle install
+```
+
+will install all of a projects dependencies. 
