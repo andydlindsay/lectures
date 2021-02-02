@@ -71,7 +71,7 @@
 * Use `git diff` to see what specifically was changed inside each file
 * To add files to the staging area, use `git add <filename>` or `git add .` to add all changes
 * Commit your changes using `git commit -m 'a meaningful commit message'`
-* Finally, push your code to github using `git push origin master`
+* Finally, push your code to github using `git push origin master` or `git push origin main`
 
 **NOTE:** This workflow is great for solo coding projects. When you work as part of a team (such as during mid-terms and finals), you will use a more advanced workflow.
 
