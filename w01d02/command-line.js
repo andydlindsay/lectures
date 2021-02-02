@@ -13,7 +13,9 @@ const commandLineArgs = process.argv;
 // commandLineArgs.shift();
 
 // using splice
+// console.log('before', process.argv);
 // commandLineArgs.splice(0, 2);
+// console.log('after', process.argv);
 
 // using slice
 const sliced = commandLineArgs.slice(2);
@@ -22,45 +24,25 @@ const sliced = commandLineArgs.slice(2);
 // console.log('commandLineArgs', commandLineArgs);
 // console.log('sliced', sliced);
 
-
-// const myArr = ['10', '5', '20'];
-
-// for (let i = 0; i < myArr.length; i++) {
-//   console.log('current element:', myArr[i]);
-// }
-
-// console.log();
+const myArr = ['10', '5', '20', '4.5', '-50'];
 
 let total = 0;
-for (const elem of sliced) {
-  // console.log('current element:', elem);
-  // console.log('current typeof element:', typeof elem);
-  total += Number(elem);
+
+for (const element of sliced) {
+  const converted = Number(element);
+  if (converted > 0 && Number.isInteger(converted)) {
+    total += converted;
+  }
 }
+
 console.log('total:', total);
-
-// console.log();
-
-// for (const index in myArr) {
-//   console.log('current element:', myArr[index]);
-// }
-
-
-
-console.log(process.argv.slice(2).reduce((acc, cur) => acc + Number(cur), 0))
 
 const result = process
   .argv
   .slice(2)
-  .filter(e => !isNaN(e))
   .map(Number)
   .filter(Number.isInteger)
   .filter(e => e > 0)
   .reduce((a, c) => a + c, 0);
+
 console.log('result:', result);
-
-
-
-
-
-// 
