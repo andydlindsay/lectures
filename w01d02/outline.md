@@ -48,24 +48,9 @@
 
 ### Python Tutor/JS Tutor
 
-### Terrible Code
-
-```js
-const result = process
-  .argv
-  .slice(2)
-  .map(Number)
-  .filter(Number.isInteger)
-  .filter(e => e > 0)
-  .reduce((a, c) => a + c, 0);
-  
-console.log('result:', result);
-```
-
 ### Probable Workflow
 
 ```js
-// console.log process.argv
 console.log(process.argv);
 ```
 
@@ -203,4 +188,18 @@ for (const element of sliced) {
 node command-line.js 5 10 15 # total: 30
 node command-line.js 4.5 2.5 19 # total: 19
 node command-line.js -5 5 10 # total: 15
+```
+
+### Terrible Code
+
+```js
+const result = process
+  .argv
+  .slice(2)
+  .map(Number)
+  .filter(Number.isInteger)
+  .filter(e => e > 0)
+  .reduce((a, c) => a + c, 0);
+  
+console.log('result:', result);
 ```
