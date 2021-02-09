@@ -18,6 +18,12 @@
 * Open only apps needed for the lecture: Zoom, Slack, Chrome (2 tabs), Krisp, Webcam Settings
 * Turn off notifications
 
+### Second Monitor
+* Lecture outline
+* Chat
+* Participants
+* Student webcams
+
 ### Thoughts
 * Join previous concepts to current concepts
 * Focus on the delta
