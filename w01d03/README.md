@@ -74,6 +74,7 @@ const changeName = function (name) {
   name = 'Jane';
   console.log(name); // Jane
 };
+
 changeName(name);
 console.log(name); // Murray
 ```
@@ -89,12 +90,14 @@ const myObj = {
 const changeKey = function (obj) {
   obj.firstName = 'Jane'; // this does change the value of the firstName key
 }
+
 changeKey(myObj);
 console.log(myObj.firstName); // Jane
 
 const replaceObj = function (obj) {
   obj = {}; // this won't work
 }
+
 replaceObj(myObj);
 console.log(myObj); // { firstName: 'Jane', lastName: 'Ipsum' }
 ```
@@ -109,6 +112,7 @@ const myObj = {
     console.log('hello');
   }
 };
+
 myObj.sayHello(); // hello
 console.log(myObj); // { firstName: 'Lorem', sayHello: [Function: sayHello] }
 ```
@@ -122,7 +126,8 @@ const myObj = {
   sayFullName: function () {
     console.log(`My full name is ${this.firstName} ${this.lastName}`);
   }
-}
+};
+
 myObj.sayFullName(); // My full name is Lorem Ipsum
 ```
 

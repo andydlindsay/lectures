@@ -2,19 +2,29 @@
 - Students should not be trying to replicate the same code on their screen and instead be paying attention and collaborating/questioning the code that's being written on screen
 - This discussion is meant to facilitate a deeper learning of the coding concepts
 
-## Tips for Success
+### Tips for Success
 - Ask for assistance, even if it's just a code review
 - Ask questions during lecture
 - Refine your Googling skills
 
-## Imposter Syndrome
+### Imposter Syndrome
 - Everyone suffers from it at some point or another
 
-## Primitive Types
+## Outline
+
+### Primitive Types
 - boolean, null, undefined, number, bigint, string, symbol
 - Primitive types are immutable (they cannot be modified after they are created)
 
 ```js
+const bool = false;
+const nul = null;
+const undef = undefined;
+const num = 5;
+const bigint = 9007199254740991n;
+const str = 'This is a string';
+const sym = Symbol('symbol');
+
 const myString = 'hello world';
 const secondString = myString.replace('hello', 'goodbye'); // doesn't change myString
 console.log(myString); // 'hello world'
