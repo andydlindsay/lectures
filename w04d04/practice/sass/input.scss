@@ -1,0 +1,61 @@
+@import '_variables';
+
+// variables
+div {
+  color: $primary-color;
+  border: $border;
+}
+
+p {
+  color: $secondary-color;
+  background-color: $background-color;
+}
+
+// nesting
+.container {
+  p {
+    color: $primary-color;
+  }
+
+  div {
+    font-size: 24px;
+    text-decoration: underline;
+  }
+}
+
+// extend a style
+.header-text {
+  font-size: 24px;
+  font-family: 'sans-serif';
+}
+
+.heading {
+  @extend .header-text;
+  color: purple;
+}
+
+// mixins
+@mixin header-styles {
+  height: 50px;
+  background-color: orange;
+  color: white;
+}
+
+header {
+  @include header-styles();
+}
+
+@mixin make-square($n) {
+  height: $n;
+  width: $n;
+  font-size: ($n / 2);
+  border: ($n / 4) solid black;
+}
+
+.small-square {
+  @include make-square(4em);
+}
+
+.med-square {
+  @include make-square(30px);
+}

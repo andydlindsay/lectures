@@ -149,23 +149,6 @@ describe('Text Input', () => {
 ### Add a new spec file `cypress/integration/04_display-results.spec.js`
 
 ```js
-// load the hardcoded data as @itunesResponse
-cy.fixture('itunes.json')
-  .as('itunesResponse');
-
-// create a server for requests to be made to
-cy.server();
-
-// route all requests that match to the cypress server
-cy.route({
-  method: 'GET',
-  url: 'search*',
-  delay: 500,
-  response: '@itunesResponse'
-}).as('getSearch');
-```
-
-```js
 describe('Display Results', () => {
   it('displays results from an API', () => {
     // visit the app

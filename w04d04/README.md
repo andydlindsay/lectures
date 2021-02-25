@@ -3,8 +3,10 @@
 ### To Do
 - [ ] Responsive Design
 - [ ] Viewport Meta Tag
-- [ ] Relative Units
+- [ ] Percentages
 - [ ] `max-width` and `min-width`
+- [ ] Viewport Height/Width `vh`/`vw`
+- [ ] Based on Font-size `em`/`rem`
 - [ ] Media Queries
 - [ ] CSS Preprocessors
 - [ ] Intro to Sass/SCSS

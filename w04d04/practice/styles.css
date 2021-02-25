@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+}
+
+header {
+  height: 160px;
+  background-color: coral;
+}
+
+section {
+  border: 2px solid black;
+  height: 500px;
+  font-size: 60px;
+}
+
+section div {
+  height: 20vh;
+  width: 20%;
+  min-width: 100px;
+  max-width: 150px;
+  margin: 20px;
+  line-height: 150px;
+  display: inline-block;
+  background-color: lightpink;
+  text-align: center;
+}
+
+footer {
+  background-color: burlywood;
+  height: 150px;
+}
+
+@media only screen and (max-width: 700px) {
+  header {
+    background-color: darkblue;
+  }
+}
+
+@media (max-width: 300px) {
+  header {
+    background-color: lightseagreen;
+  }
+}

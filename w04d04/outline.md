@@ -5,21 +5,19 @@
 > Responsive web design (RWD) is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes.
 
 ### Viewport Meta Tag
-* Demo `index.html` without the viewport tag on a mobile device using DevTools
-* Show how it scrolls horizontally off the screen
-* Add the viewport meta tag and show how it now fits on the screen
+* `width=device-width` tells the browser to set the width of the page to the width of the device
+* `intial-scale=1.0` sets the initial zoom level of the page to `1.0` (or 100%)
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
 
-### Relative Units
-* Instead of using absolute sizes (`px`, `pt`, `in`), we can use relative units of measure
+### Units of Measure
+* Absolute sizes: `px`, `pt`, `in`
+* Relative sizes: `%`, `vh`, `vw`, `em`, `rem`
 
 ### Percentages
-* Width, height, font-size, and a variety of other dimensions can be specified as a percentage
-* Percentage is based on the dimensions of the parent element, not the webpage itself
-* eg. If the parent is `300px` wide and the child has a width of `50%`, then the child will be `150px` wide
+* percentage of the parent
 
 ```css
 div {
@@ -32,7 +30,7 @@ div {
 }
 ```
 
-* Show how the height percentage only works if the parent has an explicit height
+* `height` percentage only works if the parent has an explicit height
 
 ```css
 section {
@@ -51,49 +49,55 @@ section div {
 }
 ```
 
-### `vh` and `vw`
-* One `vh` is equal to `1%` of the viewport height
-* An element with a style of `height: 50vh;` will be 50% the height of the screen
-* `vw` works the same way except it's `1%` of the viewport width
-
-### `em` and `rem`
-* An `em` is a relative measure based on the font-size of the parent component
-* eg. If the parent has a font-size of `24px` and the child is `3em` wide, then it will be `72px` wide
-* A `rem` is a **root** _em_, instead of being based on the parent's font-size, it is based on the font-size of the root element (html)
+### `max-width` && `min-width`
 
 ```css
-/* pixels */
-p.pixel {
-  width: 200px;
-  height: 400px;
-}
-
-/* vh and vw */
-p.viewport {
-  width: 25vw;
-  height: 50vh;
-  font-size: 10vh;
-}
-
-/* em and rem */
-p.relative {
-  width: 25em;
-  height: 40rem;
-  border-width: 2em;
+section div {
+  height: 50%;
+  width: 20%;
+  min-width: 100px; /* this one */
+  max-width: 150px; /* this one */
+  margin: 20px;
+  line-height: 150px;
+  display: inline-block;
+  background-color: lightpink;
+  text-align: center;
 }
 ```
 
-### `max-width` && `min-width`
-* `max-width` and `min-width` are used to set a maximum and minimum width respectively
-* The element will not grow beyond the `max-width` nor shrink below the `min-width`
-* Useful for making sure that your responsive elements don't grow or shrink to a point where they break the layout
+### `vh` and `vw`
+
+```css
+section div {
+  height: 50vh; /* this one */
+  width: 20vw; /* this one */
+  margin: 20px;
+  line-height: 150px;
+  display: inline-block;
+  background-color: lightpink;
+  text-align: center;
+}
+```
+
+### `em` and `rem`
+
+```css
+section div {
+  height: 40rem; /* this one */
+  width: 25em; /* this one */
+  border: 2em dotted orange; /* this one */
+  margin: 20px;
+  line-height: 150px;
+  display: inline-block;
+  background-color: lightpink;
+  text-align: center;
+}
+```
 
 ### Media Queries
-* Media queries allow us to make changes to our design based on the user's device
-* There are two parts to a media query: a **media type** and a **media feature**
-* The options for _media types_ are `screen`, `print`, `speech`, and `all`
-* _Media features_ include things like `aspect-ratio`, `device-height`, `light-level`, and `orientation`
-* We can use multiple media queries to target various device sizes and orientations
+* **media type** and **media feature**
+* Media types: `screen`, `print`, `speech`, and `all`
+* Media features: `aspect-ratio`, `device-height`, `light-level`, and `orientation`
 
 ```css
 @media only screen and (max-width: 500px) {
@@ -116,35 +120,8 @@ p.relative {
 <link rel="stylesheet" media="screen and (min-width: 1200px)" href="large.css">
 ```
 
-### CSS Preprocessors
-* A CSS preprocessor generates CSS using a [Domain Specific Language](https://en.wikipedia.org/wiki/Domain-specific_language)
-* Styles are written in this _language_ and then [transpiled](https://en.wikipedia.org/wiki/Source-to-source_compiler) into CSS before being served to the client
-* Popular preprocessors include [Sass](https://sass-lang.com/), [LESS](http://lesscss.org/), [Stylus](https://stylus-lang.com/), and [PostCSS](https://postcss.org/)
-
 ### Intro to Sass
-* **S**yntactically **A**wesome **S**yle **S**heets
-* Sass gives us some useful features to make writing our CSS easier
-* **SCSS** or _Sassy CSS_ is a superset of CSS
-* A superset is a language that extends another language by adding new features
-* But the browser doesn't understand SCSS, so we have to transpile our SCSS into CSS before serving it
-
-### Sass CLI
-* [npm sass](https://www.npmjs.com/package/sass)
-
-```sh
-npm i -g sass
-
-sass --watch input.scss output.css
-
-# source folder:output folder
-sass --watch app/sass:public/stylesheets
-
-# no source map
-sass --watch input.scss output.css --sourcemap=none
-
-# get rid of .sass-cache
-sass main.scss output.css --sourcemap=none --no-cache  
-```
+* **S**yntactically **A**wesome **S**yle **S**heets (Sassy CSS)
 
 ### Variables
 
@@ -159,6 +136,33 @@ p {
 h1 {
   font-size: $font-size;
 }
+```
+
+### Sass CLI
+* [npm sass](https://www.npmjs.com/package/sass)
+
+```sh
+# install globally
+npm i -g sass
+
+# output to console
+sass input.scss
+
+# output to file
+sass input.scss output.css
+
+# file watcher
+sass input.scss output.css --watch
+
+# no source map
+sass input.scss output.css --watch --no-source-map
+
+# source folder:output folder
+sass app/sass:public/stylesheets --watch 
+sass sass:stylesheets --watch --no-source-map
+
+# get rid of .sass-cache
+sass main.scss output.css --no-source-map --no-cache  
 ```
 
 ### Nesting
@@ -190,6 +194,9 @@ $border: $border-width $border-style $border-color;
 ```scss
 // styles.scss
 @import '_variables';
+
+// you can omit the underscore
+@import 'variables';
 ```
 
 ### Extending Styles
@@ -207,8 +214,6 @@ $border: $border-width $border-style $border-color;
 ```
 
 #### Mixins
-* A **mixin** is like a function that returns a group of styles
-* The _mixin_ can be included in any other style by using `@include`
 
 ```scss
 // declare the mixin
@@ -223,14 +228,18 @@ header {
 }
 
 // mixins can take parameters as well
-@mixin box-sizes($n) {
+@mixin make-square($n) {
   height: $n;
   width: $n;
-  line-height: $n;
+  font-size: ($n / 2);
+  border: ($n / 4) solid black;
 }
 
-.box {
-  @include box-sizes(15px);
-  border: 1px solid green;
+.small-square {
+  @include make-square(4em);
+}
+
+.med-square {
+  @include make-square(30px);
 }
 ```

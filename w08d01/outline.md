@@ -38,8 +38,6 @@
 ```
 
 ### Add Features/Tests to App
-- existing code test
-  - test the `genFeedbackMessage` function
 - TDD: unit test
   - choose a valid response for the computer player (currently hard-coded)
 - TDD: integration test
