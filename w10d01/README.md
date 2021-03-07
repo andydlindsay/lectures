@@ -68,4 +68,4 @@ author_book       GET    /authors/:author_id/books/:id(.:format)      books#show
 - [react-rails gem](https://github.com/reactjs/react-rails)
 - [`dotenv` for Rails](https://github.com/bkeepers/dotenv)
 
-## Some notes borrowed from Travis' [lecture](https://github.com/tborsa/lectures/blob/master/week10/day1/notes.md) and Vasiliy's [lecture](https://web.compass.lighthouselabs.ca/activities/433/lectures/3022)
+#### Some notes borrowed from Travis' [lecture](https://github.com/tborsa/lectures/blob/master/week10/day1/notes.md) and Vasiliy's [lecture](https://web.compass.lighthouselabs.ca/activities/433/lectures/3022)
