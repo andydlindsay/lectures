@@ -246,6 +246,11 @@ Rails.application.routes.draw do
 end
 ```
 
+```bash
+# make `rails routes` slightly more readable?
+rails routes | grep -e 'author' -e 'book' -e 'Pref'
+```
+
 ### Create views
 
 ```rb
