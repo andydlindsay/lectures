@@ -119,10 +119,6 @@ development:
 ```bash
 rails g model Author
 rails g model Book
-
-# or with scaffold
-rails g scaffold authors
-rails g scaffold books
 ```
 
 ### Update migrations
@@ -238,11 +234,9 @@ end
 # config/routes.rb
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :authors do
-  end
+  resources :authors
 
-  resources :books do
-  end
+  resources :books
 end
 ```
 
@@ -356,4 +350,11 @@ class AuthorsController < ApplicationController
     render json: @authors
   end
 end
+```
+
+### Scaffold!
+
+```bash
+# try to commit first to show off changes
+rails g scaffold publishers
 ```
