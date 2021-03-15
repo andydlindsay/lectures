@@ -2,10 +2,14 @@
 
 ### Intro to Web Servers
 * Uses the HTTP protocol which is a `request -> response` protocol
-* Responds with a status code and (usually) content of some kind
-* Content examples: images, videos, static files, dynamically rendered files, or JSON
-* An HTTP request needs a host and a port (discuss DNS servers)
-* Each request is a combination of verb/method and endpoint (eg. `GET /users`)
+* `Request`:
+  * An HTTP request needs a host and a port
+  * Each request is a combination of a verb/method and a path/url (eg. `GET /users`)
+  * Verb/Method: `GET`, `POST`, describes what we want to do
+  * Path/Url: what we want to do it to
+* `Response`:
+  * Responds with a status code and (usually) content of some kind
+  * Content examples: images, videos, static files, dynamically rendered files, or JSON
 * 65,535 ports for each internet connection for server to listen on
 
 ### Simple Web Server using `http` module
