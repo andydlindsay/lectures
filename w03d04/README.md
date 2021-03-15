@@ -6,10 +6,7 @@
 - [ ] HTTP Secure (HTTPS)
 - [ ] REST
 - [ ] More HTTP methods
-- [ ] Method Override
-- [ ] Modular Routing
-- [ ] JSON API's
-- [ ] Alternatives to ExpressJS
+- [ ] Method Override [Stretch]
 
 ### Storing Passwords
 * We **never** want to store passwords as plain text

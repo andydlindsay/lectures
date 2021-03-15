@@ -1,11 +1,9 @@
 # W03D01 - Web Servers 101
 
 ### To Do
-- [ ] Intro to Web Servers
-- [ ] Intro to Express
-- [ ] What is "Middleware?"
-- [ ] Custom Middleware
-- [ ] Server-side view templates with EJS
+- [ ] Web Servers
+- [ ] Express
+- [ ] Middleware
 
 ### Web Servers
 * From [MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)

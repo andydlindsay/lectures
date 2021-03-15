@@ -2,9 +2,7 @@
 
 ### To Do
 - [ ] Recap: Components, Props, and State
-- [ ] Immutable Update Patterns
-- [ ] Benefits of Immutability
-- [ ] Immutable Data Patterns with Arrays and Objects
+- [ ] Immutable Update Patterns with Arrays and Objects
 - [ ] Updating Complex State
 
 ### Recap: Components, Props, and State
