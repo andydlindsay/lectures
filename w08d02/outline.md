@@ -44,16 +44,16 @@ const Routing = () => {
 export default Routing;
 ```
 
-## Advanced Routing
+## Nested Routing
 
 ```jsx
 import React from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import Product from './Product';
 
 const Products = () => {
   return (
-    <Router>
+    <div>
       <nav>
         <Link to={`/products/2`}>Product #2</Link><br/>
         <Link to={`/products/3`}>Product #3</Link><br/>
@@ -69,7 +69,7 @@ const Products = () => {
           <h3>Please select a product above</h3>
         </Route>
       </Switch>
-    </Router>
+    </div>
   );
 };
 
@@ -93,7 +93,15 @@ const Product = () => {
 export default Product;
 ```
 
-### Styled Components
+## Programmatic Routing
+
+```jsx
+import { useHistory } from 'react-router-dom';
+const history = useHistory();
+history.push('/about');
+```
+
+## Styled Components
 * `yarn add styled-components`
 
 ### Presentation Components
