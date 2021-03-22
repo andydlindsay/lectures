@@ -33,7 +33,7 @@
 ```
 
 ### Advanced Routing
-* It is possible to nest `Router` components
+* It is possible to nest `react-router` components
 * So that we can programmatically have access to the url the user has visited and any parameters (eg. `productId`), `react-router-dom` gives us a _custom hook_
 * `useParams` gives child components access to the parameters in the url
 
@@ -41,7 +41,7 @@
 // dynamic routing in parent component
 const Products = () => {
   return (
-    <Router>
+    <div>
       <nav>
         <Link to={`/products/2`}>Product #2</Link><br/>
         <Link to={`/products/3`}>Product #3</Link><br/>
@@ -57,7 +57,7 @@ const Products = () => {
           <h3>Please select a product above</h3>
         </Route>
       </Switch>
-    </Router>
+    </div>
   );
 };
 ```
@@ -73,6 +73,20 @@ const Product = () => {
     </div>
   );
 };
+```
+
+### Programmatic Routing
+* `react-router` gives us another _custom hook_ that allows us to programmatically navigate through our app
+* `useHistory` gives us an object with a method called `push` which accepts a string
+
+```js
+import {useHistory} from 'react-router-dom';
+
+// useHistory gives us back a history object
+const history = useHistory();
+
+// update the current url to '/about'
+history.push('/about');
 ```
 
 ### Styled Components
