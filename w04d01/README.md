@@ -1,4 +1,4 @@
-# W04D01 Intro to CSS
+# W04D01 - Intro to CSS
 
 ### To Do
 * [ ] Demo this week's project
