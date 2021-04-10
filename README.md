@@ -37,6 +37,7 @@
 * [Express Router](/breakout-express-router)
 * [Mock Exam Review](/breakout-mock-exam-review)
 * [Tackle the Take Home Challenge](/breakout-takehome-challenge)
+* [Week 2 Exam Review](/breakout-w2-exam)
 
 ## Advanced Topics
 * [Github](/advanced-github)
