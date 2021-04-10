@@ -40,7 +40,7 @@ app.use('/my-routes', myRouter);
 ```
 
 ### Returning a Function
-* We can also return a function that returns our router object
+* We can also export a function that returns our router object
 * This allows us to take in a parameter or dependency
 
 ```js
