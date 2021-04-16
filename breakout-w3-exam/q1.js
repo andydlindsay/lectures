@@ -21,7 +21,13 @@ Examples:
 */
 
 const arrayToObject = function(arr) {
+  const output = {};
 
+  for (const elem of arr) {
+    output[elem[0]] = elem[1];
+  }
+
+  return output;
 };
 
 

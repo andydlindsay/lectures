@@ -23,7 +23,18 @@ Examples:
 */
 
 const deepArrayToObject = function(arr) {
+  const output = {};
 
+  for (const elem of arr) {
+    const [key, value] = elem;
+    if (Array.isArray(value)) {
+      output[key] = deepArrayToObject(value);
+    } else {
+      output[key] = value;
+    }
+  }
+
+  return output;
 };
 
 

@@ -19,7 +19,18 @@ Examples:
 */
 
 const partition = function(arr, callback) {
+  const left = [];
+  const right = [];
 
+  for (const elem of arr) {
+    if (callback(elem)) {
+      left.push(elem);
+    } else {
+      right.push(elem);
+    }
+  }
+
+  return [left, right];
 };
 
 
