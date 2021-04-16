@@ -38,6 +38,7 @@
 * [Mock Exam Review](/breakout-mock-exam-review)
 * [Tackle the Take Home Challenge](/breakout-takehome-challenge)
 * [Week 2 Exam Review](/breakout-w2-exam)
+* [Week 3 Exam Review](/breakout-w3-exam)
 * [React Router](/breakout-react-router)
 
 ## Advanced Topics
