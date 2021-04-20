@@ -27,11 +27,12 @@ const deepArrayToObject = function(arr) {
 
   for (const elem of arr) {
     const [key, value] = elem;
-    if (Array.isArray(value)) {
-      output[key] = deepArrayToObject(value);
-    } else {
-      output[key] = value;
-    }
+    // if (Array.isArray(value)) {
+    //   output[key] = deepArrayToObject(value);
+    // } else {
+    //   output[key] = value;
+    // }
+    output[key] = Array.isArray(value) ? deepArrayToObject(value) : value;
   }
 
   return output;

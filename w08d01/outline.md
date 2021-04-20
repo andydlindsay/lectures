@@ -45,34 +45,6 @@
 - mocking
   - test fetching high scores (mock Axios)
 
-### Test `genFeedbackMessage` function
-
-```js
-describe('genFeedbackMessage function', () => {
-  test('returns appropriate message when given "Lost"', () => {
-    const loss = genFeedbackMessage('Lost');
-    expect(loss).toEqual('You lost!');
-  });
-
-  test('returns appropriate message when given "Won"', () => {
-    const win = genFeedbackMessage('Won');
-    expect(win).toEqual('Good job!');
-  });
-
-  test('returns appropriate message when given "Tied"', () => {
-    const tie = genFeedbackMessage('Tied');
-    expect(tie).toEqual('Tie game!');
-  });
-
-  test('returns appropriate message when given "Waiting"', () => {
-    const waiting = genFeedbackMessage('Waiting');
-    expect(waiting).toEqual('Waiting for your choice!');
-  });
-});
-```
-
-### Add `genFeedbackMessage` to Result component
-
 ### `src/helpers/__tests__/helpers.test.js`
 
 ```js
@@ -237,7 +209,7 @@ const data = [
 // this function must be marked as `async` in order to use `await` within it
 test('Axios test', async () => {
   // mock any calls to axios.get with hardcoded return value `data`
-  axios.get.mockResolvedValueOnce({ data });
+  axios.get.mockResolvedValue({ data });
 
   // also works with a delay
   // axios.get.mockImplementationOnce(() => {

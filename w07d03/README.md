@@ -65,20 +65,12 @@ const MyComponent = (props) => {
 - The second argument to `useEffect` is a dependency array that lets you specify when you want the hook to run
 - The hook will run again anytime the value of a dependency changes
 - **NOTE:** It is possible to get stuck in an infinite loop if the _effect_ hook updates a value in the dependency array
-- If you want a `useEffect` hook to only run one time, pass it an empty dependency array (`[]`)
 
 ```jsx
 // will run every time the value of user.firstName changes
 useEffect(() => {
   document.title = `${user.firstName}'s Home Page`;
 }, [user.firstName]);
-
-// only runs once
-useEffect(() => {
-  fetch(`/users/${props.userId}`)
-    .then(res => res.json())
-    .then(json => setUser(json));
-}, []);
 
 // infinite loop because it runs every time count gets updated
 useEffect(() => {

@@ -55,14 +55,14 @@ const Products = () => {
   return (
     <div>
       <nav>
-        <Link to={`/products/2`}>Product #2</Link><br/>
-        <Link to={`/products/3`}>Product #3</Link><br/>
-        <Link to={`/products/4`}>Product #4</Link><br/>
-        <Link to={`/products/5`}>Product #5</Link>
+        <Link to="/products/2">Product #2</Link><br/>
+        <Link to="/products/3">Product #3</Link><br/>
+        <Link to="/products/4">Product #4</Link><br/>
+        <Link to="/products/5">Product #5</Link>
       </nav>
 
       <Switch>
-        <Route path={`/products/:productId`}>
+        <Route path="/products/:productId">
           <Product />
         </Route>
         <Route path="/products">
