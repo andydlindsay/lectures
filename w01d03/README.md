@@ -141,9 +141,9 @@ myObj.sayFullName(); // My full name is Lorem Ipsum
 ```js
 const obj = { a: 1, b: 2, c: 3 };
 
-for (const key in object) {
+for (const key in obj) {
   // we can use the key to access the value
-  const value = object[key];
+  const value = obj[key];
 }
 ```
 
