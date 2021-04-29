@@ -1,3 +1,45 @@
+## Outline
+
+### Create a new Rails app
+
+```shell
+# Generate a new rails application
+% rails new <app-name>
+```
+
+### Add rspec-rails to the Gemfile
+
+```rb
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # this line!
+  gem 'rspec-rails'
+end
+```
+
+```shell
+% bundle install
+```
+
+### Initialize rspec for the project
+
+```shell
+% rails g rspec:install
+```
+
+### Review the new `spec` file
+* `rails_helper.rb`
+* `spec_helper.rb`
+
+### Generate some fake data
+
+```shell
+# create a model/migration
+rails g model Make make:string
+```
+
 - testing again?!? testing is important
 - review types of tests
   - static

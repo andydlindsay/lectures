@@ -5,6 +5,7 @@
 - [ ] Objects!
 - [ ] Passing primitives and objects to functions
 - [ ] Functions inside objects (using `this`)
+- [ ] Object iteration with `for..in`
 
 ### Primitive Types
 - JavaScript has 7 primitive types:
@@ -133,6 +134,20 @@ myObj.sayFullName(); // My full name is Lorem Ipsum
 
 - A function inside an object is often referred to as a `method`
 
+### Object iteration with `for..in`
+* JavaScript gives us an easy way to iterate through an object's keys: the `for..in` loop
+* NOTE: We cannot use `for..of` to iterate through an object; it will result in an error
+
+```js
+const obj = { a: 1, b: 2, c: 3 };
+
+for (const key in object) {
+  // we can use the key to access the value
+  const value = object[key];
+}
+```
+
 ### Useful Links
 * [MDN: Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)
 * [Dot Notation vs Square Brackets](https://codeburst.io/javascript-quickie-dot-notation-vs-bracket-notation-333641c0f781)
+* [Python Tutor](http://www.pythontutor.com/javascript.html#mode=edit)
