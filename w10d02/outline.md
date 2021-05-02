@@ -156,7 +156,68 @@ puts "creating cars"
 end
 ```
 
+* `create` vs `create!`: exclamation mark throws an error if validation fails, basic `create` does not
 
+### Test in the console
+
+```shell
+% rails c
+```
+
+```rb
+> Car.all
+
+> Car.first
+
+> Car.first.make
+
+> Car.find(50)
+
+> car = Car.find(5)
+
+> car.make
+
+> car.model
+```
+
+### Add the `capybara-selenium` gem
+
+```rb
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+
+  # this line vvv
+  gem 'capybara-selenium'
+
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+end
+```
+
+* [Helper Code](https://thoughtbot.com/blog/headless-feature-specs-with-chrome#capybara-configuration)
+
+```rb
+# spec/rails_helper.rb
+require "selenium/webdriver"
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.register_driver :headless_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    chromeOptions: { args: %w(headless disable-gpu) }
+  )
+
+  Capybara::Selenium::Driver.new app,
+    browser: :chrome,
+    desired_capabilities: capabilities
+end
+
+Capybara.javascript_driver = :headless_chrome
+```
 
 
 
