@@ -22,6 +22,11 @@
     </div>
 
     <div class="form-component">
+      <%= label_tag(:search_term, 'Search Term') %>
+      <%= text_field_tag(:search_term) %>
+    </div>
+
+    <div class="form-component">
       <%= submit_tag('Search!') %>
     </div>
 
@@ -29,7 +34,7 @@
 </div>
 
 <% @cars.each do |car| %>
-  <div style="border: 1px solid black;">
+  <div style="border: 1px solid black;" class="car">
     <h2>Make: <%= car.make.make %></h2>
     <h2>Model: <%= car.model.model %></h2>
   </div>

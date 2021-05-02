@@ -235,7 +235,7 @@ require 'rails_helper'
 
 RSpec.feature "Cars", type: :feature do
   
-  scenario 'display the Cars page' do |variable|
+  scenario 'display the Cars page' do 
     # visit /cars
     visit cars_path
   end
@@ -265,7 +265,7 @@ require 'rails_helper'
 
 RSpec.feature "Cars", type: :feature, js: true do
   
-  scenario 'display the Cars page' do |variable|
+  scenario 'display the Cars page' do 
     # visit /cars
     visit cars_path
 
@@ -429,9 +429,24 @@ expect(page).to have_text /all my cars!/i
 ### Add another scenario
 
 ```rb
+scenario 'display the Cars page and see three cars on that page' do
+  visit cars_path
 
+  save_screenshot 'cars_page_test_2.png'
+
+  # look for elements with the class 'car'
+  expect(page).to have_css('.car')
+
+  # look for elements with the class 'car' 3 times
+  expect(page).to have_css('.car', count: 3)
+end
 ```
 
+### Add another scenario
+
+```rb
+
+```
 
 
 
@@ -458,6 +473,11 @@ expect(page).to have_text /all my cars!/i
         options_from_collection_for_select(Model.all, :id, :model),
         include_blank: true
       ) %>
+    </div>
+
+    <div class="form-component">
+      <%= label_tag(:search_term, 'Search Term') %>
+      <%= text_field_tag(:search_term) %>
     </div>
 
     <div class="form-component">
