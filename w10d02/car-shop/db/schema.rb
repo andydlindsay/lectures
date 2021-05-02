@@ -15,15 +15,15 @@ ActiveRecord::Schema.define(version: 2021_05_02_011017) do
   create_table "cars", force: :cascade do |t|
     t.integer "make_id", null: false
     t.integer "model_id", null: false
-    t.integer "body_id", null: false
+    t.integer "style_id", null: false
     t.integer "trim_id", null: false
     t.integer "year"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["body_id"], name: "index_cars_on_body_id"
     t.index ["make_id"], name: "index_cars_on_make_id"
     t.index ["model_id"], name: "index_cars_on_model_id"
+    t.index ["style_id"], name: "index_cars_on_style_id"
     t.index ["trim_id"], name: "index_cars_on_trim_id"
   end
 
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2021_05_02_011017) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "cars", "bodies"
   add_foreign_key "cars", "makes"
   add_foreign_key "cars", "models"
+  add_foreign_key "cars", "styles"
   add_foreign_key "cars", "trims"
 end

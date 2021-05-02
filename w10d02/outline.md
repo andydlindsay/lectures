@@ -1,3 +1,7 @@
+## External Resources
+
+* Faker: https://github.com/faker-ruby/faker
+
 ## Outline
 
 ### Create a new Rails app
@@ -43,9 +47,9 @@ end
 
 % rails g model Trim trim_level:string
 
-% rails g model Body body_style:string
+% rails g model Style body_style:string
 
-% rails g model Car make:references model:references trim:references body:references year:integer color:string
+% rails g model Car make:references model:references trim:references style:references year:integer color:string
 ```
 
 ### Try to start the server and show the warning on the webpage
@@ -65,6 +69,8 @@ end
 * This file is auto-generated; do not edit it
 
 ### Install faker for seeding
+* Check out the faker docs
+* [Faker docs](https://github.com/faker-ruby/faker)
 
 ```rb
 # in Gemfile
@@ -80,6 +86,74 @@ end
 
 ```shell
 % bundle install
+```
+
+### Start the Rails console
+
+```shell
+% rails c
+```
+
+```rb
+> Car
+
+> Car.all
+
+> Faker
+
+> Faker::Name.name
+
+> Faker::Vehicle.style
+```
+
+* Loads the models and other files, but doesn't actually start the server
+* Useful for testing/interacting with data
+
+### Seed the data
+
+```rb
+# db/seeds.rb
+# create makes
+puts "creating makes"
+5.times do
+  Make.create(make: Faker::Vehicle.make)
+end
+
+# create models
+puts "creating models"
+5.times do
+  Model.create(model: Faker::Vehicle.model)
+end
+
+# create styles
+puts "creating styles"
+5.times do
+  Style.create(body_style: Faker::Vehicle.car_type)
+end
+
+# create trims
+puts "creating trims"
+5.times do
+  Trim.create(trim_level: Faker::Vehicle.style)
+end
+
+makes = Make.all.uniq.to_a
+models = Model.all.uniq.to_a
+trims = Trim.all.uniq.to_a
+styles = Style.all.uniq.to_a
+
+# create cars
+puts "creating cars"
+50.times do
+  Car.create(
+    make: makes.sample,
+    model: models.sample,
+    trim: trims.sample,
+    style: styles.sample,
+    color: Faker::Color.color_name,
+    year: rand(1980..2021)
+  )
+end
 ```
 
 
