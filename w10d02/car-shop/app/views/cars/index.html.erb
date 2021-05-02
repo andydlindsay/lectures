@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <% @cars.each do |car| %>
+    <div style="border: 1px solid black;">
+      <h2>Make: <%= car.make.make %></h2>
+      <h2>Model: <%= car.model.model %></h2>
+    </div>
+  <% end %>
+</body>
+</html>

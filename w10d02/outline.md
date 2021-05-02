@@ -180,7 +180,7 @@ end
 > car.model
 ```
 
-### Add the `capybara-selenium` gem
+### Add the `capybara-selenium` and `rexml` gems
 
 ```rb
 group :test do
@@ -188,8 +188,9 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
 
-  # this line vvv
+  # these lines vvv
   gem 'capybara-selenium'
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
 
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
@@ -218,6 +219,35 @@ end
 
 Capybara.javascript_driver = :headless_chrome
 ```
+
+### Generate a feature spec file
+
+```shell
+% rails g rspec:feature Cars
+```
+
+```rb
+# spec/features/cars_spec.rb
+require 'rails_helper'
+
+RSpec.feature "Cars", type: :feature do
+  
+  scenario 'display the Cars page' do |variable|
+    # visit /cars
+    visit cars_path
+
+  end
+
+end
+```
+
+### Search for Capybara cheatsheet
+* [Capybara cheatsheet](https://devhints.io/capybara)
+
+
+
+
+
 
 
 
