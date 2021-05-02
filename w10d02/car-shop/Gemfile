@@ -53,6 +53,8 @@ group :test do
 
   gem 'capybara-selenium'
   gem 'rexml', '~> 3.2', '>= 3.2.5'
+
+  gem 'database_cleaner'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

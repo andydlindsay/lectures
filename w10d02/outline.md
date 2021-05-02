@@ -226,6 +226,9 @@ Capybara.javascript_driver = :headless_chrome
 % rails g rspec:feature Cars
 ```
 
+### Search for Capybara cheatsheet
+* [Capybara cheatsheet](https://devhints.io/capybara)
+
 ```rb
 # spec/features/cars_spec.rb
 require 'rails_helper'
@@ -235,14 +238,132 @@ RSpec.feature "Cars", type: :feature do
   scenario 'display the Cars page' do |variable|
     # visit /cars
     visit cars_path
-
   end
 
 end
 ```
 
-### Search for Capybara cheatsheet
-* [Capybara cheatsheet](https://devhints.io/capybara)
+### Run the test command
+
+```shell
+% rspec
+```
+
+### Add the `js: true` flag
+
+```rb
+# spec/features/cars_spec.rb
+RSpec.feature "Cars", type: :feature, js: true do
+```
+
+```rb
+# spec/features/cars_spec.rb
+require 'rails_helper'
+
+RSpec.feature "Cars", type: :feature, js: true do
+  
+  scenario 'display the Cars page' do |variable|
+    # visit /cars
+    visit cars_path
+
+    # take a screenshot
+    # save_screenshot
+
+    # take a named screenshot so it saves over it
+    save_screenshot 'cars_page.png'
+  end
+
+end
+```
+
+* Screenshots are saved to the `tmp/capybara` folder
+
+### Add the `database_cleaner` gem
+
+```rb
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  gem 'capybara-selenium'
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
+
+  # this line vvv
+  gem 'database_cleaner'
+
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+end
+```
+
+```shell
+% bundle install
+```
+
+### Copy && paste the code from the Compass assignment
+* [Compass assignment](https://web.compass.lighthouselabs.ca/days/w10d2/activities/451)
+
+```rb
+# spec/support/database_cleaner.rb
+RSpec.configure do |config|
+
+  config.before(:suite) do
+    if config.use_transactional_fixtures?
+      raise(<<-MSG)
+        Delete line `config.use_transactional_fixtures = true` from rails_helper.rb
+        (or set it to false) to prevent uncommitted transactions being used in
+        JavaScript-dependent specs.
+
+        During testing, the app-under-test that the browser driver connects to
+        uses a different database connection to the database connection used by
+        the spec. The app's database connection would not be able to access
+        uncommitted transaction data setup over the spec's database connection.
+      MSG
+    end
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    # :rack_test driver's Rack app under test shares database connection
+    # with the specs, so continue to use transaction strategy for speed.
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    if !driver_shares_db_connection_with_specs
+      # Driver is probably for an external browser with an app
+      # under test that does *not* share a database connection with the
+      # specs, so use truncation strategy.
+      DatabaseCleaner.strategy = :truncation
+    end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
+
+end
+```
+
+```rb
+# add this line to the spec
+require 'support/database_cleaner'
+```
+
+### Follow the instructions in the error message and update `rails_helper.rb`
+
+```rb
+# comment out or remove this line
+config.use_active_record = false
+```
+
+* `rspec` should now run without error, but we still have no output from the database
 
 
 
@@ -250,41 +371,3 @@ end
 
 
 
-
-
-- testing again?!? testing is important
-- review types of tests
-  - static
-  - unit
-  - feature/integration
-  - e2e
-  - manual
-- disadvantages of feature testing
-- code coverage revisited
-- review tools used
-  - rspec
-    - test runner
-  - phantomjs
-    - headless browser
-  - capybara
-    - dom traversal
-    - fill in forms
-    - click on links
-    - test for the presence of elements/text on the page
-- continuous integration
-  - test each time a branch is pushed
-  - staging environment
-  - lets you know (via Slack) if a build fails
-- continuous deployment
-  - watches master and deploys to production
-- www.github.com/features/actions
-- startups tend not to test (it's expensive)
-
-- rspec spec --format documentation
-
-# Feature testing with Rails and RSpec
-
-* What is integration (or feature) testing?
-* How is it different from unit testing?
-* Continuous integration / Continuous Delivery (or Deployment)
-* Using [RSpec](https://relishapp.com/rspec/rspec-rails/docs) and [Capybara](http://cheatrags.com/capybara) for feature testing.
