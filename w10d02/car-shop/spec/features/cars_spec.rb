@@ -53,6 +53,8 @@ RSpec.feature "Cars", type: :feature, js: true do
 
   scenario 'display the Cars page and see three cars on that page' do |variable|
     visit cars_path
+
+    
   end
 
 end

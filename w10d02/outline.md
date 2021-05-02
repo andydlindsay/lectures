@@ -247,6 +247,9 @@ end
 
 ```shell
 % rspec
+
+# more verbose output
+% rspec -fd
 ```
 
 ### Add the `js: true` flag
@@ -431,3 +434,36 @@ expect(page).to have_text /all my cars!/i
 
 
 
+
+
+### Form Example
+
+```erb
+<div class="search-form" id="search-form">
+  <%= form_tag({controller: :cars, action: :index}, method: :get) do %>
+
+    <div class="form-component">
+      <%= label_tag(:make, 'Make') %>
+      <%= select_tag(
+        :make, 
+        options_from_collection_for_select(Make.all, :id, :make), 
+        include_blank: true
+      ) %>
+    </div>
+
+    <div class="form-component">
+      <%= label_tag(:model, 'Model') %>
+      <%= select_tag(
+        :model,
+        options_from_collection_for_select(Model.all, :id, :model),
+        include_blank: true
+      ) %>
+    </div>
+
+    <div class="form-component">
+      <%= submit_tag('Search!') %>
+    </div>
+
+  <% end %>
+</div>
+```
