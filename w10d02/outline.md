@@ -365,9 +365,69 @@ config.use_active_record = false
 
 * `rspec` should now run without error, but we still have no output from the database
 
+### Add a before each to the spec
 
+```rb
+before :each do
+  @car1 = Car.create(
+    make: Make.create(make: 'Nissan'),
+    model: Model.create(model: 'Centra'),
+    style: Style.create(body_style: 'styled'),
+    trim: Trim.create(trim_level: 'trimmed'),
+    color: 'yellow',
+    year: 1986
+  )
 
+  @car2 = Car.create(
+    make: Make.create(make: 'Toyota'),
+    model: Model.create(model: 'Elantra'),
+    style: Style.create(body_style: 'unstyled'),
+    trim: Trim.create(trim_level: 'trimmed'),
+    color: 'red',
+    year: 1995
+  )
 
+  @car3 = Car.create(
+    make: Make.create(make: 'Dodge'),
+    model: Model.create(model: 'Solaris'),
+    style: Style.create(body_style: 'unstyled'),
+    trim: Trim.create(trim_level: 'not trimmed'),
+    color: 'pink',
+    year: 2011
+  )
+end
+```
+
+* These cars can now be seen in the screenshot
+* Comment out `database_cleaner` and show how the records from the previous test remain
+
+### Show off Capybara `page` variable
+
+```rb
+# inside a spec
+puts page
+puts page.methods
+puts page.html
+
+# show a failure
+expect(page).to have_text 'Hello world'
+
+# show passing
+expect(page).to have_text 'All my cars!'
+# it will return partial matches
+
+# show case sensitive search
+expect(page).to have_text 'ALL MY CARS!'
+
+# convert to regex for case insensitive
+expect(page).to have_text /all my cars!/i
+```
+
+### Add another scenario
+
+```rb
+
+```
 
 
 
