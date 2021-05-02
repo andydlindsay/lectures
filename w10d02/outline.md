@@ -33,12 +33,59 @@ end
 * `rails_helper.rb`
 * `spec_helper.rb`
 
-### Generate some fake data
+### Generate the tables
 
 ```shell
 # create a model/migration
-rails g model Make make:string
+% rails g model Make make:string
+
+% rails g model Model model:string
+
+% rails g model Trim trim_level:string
+
+% rails g model Body body_style:string
+
+% rails g model Car make:references model:references trim:references body:references year:integer color:string
 ```
+
+### Try to start the server and show the warning on the webpage
+
+```shell
+% rails s
+```
+
+### Run the migrations
+
+```shell
+% rails db:migrate
+```
+
+### Review the schema file (`db/schema.rb`)
+* Represents the current state of the database structure
+* This file is auto-generated; do not edit it
+
+### Install faker for seeding
+
+```rb
+# in Gemfile
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  
+  # this line!
+  gem 'faker'
+end
+```
+
+```shell
+% bundle install
+```
+
+
+
+
+
 
 - testing again?!? testing is important
 - review types of tests
