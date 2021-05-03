@@ -100,7 +100,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 ```
 
 ```bash
-% bundle
+% bundle install
 ```
 
 ```env
@@ -249,42 +249,22 @@ rails routes | grep -e 'author' -e 'book' -e 'Pref'
 
 ```rb
 # app/views/authors/index.html.erb
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authors</title>
-</head>
-<body>
-  <h1>All the Authors</h1>
-  <% @authors.each do |author| %>
-    <div>
-      <h2><%= "#{author.first_name} #{author.last_name}" %></h2>
-    </div>
-  <% end %>
-</body>
-</html>
+<h1>All the Authors</h1>
+<% @authors.each do |author| %>
+  <div>
+    <h2><%= "#{author.first_name} #{author.last_name}" %></h2>
+  </div>
+<% end %>
 ```
 
 ```rb
 # app/views/books/index.html.erb
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Books</title>
-</head>
-<body>
-  <h1>All the Books</h1>
-  <% @books.each do |book| %>
-    <div>
-      <%= book.title %>
-    </div>
-  <% end %>
-</body>
-</html>
+<h1>All the Books</h1>
+<% @books.each do |book| %>
+  <div>
+    <%= book.title %>
+  </div>
+<% end %>
 ```
 
 ### Use nested routes
@@ -315,29 +295,25 @@ end
 
 ```rb
 # app/views/books/index.html.erb
-<body>
-  <h2>Books for <%= @author.first_name + ' ' + @author.last_name %></h2>
-  <%= link_to 'Home', authors_path  %>
-  <% @books.each do |book| %>
-    <div>
-      <%= book.title %>
-    </div>
-  <% end %>
-</body>
+<h2>Books for <%= @author.first_name + ' ' + @author.last_name %></h2>
+<%= link_to 'Home', authors_path  %>
+<% @books.each do |book| %>
+  <div>
+    <%= book.title %>
+  </div>
+<% end %>
 ```
 
 * Update authors index view
 
 ```rb
 # app/views/authors/index.html.erb
-<body>
-  <h1>All the Authors</h1>
-  <% @authors.each do |author| %>
-    <div>
-      <h2><%= "#{author.first_name} #{author.last_name}" %> - <%= link_to 'Books', author_books_path(author)  %></h2>
-    </div>
-  <% end %>
-</body>
+<h1>All the Authors</h1>
+<% @authors.each do |author| %>
+  <div>
+    <h2><%= "#{author.first_name} #{author.last_name}" %> - <%= link_to 'Books', author_books_path(author)  %></h2>
+  </div>
+<% end %>
 ```
 
 ### What if we want to send back JSON instead?
