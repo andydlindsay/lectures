@@ -189,20 +189,6 @@ RSpec.describe Character, type: :model do
 end
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### Add the `capybara-selenium` gem
 
 ```rb
@@ -211,8 +197,9 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
 
-  # these lines vvv
+  # this line vvv
   gem 'capybara-selenium'
+
   gem 'rexml', '~> 3.2', '>= 3.2.5'
 
   # Easy installation and use of web drivers to run system tests with browsers
@@ -261,6 +248,10 @@ RSpec.feature "Cars", type: :feature do
   scenario 'display the Cars page' do 
     # visit /cars
     visit cars_path
+
+    # take a screenshot
+    # this will fail vvv
+    save_screenshot
   end
 
 end
@@ -303,6 +294,42 @@ end
 ```
 
 * Screenshots are saved to the `tmp/capybara` folder
+
+### Add a before each to the spec
+
+```rb
+before :each do
+  @car1 = Car.create(
+    make: Make.create(make: 'Nissan'),
+    model: Model.create(model: 'Centra'),
+    style: Style.create(body_style: 'styled'),
+    trim: Trim.create(trim_level: 'trimmed'),
+    color: 'yellow',
+    year: 1986
+  )
+
+  @car2 = Car.create(
+    make: Make.create(make: 'Toyota'),
+    model: Model.create(model: 'Elantra'),
+    style: Style.create(body_style: 'unstyled'),
+    trim: Trim.create(trim_level: 'trimmed'),
+    color: 'red',
+    year: 1995
+  )
+
+  @car3 = Car.create(
+    make: Make.create(make: 'Dodge'),
+    model: Model.create(model: 'Solaris'),
+    style: Style.create(body_style: 'unstyled'),
+    trim: Trim.create(trim_level: 'not trimmed'),
+    color: 'pink',
+    year: 2011
+  )
+end
+```
+
+* These cars can now be seen in the screenshot
+* Show how the records from the previous tests show up in subsequent tests
 
 ### Add the `database_cleaner` gem
 
@@ -390,41 +417,6 @@ config.use_active_record = false
 ```
 
 * `rspec` should now run without error, but we still have no output from the database
-
-### Add a before each to the spec
-
-```rb
-before :each do
-  @car1 = Car.create(
-    make: Make.create(make: 'Nissan'),
-    model: Model.create(model: 'Centra'),
-    style: Style.create(body_style: 'styled'),
-    trim: Trim.create(trim_level: 'trimmed'),
-    color: 'yellow',
-    year: 1986
-  )
-
-  @car2 = Car.create(
-    make: Make.create(make: 'Toyota'),
-    model: Model.create(model: 'Elantra'),
-    style: Style.create(body_style: 'unstyled'),
-    trim: Trim.create(trim_level: 'trimmed'),
-    color: 'red',
-    year: 1995
-  )
-
-  @car3 = Car.create(
-    make: Make.create(make: 'Dodge'),
-    model: Model.create(model: 'Solaris'),
-    style: Style.create(body_style: 'unstyled'),
-    trim: Trim.create(trim_level: 'not trimmed'),
-    color: 'pink',
-    year: 2011
-  )
-end
-```
-
-* These cars can now be seen in the screenshot
 * Comment out `database_cleaner` and show how the records from the previous test remain
 
 ### Show off Capybara `page` variable
