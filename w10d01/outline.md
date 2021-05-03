@@ -63,57 +63,6 @@
 % rails server
 ```
 
-### Update `config/database.yml`
-
-```yml
-development:
-  <<: *default
-  database: database-name
-
-  # The specified database role being used to connect to postgres.
-  # To create additional roles in postgres see `$ createuser --help`.
-  # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user that initialized the database.
-  username: database-user
-
-  # The password associated with the postgres role (username).
-  password: database-password
-
-  # Connect on a TCP socket. Omitted by default since the client uses a
-  # domain socket that doesn't need configuration. Windows does not have
-  # domain sockets, so uncomment these lines.
-  host: database-host
-
-  # The TCP port the server listens on. Defaults to 5432.
-  # If your server runs on a different port number, change accordingly.
-  port: database-port
-```
-
-### Use environment variables instead
-
-```bash
-% touch .env
-```
-
-```Gemfile
-gem 'dotenv-rails', groups: [:development, :test]
-```
-
-```bash
-% bundle install
-```
-
-```env
-DATABASE_URL=database-connection-string
-```
-
-```yml
-# comment out the unneeded connection info
-development:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-```
-
 ### Generate models from the command line
 
 ```bash
@@ -219,7 +168,6 @@ puts "Done!"
 ```
 
 ### Run migrations
-* `schema_migrations` table holds the migration history (empty it to reset the migrations)
 
 ```shell
 rails db:migrate
