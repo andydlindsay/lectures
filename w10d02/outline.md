@@ -19,6 +19,9 @@ end
 
 ```shell
 % bundle install
+
+# show the new generators that have been added
+% rails g
 ```
 
 ### Initialize rspec for the project
@@ -31,7 +34,176 @@ end
 * `rails_helper.rb`
 * `spec_helper.rb`
 
-### Add the `capybara-selenium` and `rexml` gems
+### Add validations to a model
+
+```rb
+validates :name, presence: true
+validates :price, presence: true
+```
+
+### Generate a model spec
+
+```shell
+% rails g rspec:model Character
+```
+
+```rb
+require 'rails_helper'
+
+RSpec.describe Character, type: :model do
+  # pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Validations' do
+
+  end
+
+end
+```
+
+```shell
+# show the error about rexml
+% rspec
+```
+
+### Install `rexml` gem
+
+```rb
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+
+  # this line vvv
+  gem 'rexml', '~> 3.2', '>= 3.2.5'
+
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+end
+```
+
+### Add some tests for the model validations
+
+```rb
+it 'is valid with all attributes given' do
+  character = Character.new(
+    name: 'Bilbo',
+    poem: 'Hello world',
+    race: 'Hobbit',
+    location: Location.new(
+      location: 'The Shire'
+    )
+  )
+
+  expect(character).to be_valid
+end
+```
+
+```rb
+# test a required field being nil
+it 'is not valid without a name' do
+  character = Character.new(
+    name: nil,
+    poem: 'Hello world',
+    race: 'Hobbit',
+    location: Location.new(
+      location: 'The Shire'
+    )
+  )
+
+  character.save
+
+  # p character.errors.full_messages
+
+  expect(character).to be_invalid
+  expect(character.errors.full_messages[0]).to eq('Name can\'t be blank')
+end
+```
+
+```rb
+# test a non-required field being nil
+it 'is valid without a race' do
+  character = Character.new(
+    name: 'Bilbo Baggins',
+    poem: 'Hello world',
+    race: nil,
+    location: Location.new(
+      location: 'The Shire'
+    )
+  )
+
+  expect(character).to be_valid
+end
+```
+
+### Refactor to use beforeEach
+
+```rb
+RSpec.describe Character, type: :model do
+  # pending "add some examples to (or delete) #{__FILE__}"
+
+  describe 'Validations' do
+
+    before :each do
+      @character = Character.new(
+        name: 'Bilbo',
+        poem: 'Hello world',
+        race: 'Hobbit',
+        location: Location.new(
+          location: 'The Shire'
+        )
+      )
+    end
+
+    it 'is valid with all attributes given' do
+      expect(@character).to be_valid
+    end
+
+    it 'is not valid without a name' do
+      @character.name = nil
+      @character.save
+
+      # p character.errors.full_messages
+
+      expect(@character).to be_invalid
+      expect(@character.errors.full_messages[0]).to eq('Name can\'t be blank')
+    end
+
+    it 'is not valid without a poem' do
+      @character.poem = nil
+      @character.save
+
+      # p character.errors.full_messages
+
+      expect(@character).to be_invalid
+      expect(@character.errors.full_messages[0]).to eq('Poem can\'t be blank')
+    end
+
+    it 'is valid without a race' do
+      @character.race = nil
+
+      expect(@character).to be_valid
+    end
+
+  end
+
+end
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Add the `capybara-selenium` gem
 
 ```rb
 group :test do
