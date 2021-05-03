@@ -37,5 +37,6 @@
   <div style="border: 1px solid black;" class="car">
     <h2>Make: <%= car.make.make %></h2>
     <h2>Model: <%= car.model.model %></h2>
+    <%= link_to 'Detail', car_path(car)  %>
   </div>
 <% end %>

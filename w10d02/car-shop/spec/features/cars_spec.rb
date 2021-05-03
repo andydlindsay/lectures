@@ -30,12 +30,14 @@ RSpec.feature "Cars", type: :feature, js: true do
       color: 'pink',
       year: 2011
     )
+
+    visit cars_path
   end
   
   scenario 'display the Cars page' do
     # visit /cars
     # visit cars_path
-    visit '/cars'
+    # visit '/cars'
 
     # take a screenshot
     # save_screenshot
@@ -52,7 +54,7 @@ RSpec.feature "Cars", type: :feature, js: true do
   end
 
   scenario 'display the Cars page and see three cars on that page' do
-    visit cars_path
+    # visit cars_path
 
     save_screenshot 'cars_page_test_2.png'
 
@@ -61,6 +63,26 @@ RSpec.feature "Cars", type: :feature, js: true do
 
     # look for elements with the class 'car' 3 times
     expect(page).to have_css('.car', count: 3)
+  end
+
+  scenario 'go to the home page, click a link for one of the cars, visit the info page' do
+    # visit cars_path
+
+    save_screenshot 'cars_page_test_3.png'
+
+    # click on the detail button (this won't work)
+    # click_link 'Detail'
+
+    # be more specific
+    # first(:link, 'Detail').click
+
+    # or this
+    click_link('Detail', match: :first)
+
+    # look for only one element with class 'car'
+    expect(page).to have_css('.car', count: 1)
+
+    save_screenshot 'cars_page_test_4.png'
   end
 
 end

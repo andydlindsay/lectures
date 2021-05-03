@@ -445,11 +445,26 @@ end
 ### Add another scenario
 
 ```rb
+scenario 'go to the home page, click a link for one of the cars, visit the info page' do
+  visit cars_path
 
+  save_screenshot 'cars_page_test_3.png'
+
+  # click on the detail button (this won't work)
+  # click_link 'Detail'
+
+  # be more specific
+  # first(:link, 'Detail').click
+
+  # or this
+  click_link('Detail', match: :first)
+
+  # look for only one element with class 'car'
+  expect(page).to have_css('.car', count: 1)
+
+  save_screenshot 'cars_page_test_4.png'
+end
 ```
-
-
-
 
 ### Form Example
 
@@ -486,4 +501,17 @@ end
 
   <% end %>
 </div>
+```
+
+### Linking Example
+
+```erb
+<%= link_to 'Detail', car_path(car)  %>
+<%= link_to('All Cars', cars_path) %>
+```
+
+```rb
+def show
+  @car = Car.find(params[:id])
+end
 ```
