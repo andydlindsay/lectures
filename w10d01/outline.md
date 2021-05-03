@@ -190,6 +190,34 @@ Book.create(title: "Harry Potter and the Chamber of Secrets", num_pages: 643, au
 puts "Done!"
 ```
 
+```rb
+# using Faker
+puts "Seeding data..."
+
+# create authors
+puts "Creating authors"
+10.times do
+  Author.create(name: Faker::Book.author)
+end
+
+# grab the newly created authors
+authors = Author.all.to_a
+
+# create books
+puts "Creating books"
+100.times do
+  Book.create(
+    author: authors.sample,
+    title: Faker::Book.title,
+    publisher: Faker::Book.publisher,
+    genre: Faker::Book.genre,
+    num_pages: rand(1..500)
+  )
+end
+
+puts "Done!"
+```
+
 ### Run migrations
 * `schema_migrations` table holds the migration history (empty it to reset the migrations)
 
@@ -235,6 +263,9 @@ end
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :authors
+
+  resources :authors, only: [:show, :index]
+  resources :authors, except: [:edit, :update, :show]
 
   resources :books
 end
