@@ -299,37 +299,85 @@ end
 
 ```rb
 before :each do
-  @car1 = Car.create(
-    make: Make.create(make: 'Nissan'),
-    model: Model.create(model: 'Centra'),
-    style: Style.create(body_style: 'styled'),
-    trim: Trim.create(trim_level: 'trimmed'),
-    color: 'yellow',
-    year: 1986
+  Location.create(
+    location: 'Minas Morgul'
   )
-
-  @car2 = Car.create(
-    make: Make.create(make: 'Toyota'),
-    model: Model.create(model: 'Elantra'),
-    style: Style.create(body_style: 'unstyled'),
-    trim: Trim.create(trim_level: 'trimmed'),
-    color: 'red',
-    year: 1995
+  Location.create(
+    location: 'The Shire'
   )
-
-  @car3 = Car.create(
-    make: Make.create(make: 'Dodge'),
-    model: Model.create(model: 'Solaris'),
-    style: Style.create(body_style: 'unstyled'),
-    trim: Trim.create(trim_level: 'not trimmed'),
-    color: 'pink',
-    year: 2011
+  Location.create(
+    location: 'One of the Two Towers'
   )
 end
 ```
 
 * These cars can now be seen in the screenshot
-* Show how the records from the previous tests show up in subsequent tests
+
+### Show off Capybara `page` variable
+
+```rb
+# inside a spec
+puts page
+puts page.methods
+puts page.html
+
+# show a failure
+expect(page).to have_text 'Hello world'
+
+# show passing
+expect(page).to have_text 'All my cars!'
+# it will return partial matches
+
+# show case sensitive search
+expect(page).to have_text 'ALL MY CARS!'
+
+# convert to regex for case insensitive
+expect(page).to have_text /all my cars!/i
+```
+
+### Add another scenario
+
+```rb
+scenario 'display the Cars page and see three cars on that page' do
+  visit cars_path
+
+  save_screenshot 'cars_page_test_2.png'
+
+  # look for elements with the class 'car'
+  expect(page).to have_css('.car')
+
+  # look for elements with the class 'car' 3 times
+  expect(page).to have_css('.car', count: 3)
+end
+```
+
+### Add another scenario
+
+```rb
+scenario 'go to the home page, click a link for one of the cars, visit the info page' do
+  visit cars_path
+
+  save_screenshot 'cars_page_test_3.png'
+
+  # click on the detail button (this won't work)
+  # click_link 'Detail'
+
+  # be more specific
+  # first(:link, 'Detail').click
+
+  # or this
+  click_link('Detail', match: :first)
+
+  # look for only one element with class 'car'
+  expect(page).to have_css('.car', count: 1)
+
+  save_screenshot 'cars_page_test_4.png'
+end
+```
+
+## End Outline
+
+### Database Cleaner (if needed)
 
 ### Add the `database_cleaner` gem
 
@@ -418,68 +466,6 @@ config.use_active_record = false
 
 * `rspec` should now run without error, but we still have no output from the database
 * Comment out `database_cleaner` and show how the records from the previous test remain
-
-### Show off Capybara `page` variable
-
-```rb
-# inside a spec
-puts page
-puts page.methods
-puts page.html
-
-# show a failure
-expect(page).to have_text 'Hello world'
-
-# show passing
-expect(page).to have_text 'All my cars!'
-# it will return partial matches
-
-# show case sensitive search
-expect(page).to have_text 'ALL MY CARS!'
-
-# convert to regex for case insensitive
-expect(page).to have_text /all my cars!/i
-```
-
-### Add another scenario
-
-```rb
-scenario 'display the Cars page and see three cars on that page' do
-  visit cars_path
-
-  save_screenshot 'cars_page_test_2.png'
-
-  # look for elements with the class 'car'
-  expect(page).to have_css('.car')
-
-  # look for elements with the class 'car' 3 times
-  expect(page).to have_css('.car', count: 3)
-end
-```
-
-### Add another scenario
-
-```rb
-scenario 'go to the home page, click a link for one of the cars, visit the info page' do
-  visit cars_path
-
-  save_screenshot 'cars_page_test_3.png'
-
-  # click on the detail button (this won't work)
-  # click_link 'Detail'
-
-  # be more specific
-  # first(:link, 'Detail').click
-
-  # or this
-  click_link('Detail', match: :first)
-
-  # look for only one element with class 'car'
-  expect(page).to have_css('.car', count: 1)
-
-  save_screenshot 'cars_page_test_4.png'
-end
-```
 
 ### Form Example
 
