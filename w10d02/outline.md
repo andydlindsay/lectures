@@ -1,7 +1,11 @@
 ## External Resources
 
-* `rspec-rails`
-* `database_cleaner`
+* [`rspec-rails`](https://github.com/rspec/rspec-rails)
+* [Helper Code for Headless Chrome](https://thoughtbot.com/blog/headless-feature-specs-with-chrome#capybara-configuration)
+* [Capybara cheatsheet](https://devhints.io/capybara)
+
+
+* [`database_cleaner`](https://rubygems.org/gems/database_cleaner/versions/2.0.1) (Stretch)
 
 ## Outline
 
