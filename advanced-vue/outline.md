@@ -1,250 +1,270 @@
-## Lecture Order
+## External Resources
+
+* [Vue Install Instructions](https://vuejs.org/v2/guide/)
+* [Vue Cheat Sheet](https://devhints.io/vue)
+* [Chef Andy API](http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes)
+
+## Outline
 
 ### Introduction to Vue.js
+* Progressive framework: you can plug it in to just a part of your application
+* Smaller size compared to other front-end frameworks
+* Component-based
+* Reactive: when the data changes, the view re-renders
 
-  * progressive framework: you can plug it in to just a part of your application
-  * smaller size compared to other front-end frameworks
-  * component-based
-  * reactive: when the data changes, the view re-renders
+### Follow steps from the guide
+* https://vuejs.org/v2/guide/
 
-### Demo a simple app using the CDN
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-  ```html
-  <div id="root">
-    <h2>Hello {{ name }}</h2>
-  </div>
+<div id="app">
+  {{ message }}
+</div>
 
-  <script>
-    const app = new Vue({
-      el: '#root',
-      data: {
-        name: 'Alice'
-      }
-    });
-  </script>
-  ```
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!'
+    }
+  });
+</script>
+```
 
-  * show how it works just like jQuery and must wait for the DOM to load to hook into it
-  * show the Vue warning in the console that it cannot find the element to mount to
-  * demonstrate name and that it can be updated in the console with `app.name = 'something else';`
+### Experiment in the browser console
+* Demonstrate name and that it can be updated in the console with `app.name = 'something else';`
+* Show how it works just like jQuery and must wait for the DOM to load to hook into it
 
-  * add a sports array to the data object
-  * render an unordered list using `v-for`
+### Add an array to the data object
+* Render an unordered list using `v-for`
 
-  ```html
-  <ul>
-    <li v-for="sport of sports">{{ sport.name }} ({{ sport.id }})</li>
-  </ul>
-  ```
+```html
+<ul>
+  <li v-for="sport of sports">{{ sport }}</li>
+</ul>
 
-  * add a new item to the list using `app.sports.push({ name: 'Tennis' });`
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      sports: ['badminton', 'volleyball', 'soccer']
+    }
+  });
+</script>
+```
 
-### Vue Lifecycle Methods
-
-  * look at Vue lifecycle methods
-  * introduce the `created(){}` lifecycle method and `fetch` the sports from an external API
-
-  ```js
-  created() {
-    fetch('https://andydlindsay-pinterest-clone.herokuapp.com/api/public/posts')
-      .then(res => res.json())
-      .then(data => this.posts = data.posts);
-  }
-  ```
+* Add a new item to the list using `app.sports.push('tennis');`
 
 ### Bound Properties
+* Demonstrate bound properties using `v-bind:` and then the short-hand
 
-  * demonstrate bound properties using `v-bind:` and then the short-hand
+```html
+<h2 v-bind:title="message">Hello {{ name }}</h2>
+<h2 :title="message">Hello {{ name }}</h2>
+```
 
-  ```html
-  <h2 v-bind:title="message">Hello {{ name }}</h2>
-  <h2 :title="message">Hello {{ name }}</h2>
-  ```
-
-  * hover over the `h2` to show the tooltip
-  * change the tooltip with `app.message = 'something else';`
+* Hover over the `h2` to show the tooltip
+* Change the tooltip with `app.message = 'something else';`
 
 ### Conditional Rendering
+* Demonstrate `v-if`
 
-  * demonstrate `v-if`
+```js
+data: {
+  visible: true
+}
+```
 
-  ```js
-  data: {
-    visible: true
-  }
-  ```
+```html
+<p v-if="visible">I'm here!!!</p>
+<p v-else>I'm here instead!</p>
+```
 
-  ```html
-  <p v-if="visible">I'm here!!!</p>
-  <p v-else>I'm here instead!</p>
-  ```
-
-  * open the console and set `app.visible = false;`
+* Open the console and set `app.visible = false;`
 
 ### Methods and Event Handling
+* Add the `methods` object and create a simple method for a click event
+* Bind it to a DOM element using `v-on:click="functionName"`
 
-  * add the `methods` object and create a simple method for a click event
-  * bind it to a DOM element using `v-on:click="functionName"`
-
-  ```js
-  methods: {
-    sayHello() {
-      alert('hello!!!');
-    }
+```js
+methods: {
+  sayHello() {
+    alert('hello!!!');
   }
-  ```
+}
+```
 
-  ```html
-  <h2 v-bind:title="message" v-on:click="sayHello">Hello {{ name }}</h2>
-  <h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
-  ```
+```html
+<h2 v-bind:title="message" v-on:click="sayHello">Hello {{ name }}</h2>
+<h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
+```
 
-  * we also have `mouseover`, `dblclick`, `mouseleave`
-  * show off `@click.prevent` to prevent default behaviour
+* we also have `mouseover`, `dblclick`, `mouseleave`
+* show off `@click.prevent` to prevent default behaviour
 
-  * add a new prop to the `data` object called `counter` and initialize it to 0
-  * add a method called `incrementCounter` that increments the counter by 1
-  * add a button `index.html` and add a click handler to it
-  * add a span to the html that displays the `counter` value
+* add a new prop to the `data` object called `counter` and initialize it to 0
+* add a method called `incrementCounter` that increments the counter by 1
+* add a button `index.html` and add a click handler to it
+* add a span to the html that displays the `counter` value
 
 ### Binding Data with v-model
+* Add a `form` object to the `data` object
 
-  * add a `form` object to the `data` object
-
-  ```js
-  data: {
-    form: {
-      username: '',
-      password: ''
-    }
-  },
-  methods: {
-    onSubmit() {
-      console.log(this.form);
-    }
+```js
+data: {
+  form: {
+    username: '',
+    password: ''
   }
-  ```
+},
+methods: {
+  onSubmit() {
+    console.log(this.form);
+  }
+}
+```
 
-  ```html
-  <form>
-    <label for="username">Username</label>
-    <input type="text" id="username" v-model="form.username" />
-    <br/>
-    <label for="password">Password</label>
-    <input type="password" id="password" v-model="form.password" />
-    <br/>
-    <button type="button" @click="onSubmit">Log In!</button>
-  </form>
-  ```
+```html
+<form>
+  <label for="username">Username</label>
+  <input type="text" id="username" v-model="form.username" />
+  <br/>
+  <label for="password">Password</label>
+  <input type="password" id="password" v-model="form.password" />
+  <br/>
+  <button type="button" @click="onSubmit">Log In!</button>
+</form>
+```
 
 ### Computed Properties
+* `computed` properties are values that can be calculated/computed from other values in state
+* Computed properties are not called like functions, they are referenced like other pieces of state
 
-  * intro `computed` property
-
-  ```js
-  computed: {
-    reverseUsername() {
-      return this.form.username.split('').reverse().join('');
-    }
+```js
+computed: {
+  reverseUsername() {
+    return this.form.username.split('').reverse().join('');
   }
-  ```
+}
+```
 
 ### Watch
+* `watch` property is used to watch for changes to values (similar to dependency array in `useEffect`)
 
-  * intro `watch` property
-
-  ```js
-  watch: {
-    'form.username': function() {
-      console.log('updates!');
-    }
+```js
+watch: {
+  'form.username': function() {
+    console.log('updates!');
   }
-  ```
+  // or
+  'form.username'() {
+    console.log('updates!');
+  }
+}
+```
+
+### Vue Lifecycle Methods
+* Introduce the `created(){}` lifecycle method and `fetch` data from an external API
+
+```vue
+<ol>
+  <li v-for="recipe of recipes">{{ recipe.title }}</li>
+</ol>
+```
+
+```js
+created() {
+  fetch('http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes')
+    .then(res => res.json())
+    .then(data => this.recipes = data);
+}
+```
 
 ### App Creation with vue-cli
+* Install vue-cli
 
-  * install vue-cli
-  * `npm i -g @vue/cli`
-  * `vue --version`
-  * `vue create my-project`
-  * explore the created project structure
-  * single file vue components
-  * show prop passing from parent to child
-  * `npm run serve`
-  * demo vue devtools
+```shell
+% npm i -g @vue/cli
+% vue --version
 
-### Custom Event Handling
+% vue create my-project
 
-  * emit an event from the child component
+% cd my-project
+% yarn serve
+```
 
-  ```js
+* Explore the created project structure
+* Single file vue components
+
+### Prop passing from parent to child
+
+```vue
+<template>
+  <ChildComponent :prop="prop" />
+</template>
+
+<script>
+import InBetween from './components/InBetween.vue';
+
+export default {
+  name: 'App',
   data() {
     return {
-      childMessage: ''
-    }
+      poem: 'Hello to the day'
+    };
   },
-  props: ['msg', 'propTwo'],
-  methods: {
-    sendToParent() {
-      this.$emit('message-stored', this.childMessage);
-    }
+  components: {
+    InBetween
+  },
+}
+</script>
+```
+
+### Demo Vue devtools
+
+### Custom Event Handling
+* Emit an event from the child component
+
+```js
+data() {
+  return {
+    childMessage: ''
   }
-  ```
+},
+props: ['msg', 'propTwo'],
+methods: {
+  sendToParent() {
+    this.$emit('message-stored', this.childMessage);
+  }
+}
+```
 
-  * look in devtools to see the event and the payload
-  * listen for the event in the parent by attaching a custom event handler
+* Look in devtools to see the event and the payload
+* Listen for the event in the parent by attaching a custom event handler
 
-  ```html
-  <HelloWorld @message-stored="messageFromChild"/>
-  ```
+```html
+<HelloWorld @message-stored="messageFromChild" />
+```
+
+* You can pass it down deeper with this syntax on "in-between" components
+
+```html
+<TestComponent v-on="$listeners" :poem="poem" />
+```
 
 ### Slots
+* Slots are for child elements passed in (similar to `props.children`)
 
-  * demo slots
+```js
+// Slots.vue
+<template>
+  <div class="slots">
+    <slot></slot>
+  </div>
+</template>
 
-  ```js
-  // Slots.vue
-  <template>
-    <div class="slots">
-      <slot></slot>
-    </div>
-  </template>
-
-  // App.vue
-  <Slots>I am passing something to you</Slots>
-  ```
-
-### Integrate with Storybook
-
-  * `npm install @storybook/vue --save-dev`
-  * `npm install vue --save`
-  * `npm install vue-loader vue-template-compiler @babel/core babel-loader babel-preset-vue --save-dev`
-  * add a new script to **package.json**: `"storybook": "start-storybook"`
-  * `mkdir .storybook`
-  * `touch .storybook/main.js`
-  
-  ```js
-  // .storybook/main.js
-  module.exports = {
-    stories: ['../src/**/*.stories.[tj]s'],
-  };
-  ```
-
-  * `mkdir src/stories`
-  * `touch src/stories/HelloWorld.stories.js`
-
-  ```js
-  import Vue from 'vue';
-  import HelloWorld from '../components/HelloWorld';
-
-  export default { title: 'Hello World Component' };
-
-  export const withText = () => '<hello-world>with text</hello-world>';
-
-  export const withEmoji = () => '<hello-world>😀 😎 👍 💯</hello-world>';
-
-  export const asAComponent = () => ({
-    components: { HelloWorld },
-    template: '<hello-world></hello-world>'
-  });
-  ```
+// App.vue
+<Slots>I am passing something to you</Slots>
+```
