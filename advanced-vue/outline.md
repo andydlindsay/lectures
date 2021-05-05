@@ -3,6 +3,7 @@
 * [Vue Install Instructions](https://vuejs.org/v2/guide/)
 * [Vue Cheat Sheet](https://devhints.io/vue)
 * [Chef Andy API](http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes)
+* [Vue Lifecycle Diagram](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
 
 ## Outline
 
@@ -101,15 +102,27 @@ methods: {
 <h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
 ```
 
-* we also have `mouseover`, `dblclick`, `mouseleave`
-* show off `@click.prevent` to prevent default behaviour
+### Create a counter :p
 
-* add a new prop to the `data` object called `counter` and initialize it to 0
-* add a method called `incrementCounter` that increments the counter by 1
-* add a button `index.html` and add a click handler to it
-* add a span to the html that displays the `counter` value
+```js
+data: {
+  counter: 0
+},
+methods: {
+  incrementCounter() {
+    this.counter += 1;
+  }
+}
+```
 
-### Binding Data with v-model
+```html
+<div>
+  <h2>Counter: {{ counter }}</h2>
+  <button @click="incrementCounter">Plus 1</button>
+</div>
+```
+
+### Binding Data with `v-model`
 * Add a `form` object to the `data` object
 
 ```js
@@ -166,7 +179,8 @@ watch: {
 ```
 
 ### Vue Lifecycle Methods
-* Introduce the `created(){}` lifecycle method and `fetch` data from an external API
+* https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+* Introduce the `created` lifecycle method and `fetch` data from an external API
 
 ```vue
 <ol>
@@ -175,6 +189,9 @@ watch: {
 ```
 
 ```js
+data: {
+  recipes: []
+},
 created() {
   fetch('http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes')
     .then(res => res.json())
