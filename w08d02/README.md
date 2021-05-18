@@ -42,14 +42,14 @@ const Products = () => {
   return (
     <div>
       <nav>
-        <Link to={`/products/2`}>Product #2</Link><br/>
-        <Link to={`/products/3`}>Product #3</Link><br/>
-        <Link to={`/products/4`}>Product #4</Link><br/>
-        <Link to={`/products/5`}>Product #5</Link>
+        <Link to="/products/2">Product #2</Link><br/>
+        <Link to="/products/3">Product #3</Link><br/>
+        <Link to="/products/4">Product #4</Link><br/>
+        <Link to="/products/5">Product #5</Link>
       </nav>
 
       <Switch>
-        <Route path={`/products/:productId`}>
+        <Route path="/products/:productId">
           <Product />
         </Route>
         <Route path="/products">
@@ -209,5 +209,4 @@ const UseRef = () => {
 * [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 * [Styled Components](https://styled-components.com/docs/basics)
 * [Top React UI Frameworks (opinionated)](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
-* [State Reducer Pattern](https://kentcdodds.com/blog/the-state-reducer-pattern-with-react-hooks)
 * [Tagged Template Literals](https://codeburst.io/javascript-es6-tagged-template-literals-a45c26e54761)
