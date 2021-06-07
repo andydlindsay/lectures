@@ -40,18 +40,11 @@
 * If data is being updated/changed/created, use a `POST` request (therefore, a form)
   * NOTE: This includes things like buttons to delete a resource (simply wrap the button in a form)
 
-### Morgan
-* During the lecture, we used a package called `morgan` to see incoming requests to our Express server
-* We call a package like this a _logger_
-* Morgan is an excellent example of using middleware with Express
-  * Reminder: middleware sits between the request and the response and is able to perform actions using the `request` and/or the `response` object including adding new keys/values (think `body-parser`)
-
 ### Useful Links
 * [REST](https://en.wikipedia.org/wiki/Representational_state_transfer)
 * [BREAD/CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)
 * [Express](https://github.com/expressjs/express)
 * [Embedded JavaScript (EJS)](https://github.com/mde/ejs)
-* [Morgan](https://github.com/expressjs/morgan)
 * [Body-Parser](https://github.com/expressjs/body-parser)
 * [Delete Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete)
 * [HTTP Forms](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_and_retrieving_form_data)
