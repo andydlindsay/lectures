@@ -93,7 +93,7 @@ class StateExample extends React.Component {
 <div>{this.props.children}</div>
 ```
 
-### Handling Events and Changes to State
+### Handling Events
 * Event handlers need to be bound to the component instance using the `bind` method
 * Binding the method makes sure that any references to `this` inside the function will point to the component instance
 
@@ -118,6 +118,7 @@ class BindExample extends React.Component {
 }
 ```
 
+### Changes to State
 * Just like with functional components, we never want to mutate state directly
 
 ```js
@@ -126,7 +127,7 @@ this.state.count = this.state.count + 1;
 ```
 
 * Instead, we use the `setState` method to update state
-* The value passed to `setState` will be _merged_ into the components state
+* The value passed to `setState` will be _merged_ into the component's state
 
 ```js
 this.setState({ count: this.state.count + 1 });
