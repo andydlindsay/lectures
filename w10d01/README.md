@@ -29,15 +29,8 @@
 - **Action Dispatch**
   - The Rails router
   - Handles incoming requests and forwards them to the correct controller
-- **Active Support**
-  - Collection of helper methods for Ruby
-- **Action Mailer**
-  - Allows you to send emails
 - **Action Cable**
   - Websockets for Rails
-- **Active Storage**
-  - For uploading files to storage in the cloud
-- Rails bundles all these libraries together to create a framework
 
 ### Nested Routes
 * We define the nesting in our routes. In routes.rb:
