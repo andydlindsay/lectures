@@ -35,6 +35,7 @@
 
 ## Breakouts
 * [Express Router](/breakout-express-router)
+* [CRUD with AJAX](/breakout-crud-with-ajax)
 * [Mock Exam Review](/breakout-mock-exam-review)
 * [Week 2 Exam Review](/breakout-w2-exam)
 * [Week 3 Exam Review](/breakout-w3-exam)

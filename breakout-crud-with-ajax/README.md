@@ -11,8 +11,7 @@
   * Data is sent "behind the scenes"
 
 ### Changes to the backend when using AJAX
-* Update endpoints to use other verbs
-* Add JSON body-parser
+* Update endpoints to use other verbs (optional)
 * Update endpoints to respond with JSON
 * Data endpoints usually have a prefix of `/api`
   * We would expect `GET /cars` to give us back a webpage with cars in it
