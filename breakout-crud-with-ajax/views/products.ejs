@@ -4,14 +4,12 @@
   <h3>Create a new Product!</h3>
 </a>
 
-<ul>
-  <% products.forEach((product) => { %>
-    <li style="border: 2px dotted salmon;">
-      <h2>Product Name: <%= product.product_name %></h2>
-      <h3>Price: $<%= product.price %></h3>
-      <a href="/products/<%= product.id %>">
-        <h4>Edit</h4>
-      </a>
-    </li>
-  <% }) %>
-</ul>
+<% products.forEach((product) => { %>
+  <div style="border: 2px dotted salmon; padding: 10px;">
+    <h2>Product Name: <%= product.product_name %></h2>
+    <h3>Price: $<%= product.price %></h3>
+    <a href="/products/<%= product.id %>">
+      <h4>Edit</h4>
+    </a>
+  </div>
+<% }) %>
