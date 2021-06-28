@@ -72,8 +72,7 @@ const createProduct = (product) => {
       });
   });
 
-  const $deleteButton = $('<button>')
-    .text('Delete')
+  const $deleteButton = $('<button>Delete</button>')
     .click(() => {
       $.post(`/api/products/${product.id}/delete`)
         .then(() => {
@@ -98,6 +97,7 @@ $(() => {
     $.post('/api/products', data)
       .then(() => {
         loadProducts();
+        $newProductForm[0].reset();
       });
   });
 });
