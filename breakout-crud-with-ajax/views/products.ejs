@@ -1,0 +1,17 @@
+<h1>All the Products!</h1>
+
+<a href="/products/new">
+  <h3>Create a new Product!</h3>
+</a>
+
+<ul>
+  <% products.forEach((product) => { %>
+    <li style="border: 2px dotted salmon;">
+      <h2>Product Name: <%= product.product_name %></h2>
+      <h3>Price: $<%= product.price %></h3>
+      <a href="/products/<%= product.id %>">
+        <h4>Edit</h4>
+      </a>
+    </li>
+  <% }) %>
+</ul>

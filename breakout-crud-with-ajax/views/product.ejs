@@ -1,0 +1,25 @@
+<h1>Just one product!</h1>
+
+<a href="/products">
+  <h3>Home</h3>
+</a>
+
+<div>
+  <h2>Product Name: <%= product.product_name %></h2>
+  <h3>Price: $<%= product.price %></h3>
+
+  <form method="POST" action="/products/<%= product.id %>">
+    <label for="product-name">Product Name:</label>
+    <input name="productName" id="product-name" value="<%= product.product_name %>" />
+    <br/>
+
+    <label for="price">Price:</label>
+    <input name="price" id="price" value="<%= product.price %>" />
+    <br/>
+
+    <button type="submit">Update!</button>
+  </form>
+  <form method="POST" action="/products/<%= product.id %>/delete">
+    <button type="submit">Delete!</button>
+  </form>
+</div>
