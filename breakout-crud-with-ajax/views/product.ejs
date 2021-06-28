@@ -1,25 +1,42 @@
-<h1>Just one product!</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<a href="/products">
-  <h3>Home</h3>
-</a>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div>
-  <h2>Product Name: <%= product.product_name %></h2>
-  <h3>Price: $<%= product.price %></h3>
+  <link rel="stylesheet" href="/styles.css" />
 
-  <form method="POST" action="/products/<%= product.id %>">
-    <label for="product-name">Product Name:</label>
-    <input name="productName" id="product-name" value="<%= product.product_name %>" />
-    <br/>
+  <title>Product View</title>
+</head>
 
-    <label for="price">Price:</label>
-    <input name="price" id="price" value="<%= product.price %>" />
-    <br/>
+<body>
+  <h1>Just one product!</h1>
 
-    <button type="submit">Update!</button>
-  </form>
-  <form method="POST" action="/products/<%= product.id %>/delete">
-    <button type="submit">Delete!</button>
-  </form>
-</div>
+  <a href="/products">
+    <h3>Home</h3>
+  </a>
+
+  <div>
+    <h2>Product Name: <%= product.product_name %></h2>
+    <h3>Price: $<%= product.price %></h3>
+
+    <form method="POST" action="/products/<%= product.id %>">
+      <label for="product-name">Product Name:</label>
+      <input name="productName" id="product-name" value="<%= product.product_name %>" />
+      <br/>
+
+      <label for="price">Price:</label>
+      <input name="price" id="price" value="<%= product.price %>" />
+      <br/>
+
+      <button type="submit">Update!</button>
+    </form>
+    <form method="POST" action="/products/<%= product.id %>/delete">
+      <button type="submit">Delete!</button>
+    </form>
+  </div>
+
+</body>
+</html>
