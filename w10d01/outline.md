@@ -123,7 +123,7 @@ puts "Creating authors"
 end
 
 # grab the newly created authors
-authors = Author.all.to_a
+authors = Author.all
 
 # create books
 puts "Creating books"
