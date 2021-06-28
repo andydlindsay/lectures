@@ -29,18 +29,7 @@ const round = function(number) {
 };
 
 const stdev = function(arr) {
-  // sqrt(sum((x - populationMean)^2)/numberOfValues)
-  const numVals = arr.length;
-  let total = 0;
-  for (const el of arr) {
-    total += el;
-  }
-  const mean = round(total / numVals);
-  let devs = 0;
-  for (const el of arr) {
-    devs += Math.pow(el - mean, 2);
-  }
-  return round(Math.sqrt(devs / numVals));
+
 };
 
 // Don't change below:

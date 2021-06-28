@@ -14,23 +14,7 @@
  *    6
  */
 const mode = function(arr) {
-  const nums = {};
-  for (const el of arr) {
-    if (nums[el]) {
-      nums[el] += 1;
-    } else {
-      nums[el] = 1;
-    }
-  }
-  let most = -Infinity;
-  let modeNum = null;
-  for (const key in nums) {
-    if (nums[key] > most) {
-      most = nums[key];
-      modeNum = key;
-    }
-  }
-  return modeNum;
+
 };
 
 // Don't change below:

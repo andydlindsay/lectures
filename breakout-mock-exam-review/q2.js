@@ -24,13 +24,7 @@ const round = function(number) {
  */
 
 const median = function(arr) {
-  const sorted = [...arr].sort();
-  const middleIndex = Math.floor(sorted.length / 2);
-  if (sorted.length % 2 === 0) {
-    const total = sorted[middleIndex] + sorted[middleIndex - 1];
-    return round(total / 2);
-  }
-  return sorted[middleIndex];
+
 };
 
 // Don't change below:

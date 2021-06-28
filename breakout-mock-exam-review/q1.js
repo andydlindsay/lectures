@@ -16,13 +16,7 @@
  *    0
  */
 const min = function(arr) {
-  let smallest = Infinity;
-  for (const el of arr) {
-    if (el < smallest) {
-      smallest = el;
-    }
-  }
-  return smallest;
+
 };
 
 
@@ -38,13 +32,7 @@ const min = function(arr) {
  *    9
  */
 const max = function(arr) {
-  let largest = -Infinity;
-  for (const el of arr) {
-    if (el > largest) {
-      largest = el;
-    }
-  }
-  return largest;
+
 };
 
 /* ===========================================================================
@@ -59,7 +47,7 @@ const max = function(arr) {
  *    9
  */
 const range = function(arr) {
-  return max(arr) - min(arr);
+
 };
 
 // Don't change below:
