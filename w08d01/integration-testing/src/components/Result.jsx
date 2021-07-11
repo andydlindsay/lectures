@@ -12,7 +12,7 @@ const Result = (props) => {
       .then(response => setHighScores(response.data))
       .catch(err => console.error(err));
   };
-    
+
   return(
     <footer data-testid="result_footer">
       <h2>{ genFeedbackMessage(props.status) }</h2>
