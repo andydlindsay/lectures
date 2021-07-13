@@ -41,7 +41,7 @@ body {
 * `history.back()`
 * `history.forward()`
 
-### The `navigator` object represents the browser:
+### The `navigator` object represents the browser
 * `navigator.geolocation.getCurrentPosition(cb)`
 * `navigator.getGamepads()`
 * `navigator.getBattery()`
@@ -49,7 +49,6 @@ body {
 ### The `document` object represents the webpage
 * `document.URL`
 * `document.body`
-* `document.readyState`
 * `console.log(document)` vs `console.dir(document)`
 
 ### Draw.io DOM diagram
@@ -85,16 +84,18 @@ h1.addEventListener('click', (event) => {
 
 document.addEventListener('mousemove', (event) => console.log(event));
 
+// programmatically click
 setTimeout(() => {
   h1.click();
 }, 3000);
 ```
 
-# BREAK
-
 ### Adding Script Files
-* Create `script.js`
-* `<script src="script.js"></script>`
+* Create `script.js` and add to `<head>`
+
+```html
+<script src="script.js"></script>
+```
 
 ### Code in other files
 * Create a variable in `script2.js`
