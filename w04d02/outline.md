@@ -4,8 +4,6 @@
 
 # Outline
 
-### Show off `process` object in Node REPL
-
 ### Walk through `index.html` and load it in a browser
 
 ### Add some styles
@@ -33,9 +31,15 @@ body {
 <link rel="stylesheet" href="styles.css" />
 ```
 
+### Show off `process` object in Node REPL
+
 ### Show off `window` object in browser console
 * `window.innerWidth`
 * `window.location = 'https://www.google.com';`
+
+### The `history` object
+* `history.back()`
+* `history.forward()`
 
 ### The `navigator` object represents the browser:
 * `navigator.geolocation.getCurrentPosition(cb)`
