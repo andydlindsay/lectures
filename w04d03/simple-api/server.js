@@ -1,15 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const morgan = require('morgan');
 
 const app = express();
 const port = process.env.PORT || 8765;
 const users = require('./data/users.json');
 const posts = require('./data/posts.json');
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-app.use(cors);
+app.use(morgan('dev'));
+
+const genRandomId = () => {
+  return Math.floor(Math.random() * 10000) + 1;
+};
 
 app.get('/api/users', (req, res) => {
   res.json(users);
@@ -24,8 +27,19 @@ app.get('/api/posts', (req, res) => {
 });
 
 app.post('/api/posts', (req, res) => {
-  const post = req.body;
+  const id = genRandomId();
+  const title = req.body.title;
+  const body = req.body.body;
+  const userId = Number(req.body.userid);
+
+  const post = {
+    id,
+    title,
+    body,
+    userId
+  };
   posts.push(post);
+
   res.status(201).json(post);
 });
 
