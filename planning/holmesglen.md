@@ -10,7 +10,7 @@
 
 ### HTML & CSS
 * The building blocks of the web
-* We'll teach you how to structure and style a website
+* We'll teach you how to structure and style a website using modern CSS including flexbox and SASS
 
 ### Automated Testing
 * Software testing gives us confidence in the code that we write
@@ -21,21 +21,23 @@
 ### Software Architecture
 * How you structure an application is incredibly important
 * And the solution is often customized to the problem
+* We'll show you various ways to structure web apps and cover best practices
 
 ### Responsive Design
-* Mobile devices are the most common way that users browse the internet
+* More and more users are choosing to consume the internet through mobile devices like phones and tablets
 * Responsive design means that our websites look great on a variety of devices/screen sizes
 
 ### Databases and Data Modelling
-* Data persistence
-* Structured, organized data allows us to ask questions of the data (eg. what's the most popular song, how many days in a row has the user logged in)
+* Databases allow us to store data in a safe and organized way
+* This structured, organized data allows us to ask questions (eg. what's the most popular song, how many days in a row has the user logged in)
 
 ### Ruby on Rails
-* We use Ruby on Rails for our real-world simulation weeks
+* An important part of the bootcamp is simulating a real-world development environment
+* We have chosen to use Ruby on Rails for our real-world simulation weeks
 * You'll use a language and framework you are unfamiliar with to add features to a partially finished app... just like the real world
 
 ### Computer Science Fundamentals
-* Most Fridays are Fundamental Fridays where we cover computer science fundamentals like algorithms, recursion, object-oriented programming, and data structures
+* Most Fridays in bootcamp are Fundamental Fridays where we cover computer science fundamentals like algorithms, recursion, object-oriented programming, and explore advanced data structures such as trees and stacks
 
 # Our Three Pillars
 
@@ -48,13 +50,18 @@
 * We'll teach you how to understand every line of code that you write
 
 ### Computer Science
-* To get you ready for job interviews, we'll cover: 
+* While most of the bootcamp is focused on hands-on learning, it's also important to understand the theory behind the practice
+* Plus, it will help you get ready for job interviews :)
+* We'll cover: 
   * Computer science fundamentals
   * Whiteboard/technical interview practice and advice
   * And practice coding challenges (aka katas)
 
 ### Software Engineering Principles
-* Best practices for writing code
+* Solid understanding of how modern apps are built and best practices for writing code
 * Test Driven Development, write our tests before we write our code
 * Security: we'll show you the most common ways that websites get hacked and how to protect your site
 * Version control
+  * Retrace our steps if something goes wrong
+  * Attribute each line written to a particular person
+  * Remote storage of our code for safety and collaboration
