@@ -5,6 +5,13 @@
 * Useful for data analysis
 * Faster than JavaScript
 
+### Python REPL
+
+```bash
+# launch the REPL
+python3
+```
+
 ### Comments and Writing to Standard Out
 
 ```py
@@ -26,5 +33,16 @@ print('hello world')
 ### Variables
 
 ```py
+# no const or let needed
+num = 5
 
+# variables are mutable
+num = 10
+
+# strings can be single or double quote
+name = 'Alice'
+name = "Bob"
+
+# booleans start with a capital
+hungry = False
 ```

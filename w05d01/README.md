@@ -212,7 +212,7 @@ SELECT *
 FROM users
 WHERE country = 'Canada' AND payment_due_date < '2020-11-23';
 
-SELECT *,
+SELECT *
 FROM users
 WHERE country = 'Canada' AND payment_due_date < NOW();
 

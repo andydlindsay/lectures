@@ -13,10 +13,11 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "faker": "^4.1.0",
-    "knex": "^0.19.5",
     "knex-cleaner": "^1.3.0",
     "knex-csv-seeder": "^0.4.1",
     "moment": "^2.24.0",
-    "pg": "^7.12.1"
+    "knex": "^0.21.1",
+    "objection": "^2.1.3",
+    "pg": "^8.0.3"
   }
 }
