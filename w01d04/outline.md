@@ -1,26 +1,6 @@
 # Outline
 
-### Review values
-
-```js
-// primitives
-const bool = true;
-const nul = null;
-const str = 'string';
-const num = 5;
-const undef = undefined;
-// also symbol
-
-// data structures
-const arr = [1, 2, 3];
-const obj = { name: 'Alice' };
-
-// this works because of 'autoboxing'
-// javascript wraps the primitive in an object
-console.log(str.length);
-```
-
-### Functions are values too
+### Functions are values
 
 ```js
 // function declaration
@@ -32,6 +12,10 @@ function sayHello() {
 const greeting = function() {
   console.log('good day to you');
 };
+
+// assign to a different variable
+const somethingElse = greeting;
+somethingElse();
 
 // you can even add properties to a function
 greeting.secretPhrase = 'hi how are ya?';
