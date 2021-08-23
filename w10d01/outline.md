@@ -88,6 +88,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
   def change
     create_table :books do |t|
       t.string :title
+      t.string :publisher
       t.integer :num_pages
       t.references :author, index: true, foreign_key: true
       t.timestamps
@@ -118,8 +119,11 @@ puts "Seeding data..."
 
 # create authors
 puts "Creating authors"
-10.times do
-  Author.create(name: Faker::Book.author)
+20.times do
+  Author.create(
+    first_name: Faker::Name.first_name
+    last_name: Faker::Name.last_name
+  )
 end
 
 # grab the newly created authors
@@ -127,12 +131,11 @@ authors = Author.all
 
 # create books
 puts "Creating books"
-100.times do
+200.times do
   Book.create(
     author: authors.sample,
     title: Faker::Book.title,
     publisher: Faker::Book.publisher,
-    genre: Faker::Book.genre,
     num_pages: rand(1..500)
   )
 end
@@ -150,6 +153,31 @@ rails db:migrate
 
 ```shell
 rails db:seed
+```
+
+### Update routes
+
+```rb
+# config/routes.rb
+Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :authors
+
+  resources :authors, only: [:show, :index]
+  resources :authors, except: [:edit, :update, :show]
+
+  resources :books
+
+  # singular resources
+  get 'profile', to: 'users#show'
+
+  get 'profile', action: :show, controller: 'users'
+end
+```
+
+```bash
+# make `rails routes` slightly more readable?
+rails routes | grep -e 'author' -e 'book' -e 'Pref'
 ```
 
 ### Generate controllers
@@ -175,26 +203,6 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 end
-```
-
-### Update routes
-
-```rb
-# config/routes.rb
-Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :authors
-
-  resources :authors, only: [:show, :index]
-  resources :authors, except: [:edit, :update, :show]
-
-  resources :books
-end
-```
-
-```bash
-# make `rails routes` slightly more readable?
-rails routes | grep -e 'author' -e 'book' -e 'Pref'
 ```
 
 ### Create views
@@ -227,6 +235,22 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :authors do
     resources :books
+  end
+
+  # Using namespaces /admin/articles
+  namespace :admin do
+    resources :articles, :comments
+  end
+
+  # Shallow nesting
+  resources :articles do
+    resources :comments, only: [:index, :new, :create]
+  end
+  resources :comments, only: [:show, :edit, :update, :destroy]
+
+  # Using the :shallow option
+  resources :articles do
+    resources :comments, shallow: true
   end
 end
 ```
