@@ -24,6 +24,18 @@ describe('tests for q0', () => {
     assert.equal(actual, expected);
   });
 
+  it('rounds to one decimal place correctly', () => {
+    let actual = tempConverter(14.32, true);
+    let expected = 57.8;
+
+    assert.equal(actual, expected);
+    
+    actual = tempConverter(12.36, true);
+    expected = 54.2;
+    
+    assert.equal(actual, expected);
+  });
+
   it('returns NaN if not given a value', () => {
     const actual = tempConverter("12", true);
     const expected = NaN;

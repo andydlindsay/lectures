@@ -42,9 +42,17 @@ describe('q0 tests', () => {
   describe('tests for mean function', () => {
 
     it('can calculate the mean of an array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = mean(input);
-      assert.equal(result, 4);
+      const input = [6,2,3,4,9,6,1,0,5];
+      const actual = mean(input);
+      const expected = 4;
+      assert.equal(actual, expected);
+    });
+
+    it('returns null when given an empty array', () => {
+      const input = [];
+      const actual = mean(input);
+      const expected = null;
+      assert.equal(actual, expected);
     });
 
   });
