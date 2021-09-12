@@ -15,3 +15,4 @@ knex seed:run 10000
 ## Clean and Seed
 
 * Run `node cleaner.js && knex seed:run`
+* Or using the alias: `npm run all`

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "node cleaner.js"
+    "clean": "node cleaner.js",
+    "all": "node cleaner.js && knex seed:run"
   },
   "keywords": [],
   "author": "",
