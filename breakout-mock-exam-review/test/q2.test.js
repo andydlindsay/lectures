@@ -1,20 +1,24 @@
 const { assert } = require('chai');
-const { median } = require('../q2');
+const lib = require("../q2.js");
 
 describe('q2 tests', () => {
 
-  describe('tests for median function', () => {
+  describe("median", () => {
 
-    it('can calculate the median value of an odd-length array', () => {
-      const input = [6,2,3,4,9,6,1,0,5];
-      const result = median(input);
-      assert.equal(result, 4);
+    it("median([1,2,3]) === 2", () => {
+      assert.strictEqual(lib.median([1,2,3]), 2);
     });
 
-    it('can calculate the median value of an even-length array', () => {
-      const input = [6,2,3,4,9,6,1,0,5,7];
-      const result = median(input);
-      assert.equal(result, 4.5);
+    it("median([2,1,3]) === 2", () => {
+      assert.strictEqual(lib.median([2,1,3]), 2);
+    });
+
+    it("median([1,2,3,4]) === 2.5", () => {
+      assert.strictEqual(lib.median([1,2,3,4]), 2.5);
+    });
+
+    it("median([3,4,1,2]) === 2.5", () => {
+      assert.strictEqual(lib.median([4,3,2,1]), 2.5);
     });
 
   });

@@ -1,58 +1,48 @@
 const { assert } = require('chai');
-const { min, max, range } = require('../q1');
+const lib = require("../q1.js");
 
 describe('q1 tests', () => {
 
-  describe('tests for min function', () => {
+  describe("min", () => {
 
-    it('returns the lowest value in an array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = min(input);
-      assert.equal(result, 0);
+    it("min([6,1,7,2,8]) === 1", () => {
+      assert.strictEqual(lib.min([6,1,7,2,8]), 1);
+    });
 
-      input = [10, 12, 14, 8];
-      result = min(input);
-      assert.equal(result, 8);
+    it("min([-9,-2,-4]) === -9", () => {
+      assert.strictEqual(lib.min([-9,-2,-4]), -9);
+    });
 
-      input = [10, -5, 2];
-      result = min(input);
-      assert.equal(result, -5);
+    it("min([5]) === 5", () => {
+      assert.strictEqual(lib.min([5]), 5);
     });
 
   });
 
-  describe('tests for max function', () => {
+  describe("max", () => {
 
-    it('returns the highest value in an array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = max(input);
-      assert.equal(result, 9);
+    it("max([5,2,7,100,2]) === 100", () => {
+      assert.strictEqual(lib.max([5,2,7,100,2]), 100);
+    });
 
-      input = [10, 12, 14, 8];
-      result = max(input);
-      assert.equal(result, 14);
+    it("max([-1,-2,-3]) === -1", () => {
+      assert.strictEqual(lib.max([-1,-2,-3]), -1);
+    });
 
-      input = [10, -5, 2];
-      result = max(input);
-      assert.equal(result, 10);
+    it("max([5]) === 5", () => {
+      assert.strictEqual(lib.max([5]), 5);
     });
 
   });
 
-  describe('tests for range function', () => {
+  describe("range", () => {
 
-    it('returns the difference between the highest and lowest value in an array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = range(input);
-      assert.equal(result, 9);
+    it("range([8,3,1,8,3]) === 7", () => {
+      assert.strictEqual(lib.range([8,3,1,8,3]), 7);
+    });
 
-      input = [10, 12, 14, 8];
-      result = range(input);
-      assert.equal(result, 6);
-
-      input = [10, -5, 2];
-      result = range(input);
-      assert.equal(result, 15);
+    it("range([-5,0,5]) === 10", () => {
+      assert.strictEqual(lib.range([-5,0,5]), 10);
     });
 
   });

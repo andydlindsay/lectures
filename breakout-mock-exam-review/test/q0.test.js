@@ -1,60 +1,55 @@
 const { assert } = require('chai');
-const { sum, count, mean } = require('../q0');
+const lib = require("../q0.js");
 
 describe('q0 tests', () => {
 
-  describe('tests for count function', () => {
-    
-    it('can count the numbers in an array', () => {
-      let input = [1, 2, 3, 4];
-      let result = count(input);
-      assert.equal(result, 4);
+  describe("count", () => {
 
-      input = [1, 2];
-      result = count(input);
-      assert.equal(result, 2);
-
-      input = [];
-      result = count(input);
-      assert.equal(result, 0);
+    it("count([1,2,3,4,5]) === 5", () => {
+      assert.strictEqual(lib.count([1,2,3,4,5]), 5);
     });
 
+    it("count([999]) === 1", () => {
+      assert.strictEqual(lib.count([999]), 1);
+    });
+
+    it("count([]) === 0", () => {
+      assert.strictEqual(lib.count([]), 0);
+    });
   });
 
-  describe('tests for sum function', () => {
-    
-    it('can add the numbers in an array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = sum(input);
-      assert.equal(result, 36);
+  describe("sum", () => {
 
-      input = [2, 3, 4];
-      result = sum(input);
-      assert.equal(result, 9);
-
-      input = [-2, -3, -4];
-      result = sum(input);
-      assert.equal(result, -9);
+    it("sum([1,2,3,4,5]) === 15", () => {
+      assert.strictEqual(lib.sum([1,2,3,4,5]), 15);
     });
 
+    it("sum([999]) === 999", () => {
+      assert.strictEqual(lib.sum([999]), 999);
+    });
+
+    it("sum([]) === 0", () => {
+      assert.strictEqual(lib.sum([]), 0);
+    });
   });
 
-  describe('tests for mean function', () => {
+  describe("mean", () => {
 
-    it('can calculate the mean of an array', () => {
-      const input = [6,2,3,4,9,6,1,0,5];
-      const actual = mean(input);
-      const expected = 4;
-      assert.equal(actual, expected);
+    it("mean([1,2,3,4,5]) === 3", () => {
+      assert.strictEqual(lib.mean([1,2,3,4,5]), 3);
     });
 
-    it('returns null when given an empty array', () => {
-      const input = [];
-      const actual = mean(input);
-      const expected = null;
-      assert.equal(actual, expected);
+    it("mean([1,10]) === 5.5", () => {
+      assert.strictEqual(lib.mean([1,10]), 5.5);
     });
 
+    it("mean([5]) === 5", () => {
+      assert.strictEqual(lib.mean([5]), 5);
+    });
+
+    it("mean([]) === null", () => {
+      assert.strictEqual(lib.mean([]), null);
+    });
   });
 
 });

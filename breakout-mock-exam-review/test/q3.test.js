@@ -1,18 +1,16 @@
 const { assert } = require('chai');
-const { mode } = require('../q3');
+const lib = require("../q3.js");
 
 describe('q3 tests', () => {
 
-  describe('tests for mode function', () => {
+  describe("mode", () => {
 
-    it('returns the mode of a given array', () => {
-      let input = [6,2,3,4,9,6,1,0,5];
-      let result = mode(input);
-      assert.equal(result, 6);
+    it("mode([1,5,2,6,3,5]) === 5", () => {
+      assert.strictEqual(lib.mode([1,5,2,6,3,5]), 5);
+    });
 
-      input = [5, 5, 5, 4, 4, 4, 4];
-      result = mode(input);
-      assert.equal(result, 4);
+    it("mode([0,1,5,2,6,2,5,0,0]) === 0", () => {
+      assert.strictEqual(lib.mode([0,1,5,2,6,2,5,0,0]), 0);
     });
 
   });
