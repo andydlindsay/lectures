@@ -1,54 +1,53 @@
-const assert = require('assert').strict;
-const {range} = require('../q3');
+const assert  = require("chai").assert;
 
-describe('tests for q3', () => {
+const range = require("../q3").range;
 
-  it('can return a range successfully', () => {
-    const data = [
-      [[10, false, false], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
-      [[0, false, false], [0]],
-      [[10], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
-      [[10, true], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]
-    ];
+describe('range', () => {
+  it("range(5, false, false) => 0..4 => [0, 1, 2, 3, 4]", () => {
+    const result = range(5, false, false);
 
-    for (const [args, expected] of data) {
-      const result = range(...args);
-      
-      assert.deepEqual(result, expected);
-    }
+    assert.deepEqual(result, [0, 1, 2, 3, 4]);
   });
 
-  it('can skip zero', () => {
-    const data = [
-      [[10, true, false], [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
-      [[3, true, false], [1, 2, 3]],
-    ];
+  it("range(7, true, false) => 1..7 => [1, 2, 3, 4, 5, 6, 7]", () => {
+    const result = range(7, true, false);
 
-    for (const [args, expected] of data) {
-      const result = range(...args);
-      
-      assert.deepEqual(result, expected);
-    }
+    assert.deepEqual(result, [1, 2, 3, 4, 5, 6, 7]);
   });
 
-  it('can return a descending range', () => {
-    const data = [
-      [[10, true, true], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]],
-      [[10, false, true], [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]],
-    ];
+  it("range(5, false, true) => 4..0 => [4, 3, 2, 1, 0]", () => {
+    const result = range(5, false, true);
 
-    for (const [args, expected] of data) {
-      const result = range(...args);
-      
-      assert.deepEqual(result, expected);
-    }
+    assert.deepEqual(result, [4, 3, 2, 1, 0]);
   });
 
-  it('returns an empty array if the first arg is not a number', () => {
-    const actual = range('2');
-    const expected = [];
+  it("range(7, true, true) => 7..1 => [7, 6, 5, 4, 3, 2, 1]", () => {
+    const result = range(7, true, true);
 
-    assert.deepEqual(actual, expected);
+    assert.deepEqual(result, [7, 6, 5, 4, 3, 2, 1]);
   });
 
+  it("range(2) => range(2, false, false) => 0..1 => [0, 1]", () => {
+    const result = range(2);
+
+    assert.deepEqual(result, [0, 1]);
+  });
+
+  it("range(1) => range(1, false, false) => 0..0 => [0]", () => {
+    const result = range(1);
+
+    assert.deepEqual(result, [0]);
+  });
+
+  it("range(0, false, true) => no integers to generate => []", () => {
+    const result = range(0, false, true);
+
+    assert.deepEqual(result, []);
+  });
+
+  it("returns empty array for string-based numerical input", () => {
+    const result = range("5", true, true);
+
+    assert.deepEqual(result, []);
+  })
 });

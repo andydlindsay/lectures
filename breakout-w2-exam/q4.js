@@ -27,9 +27,7 @@ Examples:
 */
 
 const minmax = function(list) {
-  const sorted = list.sort((a, b) => a - b);
 
-  return [sorted[0], sorted[sorted.length - 1]];
 };
 
 // Don't change below:

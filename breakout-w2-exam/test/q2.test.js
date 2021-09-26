@@ -1,40 +1,29 @@
-const assert = require('assert').strict;
-const {countWhich} = require('../q2');
+const assert  = require("chai").assert;
 
-describe('tests for q2', () => {
+const { countWhich } = require("../q2");
 
-  it('can count successfully', () => {
-    let actual = countWhich([1, 2, 3, 4, 5], function(num) { return (num > 4); });
-    let expected = 1;
+describe('countWhich', () => {
+  it("takes in a list of numbers, callback checks modulo of 2\ncountWhich([2, 4, 5, 7, 8, 10, 11], (x) => x % 2 === 0)", () => {
+    let result = countWhich([2, 4, 5, 7, 8, 10, 11], (x) => x % 2 === 0);
 
-    assert.equal(actual, expected);
-
-    actual = countWhich(["apple", "banana", "cherry"], function(fruit) { return fruit[0] === "a"; });
-    expected = 1;
-
-    assert.equal(actual, expected);
-
-    actual = countWhich([10, 20, 30, 40, 50], function(num) { return num % 7 === 0; });
-    expected = 0;
-
-    assert.equal(actual, expected);
-
-    actual = countWhich(["apple", "banana", "cherry"], function(fruit) { return fruit.length > 5; });
-    expected = 2;
-
-    assert.equal(actual, expected);
-
-    actual = countWhich([], function(x) { return x > 10 });
-    expected = 0;
-
-    assert.equal(actual, expected);
+    assert.strictEqual(result, 4);
   });
 
-  it('returns false when the first arg is not an array', () => {
-    const actual = countWhich("This should fail", function(word) { return true; });
-    const expected = false;
+  it("takes in a list of numbers, callback looks for numbers > 10, none exist\ncountWhich([7, 8, 9, 10], (x) => x > 10)", () => {
+    let result = countWhich([7, 8, 9, 10], (x) => x > 10);
 
-    assert.equal(actual, expected);
+    assert.strictEqual(result, 0);
   });
 
+  it("takes in a list of words(strings), testing if each word contains two e's\ncountWhich(['cheese', 'breeze', 'knees', 'bees'], (word) => /ee/.test(word))", () => {
+    let result = countWhich(["cheese", "breeze", "knees", "bees"], (word) => /ee/.test(word));
+
+    assert.strictEqual(result, 4);
+  });
+
+  it("returns false if it doesn't get an array as the first param: \ncountWhich('cheesy breezy kneesy beesy yeezy', () => {})", () => {
+    let result = countWhich("cheesy breezy kneesy beesy yeezy", () => {});
+
+    assert.strictEqual(result, false);
+  });
 });

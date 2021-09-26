@@ -1,27 +1,35 @@
-const assert = require('assert').strict;
-const {minmax} = require('../q4');
+const assert  = require("chai").assert;
 
-describe('tests for q4', () => {
+const minmax = require("../q4").minmax;
 
-  it('can successfully calculate the min and max value', () => {
-    const data = [
-      [[1, 2, 3, 4, 5], [1, 5]],
-      [[90, 89, 123, 3], [3, 123]],
-      [["apple", "banana", "canada"], ["apple", "canada"]]
-    ];
+describe('minmax', () => {
+  it("[1, 100, 2, 200, 300, 3] => [1, 300]", () => {
+    let result = minmax([1, 100, 2, 200, 300, 3]);
 
-    for (const [args, expected] of data) {
-      const actual = minmax(args);
-
-      assert.deepEqual(actual, expected);
-    }
+    assert.deepEqual(result, [1, 300]);
   });
 
-  it('returns [undefined, undefined] when given an empty array', () => {
-    const actual = minmax([]);
-    const expected = [undefined, undefined];
+  it("[9, -9, 10, -10] => [-10, 10]", () => {
+    let result = minmax([9, -9, 10, -10]);
 
-    assert.deepEqual(actual, expected);
+    assert.deepEqual(result, [-10, 10]);
   });
 
+  it("[0] => [0, 0]", () => {
+    let result = minmax([0]);
+
+    assert.deepEqual(result, [0, 0]);
+  });
+
+  it("['macbook', 'laptop', 'chromebook'] => ['chromebook', 'macbook']", () => {
+    let result = minmax(["macbook", "laptop", "chromebook"]);
+
+    assert.deepEqual(result, ["chromebook", "macbook"]);
+  });
+
+  it("[] => [undefined, undefined]", () => {
+    let result = minmax([]);
+
+    assert.deepEqual(result, [undefined, undefined]);
+  });
 });

@@ -1,34 +1,29 @@
-const assert = require('assert').strict;
-const {keyMatcher} = require('../q1');
+const assert  = require("chai").assert;
 
-describe('tests for q1', () => {
+const { keyMatcher } = require("../q1");
 
-  it('compares matching keys successfully', () => {
-    const actual = keyMatcher({a: 1, b: 2, c: 3}, {here: 3, is: 2, a: 1, silly: 0, example: -1}, 'a');
-    const expected = true;
+describe('keyMatcher', () => {
+  it('returns true when value for keys "name" is the same string value between\n { name: "Larry", species: "Duck", subject: "Feathers.js" } and\n { mascot: "Duck", name: "Larry", colour: "Yellow" }', () => {
+    let result = keyMatcher({name: "Larry", species: "Duck", subject: "Feathers.js"}, {mascot: "Duck", name: "Larry", colour: "Yellow"}, "name");
 
-    assert.equal(actual, expected);
+    assert.strictEqual(result, true);
   });
 
-  it('compares non-matching keys successfully', () => {
-    const actual = keyMatcher({apple: "red", banana: "yellow", cherry: "red"}, {apple: "green", banana: "brown", cherry: "black"}, "apple");
-    const expected = false;
+  it('returns true when value for keys "three" is the same numeric value between\n { one: 1, two: 2, three: 3 } and \n { three: 3, four: 4, five: 5 }', () => {
+    let result = keyMatcher({one: 1, two: 2, three: 3}, {three: 3, four: 4, five: 5}, "three");
 
-    assert.equal(actual, expected);
+    assert.strictEqual(result, true);
   });
 
-  it('compares non-matching key data types successfully', () => {
-    const actual = keyMatcher({a: 1, b: 2, c: 3}, {a: "1", b: "2", c: "3"}, 'c');
-    const expected = false;
+  it('returns false when value for keys "city" are different values between\n { teacher: "Don", city: "Vancouver"} and \n { teacher: "Juan", city: "Toronto" }', () => {
+    let result = keyMatcher({teacher: "Don", city: "Vancouver"}, {teacher: "Juan", city: "Toronto"}, "city");
 
-    assert.equal(actual, expected);
-  });
-  
-  it('compares non-existing key successfully', () => {
-    const actual = keyMatcher({a: 1, b: 2, c: 3}, {d: 4, e: 5, f: 6}, 'b');
-    const expected = false;
-
-    assert.equal(actual, expected);
+    assert.strictEqual(result, false);
   });
 
+  it('returns false when values don\'t match by exact type between\n { name: "Larry", wings: 2 } and \n { name: "Daffy", wings: "2" }', () => {
+    let result = keyMatcher({name: "Larry", wings: 2}, {name: "Daffy", wings: "2"}, "wings");
+
+    assert.strictEqual(result, false);
+  });
 });

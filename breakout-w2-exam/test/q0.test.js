@@ -1,46 +1,30 @@
-const assert = require('assert').strict;
-const {tempConverter} = require('../q0');
+const assert  = require("chai").assert;
 
-describe('tests for q0', () => {
+const { tempConverter } = require("../q0");
 
-  it('returns 89.6 when converting to F', () => {
-    const actual = tempConverter(32, true);
-    const expected = 89.6;
+describe('tempConverter', () => {
+  it('should return a number, not a string', () => {
+    let result = tempConverter(100, true);
 
-    assert.equal(actual, expected);
+    assert.ok(typeof result === "number");
   });
 
-  it('returns 0.0 when converting to C', () => {
-    const actual = tempConverter(32, false);
-    const expected = 0.0;
+  it('converts to Fahrenheit correctly (42C => 107.6F)', () => {
+    let result = tempConverter(42, true);
 
-    assert.equal(actual, expected);
+    assert.equal(result, 107.6);
   });
 
-  it('returns 37 when converting to C', () => {
-    const actual = tempConverter(98.6, false);
-    const expected = 37;
+  it('converts to Celsius correctly (42F => 5.6C)', () => {
+    let result = tempConverter(42, false);
 
-    assert.equal(actual, expected);
+    assert.equal(result, 5.6);
   });
 
-  it('rounds to one decimal place correctly', () => {
-    let actual = tempConverter(14.32, true);
-    let expected = 57.8;
+  it('returns NaN if it is not given a number ("42" => NaN)', () => {
+    let result = tempConverter("42", true);
 
-    assert.equal(actual, expected);
-    
-    actual = tempConverter(12.36, true);
-    expected = 54.2;
-    
-    assert.equal(actual, expected);
+    assert.notEqual(result, undefined);
+    assert.ok(isNaN(result));
   });
-
-  it('returns NaN if not given a value', () => {
-    const actual = tempConverter("12", true);
-    const expected = NaN;
-
-    assert.equal(actual, expected);
-  });
-
 });
