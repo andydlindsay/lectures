@@ -1,324 +1,194 @@
 # External Resources
 
-### Packages Needed
+* Hacker News: 
+  * https://hn.algolia.com/api/v1/items/:id
+  * https://hn.algolia.com/api/v1/users/:username
 
-* `yarn add @testing-library/react-hooks react-test-renderer axios`
+* JSONPlaceholder:
+  * http://jsonplaceholder.typicode.com/todos/:id
+  * http://jsonplaceholder.typicode.com/users/:id
+
+* Github API:
+  * https://api.github.com/users/andydlindsay/repos
+
+* Chef Andy:
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/ingredients
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipes
+  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipe-ingredients
+
+* `useEffect` Flow Diagram
+  * https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU
 
 # Outline
 
-### Custom Hooks
-- From the [React Docs](https://reactjs.org/docs/hooks-custom.html):
-> Building your own Hooks lets you extract component logic into reusable functions.
-- We can pull repetitive or complex code out of our components and move it into _custom hooks_
-- _Custom hooks_ are just JavaScript functions that can use React hooks
-- They must start with the prefix `use` so that React knows they are hooks
-- Multiple components using the same custom hook **do not share state**
+### Two Rules for Hooks
+1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions**
+2. Only call Hooks from React functions.
 
-### Create a component called `Title` with logic to change the document title
+### Pure Functions
+- A function is said to be pure if:
+  - It produces no side-effects
+  - It will return the same value if called with the same arguments
 
-```jsx
-const Title = () => {
-  const [title, setTitle] = useState('Hooks are neato!');
+```js
+// simple pure functions
+const add = (num1, num2) => {
+  return num1 + num2;
+};
 
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-
-  return (
-    <div>
-      <h2>Document Title</h2>
-
-      <label>New title:</label>
-      <input value={title} onChange={event => setTitle(event.target.value)} />
-    </div>
-  );
+const sayHello = (name) => {
+  return `Hello there ${name}!`;
 };
 ```
 
-### Create a `useDocumentTitle` hook
+### Side Effects
+- Any operation that modifies the state of the computer or interacts with something outside of your program is said to have a **side effect**
+- Common _side effects_:
+  - Writing to standard out (eg. `console.log`)
+  - Modifying the DOM directly (instead of relying on React)
+  - Establishing socket connections (eg. `ws` or `Socket.io`)
+  - Retrieving data from an API (eg. `axios`, `jQuery`, or the `fetch` API)
+  - Setting timers or intervals
+
+### Create a new app called `use-effect`
+* Clean up the default application
+
+### Create a new component `UseEffect` and import into `src/App.js`
+
+### Set up a simple counter with `useState`
 
 ```jsx
-const useDocumentTitle = (title) => {
-  useEffect(() => {
-    document.title = title;
-  }, [title]);
-};
+const [count, setCount] = React.useState(0);
+
+<div>
+  <h3>Count: { count }</h3>
+  <button
+    onClick={() => setCount(count + 1)}
+  >Increment</button>
+</div>
 ```
 
-### Refactor the `Title` component to use the new hook
+### Introduce `useEffect` by changing document title
 
 ```jsx
-useDocumentTitle(title);
+React.useEffect(() => {
+  console.log('changing title');
+  document.title = `You clicked ${count} times!`;
+});
 ```
 
-### Create a component called `Mouse` with logic to listen for the mouse position
+### Put a `setTimeout` inside of `useEffect`
 
 ```jsx
-const Mouse = () => {
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+React.useEffect(() => {
+  setTimeout(() => {
+    console.log(`Current count is ${count}`);
+  }, 3000);
+});
+```
 
-  useEffect(() => {
-    document.addEventListener('mousemove', e => {
-      setCoords({ x: e.clientX, y: e.clientY});
+### Convert the timeout to an interval
+
+```jsx
+React.useEffect(() => {
+  const interval = setInterval(() => {
+    console.log(`Current count is ${count}`);
+  }, 3000);
+
+  // try to clear the interval
+  clearInterval(interval);
+});
+```
+
+### Return a cleanup function from `useEffect`
+
+```jsx
+React.useEffect(() => {
+  const interval = setInterval(() => {
+    console.log(`Current count is ${count}`);
+  }, 500);
+
+  const cleanup = () => {
+    console.log('running cleanup');
+    clearInterval(interval);
+  };
+
+  return cleanup;
+});
+```
+
+### Add some more state to the component and show how it calls `useEffect` for every state change
+
+```jsx
+const [search, setSearch] = React.useState('');
+
+<div>
+  <label htmlFor="search">Search Term:</label>
+  <input 
+    type="text" 
+    id="search" 
+    value={search} 
+    onChange={(event) => setSearch(event.target.value)}
+  />
+</div>
+```
+
+### Pass a dependency array to both `useEffect` functions
+
+```jsx
+React.useEffect(() => {
+  console.log('changing title');
+  document.title = `You clicked ${count} times!`;
+}, [count]);
+```
+
+### Fetch some data and demonstrate empty dependency array
+
+```jsx
+const [item, setItem] = React.useState({});
+
+React.useEffect(() => {
+  axios
+    .get('http://hn.algolia.com/api/v1/items/1')
+    .then(res => {
+      setItem(res.data);
     });
-  }, []);
+}, []);
 
-  const style = {
-    fontSize: `${coords.y / 5}px`
-  };
-
-  return (
-    <div>
-      <h2 style={style}>Mouse Position</h2>
-      <h2>X: {coords.x} Y: {coords.y}</h2>
-    </div>
-  );
-};
+<div>
+  <h2>{item.title}</h2>
+</div>
 ```
 
-### Show `useMousePosition.test.js` and unskip the tests
-
-### Create `useMousePosition.js` and move the mouse logic into it
-
-```js
-import { useState, useEffect } from 'react';
-
-const useMousePosition = () => {
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const mouseHandler = (event) => {
-      setCoords({ x: event.clientX, y: event.clientY });
-    };
-
-    document.addEventListener('mousemove', mouseHandler);
-
-    return () => document.removeEventListener('mousemove', mouseHandler);
-  }, []);
-
-  return coords;
-};
-
-export default useMousePosition;
-```
-
-### Import the new hook into the `Mouse` component
-
-```js
-import useMousePosition from '../hooks/useMousePosition';
-
-const coords = useMousePosition();
-
-const style = {
-  fontSize: `${coords.y / 5}px`,
-  color: `rgb(${coords.x / 4}, ${coords.y / 4}, 0)`,
-  backgroundColor: `rgb(0, ${coords.x / 4}, ${coords.y / 4})`,
-  padding: '10px',
-  border: `10px dotted rgb(${coords.y / 4}, 0, ${coords.x / 4})` 
-};
-```
-
-### Import the hook into the `Title` component
-
-```js
-const Title = () => {
-  const coords = useMousePosition();
-  const title = `Mouse is at ${coords.x}, ${coords.y}`;
-  useDocumentTitle(title);
-
-  return (
-    <div>
-      <h1>Document Title</h1>
-    </div>
-  );
-};
-```
-
-### Create the `Input` component and give it some form handling logic
+### Fetch some more data
 
 ```jsx
+const [userInfo, setUserInfo] = React.useState({});
 
-const Input = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Thanks for logging in ${username} with password: ${password}`);
-  };
-
-  const onChangeUsername = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const onChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
-  return (
-    <div>
-      <h2>Input Hook</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input 
-          type="text"
-          id="username"
-          value={username}
-          onChange={onChangeUsername}
-        />
-        <br/>
-        <label htmlFor="password">Password:</label>
-        <input 
-          type="text"
-          id="password"
-          value={password}
-          onChange={onChangePassword}
-        />
-        <br/>
-        <button type="submit">Login!</button>
-      </form>
-    </div>
-  );
-};
-
-export default Input;
-```
-
-### Show `useInput.test.js`
-
-### Create `useInput.js` hook
-
-```js
-
-const useInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-
-  const onChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  return { value, onChange };
-};
-
-export default useInput;
-```
-
-### Refactor the `Input` component to use the new hook
-
-```jsx
-import useInput from '../hooks/useInput';
-
-const Input = () => {
-  const usernameInput = useInput('');
-  const passwordInput = useInput('');
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Thanks for logging in ${usernameInput.value} with password: ${passwordInput.value}`);
-  };
-
-  return (
-    <div>
-      <h2>Input Hook</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="usernameInput">Username:</label>
-        <input 
-          type="text"
-          id="username"
-          {...usernameInput}
-        />
-        <br/>
-        <label htmlFor="password">Password:</label>
-        <input 
-          type="password"
-          id="password"
-          {...passwordInput}
-        />
-        <br/>
-        <button type="submit">Login!</button>
-      </form>
-    </div>
-  );
-};
-
-export default Input;
-```
-
-### Discuss how the value could be reset inside the hook to extend the functionality
-
-### Create the `useLocationData` hook
-
-```js
-const useLocationData = () => {
-  const [coords, setCoords] = useState({ lat: 0, lon: 0 });
-
-  useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition((navInfo) => {
-      setCoords({ lat: navInfo.coords.latitude, lon: navInfo.coords.longitude });    
+React.useEffect(() => {
+  axios.get('http://hn.algolia.com/api/v1/items/1')
+    .then(res => {
+      setItem(res.data);
+      const { author } = res.data;
+      return axios.get(`https://hn.algolia.com/api/v1/users/${author}`);
+    .then(res => {
+      setUserInfo(res.data);
     });
-  }, []);
+}, []);
 
-  return coords;
-};
+<div>
+  <h2>{item.title}</h2>
+  <h3>By: {userInfo.username}</h3>
+  <h4>Bio: {userInfo.about}</h4>
+</div>
 ```
 
-### Create the `Location` component to use the new hook
+### Beware the infinite loop!
 
 ```jsx
-import useLocationData from '../hooks/useLocationData';
-
-const Location = () => {
-  const coords = useLocationData();
-
-  const buttonClickHandler = () => {
-    const message = `lat: ${coords.lat.toFixed(2)}, lon: ${coords.lon.toFixed(2)}`;
-    alert(message);
-  };
-
-  return (
-    <button onClick={buttonClickHandler}>See Your Location!</button>
-  );
-};
+useEffect(() => {
+  setCount(count + 1);
+}, [count]);
 ```
 
-### Review `useRequest` hook
-
-```jsx
-import useRequest from '../hooks/useRequest';
-
-const Request = () => {
-  const { data, loading } = useRequest('https://www.dnd5eapi.co/api/classes');
-
-  return (
-    <div>
-      <h2>D&D Classes</h2>
-      { loading && <p>Please wait...</p> }
-      { data.results && data.results.map(datum => (
-        <p key={datum.index}>{ datum.name }</p>
-      )) }
-    </div>
-  );
-};
-
-export default Request;
-```
-
-### Review `useKeyPress` hook
-
-```jsx
-import useKeyPress from '../hooks/useKeyPress';
-
-const KeyPress = () => {
-  const happyPress = useKeyPress('h');
-  const sadPress = useKeyPress('s');
-
-  return (
-    <div>
-      { happyPress && <h2>Smile</h2> }
-      { sadPress && <h2>Frown</h2> }
-    </div>
-  );
-};
-
-export default KeyPress;
-```
+### Talk through the [`useEffect` flow diagram](https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU)

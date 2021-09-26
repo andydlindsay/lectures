@@ -1,153 +1,88 @@
-# W07D02 - Immutable Update Patterns
+# W07D02 - Component-Based UI w/ React
 
 ### To Do
-- [ ] Recap: Components, Props, and State
-- [ ] Immutable Update Patterns with Arrays and Objects
-- [ ] Updating Complex State
+- [ ] What the heck is React?
+- [ ] Building a project w/ Create-React-App
+- [ ] Components
+- [ ] Review of Closures
+- [ ] State
+- [ ] Props
 
-### Recap: Components, Props, and State
-- Components:
-  - The building blocks of a React application
-  - Encapsulate application behaviour/logic in its own isolated container
-  - By encapsulating behaviour, underlying complexity is abstracted away into a simple interface
-  - Allows reuse of components in different parts of the application
-  - A large application is built up from many of these small pieces
-- Props:
-  - Data that is passed into a component from outside itself
-  - Received as an argument to the component function
-- State:
-  - Data that is local to the component
-  - Can be passed down to child components as props
-  - For state to persist in a functional component, we need to use the `useState` hook
+### React
+- From the landing page of [React](https://reactjs.org/):
+  > A JavaScript library for building user interfaces
+- Open source project maintained by Facebook
+- React is built around the concept of managing data
+  - Changes to the underlying data result in changes to the UI
+  - In React, state === data
+- Component-based: UI is composed of small pieces
+- Declarative: We describe the final outcome of our code and not the step-by-step process to achieve that result
 
-### Immutable Update Patterns
-- Immutability is an important concept in functional programming
-- From [Wikipedia](https://en.wikipedia.org/wiki/Persistent_data_structure):
-> In computing, a persistent data structure is a data structure that always preserves the previous version of itself when it is modified. Such data structures are effectively immutable, as their operations do not (visibly) update the structure in-place, but instead always yield a new updated structure.
-- ie. try not to mutate data directly; instead, overwrite it with all new data (clone it and change it)
+### Components
+- Components are the building blocks of a webpage (eg. search input, navigation bar, contact us form)
+- Ideally, components should be reusable (which means that their state should be passed into them via props rather than maintaining their own state)
+- Deciding which DOM elements become components and which don't is a skill that comes with practice and experience
+- We will be building all of our components using functions
+- The functions return value contains a mixture of HTML and JS; React calls this `JSX`
 
-### Benefits of Immutability
-- Immutable data structures are simpler to construct, test, and use
-- Immutable data is side-effect free (avoids weird bugs in our app)
-- Makes it possible to compare the current data to the previous version to see what has changed ([the delta](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity))
+```jsx
+// basic component
+import React from 'react';
 
-### Immutable Data Patterns with Arrays and Objects
-- Arrays and objects in JavaScript are stored as references which means that we can easily change the original object/array without meaning to
-
-```js
-const myObj = { name: 'Alice' };
-const otherObj = myObj; // otherObj has the same reference as myObj
-otherObj.name = 'Bob';
-console.log(myObj); // { name: 'Bob' } oops!!
-```
-
-- Array methods that don't return a new array are not "pure" (ie. they mutate the original array)
-
-```js
-// mutate the array in place
-array.sort();
-array.pop();
-array.push();
-array.splice();
-
-// don't change the original array
-const newArr = array.concat();
-const newArr = array.map();
-const newArr = array.filter();
-const newArr = array.slice();
-```
-
-- It is a better idea to copy the array/object and then update it
-
-```js
-// copy an array with the spread operator
-const myArr = [1, 2, 3];
-const copy = [ ...myArr ];
-copy.push(4); // myArr is not affected
-
-// works the same for objects
-const myObj = { name: 'Alice' };
-const newObj = { ...myObj };
-newObj.name = 'Bob'; // myObj not affected
-
-// it's possible to overwrite keys in a single step
-const myObj = { name: 'Alice', age: 27 };
-const newObj = { ...myObj, name: 'Bob' };
-console.log(newObj); // { name: 'Bob', age: 27 }
-```
-
-- The spread operator makes a shallow copy only (the reference to child objects/arrays is copied instead of duplicating the object/array)
-
-```js
-const objOne = {
-  key: 'value',
-  childObj: {
-    name: 'Alice',
-    likes: ['pizza']
-  }
+const MyComponent = () => {
+  return (
+    <div className="my-component">
+      <h1>Hello World</h1>
+    </div>
+  );
 };
 
-// shallow copy
-const objTwo = {...objOne};
-
-objTwo.childObj.name = 'Bob';
-console.log(objOne.childObj.name); // 'Bob' ooooops!!
-
-objTwo.childObj.likes.push('pineapple');
-console.log(objOne.childObj.likes); // ['pizza', 'pineapple'] uh oh
+export default MyComponent;
 ```
 
-- To make sure that we get a true copy, we need to spread each child object and array
+### Review of Closures
+- From MDN:
+> A **closure** is the combination of a function bundled together (enclosed) with references to its surrounding state (the **lexical environment**). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function **creation** time.
+- In other words, functions remember where they were declared and what variables were in scope (they had access to) at the time they were declared
+- This allows us to preserve _state_ in between function calls (subsequent calls to the function can use the updated state value)
+- Contrasting with JS Classes (how we used to create React components): components as objects were instantiated from a Class and it was the same object that was used over and over again. Therefore it always had access to its own internal state. Functional components need some way of creating a _closure_ so that we can achieve the same result.
+- Enter `useState` (and other `use` functions) which keep track of state for us between function calls and allow us to retrieve and edit variables every time the function is invoked (eg. the component is created/updated)
+
+### State
+- State (data) is created in a component by using the `State` hook (`useState`)
+- `useState` takes an initial value for state which will be used on the first render
+- `useState` returns the current value of state and a function (a way to set the value)
 
 ```js
-const objOne = {
-  key: 'value',
-  childObj: {
-    name: 'Alice',
-    likes: ['pizza']
-  }
-};
-
-// deep copy
-const objTwo = { 
-  ...objOne,
-  childObj: {
-    ...objOne.childObj,
-    likes: [
-      ...objOne.childObj.likes
-    ]
-  }
-};
-
-objTwo.childObj.name = 'Bob';
-console.log(objOne.childObj.name); // 'Alice' 😅
-
-objTwo.childObj.likes.push('pineapple');
-console.log(objOne.childObj.likes); // ['pizza']
+// it's common to destructure the return value from useState
+const [username, setUsername] = useState('');
 ```
 
-### Updating Complex State
-- It is common to maintain complex state in a component (eg. object, array, object with arrays/objects inside it)
-- Updating complex state can be challenging
-- We need to remember to copy the previous state before updating it
+#### NOTE: We need to use `useState` to keep track of our data so that React will know when changes occur 
 
-```js
-const [numbers, setNumbers] = React.useState([1, 2, 3]);
+### Passing Props
+- Child components can be passed pieces of state (data) from their parent component
+- These props are accepted in the child component as an argument (usually called `props`)
 
-// setNumbers can take either a value or a callback function
-// the callback function is passed the previous state as an argument (prevNumbers)
-setNumbers((prevNumbers) => {
-  const newState = [...prevNumbers, 4];
+```jsx
+// in parent component
+import MyComponent from './components/MyComponent.jsx';
 
-  // previous state is not affected
-  console.log(prevNumbers); // [1, 2, 3]
-  console.log(newState); // [1, 2, 3, 4]
+// inside the parent's return
+<MyComponent studentName="Alice"></MyComponent>
 
-  return newState;
-});
+// inside child component
+const MyComponent = (props) => {
+  return (
+    <div>
+      <h1>Hello { props.studentName }!</h1>
+    </div>
+  );
+};
 ```
+
+- Props are not limited to JS primitives and data structures; you can also pass behaviour from parent-to-child in the form of functions
 
 ### Useful Links
-- [Wikipedia: Persistent Data](https://en.wikipedia.org/wiki/Persistent_data_structure)
-- [Why Does "Delta" Represent Change?](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity)
-- [ES6 Spread Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+- [ReactJS Docs](https://reactjs.org/docs/getting-started.html)
+- [MDN: Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)

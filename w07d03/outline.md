@@ -1,194 +1,325 @@
-# External Resources
-
-* Hacker News: 
-  * https://hn.algolia.com/api/v1/items/:id
-  * https://hn.algolia.com/api/v1/users/:username
-
-* JSONPlaceholder:
-  * http://jsonplaceholder.typicode.com/todos/:id
-  * http://jsonplaceholder.typicode.com/users/:id
-
-* Github API:
-  * https://api.github.com/users/andydlindsay/repos
-
-* Chef Andy:
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/ingredients
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipes
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipe-ingredients
-
-* `useEffect` Flow Diagram
-  * https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU
-
 # Outline
 
-### Two Rules for Hooks
-1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions**
-2. Only call Hooks from React functions.
+### Create a new app
 
-### Pure Functions
-- A function is said to be pure if:
-  - It produces no side-effects
-  - It will return the same value if called with the same arguments
+```sh
+npx create-react-app pizza-place
+```
+
+### Remove boilerplate and create `components` directory
+
+### Add a `Header` component
 
 ```js
-// simple pure functions
-const add = (num1, num2) => {
-  return num1 + num2;
+import React from 'react';
+
+const Header = () => {
+  return (
+    <div className="header">
+      <h2>Pat's Pizza Place</h2>
+    </div>
+  );
 };
 
-const sayHello = (name) => {
-  return `Hello there ${name}!`;
+export default Header;
+```
+
+### Pull the `heading` out to a variable
+
+```js
+const Header = () => {
+  const [heading] = React.useState('Pat\'s Pizza Place');
+
+  return (
+    <div className="header">
+      <h2>{ heading }</h2>
+    </div>
+  );
 };
 ```
 
-### Side Effects
-- Any operation that modifies the state of the computer or interacts with something outside of your program is said to have a **side effect**
-- Common _side effects_:
-  - Writing to standard out (eg. `console.log`)
-  - Modifying the DOM directly (instead of relying on React)
-  - Establishing socket connections (eg. `ws` or `Socket.io`)
-  - Retrieving data from an API (eg. `axios`, `jQuery`, or the `fetch` API)
-  - Setting timers or intervals
+### Move `heading` into the App component and pass as a prop to Header
 
-### Create a new app called `use-effect`
-* Clean up the default application
+```js
+const App = () => {
+  const [heading] = React.useState('Pat\'s Pizza Place');
 
-### Create a new component `UseEffect` and import into `src/App.js`
-
-### Set up a simple counter with `useState`
-
-```jsx
-const [count, setCount] = React.useState(0);
-
-<div>
-  <h3>Count: { count }</h3>
-  <button
-    onClick={() => setCount(count + 1)}
-  >Increment</button>
-</div>
+  return (
+    <div className="App">
+      <Header heading={heading}/>
+    </div>
+  );
+};
 ```
 
-### Introduce `useEffect` by changing document title
-
-```jsx
-React.useEffect(() => {
-  console.log('changing title');
-  document.title = `You clicked ${count} times!`;
-});
+```js
+const Header = (props) => {
+  return (
+    <div className="header">
+      <h2>{ props.heading }</h2>
+    </div>
+  );
+};
 ```
 
-### Put a `setTimeout` inside of `useEffect`
+### Create a `Visitors` component
 
-```jsx
-React.useEffect(() => {
-  setTimeout(() => {
-    console.log(`Current count is ${count}`);
-  }, 3000);
-});
+```js
+import React from 'react';
+
+const Visitors = () => {
+  const [numVisitors, setNumVisitors] = React.useState(0);
+
+  return (
+    <div className="visitors">
+      <h2>Visitors: {numVisitors}</h2>
+      <button onClick={() => setNumVisitors(numVisitors + 1)}>New Visitor!</button>
+    </div>
+  );
+};
+
+export default Visitors;
 ```
 
-### Convert the timeout to an interval
+### Pull click handler out to a named function and try to update `numVisitors` three times
 
-```jsx
-React.useEffect(() => {
-  const interval = setInterval(() => {
-    console.log(`Current count is ${count}`);
-  }, 3000);
+```js
+const clickHandler = () => {
+  setNumVisitors(numVisitors + 1);
+  setNumVisitors(numVisitors + 1);
+  setNumVisitors(numVisitors + 1);
+};
 
-  // try to clear the interval
-  clearInterval(interval);
-});
+return (
+  <div className="visitors">
+    <h2>Visitors: {numVisitors}</h2>
+    <button onClick={clickHandler}>New Visitor x 3!!</button>
+  </div>
+);
 ```
 
-### Return a cleanup function from `useEffect`
+### Refactor to use the callback update method
 
-```jsx
-React.useEffect(() => {
-  const interval = setInterval(() => {
-    console.log(`Current count is ${count}`);
-  }, 500);
+```js
+const clickHandler = () => {
+  setNumVisitors(oldNumVisitors => oldNumVisitors + 1);
+  setNumVisitors(oldNumVisitors => oldNumVisitors + 1);
+  setNumVisitors(oldNumVisitors => oldNumVisitors + 1);
+};
+```
 
-  const cleanup = () => {
-    console.log('running cleanup');
-    clearInterval(interval);
+### Immutable Update Patterns
+* Never mutate data directly
+* Instead, overwrite it with all new data (clone it and change it)
+
+### Why Immutability?
+- Immutable data structures are simpler to construct, test, and use
+- Immutable data is side-effect free (avoids weird bugs in our app)
+- Makes it possible to compare the current data to the previous version to see what has changed
+
+### Create `immutable.js`
+
+```js
+// objects/arrays are references
+const user = {
+  name: 'Alice',
+  age: 30
+};
+const otherUser = user; // otherObj has the same reference as myObj
+otherUser.name = 'Bob';
+console.log(user); // { name: 'Bob' } oops!!
+```
+
+```js
+// copy the object using the spread operator
+const user = {
+  name: 'Alice',
+  age: 30
+};
+const otherUser = { ...user };
+otherUser.name = 'Bob';
+console.log(user);
+```
+
+```js
+// update the `name` key at the same time
+const otherUser = { ...user, name: 'Bob' };
+console.log(otherUser);
+```
+
+### Spread operator only makes a shallow copy
+
+```js
+// user is still being updated
+const user = {
+  name: 'Alice',
+  age: 30,
+  likes: ['pizza']
+};
+const otherUser = { ...user, name: 'Bob' };
+otherUser.likes.push('bananas');
+console.log(user);
+```
+
+```js
+// spread child arrays/objects as well
+const otherUser = {
+  ...user,
+  name: 'Bob',
+  likes: [
+    ...user.likes
+  ]
+};
+otherUser.likes.push('bananas');
+```
+
+```js
+// insert 'bananas' at the same time
+const otherUser = {
+  ...user,
+  name: 'Bob',
+  likes: [
+    ...user.likes,
+    'bananas'
+  ]
+};
+```
+
+### Create a `Pizza` component
+
+```js
+import React from 'react';
+
+const Pizza = () => {
+  const [toppings, setToppings] = React.useState(['cheese']);
+  const [newTopping, setNewTopping] = React.useState('');
+
+  const onAddToppingClick = () => {
+    setToppings(prevToppings => [...prevToppings, newTopping]);
+    setNewTopping('');
   };
 
-  return cleanup;
+  return (
+    <div>
+      <h2>Create Your Own Pizza!</h2>
+
+      <label htmlFor="new-topping">New Topping:</label>
+      <input
+        type="text"
+        id="new-topping"
+        value={newTopping}
+        onChange={(event) => setNewTopping(event.target.value)}
+      />
+      <button onClick={onAddToppingClick}>Add Topping!</button>
+
+      <h3>Current Toppings:</h3>
+      { toppings.map((topping, index) => {
+        return (<p key={index}>{topping}</p>);
+      }) }
+    </div>
+  );
+};
+
+export default Pizza;
+```
+
+### Add more complex state
+
+```js
+const [crust, setCrust] = React.useState('thin');
+
+<div>
+  <label htmlFor="crust">Crust:</label>
+  <input
+    type="text"
+    id="crust"
+    value={crust}
+    onChange={(event) => setCrust(event.target.value)}
+  />
+</div>
+
+<h3>Crust Type: {crust}</h3>
+```
+
+### Refactor state into a single object
+
+```js
+const [pizza, setPizza] = React.useState({
+  toppings: ['cheese'],
+  crust: 'thin'
 });
 ```
 
-### Add some more state to the component and show how it calls `useEffect` for every state change
-
-```jsx
-const [search, setSearch] = React.useState('');
+```js
+// update the crust first
+const onChangeCrust = (crust) => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      crust
+    }
+  });
+};
 
 <div>
-  <label htmlFor="search">Search Term:</label>
-  <input 
-    type="text" 
-    id="search" 
-    value={search} 
-    onChange={(event) => setSearch(event.target.value)}
+  <label htmlFor="crust">Crust:</label>
+  <input
+    type="text"
+    id="crust"
+    value={pizza.crust}
+    onChange={(event) => onChangeCrust(event.target.value)}
   />
 </div>
 ```
 
-### Pass a dependency array to both `useEffect` functions
-
-```jsx
-React.useEffect(() => {
-  console.log('changing title');
-  document.title = `You clicked ${count} times!`;
-}, [count]);
+```js
+// update the toppings
+const onAddToppingClick = () => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      toppings: [
+        ...prevPizza.toppings,
+        newTopping
+      ]
+    }
+  });
+  setNewTopping('');
+};
 ```
 
-### Fetch some data and demonstrate empty dependency array
+### Add more keys to the pizza: `size`, `isGlutenFree`, etc
 
-```jsx
-const [item, setItem] = React.useState({});
-
-React.useEffect(() => {
-  axios
-    .get('http://hn.algolia.com/api/v1/items/1')
-    .then(res => {
-      setItem(res.data);
-    });
-}, []);
+```js
+const onChangeSize = (size) => {
+  setPizza((prevPizza) => {
+    return {
+      ...prevPizza,
+      size
+    }
+  });
+};
 
 <div>
-  <h2>{item.title}</h2>
+  <label htmlFor="size">Size:</label>
+  <select
+    id="size"
+    value={pizza.size}
+    onChange={(event) => onChangeSize(event.target.value)}
+  >
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select>
 </div>
 ```
 
-### Fetch some more data
+### Helper functions
 
-```jsx
-const [userInfo, setUserInfo] = React.useState({});
-
-React.useEffect(() => {
-  axios.get('http://hn.algolia.com/api/v1/items/1')
-    .then(res => {
-      setItem(res.data);
-      const { author } = res.data;
-      return axios.get(`https://hn.algolia.com/api/v1/users/${author}`);
-    .then(res => {
-      setUserInfo(res.data);
-    });
-}, []);
-
-<div>
-  <h2>{item.title}</h2>
-  <h3>By: {userInfo.username}</h3>
-  <h4>Bio: {userInfo.about}</h4>
-</div>
+```js
+const genRandomId = () => {
+  return Math.random()
+    .toString(36)
+    .substring(2, 6);
+};
 ```
-
-### Beware the infinite loop!
-
-```jsx
-useEffect(() => {
-  setCount(count + 1);
-}, [count]);
-```
-
-### Talk through the [`useEffect` flow diagram](https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU)

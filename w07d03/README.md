@@ -1,114 +1,153 @@
-# W07D03 - Data Fetching & Other Side Effects
+# W07D03 - Immutable Update Patterns
 
 ### To Do
-- [ ] Rules for Hooks
-- [ ] Pure Functions and Side Effects
-- [ ] `useEffect`
-- [ ] Cleanup
-- [ ] Dependencies
-- [ ] _useEffect_ Flow
+- [ ] Recap: Components, Props, and State
+- [ ] Immutable Update Patterns with Arrays and Objects
+- [ ] Updating Complex State
 
-### Two Rules for Hooks
-1. Don't call Hooks inside loops, conditions, or nested functions. **Always use Hooks at the top level of your React functions.**
-2. Only call Hooks from React functions.
+### Recap: Components, Props, and State
+- Components:
+  - The building blocks of a React application
+  - Encapsulate application behaviour/logic in its own isolated container
+  - By encapsulating behaviour, underlying complexity is abstracted away into a simple interface
+  - Allows reuse of components in different parts of the application
+  - A large application is built up from many of these small pieces
+- Props:
+  - Data that is passed into a component from outside itself
+  - Received as an argument to the component function
+- State:
+  - Data that is local to the component
+  - Can be passed down to child components as props
+  - For state to persist in a functional component, we need to use the `useState` hook
 
-### Pure Functions
-- A function is said to be pure if:
-  - It produces no side-effects
-  - It will return the same value if called with the same arguments
+### Immutable Update Patterns
+- Immutability is an important concept in functional programming
+- From [Wikipedia](https://en.wikipedia.org/wiki/Persistent_data_structure):
+> In computing, a persistent data structure is a data structure that always preserves the previous version of itself when it is modified. Such data structures are effectively immutable, as their operations do not (visibly) update the structure in-place, but instead always yield a new updated structure.
+- ie. try not to mutate data directly; instead, overwrite it with all new data (clone it and change it)
+
+### Benefits of Immutability
+- Immutable data structures are simpler to construct, test, and use
+- Immutable data is side-effect free (avoids weird bugs in our app)
+- Makes it possible to compare the current data to the previous version to see what has changed ([the delta](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity))
+
+### Immutable Data Patterns with Arrays and Objects
+- Arrays and objects in JavaScript are stored as references which means that we can easily change the original object/array without meaning to
 
 ```js
-// simple pure functions
-const add = (num1, num2) => {
-  return num1 + num2;
+const myObj = { name: 'Alice' };
+const otherObj = myObj; // otherObj has the same reference as myObj
+otherObj.name = 'Bob';
+console.log(myObj); // { name: 'Bob' } oops!!
+```
+
+- Array methods that don't return a new array are not "pure" (ie. they mutate the original array)
+
+```js
+// mutate the array in place
+array.sort();
+array.pop();
+array.push();
+array.splice();
+
+// don't change the original array
+const newArr = array.concat();
+const newArr = array.map();
+const newArr = array.filter();
+const newArr = array.slice();
+```
+
+- It is a better idea to copy the array/object and then update it
+
+```js
+// copy an array with the spread operator
+const myArr = [1, 2, 3];
+const copy = [ ...myArr ];
+copy.push(4); // myArr is not affected
+
+// works the same for objects
+const myObj = { name: 'Alice' };
+const newObj = { ...myObj };
+newObj.name = 'Bob'; // myObj not affected
+
+// it's possible to overwrite keys in a single step
+const myObj = { name: 'Alice', age: 27 };
+const newObj = { ...myObj, name: 'Bob' };
+console.log(newObj); // { name: 'Bob', age: 27 }
+```
+
+- The spread operator makes a shallow copy only (the reference to child objects/arrays is copied instead of duplicating the object/array)
+
+```js
+const objOne = {
+  key: 'value',
+  childObj: {
+    name: 'Alice',
+    likes: ['pizza']
+  }
 };
 
-const sayHello = (name) => {
-  return `Hello there ${name}!`;
+// shallow copy
+const objTwo = {...objOne};
+
+objTwo.childObj.name = 'Bob';
+console.log(objOne.childObj.name); // 'Bob' ooooops!!
+
+objTwo.childObj.likes.push('pineapple');
+console.log(objOne.childObj.likes); // ['pizza', 'pineapple'] uh oh
+```
+
+- To make sure that we get a true copy, we need to spread each child object and array
+
+```js
+const objOne = {
+  key: 'value',
+  childObj: {
+    name: 'Alice',
+    likes: ['pizza']
+  }
 };
-```
 
-### Side Effects
-- Any operation that modifies the state of the computer or interacts with something outside of your program is said to have a **side effect**
-- Common _side effects_:
-  - Writing to standard out (eg. `console.log`)
-  - Modifying the DOM directly (instead of relying on React)
-  - Establishing socket connections (eg. `ws` or `Socket.io`)
-  - Retrieving data from an API (eg. `axios`, `jQuery`, or the `fetch` API)
-  - Setting timers or intervals
-
-### `useEffect`
-- `useEffect` is a Hook we can use to deal with side effects in our components
-- The _effect_ hook fires after the browser has _painted_ the DOM
-- Multiple _effect_ hooks can be used inside of a single component to group similar operations together
-
-```jsx
-const MyComponent = (props) => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    // retrieve user information from an API and update local state with the response
-    fetch(`/users/${props.userId}`)
-      .then(res => res.json())
-      .then(json => setUser(json));
-  });
-
-  return (
-    <div className="my-component">
-      <p>You are logged in as { user.username }</p>
-    </div>
-  );
+// deep copy
+const objTwo = { 
+  ...objOne,
+  childObj: {
+    ...objOne.childObj,
+    likes: [
+      ...objOne.childObj.likes
+    ]
+  }
 };
+
+objTwo.childObj.name = 'Bob';
+console.log(objOne.childObj.name); // 'Alice' 😅
+
+objTwo.childObj.likes.push('pineapple');
+console.log(objOne.childObj.likes); // ['pizza']
 ```
 
-### Dependencies
-- The second argument to `useEffect` is a dependency array that lets you specify when you want the hook to run
-- The hook will run again anytime the value of a dependency changes
-- **NOTE:** It is possible to get stuck in an infinite loop if the _effect_ hook updates a value in the dependency array
+### Updating Complex State
+- It is common to maintain complex state in a component (eg. object, array, object with arrays/objects inside it)
+- Updating complex state can be challenging
+- We need to remember to copy the previous state before updating it
 
-```jsx
-// will run every time the value of user.firstName changes
-useEffect(() => {
-  document.title = `${user.firstName}'s Home Page`;
-}, [user.firstName]);
+```js
+const [numbers, setNumbers] = React.useState([1, 2, 3]);
 
-// infinite loop because it runs every time count gets updated
-useEffect(() => {
-  setCount(count + 1);
-}, [count]);
+// setNumbers can take either a value or a callback function
+// the callback function is passed the previous state as an argument (prevNumbers)
+setNumbers((prevNumbers) => {
+  const newState = [...prevNumbers, 4];
+
+  // previous state is not affected
+  console.log(prevNumbers); // [1, 2, 3]
+  console.log(newState); // [1, 2, 3, 4]
+
+  return newState;
+});
 ```
-
-### Cleanup
-- Sometimes side effects need to be cleaned up (eg. socket connections terminated)
-- To perform cleanup, return a function from your `useEffect`
-
-```jsx
-const [timer, setTimer] = useState(0);
-
-useEffect(() => {
-  // set up an interval to increment a timer
-  const myInterval = setInterval(() => {
-    setTimer(timer => timer + 1);
-  }, 1000);
-
-  // declare a cleanup function
-  const cleanup = () => {
-    clearInterval(myInterval);
-  };
-
-  return cleanup;
-}, []);
-```
-
-### _useEffect_ Flow
-1. React turns your JSX into HTML (client-side rendering) and updates the DOM
-2. The browser responds to the change by updating the UI
-3. Any cleanup for effects from the previous render are performed
-4. New effects for the current render are performed
-
-![_useEffect_ flow](https://raw.githubusercontent.com/andydlindsay/lectures/master/w07d03/useEffect%20Flow.png)
 
 ### Useful Links
-- [React Docs: Hook Rules](https://reactjs.org/docs/hooks-rules.html)
-- [Wikipedia: Pure Function](https://en.wikipedia.org/wiki/Pure_function)
-- [Wikipedia: Side Effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+- [Wikipedia: Persistent Data](https://en.wikipedia.org/wiki/Persistent_data_structure)
+- [Why Does "Delta" Represent Change?](https://hsm.stackexchange.com/questions/2254/why-was-delta-delta-chosen-to-represent-change-of-a-quantity)
+- [ES6 Spread Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
