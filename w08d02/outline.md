@@ -1,347 +1,234 @@
-`rafce`
+# Overview
+- This lecture has 90 mins of live-coding
+- Ensure the theory portion goes no longer than 30 mins
 
-# External Resources
-* `yarn add react-router-dom`
-* `yarn add styled-components`
+## External Resources
+- [Jest Homepage](https://jestjs.io/)
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [JestDOM](https://github.com/testing-library/jest-dom)
+- [Which query should I use?](https://testing-library.com/docs/guide-which-query)
+- https://my-json-server.typicode.com/andydlindsay/moai-axe-tree/high-scores
 
-# Outline
+## Outline
 
-## Routing
-* `yarn add react-router-dom`
+### Tools for testing React
+- [Jest](https://jestjs.io/)
+  * Jest is the framework we use to run our tests
+  * Comes with `create-react-app`, so no need to configure
+  * `npm run test` will start Jest in watch mode and run the tests
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+  * A set of tools to help target DOM elements and trigger DOM events
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+  * Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
+- [JestDOM](https://github.com/testing-library/jest-dom)
+  * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
-```jsx
-import React from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import Products from './Products';
-import Home from './Home';
+### Coverage Reports
 
-const Routing = () => {
-  return (
-    <Router>
-      <nav>
-        <Link to="/">Home </Link>
-        <Link to="/about">About </Link>
-        <Link to="/products">Products</Link>
-      </nav>
+```bash
+% npm test -- --verbose
+% yarn test --verbose
 
-      {/* <Route path="/about">About Page</Route>
-      <Route path="/products">
-        <Products />
-      </Route>
-      <Route path="/" exact component={Home} /> */}
+% npm test -- --coverage
+% yarn test --coverage
 
-      <Switch>
-        <Route path="/about">About Page</Route>
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/" component={Home} />
-      </Switch>
-    </Router>
-  );
-};
-
-export default Routing;
+% npm test -- --coverage --watchAll=false
+% yarn test --coverage --watchAll=false
 ```
 
-## Nested Routing
+### Add Features/Tests to App
+- TDD: unit test
+  - choose a valid response for the computer player (currently hard-coded)
+- TDD: integration test
+  - clicking on the robot head will toggle the cheating boolean
+- mocking
+  - test fetching high scores (mock Axios)
 
-```jsx
-import React from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
-import Product from './Product';
-
-const Products = () => {
-  return (
-    <div>
-      <nav>
-        <Link to="/products/2">Product #2</Link><br/>
-        <Link to="/products/3">Product #3</Link><br/>
-        <Link to="/products/4">Product #4</Link><br/>
-        <Link to="/products/5">Product #5</Link>
-      </nav>
-
-      <Switch>
-        <Route path="/products/:productId">
-          <Product />
-        </Route>
-        <Route path="/products">
-          <h3>Please select a product above</h3>
-        </Route>
-      </Switch>
-    </div>
-  );
-};
-
-export default Products;
-```
-
-```jsx
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
-const Product = () => {
-  const params = useParams();
-
-  return (
-    <div>
-      <h2>Product { params.productId }</h2>
-    </div>
-  );
-};
-
-export default Product;
-```
-
-## Programmatic Routing
-
-```jsx
-import { useHistory } from 'react-router-dom';
-const history = useHistory();
-history.push('/about');
-```
-
-## Styled Components
-* `yarn add styled-components`
-
-### Presentation Components
-
-```jsx
-import React from 'react';
-import styled from 'styled-components';
-
-const Header = styled.h1`
-  color: turquoise;
-`;
-
-const Paragraph = styled.p`
-  color: purple;
-  font-size: 36px;
-`;
-
-const Custom = styled.h2`
-  background: ${ props => props.electric ? 'black' : 'white' };
-  color: ${ props => props.electric ? 'yellow' : 'darkgrey' };
-
-  text-decoration: underline;
-`;
-
-const StyledComponent = () => {
-  return (
-    <div>
-      <Header>I Look Gooooood!!</Header>
-      <Paragraph>Not as good as I do. Hahahahahahha</Paragraph>
-      
-      <Custom>Basic</Custom>
-      <Custom electric>I'm Electric!!!</Custom>
-    </div>
-  );
-};
-
-export default StyledComponent;
-```
-
-### Any Component
-
-```jsx
-// Custom.jsx
-import React from 'react'
-
-const Custom = ({className}) => {
-  return (
-    <div>
-      <p className={className}>Do I have some style?</p>
-    </div>
-  )
-}
-
-export default Custom
-```
-
-```jsx
-// StyledComponent.jsx
-import Custom from './Custom';
-
-const WrappedCustom = styled(Custom)`
-  color: palevioletred;
-  font-weight: bold;
-`;
-
-<Custom />
-<WrappedCustom />
-```
-
-## `useContext`
+### `src/helpers/__tests__/helpers.test.js`
 
 ```js
-// CountContext.js
-import React from 'react';
+describe('chooseRobotItem function', () => {
+  test('given player choice and cheating is true, returns winning choice', () => {
+    const cheating = true;
 
-export default React.createContext();
+    let playerSelection = 'Axe';
+    let result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Moai');
+
+    playerSelection = 'Moai';
+    result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Tree');
+
+    playerSelection = 'Tree';
+    result = chooseRobotItem(cheating, playerSelection);
+    expect(result).toBe('Axe');
+  });
+
+  test('given player choice and cheating is false, returns a valid choice', () => {
+    const cheating = false;
+    const playerSelection = 'Axe';
+    
+    const result = chooseRobotItem(cheating, playerSelection);
+    const options = ['Axe', 'Tree', 'Moai'];
+    // expect(options.includes(result)).toBeTruthy();
+    expect(options).toContain(result);
+  });
+});
 ```
+
+### `src/helpers/helpers.js`
 
 ```js
-// UseContext.jsx
+export const chooseRobotItem = (cheating, playerItem) => {
+  const lookup = {
+    'Tree': 'Axe',
+    'Moai': 'Tree',
+    'Axe': 'Moai'
+  };
+  if (cheating) {
+    return lookup[playerItem];
+  } else {
+    const choices = ["Moai", "Axe", "Tree"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+  }
+};
+```
+
+### Update function call in `Player.jsx`
+
+```js
+// from
+const compSelection = chooseRobotItem();
+
+// to
+const compSelection = chooseRobotItem(cheating, playerSelection);
+
+// update useEffect dependency array
+}, [playerSelection, cheating, setState]);
+```
+
+### `src/components/__tests__/Game.test.jsx`
+
+```js
 import React from 'react';
-import ChildOne from './ChildOne';
-import ChildTwo from './ChildTwo';
-import CountContext from './CountContext';
+import { render, fireEvent } from '@testing-library/react';
+import Game from '../Game';
 
-const UseContext = () => {
-  const [count, setCount] = React.useState(0);
+test('change cheat state when clicking on robot', () => {
+  const { getByTestId } = render(<Game />);
+  const robotIcon = getByTestId('robot-icon');
 
-  return (
-    <CountContext.Provider value={{count, setCount}}>
-      <ChildOne />
-      <ChildTwo />
-    </CountContext.Provider>
-  )
-};
+  fireEvent.click(robotIcon);
+  expect(robotIcon).toHaveClass('cheating');
 
-export default UseContext;
+  fireEvent.click(robotIcon);
+  expect(robotIcon).not.toHaveClass('cheating');
+});
 ```
 
-```jsx
-// ChildOne.jsx
-import React, { useContext } from 'react';
-import CountContext from './CountContext';
+### `src/components/Computer.jsx`
 
-const ChildOne = () => {
-  const {count} = useContext(CountContext);
-  return (
-    <div>
-      <h2>I'm child one</h2>
-      <h3>The count is: {count}</h3>
-    </div>
-  );
+```js
+const {state, setState} = props;
+
+const handleClick = () => {
+  return setState(prevState => (
+    { ...prevState, cheating: !prevState.cheating }
+  ));
 };
 
-export default ChildOne;
+<span
+  data-testid="robot-icon"
+  role="img" 
+  aria-label="robot" 
+  className={state.cheating ? "cheating" : null}
+  onClick={handleClick}
+>
+  🤖
+</span>
 ```
 
-```jsx
-// ChildTwo.jsx
-import React, { useContext } from 'react';
-import CountContext from './CountContext';
+### Demonstrate `prettyDOM` and `debug`
 
-const ChildTwo = () => {
-  const {setCount} = useContext(CountContext);
-  return (
-    <div>
-      <h2>I'm child two</h2>
-      <button onClick={() => setCount(prev => prev + 1)}>Click me</button>
-    </div>
-  );
-};
+```js
+import { render, getByTestId, prettyDOM } from '@testing-library/react';
 
-export default ChildTwo;
+const { container, debug } = render(<Result status={fakeState.status} />);
+console.log(prettyDOM(container)); // have to log the return from prettyDOM
+debug(); // logs for us
 ```
 
-### Add another child in between UseContext and ChildOne
+### Function mock example
 
-```jsx
+```js
+const mock = jest.fn();
+let result = mock('foo');
+
+expect(result).toBeUndefined();
+expect(mock).toHaveBeenCalled();
+expect(mock).toHaveBeenCalledTimes(1);
+expect(mock).toHaveBeenCalledWith('foo');
+
+const mockTwo = jest.fn(() => 'bar');
+result = mockTwo('foo');
+
+expect(result).toBe('bar');
+```
+
+### Mock `axios`
+
+```js
+// `src/components/__tests__/HighScores.test.jsx`
 import React from 'react';
-import ChildOne from './ChildOne';
+import { render } from '@testing-library/react';
+import HighScores from '../HighScores';
+import axios from 'axios';
 
-const Inbetween = () => {
-  return (
-    <div>
-      <h2>I am in between!!</h2>
-      <ChildOne />
-    </div>
-  );
-};
+jest.mock('axios');
 
-export default Inbetween;
-```
+const data = [
+  {
+    "id": 1,
+    "name": "Alice",
+    "points": 15
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "points": 10
+  },
+  {
+    "id": 3,
+    "name": "Carol",
+    "points": 5
+  }
+];
 
-## `useRef`
+// this function must be marked as `async` in order to use `await` within it
+test('Axios test', async () => {
+  // mock any calls to axios.get with hardcoded return value `data`
+  axios.get.mockResolvedValue({ data });
 
-### Set focus :p
+  // also works with a delay
+  // axios.get.mockImplementationOnce(() => {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve({ data });
+  //     }, 2000);
+  //   });
+  // });
 
-```jsx
-// DOM node reference
-import React, { useRef } from 'react';
+  const { findByText } = render(<HighScores />);
 
-const UseRef = () => {
-  const inputRef = useRef();
+  // we could return a promise
+  return findByText('Bob', { exact: false });
 
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
+  // or we could get jest to wait instead
+  // return expect(findByText('Bob', { exact: false })).resolves.toBeTruthy();
 
-  return (
-    <div>
-      <div>
-        <label htmlFor="input-field">Input:</label>
-        <input type="text" id="input-field" ref={inputRef} />
-      </div>
-      <div>
-        <button onClick={handleClick}>Set Focus</button>
-      </div>
-    </div>
-  );
-};
-
-export default UseRef;
-```
-
-### Avoid stale state
-* https://reactjs.org/docs/hooks-reference.html#useref
-
-```jsx
-import React, { useRef, useState } from 'react';
-
-const UseRef = () => {
-  const [count, setCount] = useState(0);
-
-  const handleAlert = () => {
-    setTimeout(() => {
-      alert(count);
-    }, 3000);
-  };
-
-  return (
-    <div>
-      <p>useRef</p>
-
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count => count + 1)}>Increment</button>
-        <button onClick={handleAlert}>Show Alert</button>
-      </div>
-    </div>
-  );
-};
-
-export default UseRef;
-```
-
-```jsx
-// current value reference
-import React, { useRef, useState } from 'react';
-
-const UseRef = () => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef();
-  countRef.current = count;
-
-  const handleAlert = () => {
-    setTimeout(() => {
-      alert(countRef.current);
-    }, 3000);
-  };
-
-  return (
-    <div>
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count => count + 1)}>Increment</button>
-        <button onClick={handleAlert}>Show Alert</button>
-      </div>
-    </div>
-  );
-};
-
-export default UseRef;
+  // or findBy functions return a promise which we can `await`
+  // await findByText('Bob', { exact: false });
+});
 ```

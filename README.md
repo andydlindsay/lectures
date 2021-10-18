@@ -24,8 +24,7 @@
 * [W07D03 - Immutable Update Patterns](/w07d03)
 * [W07D04 - Data Fetching & Other Side Effects](/w07d04)
 * [W07D05 - Custom Hooks](/w07d05)
-* [W08D01 - Unit & Integration Testing](/w08d01)
-* [W08D02 - Real World React](/w08d02)
+* [W08D02 - Unit & Integration Testing](/w08d02)
 * [W08D03 - End-to-End Testing with Cypress](/w08d03)
 * [W08D04 - Class-based Components](/w08d04)
 * [W08D05 - Intro to Ruby](/w08d05)
@@ -47,3 +46,6 @@
 * [Maze Generation](/advanced-maze)
 * [TypeScript](/advanced-typescript)
 * [Vue](/advanced-vue)
+
+## Archived
+* [W08D02 - Real World React](/archived-w08d02)

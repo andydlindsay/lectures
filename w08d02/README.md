@@ -1,212 +1,98 @@
-# W08D02 - Real World React
+# W08D02 - Unit & Integration Testing
 
 ### To Do
-- [ ] React Router
-- [ ] Styled Components
-- [ ] `useContext`
-- [ ] `useRef`
-- [ ] Component Libraries
+- [ ] Tools for testing React
+- [ ] Coverage Reports
+- [ ] Add Features/Tests to our App
+- [ ] `debug()` and `prettyDOM()`
+- [ ] Mocking AJAX Requests and Functions
 
-### React Router
-* Uses the `react-router-dom` package
-* Inside of a `Router` component, you can use `Link` components to provide clickable links to the user
-* Inside of a `Switch`, the first `Route` whose `path` attribute matches the path the user is trying to visit gets rendered
-* Outside of a `Switch`, any `Route` whose `path` matches will render
+### Setup & Teardown
+- Tests should represent how a user (or other code) would interact with our application
+- It's important to properly setup the test conditions to isolate the piece of functionality under test 
+- Once the test has been executed, tear down all setup to leave no traces for the next test
+- It's important to scope variables appropriately to make sure that there won't be leaks or interference with other tests
 
-```jsx
-<Router>
-  <Link to="/">Home</Link>
-  <Link to="/about">About</Link>
-  <Link to="/products">Products</Link>
+### Tools for testing React
+- [Jest](https://jestjs.io/)
+  * Jest is the framework we use to run our tests
+  * Comes with `create-react-app`, so no need to configure
+  * `npm run test` will start Jest in watch mode and run the tests
+- [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+  * A set of tools to help target DOM elements and trigger DOM events
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+  * Built on top of the DOM Testing Library, gives us more possibilities to target and render React elements to make them possible to test
+- [JestDOM](https://github.com/testing-library/jest-dom)
+  * JestDOM is a set of matchers (like `.toHaveClass()` or `.toBeVisible()`) to help target elements in the DOM
 
-  <Switch>
-    <Route path="/about">
-      <About />
-    </Route>
-    { /* alternative syntax */ }
-    <Route path="/products" component={Products} />
-    { /* you can specify that a route must match specifically with the exact attribute */ }
-    <Route path="/" exact component={Home} />
-  </Switch>
-<Router>
+### Passing Flags to Scripts
+- We can define our own scripts in `package.json`
+
+```json
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject",
+  "list": "ls"
+}
 ```
 
-### Advanced Routing
-* It is possible to nest `react-router` components
-* So that we can programmatically have access to the url the user has visited and any parameters (eg. `productId`), `react-router-dom` gives us a _custom hook_
-* `useParams` gives child components access to the parameters in the url
+- We can run these scripts with `npm run script-name` or `yarn script-name`
+- We can also pass [flags](https://gobyexample.com/command-line-flags) to our scripts
+- Using `npm`, we have to add `--` before passing flags
 
-```jsx
-// dynamic routing in parent component
-const Products = () => {
-  return (
-    <div>
-      <nav>
-        <Link to="/products/2">Product #2</Link><br/>
-        <Link to="/products/3">Product #3</Link><br/>
-        <Link to="/products/4">Product #4</Link><br/>
-        <Link to="/products/5">Product #5</Link>
-      </nav>
+```bash
+npm run script-name -- --flag-name
 
-      <Switch>
-        <Route path="/products/:productId">
-          <Product />
-        </Route>
-        <Route path="/products">
-          <h3>Please select a product above</h3>
-        </Route>
-      </Switch>
-    </div>
-  );
-};
+yarn script-name --flag-name
 ```
 
-```jsx
-// parameters inside child component
-const Product = () => {
-  const params = useParams();
+- Eg. to pass "-la" to our `list` script, we'd use `npm run list -- -la` or `yarn list -la` (try it yourself!)
 
-  return (
-    <div>
-      <h2>Product {params.productId}</h2>
-    </div>
-  );
-};
+### Coverage Reports
+- A coverage report shows us how much of our code is covered by the tests we've written
+- The code coverage of our tests is important, but it's more important to have solid tests with a little less coverage than easy tests with a lot of coverage
+- It's okay to not have 100% coverage, it's almost impossible!
+- `npm run test -- --coverage` will start Jest in watch mode and show the coverage status after each test
+- If you notice that your coverage report is empty, add the `watchAll=false` flag
+
+```bash
+npm run test -- --coverage --watchAll=false
 ```
 
-### Programmatic Routing
-* `react-router` gives us another _custom hook_ that allows us to programmatically navigate through our app
-* `useHistory` gives us an object with a method called `push` which accepts a string
+### Add Features/Tests to App
+- TDD: unit test
+  - choose a valid response for the computer player (currently hard-coded)
+- TDD: integration test
+  - clicking on the robot head will toggle the cheating boolean
+- mocking
+  - test fetching high scores (mock Axios)
+
+### `getBy` & `queryBy`
+- One small thing about `getBy` and `queryBy` to be aware of is that `getBy` will throw an error if the element is not found
+- `queryBy` will return only null, so it's up to the context to guide you which you should use
+
+### Skipping Tests
+* For various reasons, you might want to skip a particular test
+* To skip a test, use either `xit` or `test.skip`
 
 ```js
-import {useHistory} from 'react-router-dom';
+// using test
+test('this test will run', () => {});
+test.skip('this test will be skipped', () => {});
 
-// useHistory gives us back a history object
-const history = useHistory();
-
-// update the current url to '/about'
-history.push('/about');
+// using it
+it('this test will run', () => {});
+xit('this test will be skipped', () => {});
 ```
 
-### Styled Components
-* Styled components allow us to embed our styles inside our JavaScript
-* Uses the `styled-components` package
-* Syntax is kinda weird...
-
-```js
-import styled from 'styled-components';
-
-const Paragraph = styled.p`
-  color: pink;
-  font-size: 24px;
-  text-decoration: underline;
-`;
-
-// inside component return
-<Paragraph>I look soooo good!</Paragraph>
-```
-
-* Styled components can also accept props for conditional styling
-
-```js
-const Custom = styled.h2`
-  background: ${ props => props.electric ? 'black' : 'white' };
-  color: ${ props => props.electric ? 'yellow' : 'darkgrey' };
-
-  text-decoration: underline;
-`;
-
-// inside component return
-<Custom>Basic</Custom>
-<Custom electric>I'm Electric!!!</Custom>
-```
-
-### `useContext`
-* `useContext` can be used to share state without having to pass props from parent to child
-* Any component that needs access to the shared state can simply import the context and pass it to `useContext`
-
-```js
-// in a separate file, create the context to be shared
-const MessageContext = React.createContext();
-
-// in the parent component, wrap all children in the context provider
-return (
-  <div>
-    <MessageContext.Provider value={{ message: 'hello world' }}>
-      <ChildOne />
-      <ChildTwo />
-    </MessageContext.Provider>
-  </div>
-);
-
-// consume the context in another component through useContext
-import MessageContext from './MessageContext');
-const context = React.useContext(MessageContext);
-
-// or with destructuring
-const { message } = React.useContext(MessageContext);
-```
-
-### `useRef`
-* Allows us to programmatically make reference to an element or value
-* `useRef` returns the same object on every render so we have a consistent reference
-* References are attached to elements using the `ref` attribute
-* The `.current` property of a reference contains the DOM node or value the `ref` is attached to
-* React updates this value every time the component is re-rendered
-
-```jsx
-// DOM node reference
-const UseRef = () => {
-  const inputRef = useRef();
-
-  const handleClick = () => {
-    inputRef.current.focus();
-  };
-
-  return (
-    <div>
-      <label htmlFor="input-field">Input Field:</label>
-      <input type="text" id="input-field" ref={inputRef} />
-
-      <button type="button" onClick={handleClick}>Apply Focus</button>
-    </div>
-  );
-};
-```
-
-```jsx
-// current value reference
-const UseRef = () => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef();
-  countRef.current = count;
-
-  const handleAlert = () => {
-    setTimeout(() => {
-      alert(countRef.current);
-    }, 3000);
-  };
-
-  return (
-    <div>
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count => count + 1)}>Increment</button>
-        <button onClick={handleAlert}>Show Alert</button>
-      </div>
-    </div>
-  );
-};
-```
-
-### Component Libraries
-* Why build it yourself if someone else already has??
-* Component libraries give us easy access to ready-built components that we can plug into our application
-* We can use as much or as little of the component library as we want
-* Some examples are [Material-UI](https://material-ui.com/) and [Ant Design](https://ant.design/) 
+Notes and example app based on [Francis' lecture](https://github.com/FrancisBourgouin/lhl-12-w8d1)
 
 ### Useful Links
-* [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
-* [Styled Components](https://styled-components.com/docs/basics)
-* [Top React UI Frameworks (opinionated)](https://www.codeinwp.com/blog/react-ui-component-libraries-frameworks/)
-* [Tagged Template Literals](https://codeburst.io/javascript-es6-tagged-template-literals-a45c26e54761)
+* [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
+* [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+* [Which query should I use?](https://testing-library.com/docs/guide-which-query)
+* [Jest-DOM](https://github.com/testing-library/jest-dom)
+* [Testing Library Async Functions](https://testing-library.com/docs/dom-testing-library/api-async)
+* [Jest --coverage issue](https://github.com/facebook/jest/issues/9723)
