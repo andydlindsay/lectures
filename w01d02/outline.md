@@ -20,7 +20,7 @@
 - Week 11 && 12: Finals
 
 - Fundamental Fridays (programming tests/comp sci/research & reflect)
-- Technical Interviews x 3 (W2, W4, W9)
+- Technical Interviews x 2 (W3, W9)
 - Career Services
 
 ### Compass
@@ -45,8 +45,6 @@
 - Errors are your friend
 - Google => StackOverflow => Documentation (MDN)
 - Use the Node REPL to play with the code
-
-### Python Tutor/JS Tutor
 
 ### Probable Workflow
 
