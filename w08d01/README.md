@@ -7,6 +7,7 @@
 - [ ] Immutable Patterns
 - [ ] Q and A
 
+### Bonus Content
 - [ ] React Router (add multipage-like navigation to React)
 - [ ] `useRef` (attach a reference to a particular DOM element)
 - [ ] `useContext` (share data without prop drilling)
@@ -15,7 +16,7 @@
 ### Components
 * Components are the building blocks of a web page
 * A component can be as small as a single DOM element
-* Components are represent in React as functions that return JSX
+* Components are represented in React as functions that return JSX
 
 ### Props
 * Props is data that is passed into the component from the parent
