@@ -22,6 +22,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
             rl.question('Which sport is your absolute favourite? ', (answer) => {
               answers.push(answer);
               rl.close();
+
               const node = answers[0];
               const name = answers[1];
               const activity = answers[2];
@@ -29,6 +30,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
               const meal = answers[4];
               const food = answers[5];
               const sport = answers[6];
+              
               console.log();
               console.log('Your profile is ready!!');
               console.log(`My name is ${name} and I really like ${activity}! I listen to ${music} while eating ${food} during ${meal} and playing ${sport}... and I think Node is ${node}!!`);
