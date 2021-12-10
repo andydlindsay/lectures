@@ -18,7 +18,7 @@ const useRequest = (url) => {
         setErrorMsg('Error loading data');
         setLoading(false);
       });
-  });
+  }, []);
 
   return { data, loading, errorMsg };
 };
