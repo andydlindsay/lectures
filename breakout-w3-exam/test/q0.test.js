@@ -1,18 +1,27 @@
-const assert = require('assert').strict;
-const { objectToArray } = require('../q0');
+const { assert } = require('chai');
+const { objectToArray } = require('../q0.js');
 
-describe('tests for question 0', () => {
-
-  it('can convert an object to an array', () => {
-    let actual = objectToArray({ a: 1, b: 2, c: 3 });
-    let expected = [['a', 1], ['b', 2], ['c', 3]];
-
-    assert.deepEqual(actual, expected);
-    
-    actual = objectToArray({name: 'Dave', role: 'Instructor', yearsOfExperience: 10});
-    expected = [['name', 'Dave'], ['role', 'Instructor'], ['yearsOfExperience', 10]];
-    
-    assert.deepEqual(actual, expected);
+describe("objectToArray", () => {
+  it("converts an empty object to an empty array", () => {
+    assert.deepEqual(objectToArray({}), []);
   });
 
+  it("tends to return an array", () => {
+    const input = { key: "value" };
+    assert.isArray(objectToArray(input));
+  });
+
+  it("converts { key: 'value' } => [['key', 'value']]", () => {
+    const input = { key: "value" };
+    assert.deepEqual(objectToArray(input), [["key", "value"]]);
+  });
+
+  it("converts multiple key-value pairs to individual arrays", () => {
+    const input = { name: "Jon", lastName: "Snow", pet: "Ghost" };
+    assert.deepEqual(objectToArray(input), [
+      ["name", "Jon"],
+      ["lastName", "Snow"],
+      ["pet", "Ghost"]
+    ]);
+  });
 });
