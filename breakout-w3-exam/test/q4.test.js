@@ -1,32 +1,32 @@
-const assert = require('assert').strict;
-const { filesize } = require('../q4');
+const { assert } = require('chai');
+const { filesize } = require('../q4.js');
 
-describe('tests for q4', () => {
-
-  it('can correctly return the file size', () => {
-    let actual = filesize(1);
-    let expected = '1B';
-    assert.equal(actual, expected);
-    
-    actual = filesize(1000);
-    expected = '1kB';
-    assert.equal(actual, expected);
-    
-    actual = filesize(1000000);
-    expected = '1MB';
-    assert.equal(actual, expected);
-    
-    actual = filesize(1500000);
-    expected = '1.5MB'; 
-    assert.equal(actual, expected);
-
-    actual = filesize(1250000000);
-    expected = '1.25GB';
-    assert.equal(actual, expected);
-    
-    actual = filesize(9000000000000);
-    expected = '9TB';
-    assert.equal(actual, expected);
+describe("filesize", () => {
+  it("returns 1 for a filesize of 1 byte", () => {
+    assert.equal(filesize(1), "1B");
   });
 
+  it("returns 100B for a filesize smaller than 1000B", () => {
+    assert.equal(filesize(100), "100B");
+  });
+
+  it("returns 1kB for 1000B", () => {
+    assert.equal(filesize(1000), "1kB");
+  });
+
+  it("returns 1.2MB for 1200000B", () => {
+    assert.equal(filesize(1200000), "1.2MB");
+  });
+
+  it("returns 1.5MB for 1500000 bytes", () => {
+    assert.equal(filesize(1500000), "1.5MB");
+  });
+
+  it("returns 1.33GB for 1330000000 bytes", () => {
+    assert.equal(filesize(1330000000), "1.33GB");
+  });
+
+  it("returns 8TB for 8000000000000 bytes", () => {
+    assert.equal(filesize(8000000000000), "8TB");
+  });
 });

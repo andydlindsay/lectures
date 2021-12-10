@@ -20,13 +20,8 @@ Examples
 */
 
 const objectToArray = function(obj) {
-  const output = [];
-  for (const key in obj) {
-    output.push([key, obj[key]]);
-  }
-  return output;
-};
 
+};
 
 // Don't change below:
 module.exports = { objectToArray };

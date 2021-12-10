@@ -28,18 +28,8 @@ Examples:
 */
 
 const filesize = function(bytes) {
-  const sizes = ['B', 'kB', 'MB', 'GB'];
 
-  for (const size of sizes) {
-    if (bytes < 1000) {
-      return `${bytes}${size}`;
-    }
-    bytes /= 1000;
-  }
-
-  return `${bytes}TB`;
 };
-
 
 // Don't change below:
 module.exports = { filesize };
