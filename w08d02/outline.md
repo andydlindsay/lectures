@@ -178,57 +178,52 @@ expect(result).toBe('bar');
 ```
 
 ### Mock `axios`
+* Create a directory called `__mocks__` in the `src` directory
+* Add a file called `axios.js` to `__mocks__`
 
 ```js
-// `src/components/__tests__/HighScores.test.jsx`
-import React from 'react';
-import { render } from '@testing-library/react';
-import HighScores from '../HighScores';
-import axios from 'axios';
-
-jest.mock('axios');
-
+// in __mocks__/axios.js
 const data = [
   {
-    "id": 1,
-    "name": "Alice",
-    "points": 15
+    id: 1,
+    name: 'Alice', 
+    points: 15,
   },
   {
-    "id": 2,
-    "name": "Bob",
-    "points": 10
+    id: 2,
+    name: 'Bob', 
+    points: 10,
   },
   {
-    "id": 3,
-    "name": "Carol",
-    "points": 5
-  }
+    id: 3,
+    name: 'Carol', 
+    points: 5,
+  },
 ];
 
-// this function must be marked as `async` in order to use `await` within it
-test('Axios test', async () => {
-  // mock any calls to axios.get with hardcoded return value `data`
-  axios.get.mockResolvedValue({ data });
+export default {
+  defaults: { baseUrl: '' },
+  get: jest.fn((url) => {
+    if (url === '/high-scores') {
+      return Promise.resolve({
+        status: 200,
+        statusText: "OK",
+        data
+      });
+    }
+  })
+};
+```
 
-  // also works with a delay
-  // axios.get.mockImplementationOnce(() => {
-  //   return new Promise(resolve => {
-  //     setTimeout(() => {
-  //       resolve({ data });
-  //     }, 2000);
-  //   });
-  // });
+```js
+// in Result.test.js
+test('can display results from an API', () => {
+  const { findByText, getByTestId } = render(<Result status="Waiting" />);
 
-  const { findByText } = render(<HighScores />);
+  const highscoreButton = getByTestId('high-scores');
 
-  // we could return a promise
+  fireEvent.click(highscoreButton);
+
   return findByText('Bob', { exact: false });
-
-  // or we could get jest to wait instead
-  // return expect(findByText('Bob', { exact: false })).resolves.toBeTruthy();
-
-  // or findBy functions return a promise which we can `await`
-  // await findByText('Bob', { exact: false });
 });
 ```

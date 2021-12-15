@@ -2,13 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import {genFeedbackMessage} from '../helpers/helpers';
 
+axios.defaults.baseURL = 'https://my-json-server.typicode.com/andydlindsay/moai-axe-tree';
+
 const Result = (props) => {
   const [highScores, setHighScores] = React.useState([]);
 
   const fetchHighScores = () => {
-    const url = 'https://my-json-server.typicode.com/andydlindsay/moai-axe-tree/high-scores';
     axios
-      .get(url)
+      .get('/high-scores')
       .then(response => setHighScores(response.data))
       .catch(err => console.error(err));
   };
