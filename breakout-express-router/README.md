@@ -63,6 +63,7 @@ module.exports = (db) => {
 const dbConnection = require('./db/connection.js');
 
 const myRouterFn = require('./routes/my-router.js');
+
 app.use('/my-routes', myRouterFn(dbConnection));
 ```
 
