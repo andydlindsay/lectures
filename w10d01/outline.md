@@ -221,10 +221,30 @@ end
 # app/views/books/index.html.erb
 <h1>All the Books</h1>
 <% @books.each do |book| %>
-  <div>
+  <div class="book">
     <%= book.title %>
   </div>
 <% end %>
+```
+
+### Partials
+
+```rb
+# app/views/books/_book.html.erb
+<div class="book">
+  <%= book.title %>
+</div>
+```
+
+```rb
+# app/views/books/index.html.
+# the long way
+<% @books.each do |book| %>
+  <%= render 'book', book: book %>
+<% end %>
+
+# or in one line
+<%= render @books %>
 ```
 
 ### Use nested routes
