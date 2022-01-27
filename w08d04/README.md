@@ -145,7 +145,7 @@ componentDidMount() {}
 
 // runs every time the component updates
 // run logic that depends on state or props
-componentDidUpdate() {}
+componentDidUpdate(prevProps, prevState) {}
 
 // runs right before the component unmounts
 // clear intervals and close connections; perform any cleanup necessary

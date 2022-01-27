@@ -10,7 +10,7 @@
 ### Setup
 * Minimize background distractions; consider purchasing a green screen
 * Minimize additional audio in your area (keyboard sounds, mouse clicks, people talking, pets making noise); consider purchasing Krisp
-* Clean up your desktop: close unnecessary tabs/applications, remove shortcut icons, minimize number of icons on task bar, hide/remove browser extensions, hide bookmark bar
+* Clean up your screen: close unnecessary tabs/applications, remove shortcut icons, minimize number of icons on task bar, hide/remove browser extensions, hide bookmark bar
 * Turn off notifications and anything else that might pop up embarrassingly/distractingly during lecture (eg. bouncing app notifications on Mac)
 * 
 

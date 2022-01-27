@@ -14,8 +14,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "cypress": "node_modules/.bin/cypress open"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -26,8 +25,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "https://cors-anywhere.herokuapp.com/",
-  "devDependencies": {
-    "cypress": "^4.4.0"
-  }
+  "proxy": "https://cors-anywhere.herokuapp.com/"
 }
