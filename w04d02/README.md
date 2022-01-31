@@ -38,6 +38,7 @@
 ```
 
 ![DOM example](https://raw.githubusercontent.com/andydlindsay/lectures/master/w04d02/dom-example.png)
+*Green outline === HTML element; Pink outline === text node*
 
 ### Useful Browser Objects
 - **`window` object**
