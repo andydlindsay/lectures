@@ -180,6 +180,10 @@ end
 rails routes | grep -e 'author' -e 'book' -e 'Pref'
 ```
 
+```
+http://localhost:3000/rails/info/routes
+```
+
 ### Generate controllers
 
 ```shell
@@ -237,7 +241,7 @@ end
 ```
 
 ```rb
-# app/views/books/index.html.
+# app/views/books/index.html.erb
 # the long way
 <% @books.each do |book| %>
   <%= render 'book', book: book %>
@@ -258,6 +262,7 @@ Rails.application.routes.draw do
   end
 
   # Using namespaces /admin/articles
+  # rails g controller admin/articles
   namespace :admin do
     resources :articles, :comments
   end
