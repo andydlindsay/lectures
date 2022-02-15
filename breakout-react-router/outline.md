@@ -25,8 +25,9 @@
 <Routes>
   <Route path="about" element={<About />} />
   <Route path="products/*" element={<Products />} />
-  {/* <Route path="/products/*" element={<Product />} /> */}
   <Route path="/" element={<Home />}/>
+
+  <Route path=":product_id" element={<Product />} />
 </Routes>
 ```
 
