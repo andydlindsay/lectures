@@ -41,12 +41,6 @@
   - Packets arrive in order
   - Useful when guaranteed communication is needed
 
-### Popular protocols
-* FTP -> File Transfer Protocol
-* SMTP -> Simple Mail Transfer Protocol
-* XMPP -> Extensible Messaging and Presence Protocol (used by Slack!)
-* SSH -> Secure Shell
-
 # TCP Chat Server Demo
 
 ### Create the server
@@ -222,6 +216,12 @@ for (const con of connections) {
 ```
 
 # Protocols Part II: HTTP
+
+### Popular protocols
+* FTP -> File Transfer Protocol
+* SMTP -> Simple Mail Transfer Protocol
+* XMPP -> Extensible Messaging and Presence Protocol (used by Slack!)
+* SSH -> Secure Shell
 
 ### HTTP
 - **H**yper**T**ext **T**ransfer **P**rotocol
