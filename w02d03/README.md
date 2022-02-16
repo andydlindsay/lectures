@@ -5,7 +5,6 @@
 - [ ] TCP introduction
 - [ ] TCP demo
 - [ ] HTTP fundamentals
-- [ ] Simple HTTP client example
 
 ### What is networking?
 - Communication between machines on a network

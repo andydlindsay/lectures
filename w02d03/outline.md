@@ -1,6 +1,29 @@
 # Networking
 
-# Protocols Part I: TCP/UDP
+### What is networking?
+- Communication between machines on a network
+- In theory, any machine on the network should be able to communicate with any other machine on the network
+
+### Clients and Servers
+* The majority of networking is made up of server/client connections
+* In general, servers have information and clients want information
+
+# Protocols Part I: Lasagna of Protocols
+
+### Internet Protocol (IP)
+* This uniquely identifies the machine on the network (think "street address")
+* Comes in two flavours: IPv4 and IPv6
+  * `1.102.103.104`
+  * `2001:db8:3333:4444:5555:6666:7777:8888`
+* The port identifies the application (think "apartment number")
+* We have 65,535 ports to choose from (per internet connection)
+* Popular ports:
+  * HTTP: 80
+  * HTTPS: 443
+  * FTP: 21
+  * SMTP: 25
+  * SSH: 22
+  * Postgres: 5432
 
 ### Transport Layer Protocols
 - Break data into packets to be sent over the network layer
@@ -17,6 +40,12 @@
   - Corrupted packets are reported to the server and are re-sent
   - Packets arrive in order
   - Useful when guaranteed communication is needed
+
+### Popular protocols
+* FTP -> File Transfer Protocol
+* SMTP -> Simple Mail Transfer Protocol
+* XMPP -> Extensible Messaging and Presence Protocol (used by Slack!)
+* SSH -> Secure Shell
 
 # TCP Chat Server Demo
 
