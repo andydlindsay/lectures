@@ -1,45 +1,43 @@
 const net = require('net');
-const port = 3000;
+const port = 54321;
 
 // create the tcp server
 const server = net.createServer();
 
-// an array to hold all of the connections to the server
+// array to hold connections
 const connections = [];
 
-// event listener for any new connections to the server
+// add connection event listener
 server.on('connection', (connection) => {
-  console.log('Client connected');
+  console.log('a new client has connected');
 
-  // set the character encoding on any communication
-  connection.setEncoding('utf-8');
+  // send a message to the client
+  connection.write('hello there!');
 
-  // add the new connection to the connections array
+  // add this connection to our connections array
   connections.push(connection);
 
-  // send a message to the client using the write method
-  connection.write('Hello client!\n\n');
+  // listen for an incoming message
+  connection.on('data', (messageFromClient) => {
+    console.log('client says:', messageFromClient.trim());
 
-  // event listener for any data coming in over the connection
-  connection.on('data', (data) => {
-    console.log('Data from client:', data.replace('\n', ''));
+    if (messageFromClient.startsWith('setName:')) {
+      const name = messageFromClient.split(' ')[1].trim();
+      return connection.username = name; 
+    }
 
-    // loop over the connections and send each one the data
-    connections.forEach((con) => {
-      if (con !== connection) {
-        con.write(`Client: ${data}`);
+    for (const con of connections) {
+      if (con !== connection && !con._writableState.finished) {
+        con.write(`${connection.username} says: ${messageFromClient.trim()}`);
       }
-    });
+    }
   });
+
+  // set the encoding to utf-8
+  connection.setEncoding('utf-8');
 });
 
-// event listener for any errors
-server.on('error', (error) => {
-  console.log('Error:', error);
+// start the server listening
+server.listen(port, () => {
+  console.log(`the server is listening on port ${port}`);
 });
-
-// start the server listening on the provided port
-server.listen(port);
-
-// connect using telnet <host> <port>
-// see open connections using netstat -vanp tcp | grep -i listen

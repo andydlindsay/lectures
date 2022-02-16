@@ -1,23 +1,20 @@
 const net = require('net');
 
-// begin reading from stdin so process doesn't exit
-process.stdin.resume();
+const config = {
+  host: 'localhost',
+  port: 54321
+};
 
-// create a connection with the server over tcp
-const client = net.createConnection({
-  host: '10.0.0.175',
-  port: 3000
+const client = net.createConnection(config);
+
+client.on('data', (messageFromServer) => {
+  console.log(messageFromServer);
 });
 
-// set encoding on communication
-client.setEncoding('utf8');
+client.setEncoding('utf-8');
 
-// send anything typed in the terminal to the server
+// client.write('hey hey hey');
+
 process.stdin.on('data', (data) => {
   client.write(data);
-});
-
-// write any incoming data to the terminal
-client.on('data', (data) => {
-  console.log(`${data.replace('\n', '')}`);
 });
