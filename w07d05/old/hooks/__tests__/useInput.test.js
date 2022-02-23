@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useInput from '../useInput';
 
-describe.skip('useInput tests', () => {
+describe('useInput tests', () => {
 
   test('should start with initial value', () => {
     const initialValue = 'hello world';

@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import useMousePosition from '../useMousePosition';
 
-describe.skip('useMousePosition tests', () => {
+describe('useMousePosition tests', () => {
 
   test('should return an x key with an integer value', () => {
     const { result } = renderHook(() => useMousePosition());
