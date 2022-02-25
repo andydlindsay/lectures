@@ -4,11 +4,12 @@ import axios from 'axios';
 const useRequest = (url) => {
   const [state, setState] = useState({
     data: null,
-    loading: true,
+    loading: false,
     errorMsg: ''
   });
 
   useEffect(() => {
+    setState({ ...state, loading: true });
     axios.get(url)
       .then(result => {
         setState({
@@ -17,9 +18,7 @@ const useRequest = (url) => {
           errorMsg: ''
         });
       })
-      .catch(err => {
-        console.log(err);
-
+      .catch(() => {
         setState((prev) => ({
           ...prev,
           errorMsg: 'Error loading data',
