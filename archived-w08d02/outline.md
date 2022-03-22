@@ -7,98 +7,66 @@
 # Outline
 
 ## Routing
-* `yarn add react-router-dom`
+
+### `BrowserRouter`
+* The main routing component
+* Often aliased as `Router` during import
+
+### `Link`
+* The `Link` component is responsible for updating the url based on the `to` attribute
 
 ```jsx
-import React from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import Products from './Products';
-import Home from './Home';
-
-const Routing = () => {
-  return (
-    <Router>
-      <nav>
-        <Link to="/">Home </Link>
-        <Link to="/about">About </Link>
-        <Link to="/products">Products</Link>
-      </nav>
-
-      {/* <Route path="/about">About Page</Route>
-      <Route path="/products">
-        <Products />
-      </Route>
-      <Route path="/" exact component={Home} /> */}
-
-      <Switch>
-        <Route path="/about">About Page</Route>
-        <Route path="/products">
-          <Products />
-        </Route>
-        <Route path="/" component={Home} />
-      </Switch>
-    </Router>
-  );
-};
-
-export default Routing;
+<Link to="/">Home </Link>
+<Link to="about">About </Link>
+<Link to="products">Products</Link>
 ```
 
-## Nested Routing
+### `Routes`
+* The wrapper for `Route` components
+* Only one matched `Route` will return
+
+### `Route`
+* The actual matcher for any given url
+* Specify the `path` and the `element` attributes
 
 ```jsx
-import React from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
-import Product from './Product';
+<Routes>
+  <Route path="about" element={<About />} />
+  <Route path="products/*" element={<Products />} />
+  <Route path="/" element={<Home />}/>
 
-const Products = () => {
-  return (
-    <div>
-      <nav>
-        <Link to="/products/2">Product #2</Link><br/>
-        <Link to="/products/3">Product #3</Link><br/>
-        <Link to="/products/4">Product #4</Link><br/>
-        <Link to="/products/5">Product #5</Link>
-      </nav>
-
-      <Switch>
-        <Route path="/products/:productId">
-          <Product />
-        </Route>
-        <Route path="/products">
-          <h3>Please select a product above</h3>
-        </Route>
-      </Switch>
-    </div>
-  );
-};
-
-export default Products;
+  <Route path=":product_id" element={<Product />} />
+</Routes>
 ```
 
+### `Navigate`
+* Can be used to redirect the user to another part of the app
+
 ```jsx
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
-const Product = () => {
-  const params = useParams();
-
-  return (
-    <div>
-      <h2>Product { params.productId }</h2>
-    </div>
-  );
-};
-
-export default Product;
+<Route path="*" element={<Navigate to="/about" />} />
 ```
 
-## Programmatic Routing
+## Custom Hooks
 
-```jsx
-import { useHistory } from 'react-router-dom';
-const history = useHistory();
-history.push('/about');
+### `useParams`
+* Allows us to access the dynamic parameters in the current url (similar to `req.params` in Express)
+
+```js
+// url is /products/:product_id
+const params = useParams();
+console.log(params.product_id);
+
+// or with destructuring
+const { product_id } = useParams();
+```
+
+### `useNavigate`
+* Allows us to programmatically redirect the user
+
+```js
+const navigate = useNavigate();
+navigate('about'); // move to the about page
+navigate(-1); // move one step backwards in the history
 ```
 
 ## Styled Components
