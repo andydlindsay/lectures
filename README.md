@@ -38,8 +38,7 @@
 * [Mock Exam Review](/breakout-mock-exam-review)
 * [Week 2 Exam Review](/breakout-w2-exam)
 * [Week 3 Exam Review](/breakout-w3-exam)
-* [Tackle the Take Home Challenge](/breakout-takehome-challenge)
-* [React Router](/breakout-react-router)
+* [React Router v6](/breakout-react-router)
 
 ## Advanced Topics
 * [Github](/advanced-github)
@@ -54,3 +53,4 @@
 * [W08D02 - Real World React](/archived-w08d02)
 * [W10D02 - Feature Testing with Rails and RSpec](/archived-w10d02)
 * [BREAKOUT - React Router v5](/archived-breakout-react-router-v5/)
+* [BREAKOUT - Tackle the Take Home Challenge](/archived-breakout-takehome-challenge)
