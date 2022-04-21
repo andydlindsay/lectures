@@ -38,6 +38,7 @@
 * [Mock Exam Review](/breakout-mock-exam-review)
 * [Week 2 Exam Review](/breakout-w2-exam)
 * [Week 3 Exam Review](/breakout-w3-exam)
+* [Week 4 Exam Review](/breakout-w4-exam)
 * [React Router v6](/breakout-react-router)
 
 ## Advanced Topics
