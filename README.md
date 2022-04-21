@@ -35,11 +35,11 @@
 ## Breakouts
 * [Express Router](/breakout-express-router)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
-* [Mock Exam Review](/breakout-mock-exam-review)
-* [Week 2 Exam Review](/breakout-w2-exam)
-* [Week 3 Exam Review](/breakout-w3-exam)
-* [Week 4 Exam Review](/breakout-w4-exam)
 * [React Router v6](/breakout-react-router)
+* [Exam 1 Review](/breakout-w1-exam)
+* [Exam 2 Review](/breakout-w2-exam)
+* [Exam 3 Review](/breakout-w3-exam)
+* [Exam 4 Review](/breakout-w4-exam)
 
 ## Advanced Topics
 * [Github](/advanced-github)
