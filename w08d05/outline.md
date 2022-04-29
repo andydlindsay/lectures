@@ -58,8 +58,8 @@ comment
 
 ```rb
 # variables don't need to be declared (no const or let)
-# Don't need semicolons
-name = 'Andy'
+# and they don't need semicolons
+name = 'Alice'
 
 # Ruby is dynamically typed
 name = 7
@@ -70,9 +70,9 @@ name = true
 name = nil
 
 # Constants in Ruby are capitalized
-Name = 'Andy'
+Name = 'Alice'
 # Hungarian notation!
-NAME = 'Andy'
+NAME = 'Alice'
 ```
 
 ### Casting Values
