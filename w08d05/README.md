@@ -119,7 +119,7 @@ puts num < 10 ? "single digits" : "multiple digits"
 ### Loops
 
 ```rb
-# break
+# loop
 i = 0
 loop do
   i += 1
@@ -144,7 +144,7 @@ until i > 5 do # prints 1 through 6
 end
 
 # for..in === for..of ¯\_(ツ)_/¯
-names = ['Alice', 'Bob', 'Carol', 'David']
+names = ['Alice', 'Bob', 'Carol', 'Dean']
 for name in names do
   puts "Hello #{name}!"
 end
@@ -172,7 +172,7 @@ end
 ### Methods
 - Ruby uses implicit return, returning the last line of code in the method if there is no explicit `return`
 - Methods are not first-class citizens in Ruby as they are in JS (eg. we cannot pass them around as callbacks)
-- Special methods end in ? or !
+- Special methods end in `?` or `!`
   - `?` methods return a boolean value
   - `!` methods perform some kind of mutation
 
