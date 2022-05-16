@@ -12,18 +12,34 @@
   * Content examples: images, videos, static files, dynamically rendered files, or JSON
 * 65,535 ports for each internet connection for server to listen on
 
+### Simple TCP Server using `net` module
+
+```js
+const net = require('net');
+const port = 3000;
+
+const server = net.createServer();
+
+server.on('connection', (connection) => {
+  connection.write('hello world');
+});
+
+server.listen(port, () => {
+  console.log(`the server is listening on port ${port}`);
+});
+```
+
 ### Simple Web Server using `http` module
 
 ```js
 const http = require('http');
 const port = 3000;
 
-const server = http.createServer((request, response) => {
+const server = http.createServer();
+
+server.on('request', (request, response) => {
   response.write('hello world');
   response.end();
-
-  // can just use .end instead
-  response.end('hello world');
 });
 
 server.listen(port, () => {
