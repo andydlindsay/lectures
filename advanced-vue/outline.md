@@ -3,7 +3,7 @@
 * [Vue Install Instructions](https://vuejs.org/v2/guide/)
 * [Vue Cheat Sheet](https://devhints.io/vue)
 * [Chef Andy API](http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes)
-* [Vue Lifecycle Diagram](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)
+* [Vue Lifecycle Diagram](https://vuejs.org/assets/lifecycle.16e4c08e.png)
 
 ## Outline
 
@@ -179,7 +179,7 @@ watch: {
 ```
 
 ### Vue Lifecycle Methods
-* https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+* https://vuejs.org/assets/lifecycle.16e4c08e.png
 * Introduce the `created` lifecycle method and `fetch` data from an external API
 
 ```vue
