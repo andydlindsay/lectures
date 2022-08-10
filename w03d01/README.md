@@ -103,41 +103,9 @@ app.use((req, res, next) => {
 });
 ```
 
-### Template Engines and EJS
-* From [the Express Docs](https://expressjs.com/en/guide/using-template-engines.html):
-> A template engine enables you to use static template files in your application. At runtime, the template engine replaces variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
-* We tell Express which _template engine_ to use with the `.set` method
-* Note: Express refers to the _template engine_ as a _view engine_
-
-```js
-app.set('view engine', 'ejs');
-```
-
-* By default, Express will look in a `views` directory for our templates
-* We specify which template to render using the `.render` method on the `response` object
-* The convention is to put all variables into an object called `templateVars` that will then get passed to the template
-
-```js
-const templateVars = {
-  some: 'data to pass to the template',
-  any: 'valid JavaScript values can be passed'
-};
-
-response.render('template-name', templateVars);
-```
-
-* EJS templates always end in `.ejs`
-* Inside the template, we use special tags to indicate where we want values to be used
-
-```ejs
-<h1><%= message %><h1>
-```
-
 ### Useful Links
 - [MDN: What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
 - [Node Docs: http module](https://nodejs.org/api/http.html)
 - [ExpressJS](https://expressjs.com/)
 - [Popular Express Middleware](https://expressjs.com/en/resources/middleware.html)
 - [Writing Custom Middleware](https://expressjs.com/en/guide/writing-middleware.html)
-- [EJS](https://ejs.co/)
-- [Using Template Engines with Express](https://expressjs.com/en/guide/using-template-engines.html)

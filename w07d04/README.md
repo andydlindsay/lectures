@@ -49,9 +49,8 @@ const MyComponent = (props) => {
 
   useEffect(() => {
     // retrieve user information from an API and update local state with the response
-    fetch(`/users/${props.userId}`)
-      .then(res => res.json())
-      .then(json => setUser(json));
+    axios(`/users/${props.userId}`)
+      .then(response => setUser(response.data));
   });
 
   return (
