@@ -49,6 +49,7 @@
 
 ## Workshops
 * [Scheduler](/workshop-scheduler)
+* [Intro to Vue](/workshop-intro-to-vue)
 
 ## Archived
 * [W08D02 - Real World React](/archived-w08d02)

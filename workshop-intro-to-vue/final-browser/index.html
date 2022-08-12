@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script defer src="app.js"></script>
+
+  <title>Hello Vue!</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+
+    <ul>
+      <li v-for="sport of sports">{{ sport }}</li>
+    </ul>
+
+    <h2 v-if="visible">😀</h2>
+    <h2 v-else>😭</h2>
+
+    <h2>Count: {{ counter }}</h2>
+    <button v-on:click="counter--">Plus one!</button>
+
+    <div>
+      <label>New Sport:</label>
+      <input v-model="newSport" />
+      <button v-on:click="addSport">Add Sport!</button>
+    </div>
+
+    <ul>
+      <li v-for="recipe of recipes">{{ recipe.title }}</li>
+    </ul>
+  </div>
+</body>
+
+</html>
