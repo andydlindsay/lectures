@@ -12,6 +12,19 @@
 <body>
   <div id="app">
     <h1>{{ message }}</h1>
+
+    <label>New Sport</label>
+    <input v-model="newSport" />
+
+    <h2>Count: {{ counter }}</h2>
+    <button v-on:click="counter--">Click me!!!</button>
+
+    <h2 v-if="visible">😀</h2>
+    <h2 v-else>😭</h2>
+
+    <ul>
+      <li v-for="sport of sports">{{ sport }}</li>
+    </ul>
   </div>
 </body>
 

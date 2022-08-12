@@ -10,7 +10,7 @@ export default {
   emits: ['increment'],
   methods: {
     handleClick() {
-      this.$emit('increment');
+      this.$emit('increment', 42);
     }
   }
 }
