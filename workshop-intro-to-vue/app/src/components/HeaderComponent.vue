@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ heading }}</h1>
+  <h1 class="heading">{{ heading }}</h1>
 </template>
 
 <script>
@@ -9,4 +9,9 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.heading {
+  color: purple;
+  text-decoration: underline;
+}
+</style>
