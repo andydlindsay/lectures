@@ -4,6 +4,9 @@
 - [ ] Web Servers
 - [ ] Express
 - [ ] Middleware
+- [ ] Common Errors
+  - [ ] Address in Use
+  - [ ] Cannot Set Headers
 
 ### Web Servers
 * From [MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
