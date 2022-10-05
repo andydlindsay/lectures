@@ -33,6 +33,19 @@ app.get('/protected', (req, res) => {
 app.post('/login', (req, res) => {
   // other authenticatey stuff
   res.cookie('userId', user.id); // set the cookie's key and value
+  
+  res.redirect('/');
+});
+```
+
+### Clearing Cookies
+* Cookies are cleared using the `response` object
+* Only the cookie name (`key`) needs to be provided (no value necessary)
+
+```js
+app.post('/logout', (req, res) => {
+  res.clearCookie('userId'); // instruction to the browser to remove the `userId` cookie
+
   res.redirect('/');
 });
 ```
