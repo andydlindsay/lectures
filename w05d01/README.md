@@ -292,14 +292,22 @@ GROUP BY albums.album_name;
 12. List albums and songs with rating higher than album average (subquery)
 
 ```sql
-SELECT albums.album_name,
-  songs.song_name,
-  songs.rating,
-  (SELECT AVG(songs.rating) FROM songs WHERE songs.album_id = albums.id) AS avg_rating
+-- this query will give us the average song rating for the specified album
+SELECT AVG(rating)
+FROM songs
+WHERE album_id = 1;
+
+-- this query will give us back all the songs (and album info) with a rating higher than specified (3.0)
+SELECT *
 FROM albums
-JOIN songs
-ON albums.id = songs.album_id
-WHERE songs.rating > (SELECT AVG(songs.rating) FROM songs WHERE songs.album_id = albums.id);
+JOIN songs ON albums.id = songs.album_id
+WHERE songs.rating > 3.0;
+
+-- we can use a subquery to put these two queries together
+SELECT *,
+FROM albums
+JOIN songs ON albums.id = songs.album_id
+WHERE songs.rating > (SELECT AVG(rating) FROM songs WHERE album_id = albums.id);
 ```
 
 ### Useful Links
