@@ -32,6 +32,10 @@
 * [W10D01 - Rails Review](/w10d01)
 * [W10D04 - Final Project Kickoff](/w10d04)
 
+## Flex-Specific Lectures
+* [M07W16 - React Fundamentals](/m07w16)
+* [M07W17 - Component-Based UI w/ React](/m07w17)
+
 ## Breakouts
 * [Express Router](/breakout-express-router)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
