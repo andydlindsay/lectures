@@ -58,6 +58,39 @@ export default App;
   );
 ```
 
+# Refactor to demonstrate `.map`
+
+```jsx
+const products = [
+  { name: 'Taco Kit', price: 1.49 },
+  { name: 'Lettuce', price: 4.48 },
+];
+
+const mappedProducts = products.map((product, index) => {
+  return <Product key={index} { ...product } />;
+});
+```
+
+# Demonstrate raising state with a to do list
+
+- App
+  - ToDoList
+  - ToDoForm
+
+# Pass actions down as props
+
+* Pass down `setTodos` as a prop and talk about having to pass down the `todos` as well (don't discuss using `prev` unless a student brings it up)
+* Wrap `setTodos` in a helper function that takes in the new todo and pass that down instead
+
+```jsx
+const addNewTodo = (newTodo) => {
+  setTodos([...todos, newTodo]);
+};
+
+// in return
+<TodoForm addNewTodo={addNewTodo} />
+```
+
 # Add storybook
 
 ```bash
