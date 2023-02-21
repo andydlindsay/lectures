@@ -4,11 +4,10 @@
 
 - [ ] Review concepts from last week
 - [ ] Passing props with the spread operator
+- [ ] React Dev Tools
 - [ ] Lifting state up
 - [ ] Passing actions down as props
-- [ ] Controlling custom components
 - [ ] Storybook
-- [ ] React Dev Tools
 
 ### Passing props with the spread operator
 
