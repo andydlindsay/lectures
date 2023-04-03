@@ -35,6 +35,7 @@
 ## Flex-Specific Lectures
 * [M07W16 - React Fundamentals](/m07w16)
 * [M07W17 - Component-Based UI w/ React](/m07w17)
+* [M09W23 - Project Planning](/m09w23)
 
 ## Breakouts
 * [Express Router](/breakout-express-router)
