@@ -97,11 +97,11 @@
 
 #### Planning Steps
 
-1. User Stories (Extract Nouns / Tables)
-2. Database (Identify Relationships)
-3. ERD (Consider use of Draw.IO or Vizio)
+1. User Stories 
+2. Resources (nouns from user stories)
+3. ERD
 4. Routes
-5. Wireframes (Consider use of Figma) [and Design]
+5. Wireframe
 6. Set up GitHub Together
 7. Set up the Project Structure and Naming Conventions Together
 8. Decide on Workflow and Tasks
@@ -164,6 +164,7 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
   * [EverNote](https://evernote.com/)
   * [Inkdrop](https://www.inkdrop.app/)
   * [OneNote](https://www.onenote.com)
+  * [Obsidian](https://obsidian.md/)
 
 #### Know your favourite documentation
 * There are tools for grabbing main / trusted docs in one-place for your convenience like [DevDocs](https://devdocs.io/)

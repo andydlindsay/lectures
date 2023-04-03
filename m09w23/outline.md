@@ -26,6 +26,7 @@
 * [EverNote](https://evernote.com/)
 * [Inkdrop](https://www.inkdrop.app/)
 * [OneNote](https://www.onenote.com)
+* [Obsidian](https://obsidian.md/)
 * [DevDocs](https://devdocs.io/)
 * MacOS: [Dash](https://kapeli.com/dash)
 * Windows: [Velocity](https://velocity.silverlakesoftware.com/)
