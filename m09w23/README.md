@@ -72,21 +72,23 @@
     * What they did last day
     * What they plan to do today
     * If they currently have any roadblocks
-* Scrum team:
-  * Scrum Master:
-    * Coach team members
-    * Help Scrum team focus on high-value increments
-    * Help remove roadblocks for the team
-    * Ensure all Scrum events take place within the time limits
-    * Helps with organizing of the project on all levels
-  * Developers:
-    * Plan a backlog, and the upcoming sprint
-    * Finish anything they start to a launch-ready state
-    * Each day is planned toward reaching the current sprint goal
-  * Product Owner:
-    * Develops a clear Product Goal
-    * Creates / communicates Product Backlog Items
-    * Ensures Product Backlog is transparent, visible, understood
+
+#### Scrum team
+
+* Scrum Master:
+  * Coach team members
+  * Help Scrum team focus on high-value increments
+  * Help remove roadblocks for the team
+  * Ensure all Scrum events take place within the time limits
+  * Helps with organizing of the project on all levels
+* Developers:
+  * Plan a backlog, and the upcoming sprint
+  * Finish anything they start to a launch-ready state
+  * Each day is planned toward reaching the current sprint goal
+* Product Owner:
+  * Develops a clear Product Goal
+  * Creates / communicates Product Backlog Items
+  * Ensures Product Backlog is transparent, visible, understood
 
 #### Scrum Process
 
@@ -104,7 +106,9 @@
 8. Decide on Workflow and Tasks (Consider use of [Trello](https://trello.com/), [Asana](https://asana.com/), or [Jira](https://www.atlassian.com/software/jira))
 9. Communication ([Slack](https://slack.com/), E-Mail, [Discord](https://discord.com/), [Google Meet](https://meet.google.com))
 
-### Kanban
+### Keeping Track of Tasks
+
+#### Kanban
 
 Kanban is a style of transparent communication across a team, detailing both the current and upcoming tasks and their progress. There are usually at least 3 columns on such a board:
 
@@ -114,18 +118,21 @@ Kanban is a style of transparent communication across a team, detailing both the
 
 Anyone visiting the board can immediately understand how much work is left, completed, and who is working on what (colour co-ordination and easy visual-indicators help observers understand at a glance).
 
+#### Github Projects
+
+Github has built-in Kanban-style boards called `Projects`. You can create Projects that cover multiple repos or you can create repo-specific projects. Issues and Pull Requests can be automatically added to the board and the board can be automated for things like code review.
+
 ### Keeping Track of Time
 
 #### Time Estimation
 
 * At the start this is difficult... how do you know how long something will take?
-* Leave your judgement at the door, and begin *tracking your time*
+* The best way to get better is to *track your time*
 * [Harvest](https://www.getharvest.com/), [Tickspot](https://www.tickspot.com/), [Alternatives?](https://alternativeto.net/software/tickspot/)
   * Leave detailed notes or categorize your work
   * When quoting new projects you can review this to see how long on average these sorts of tasks have been taking
 * With a good idea of how long things take, you can let yourself, your employer, and clients know how long things might take (add 10-20%+ in padding in case there is a complication)
 * Don't fall victim to the [mythical man-month](https://en.wikipedia.org/wiki/The_Mythical_Man-Month#Ideas_presented)
-
 
 #### Have a calendar!
 
@@ -133,6 +140,7 @@ Anyone visiting the board can immediately understand how much work is left, comp
 * Use [Google Calendar](https://calendar.google.com/) (or a similar app), it can notify you on your phone, in your e-mail, etc. about scheduled meetings and any changes—get in the habit of checking it often!
 
 #### Have a schedule!
+
 * Protect work-time and relaxation time
 * You need focus-hours in the day where interruptions can be minimized
 * Avoid social media and other distractions when working—sometimes it helps to have separate accounts on your OS, or two devices, one for work and one for leisure
@@ -148,7 +156,7 @@ Anyone visiting the board can immediately understand how much work is left, comp
 
 #### Take notes!
 * Meeting, planning, research... these are all opportunities to make a note for later
-* Tools: [EverNote](https://evernote.com/), [Inkdrop](https://www.inkdrop.app/)
+* Tools: [EverNote](https://evernote.com/), [Inkdrop](https://www.inkdrop.app/), [OneNote](https://www.onenote.com)
 
 #### Know your favourite documentation
 * There are tools for grabbing main / trusted docs in one-place for your convenience like [DevDocs](https://devdocs.io/)
