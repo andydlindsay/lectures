@@ -2,10 +2,11 @@
 
 ### To Do
 
-* [ ] Managing a Project
-* [ ] The Planning Process
-* [ ] Tools of the Trade
-* [ ] Discuss!
+* [ ] How are projects managed?
+* [ ] Planning out a project
+* [ ] Keeping track of tasks
+* [ ] Keeping track of time
+* [ ] Staying organized
 
 ### How are Projects Managed?
 
@@ -152,7 +153,7 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
   4. Repeat the above 3 times
   5. Take a 20-30 minute break and return to step 1
 
-### Organization
+### Staying Organized
 
 #### Take notes!
 * Meeting, planning, research... these are all opportunities to make a note for later
