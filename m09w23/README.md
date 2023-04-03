@@ -38,7 +38,7 @@
 
 #### Scrum
 
-![Scrum Process](https://www.digite.com/wp-content/uploads/2021/08/scrum-methodology.png)
+![Scrum Process](https://www.pm-partners.com.au/wp-content/uploads/2021/06/blog-scrum-process-opt.jpg)
 
 * Teamwork framework
 * [There are accepted schools of thought for SCRUM](https://scrumguides.org/)
