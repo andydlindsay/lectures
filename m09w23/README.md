@@ -2,13 +2,13 @@
 
 ### To Do
 
-* [ ] How are projects managed?
+* [ ] Project Management
 * [ ] Planning out a project
 * [ ] Keeping track of tasks
 * [ ] Keeping track of time
 * [ ] Staying organized
 
-### How are Projects Managed?
+### Project Management
 
 #### Waterfall
 
@@ -43,8 +43,6 @@
 
 #### Scrum
 
-* Teamwork framework
-* [There are accepted schools of thought for SCRUM](https://scrumguides.org/)
 * Product Backlog
   * A living document, an ordered list of what is needed to improve the topic
   * This defines the goals and work of the scrum team to reach the product goal
@@ -72,21 +70,21 @@
   * All members describe:
     * What they did last day
     * What they plan to do today
-    * If they currently have any roadblocks
+    * If they currently have any roadblocks or _asks_ of other team members
 
 #### Scrum team
 
-* Scrum Master:
+* Scrum Master
   * Coach team members
   * Help Scrum team focus on high-value increments
   * Help remove roadblocks for the team
   * Ensure all Scrum events take place within the time limits
   * Helps with organizing of the project on all levels
-* Developers:
+* Developers
   * Plan a backlog, and the upcoming sprint
   * Finish anything they start to a launch-ready state
   * Each day is planned toward reaching the current sprint goal
-* Product Owner:
+* Product Owner
   * Develops a clear Product Goal
   * Creates / communicates Product Backlog Items
   * Ensures Product Backlog is transparent, visible, understood
@@ -97,15 +95,23 @@
 
 ### Planning out a Project
 
+#### Planning Steps
+
 1. User Stories (Extract Nouns / Tables)
 2. Database (Identify Relationships)
 3. ERD (Consider use of Draw.IO or Vizio)
 4. Routes
 5. Wireframes (Consider use of Figma) [and Design]
 6. Set up GitHub Together
-7. Set up the Project Structure and Naming Conventions Together (Consider a Style-Guide for [JavaScript](https://airbnb.io/javascript/) / [Ruby](https://rubystyle.guide/) / [CSS](http://smacss.com/))
-8. Decide on Workflow and Tasks (Consider use of [Trello](https://trello.com/), [Asana](https://asana.com/), or [Jira](https://www.atlassian.com/software/jira))
-9. Communication ([Slack](https://slack.com/), E-Mail, [Discord](https://discord.com/), [Google Meet](https://meet.google.com))
+7. Set up the Project Structure and Naming Conventions Together
+8. Decide on Workflow and Tasks
+9. Decide on Communication
+
+#### Example Style Guides
+
+* [JavaScript Style-Guide](https://airbnb.io/javascript/)
+* [Ruby Style-Guide](https://rubystyle.guide/)
+* [CSS Style-Guide](http://smacss.com/)
 
 ### Keeping Track of Tasks
 
@@ -128,8 +134,11 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 #### Time Estimation
 
 * At the start this is difficult... how do you know how long something will take?
-* The best way to get better is to *track your time*
-* [Harvest](https://www.getharvest.com/), [Tickspot](https://www.tickspot.com/), [Alternatives?](https://alternativeto.net/software/tickspot/)
+* The best way to get better is to **track your time**
+* Consider the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) and/or use of an [online Pomodoro timer](https://pomofocus.io/)
+* Time tracking software
+  * [Harvest](https://www.getharvest.com/)
+  * [Tickspot](https://www.tickspot.com/)
   * Leave detailed notes or categorize your work
   * When quoting new projects you can review this to see how long on average these sorts of tasks have been taking
 * With a good idea of how long things take, you can let yourself, your employer, and clients know how long things might take (add 10-20%+ in padding in case there is a complication)
@@ -146,18 +155,15 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 * You need focus-hours in the day where interruptions can be minimized
 * Avoid social media and other distractions when working—sometimes it helps to have separate accounts on your OS, or two devices, one for work and one for leisure
 * Have set times for relaxation to ensure you're taking breaks—protect an evening with the family, etc.
-* Still having trouble focusing? Consider the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) and use of [online timers](https://pomofocus.io/):
-  1. Decide on a task
-  2. Work on the task for ~25 minutes
-  3. Take a break (5-10 minutes)
-  4. Repeat the above 3 times
-  5. Take a 20-30 minute break and return to step 1
 
 ### Staying Organized
 
 #### Take notes!
 * Meeting, planning, research... these are all opportunities to make a note for later
-* Tools: [EverNote](https://evernote.com/), [Inkdrop](https://www.inkdrop.app/), [OneNote](https://www.onenote.com)
+* Tools
+  * [EverNote](https://evernote.com/)
+  * [Inkdrop](https://www.inkdrop.app/)
+  * [OneNote](https://www.onenote.com)
 
 #### Know your favourite documentation
 * There are tools for grabbing main / trusted docs in one-place for your convenience like [DevDocs](https://devdocs.io/)
@@ -168,6 +174,7 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 
 ### Useful Links
 
+* [Scrum Guides](https://scrumguides.org/)
 * [Agile versus Waterfall](https://www.atlassian.com/agile/project-management/project-management-intro)
 * [User Stories](https://www.atlassian.com/agile/project-management/user-stories)
 * [Kanban](https://www.atlassian.com/agile/kanban/boards)
