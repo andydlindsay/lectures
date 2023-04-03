@@ -11,8 +11,6 @@
 
 #### Waterfall
 
-![Waterfall Release Schedule](https://wac-cdn.atlassian.com/dam/jcr:75f1a49a-c071-4c59-a820-aa5dfbf8bfbe/waterfall_release_process.svg?cdnVersion=492)
-
 * A more "traditional" approach
 * You quote and plan the project all at once and are set to that plan
 * Each piece is worked on one at a time to ultimately launch the project at-once
@@ -21,24 +19,28 @@
 * More solid initial planning
 * Less flexible during development
 
-#### Agile
+#### Waterfall Release Schedule
 
-![Agile Release Schedule](https://wac-cdn.atlassian.com/dam/jcr:cbb1fb08-0fd5-4a63-bf4e-76bfe0578512/agile_release_train.svg?cdnVersion=492)
+![Waterfall Release Schedule](https://wac-cdn.atlassian.com/dam/jcr:75f1a49a-c071-4c59-a820-aa5dfbf8bfbe/waterfall_release_process.svg?cdnVersion=492)
+
+#### Agile
 
 * Iterative approach
 * Dynamic
 * Designed to deliver a product in smaller, faster "stages" / "sprints"
   * Sprints are defined periods of time (ex: 2 weeks) that a feature must be completed to a launch-ready point
 * Each step of the way the progress and plan are re-evaluated and changes can be scheduled
-* Manifesto describes an emphasis on:
+* Has an emphasis on:
   * Individuals / interactions over processes and tools
   * Working software over comprehensive documentation
   * Customer collaboration over contract negotiation
   * Responding to change over following a set plan
 
-#### Scrum
+#### Agile Release Schedule
 
-![Scrum Process](https://www.pm-partners.com.au/wp-content/uploads/2021/06/blog-scrum-process-opt.jpg)
+![Agile Release Schedule](https://wac-cdn.atlassian.com/dam/jcr:cbb1fb08-0fd5-4a63-bf4e-76bfe0578512/agile_release_train.svg?cdnVersion=492)
+
+#### Scrum
 
 * Teamwork framework
 * [There are accepted schools of thought for SCRUM](https://scrumguides.org/)
@@ -85,6 +87,10 @@
     * Develops a clear Product Goal
     * Creates / communicates Product Backlog Items
     * Ensures Product Backlog is transparent, visible, understood
+
+#### Scrum Process
+
+![Scrum Process](https://www.pm-partners.com.au/wp-content/uploads/2021/06/blog-scrum-process-opt.jpg)
 
 ### Planning out a Project
 
