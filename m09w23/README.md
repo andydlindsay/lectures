@@ -2,7 +2,7 @@
 
 ### To Do
 
-* [ ] Project Management
+* [ ] Project management
 * [ ] Planning out a project
 * [ ] Keeping track of tasks
 * [ ] Keeping track of time
@@ -176,4 +176,4 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 * [Wireframe Tools](https://webflow.com/blog/wireframe-tools)
 * [Note-Taking Apps](https://www.techradar.com/best/best-note-taking-app)
 
-**Notes and example code borrowed from Warren Uhrich's and [Taiwo Oyeniyi's](https://github.com/muyiwaoyeniyi/lhl-lectures/blob/main/Aug-8th-2022-Cohort/flex-m09w23/README.md) lectures.**
+**Notes borrowed from Warren Uhrich's and [Taiwo Oyeniyi's](https://github.com/muyiwaoyeniyi/lhl-lectures/blob/main/Aug-8th-2022-Cohort/flex-m09w23/README.md) lectures.**

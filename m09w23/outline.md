@@ -20,7 +20,6 @@
 * [Online Pomodoro Timer](https://pomofocus.io/)
 * [Harvest](https://www.getharvest.com/)
 * [Tickspot](https://www.tickspot.com/)
-* [Mythical Man-Month](https://en.wikipedia.org/wiki/The_Mythical_Man-Month#Ideas_presented)
 
 #### Staying Organized
 
