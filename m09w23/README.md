@@ -15,10 +15,9 @@
 * A more "traditional" approach
 * You quote and plan the project all at once and are set to that plan
 * Each piece is worked on one at a time to ultimately launch the project at-once
-* This could mean: discovery, design, wireframing, ERD, database, then back-end, then front-end, then styling, then a testing / fixes period
-* Prone to roadblocks
 * More solid initial planning
 * Less flexible during development
+* Prone to roadblocks
 
 #### Waterfall Release Schedule
 
@@ -26,13 +25,12 @@
 
 #### Agile
 
+* Agile is a philosophy
 * Iterative approach
-* Dynamic
-* Designed to deliver a product in smaller, faster "stages" / "sprints"
-  * Sprints are defined periods of time (ex: 2 weeks) that a feature must be completed to a launch-ready point
-* Each step of the way the progress and plan are re-evaluated and changes can be scheduled
+* Designed to provide continuous delivery of a product in smaller (faster) chunks
+* Each step of the way, the progress and plan are re-evaluated and changes can be scheduled
 * Has an emphasis on:
-  * Individuals / interactions over processes and tools
+  * Individuals and interactions over processes and tools
   * Working software over comprehensive documentation
   * Customer collaboration over contract negotiation
   * Responding to change over following a set plan
@@ -43,28 +41,25 @@
 
 #### Scrum
 
+* Scrum is a methodology
 * Product Backlog
-  * A living document, an ordered list of what is needed to improve the topic
+  * A living document, an ordered list of what is needed to improve the product
   * This defines the goals and work of the scrum team to reach the product goal
 * Sprint Backlog
   * The list of deliverables / tasks necessary to fulfill items in the product backlog
   * Organized into groups that are deliverable within sprint-periods / sprints
 * Sprint Planning
-  * Why is the Sprint valuable?
   * What can be done during this sprint?
   * How will this get done, and by whom?
   * Set timeframe
 * Sprint Execution
   * No changes can be made that endanger the sprint and its goals
   * Quality of the product can not decrease
-  * Product backlog can be updated to reflect this development
-  * Scope is clarified with the product owner as more is learned
   * Must complete within the agreed upon timeframe, all members are accountable and help each other
 * Sprint Review
   * Look over the outcome of the sprint
   * Identify any adjustments or future developments that can improve it over time
   * Identify anything in the development process that hindered, or helped development
-  * Often around 4 hours per month-sprint (shorter sprints have shorter reviews)
 * Daily Scrum
   * Members of the team meet at expected intervals—often daily, in the morning
   * All members describe:
@@ -74,6 +69,10 @@
 
 #### Scrum team
 
+* Product Owner
+  * Develops a clear Product Goal
+  * Creates / communicates Product Backlog Items
+  * Ensures Product Backlog is transparent, visible, understood
 * Scrum Master
   * Coach team members
   * Help Scrum team focus on high-value increments
@@ -84,10 +83,6 @@
   * Plan a backlog, and the upcoming sprint
   * Finish anything they start to a launch-ready state
   * Each day is planned toward reaching the current sprint goal
-* Product Owner
-  * Develops a clear Product Goal
-  * Creates / communicates Product Backlog Items
-  * Ensures Product Backlog is transparent, visible, understood
 
 #### Scrum Process
 
@@ -135,14 +130,13 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 
 * At the start this is difficult... how do you know how long something will take?
 * The best way to get better is to **track your time**
-* Consider the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) and/or use of an [online Pomodoro timer](https://pomofocus.io/)
 * Time tracking software
   * [Harvest](https://www.getharvest.com/)
   * [Tickspot](https://www.tickspot.com/)
-  * Leave detailed notes or categorize your work
-  * When quoting new projects you can review this to see how long on average these sorts of tasks have been taking
+* Consider the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) and/or use of an [online Pomodoro timer](https://pomofocus.io/)
+* Leave detailed notes or categorize your work
+* When quoting new projects you can review this to see how long on average these sorts of tasks have been taking
 * With a good idea of how long things take, you can let yourself, your employer, and clients know how long things might take (add 10-20%+ in padding in case there is a complication)
-* Don't fall victim to the [mythical man-month](https://en.wikipedia.org/wiki/The_Mythical_Man-Month#Ideas_presented)
 
 #### Have a calendar!
 
@@ -162,9 +156,8 @@ Github has built-in Kanban-style boards called `Projects`. You can create Projec
 * Meeting, planning, research... these are all opportunities to make a note for later
 * Tools
   * [EverNote](https://evernote.com/)
-  * [Inkdrop](https://www.inkdrop.app/)
   * [OneNote](https://www.onenote.com)
-  * [Obsidian](https://obsidian.md/)
+  * [Inkdrop](https://www.inkdrop.app/)
 
 #### Know your favourite documentation
 * There are tools for grabbing main / trusted docs in one-place for your convenience like [DevDocs](https://devdocs.io/)
