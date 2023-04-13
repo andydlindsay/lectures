@@ -52,3 +52,5 @@
 ### Useful Links
 * [FreeCodeCamp](https://www.freecodecamp.org/)
 * [JavaScript Coding Interview Practice – Sample Interview Questions and Solutions](https://www.freecodecamp.org/news/javascript-coding-interview-practice/)
+
+Notes inspired by [Warren Uhrich's lecture](https://github.com/WarrenUhrich/lighthouse-labs-technical-interview-breakout/tree/2023.03.29-web-flex-20february2023).
