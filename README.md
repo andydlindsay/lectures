@@ -45,6 +45,7 @@
 * [Exam 2 Review](/breakout-w2-exam)
 * [Exam 3 Review](/breakout-w3-exam)
 * [Exam 4 Review](/breakout-w4-exam)
+* [Technical Interview Prep](/breakout-ti-prep/)
 
 ## Advanced Topics
 * [Github](/advanced-github)
