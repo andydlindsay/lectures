@@ -10,8 +10,8 @@
 
 ### Types of Interviews
 * Culture fit - a meeting to get to know you and your personality to see if you'll work well with the current team
-* Take home challenge - you are provided with a small project to complete before a deadline (usually 1 - 4 days)
 * White board - no VS Code, no autocomplete, just you and a marker vs the problem
+* Take home challenge - you are provided with a small project to complete before a deadline (usually 1 - 4 days)
 * Pair programming - working with the interviewer to solve a problem
 
 ### Types of Questions
@@ -48,6 +48,7 @@
 * Did anything unexpected happen? (eg. a word/term you'd never heard or a question you'd never seen)
 * What went well? What parts of the interview were you happiest with?
 * What went poorly? What parts of the interview could be improved on?
+* Based on your interaction with the interviewer, is this an employer you'd like to work for?
 
 ### Useful Links
 * [FreeCodeCamp](https://www.freecodecamp.org/)
