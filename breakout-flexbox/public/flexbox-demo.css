@@ -1,5 +1,12 @@
 .box {
-  height: 150px;
+  flex: 1;
+  min-height: 150px;
+  font-size: 40px;
+  margin: 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .green {
@@ -12,10 +19,6 @@
 
 .purple {
   background-color: purple;
-}
-
-.yellow {
-  background-color: yellow;
 }
 
 .orange {
