@@ -1,42 +1,92 @@
-[https://reqres.in/](https://reqres.in/)
-
-# External Resources
-
-* http://my-json-server.typicode.com/andydlindsay/chef-andy
-
 # Outline
 
-* AJAX history
-* XML Http request object
-* XML explanation
+### AJAX
+* **A**synchronous **J**avaScript **A**nd **X**ML
+* Invented by Microsoft for Outlook Web Access as a way of replicating desktop application functionality in the browser
+* Thanks to AJAX, web applications can send and receive data asynchronously without requiring a browser refresh
+* The widespread use of AJAX was one of the factors that led to Web 2.0
+* Originally retrieved data sent using `XML`, but modern applications use `JSON` instead
+
+### XMLHttpRequest Object
+* AJAX is implemented using the `XMLHttpRequest` (`XHR`) object
+* Modern libraries (such as `jQuery` or `axios`) provide us with easy-to-use wrappers for the `XHR` object
+* [W3Schools Example](https://www.w3schools.com/xml/xml_http.asp)
+
+### jQuery AJAX
+* jQuery gives us an API for making AJAX requests
 
 ```js
 $.ajax({
-  url: '',
-  method: '',
+  url: 'https://jsonplaceholder.typicode.com/posts',
+  method: 'GET',
   dataType: 'json',
-  success: (data) => console.log(data),
-  error: (error) => console.error(error)
+  success: (data) => {
+    console.log('this request succeeded and here\'s the data', data);
+  },
+  error: (error) => {
+    console.log('this request failed and this was the error', error);
+  }
 });
 ```
 
-* Wikipedia AJAX request
-  * bacon ipsum api
+### Run through the starter app code
+* The `foods` are being required in from a JSON file (students might not have seen this before)
 
-* basic server
+### Introduce static files / express.static
+* Discuss static files (contrast with ejs templates which are dynamic)
+* Add `express.static` middleware to the starter app
+* Add a `public` directory and an `index.html`
+* Demo that `index.html` will be served when visiting `/` (and only `/`)
 
 ```js
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 789;
-app.use(express.static('public'));
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
+app.use(express.static('public')); // serve up static files from a folder name "public"
+```
+
+### Add jQuery and demo making an AJAX request
+* Make a request to an external API
+* Make a request to the `/foods` endpoint
+
+```js
+// /public/ajax-demo.js
+$.ajax({
+  method: 'GET',
+  url: 'https://www.dnd5eapi.co/api/monsters/adult-black-dragon/',
+  success: (response) => {
+    console.log(response);
+  }
+});
+
+$.ajax({
+  method: 'GET',
+  url: '/foods',
+}).done((response) => {
+  console.log('inside promise', response);
 });
 ```
 
-* create `index.html` in `public` directory
-* create `app.js` in `public` directory
+### Build and style a hardcoded food element in `index.html`
+* Add the structure to `index.html`
+* Add a stylesheet and styles
+
+```html
+<!-- inside index.html -->
+<article class="food-item">
+  <div class="food-item-header">
+    <h2>Name: Hawaiian Pizza</h2>
+    <p>ID: ghi</p>
+  </div>
+  <p>Tagline: The perfect food</p>
+  <div class="food-item-footer">
+    <h4>Price: $4.99</h4>
+    <h4>Calories: 600</h4>
+  </div>
+</article>
+```
+
+```css
+/* inside food-styles.css */
+
+```
 
 * jsonplaceholder api
 * fetch all posts via AJAX

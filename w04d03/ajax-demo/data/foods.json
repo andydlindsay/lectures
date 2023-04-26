@@ -1,0 +1,37 @@
+[
+  {
+    "id": "abc",
+    "name": "Spicy Chicken Sandwich",
+    "price": 7.99,
+    "tagline": "Crispy and Spicy!",
+    "calories": 750
+  },
+  {
+    "id": "def",
+    "name": "Classic Cheeseburger",
+    "price": 6.99,
+    "tagline": "Juicy and Cheesy!",
+    "calories": 850
+  },
+  {
+    "id": "ghi",
+    "name": "Veggie Pizza",
+    "price": 9.99,
+    "tagline": "Fresh and Flavorful!",
+    "calories": 650
+  },
+  {
+    "id": "jkl",
+    "name": "Grilled Salmon",
+    "price": 14.99,
+    "tagline": "Succulent and Savory!",
+    "calories": 500
+  },
+  {
+    "id": "mno",
+    "name": "Caesar Salad",
+    "price": 8.99,
+    "tagline": "Crisp and Classic!",
+    "calories": 400
+  }
+]
