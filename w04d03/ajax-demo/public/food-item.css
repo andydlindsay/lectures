@@ -1,0 +1,19 @@
+.food-item {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.food-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: olivedrab;
+}
+
+.food-item-footer {
+  display: flex;
+  justify-content: space-between;
+  color: lightseagreen;
+}

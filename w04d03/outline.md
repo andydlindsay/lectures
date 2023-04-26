@@ -75,6 +75,7 @@ $.ajax({
     <h2>Name: Hawaiian Pizza</h2>
     <p>ID: ghi</p>
   </div>
+  <hr/>
   <p>Tagline: The perfect food</p>
   <div class="food-item-footer">
     <h4>Price: $4.99</h4>
@@ -85,80 +86,357 @@ $.ajax({
 
 ```css
 /* inside food-styles.css */
+.food-item {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
 
+.food-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: olivedrab;
+}
+
+.food-item-footer {
+  display: flex;
+  justify-content: space-between;
+  color: lightseagreen;
+}
 ```
 
-* jsonplaceholder api
-* fetch all posts via AJAX
-* hide fetch behind a `Get Posts` button click
-* press the button several times
+### Recreate the hardcoded food-item element using jQuery
+* Add a wrapper `<section>` with an id so we can grab it with jQuery
+* Append/prepend our new element to the DOM
+* The style/markup for the created element should be identical to the hardcoded element
+* This is a good opportunity to demonstrate when JS runs by running our code outside and then inside a `document.ready` (the query for the `food-item-container` will fail if the JS runs too early)
 
 ```js
-$.getJSON(`${BASE_URL}/posts`, (posts) => {
-  posts.forEach((post) => {
-    const $posts = $('#posts');
-    const $article = $('<article>');
-    const $title = $('<header>').text(`Title: ${post.title}`);
+// inside /public/food-item.js
+const $foodItem = $(`
+  <article class="food-item">
+    <div class="food-item-header">
+      <h2>Name: Hawaiian Pizza</h2>
+      <p>ID: ghi</p>
+    </div>
+    <hr/>
+    <p>Tagline: The perfect food</p>
+    <div class="food-item-footer">
+      <h4>Price: $4.99</h4>
+      <h4>Calories: 600</h4>
+    </div>
+  </article>
+`);
 
-    // const $body = $('<p>').text(post.body);
-    // const $footer = $('<footer>').text(`User: ${post.userId}`);
+const $container = $('#food-item-container');
 
-    $article.append($title);
-    // $article.append($title, $body, $footer);
-    $posts.append($article);
+$container.prepend($foodItem); // or .append
+$foodItem.prependTo($container); // or .appendTo
+```
+
+```html
+<!-- inside /public/index.html -->
+<section id="food-item-container">
+
+  <article class="food-item">
+    <div class="food-item-header">
+      <h2>Name: Hawaiian Pizza</h2>
+      <p>ID: ghi</p>
+    </div>
+    <hr/>
+    <p>Tagline: The perfect food</p>
+    <div class="food-item-footer">
+      <h4>Price: $4.99</h4>
+      <h4>Calories: 600</h4>
+    </div>
+  </article>
+
+</section>
+```
+
+### Move the dynamic creation into a helper function that accepts a `foodItem` object
+
+```js
+// inside /public/food-item.js
+const $container = $("#food-item-container");
+
+const foodItem = {
+  id: 'abc',
+  name: 'Tasty Food Treat',
+  price: 9.99,
+  tagline: 'Always a great snack!',
+  calories: 400
+};
+
+const createFoodItem = (foodItem) => {
+  const $foodItem = $(`
+    <article class="food-item">
+      <div class="food-item-header">
+        <h2>Name: ${foodItem.name}</h2>
+        <p>ID: ${foodItem.id}</p>
+      </div>
+      <hr/>
+      <p>Tagline: ${foodItem.tagline}</p>
+      <div class="food-item-footer">
+        <h4>Price: $${foodItem.price}</h4>
+        <h4>Calories: ${foodItem.calories}</h4>
+      </div>
+    </article>
+  `);
+
+  return $foodItem;
+};
+
+const $foodItem = createFoodItem(foodItem);
+
+$container.prepend($foodItem); // or .append
+```
+
+### Create a helper function to render an array of foodItems
+* The hardcoded food item in `index.html` can be deleted so that the `<section>` is empty to start
+
+```html
+<!-- inside /public/index.html -->
+<section id="food-item-container"></section>
+```
+
+```js
+// inside /public/food-item.js
+const foodItems = [
+  {
+    id: 'abc',
+    name: 'Tasty Food Treat',
+    price: 9.99,
+    tagline: 'Always a great snack!',
+    calories: 400
+  },
+  {
+    id: 'def',
+    name: 'Another Awesome Item',
+    price: 3.99,
+    tagline: 'Tasty any time of day.',
+    calories: 200
+  },
+  {
+    id: 'ghi',
+    name: 'Great Food',
+    price: 7.49,
+    tagline: 'Mmmmmmmmmm',
+    calories: 750
+  },
+];
+
+const renderFoodItems = (foodItems) => {
+  for (const foodItem of foodItems) {
+    const $foodItem = createFoodItem(foodItem);
+    $container.prepend($foodItem); // or .append
+  }
+};
+
+renderFoodItems(foodItems);
+```
+
+### Create a helper function to make a `GET` request to `/foods`
+* The hardcoded `foodItems` array can be deleted/commented out
+
+```js
+// inside /public/food-item.js
+const fetchFoods = () => {
+  $.ajax({
+    method: 'GET',
+    url: '/foods'
+  }).then((foodItems) => {
+    renderFoodItems(foodItems);
+  });
+};
+
+fetchFoods();
+```
+
+### Add a form to `index.html` for food item creation
+
+```html
+<!-- inside /public/index.html -->
+<form id="food-item-form">
+  <label>Name</label>
+  <input name="name" />
+  <br/>
+  <label>Tagline</label>
+  <input name="tagline" />
+  <br/>
+  <label>Price</label>
+  <input name="price" />
+  <br/>
+  <label>Calories</label>
+  <input name="calories" />
+  <br/>
+  <button type="submit">Create!</button>
+</form>
+```
+
+### Add a submit handler for the form
+* This is a good time to demonstrate/talk about the default behaviour of HTML forms
+* Call `fetchFoodItems` when the POST request resolves
+
+```js
+// inside /public/food-item.js
+const $form = $('#food-item-form');
+
+$form.on('submit', (event) => {
+  event.preventDefault();
+  
+  const data = $form.serialize();
+
+  $.ajax({
+    method: 'POST',
+    url: '/food-items',
+    data: data
+  }).then(() => {
+    fetchFoodItems();
   });
 });
 ```
 
-* add some styling
-  * discuss `rem` vs `em` "relative em"
-
-* slice(0, 10) from `posts` array
-
-****
-**** BREAK
-****
-
-* git diff and commit
-
-* turn userId into a username
+### Empty the food item container before it gets refilled
 
 ```js
-let $footer;
-$.getJSON(`${BASE_URL}/users/${post.userId}`, (user) => {
-  $footer = $('<footer>').text(`User: ${user.name} (${user.email})`);
-});
+// inside /public/food-item.js
+const renderFoodItems = (foodItems) => {
+  $container.empty();
+  
+  for (const foodItem of foodItems) {
+    const $foodItem = createFoodItem(foodItem);
+    $container.prepend($foodItem); // or .append
+  }
+};
 ```
 
-* all the users are the same
-* update `slice(5, 15)`
+### Final Files
 
-* add postid to title
-* demonstrate asynchronous
+```html
+<!-- /public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-* look at jquery `.post`
-* look at placeholder api endpoint
+    <link rel="stylesheet" href="food-item.css" />
 
-* add a form to index.html to create a new post
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js" integrity="sha512-6DC1eE3AWg1bgitkoaRM1lhY98PxbMIbhgYCGV107aZlyzzvaWCW1nJW2vDuYQm06hXrW0As6OGKcIaAVWnHJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-* demonstrate default form submission (GET with query string)
+    <script src="food-item.js"></script>
+
+    <title>Food App</title>
+  </head>
+  <body>
+    <h1>Food App!</h1>
+
+    <form id="food-item-form">
+      <label>Name</label>
+      <input name="name" />
+      <br/>
+      <label>Tagline</label>
+      <input name="tagline" />
+      <br/>
+      <label>Price</label>
+      <input name="price" />
+      <br/>
+      <label>Calories</label>
+      <input name="calories" />
+      <br/>
+      <button type="submit">Create!</button>
+    </form>
+
+    <section id="food-item-container"></section>
+  </body>
+</html>
+```
+
+```css
+/* /public/food-item.css */
+.food-item {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.food-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: olivedrab;
+}
+
+.food-item-footer {
+  display: flex;
+  justify-content: space-between;
+  color: lightseagreen;
+}
+```
 
 ```js
-$('#new-post').on('submit', (event) => {
-  event.preventDefault;
-  $.post(`${BASE_URL}/posts`, $('#new-post').serialize(), (data) => {
-    console.log(data);
+// /public/food-item.js
+$(document).ready(() => {
+  const $container = $("#food-item-container");
+
+  const createFoodItem = (foodItem) => {
+    const $foodItem = $(`
+      <article class="food-item">
+        <div class="food-item-header">
+          <h2>Name: ${foodItem.name}</h2>
+          <p>ID: ${foodItem.id}</p>
+        </div>
+        <hr/>
+        <p>Tagline: ${foodItem.tagline}</p>
+        <div class="food-item-footer">
+          <h4>Price: $${foodItem.price}</h4>
+          <h4>Calories: ${foodItem.calories}</h4>
+        </div>
+      </article>
+    `);
+
+    return $foodItem;
+  };
+
+  const renderFoodItems = (foodItems) => {
+    $container.empty();
+    
+    for (const foodItem of foodItems) {
+      const $foodItem = createFoodItem(foodItem);
+      $container.prepend($foodItem); // or .append
+    }
+  };
+
+  const fetchFoodItems = () => {
+    $.ajax({
+      method: 'GET',
+      url: '/food-items'
+    }).then((foodItems) => {
+      renderFoodItems(foodItems);
+    });
+  };
+
+  fetchFoodItems();
+
+  const $form = $('#food-item-form');
+
+  $form.on('submit', (event) => {
+    event.preventDefault();
+    
+    const data = $form.serialize();
+
+    $.ajax({
+      method: 'POST',
+      url: '/food-items',
+      data: data
+    }).then(() => {
+      fetchFoodItems();
+    });
   });
 });
 ```
-
-* create a new post based on return value from post request
-* create `appendPost(post)` function
-
-* refactor code to pull DOM queries out
-
-* demonstrate clicking get posts over and over
-* add `$posts.empty()` to Get Posts click method
-
-* refactor to use a promise (`.done` and `.fail`)
-* AJAX pre-dates native promises

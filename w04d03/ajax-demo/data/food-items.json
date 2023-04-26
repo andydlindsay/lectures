@@ -19,19 +19,5 @@
     "price": 9.99,
     "tagline": "Fresh and Flavorful!",
     "calories": 650
-  },
-  {
-    "id": "jkl",
-    "name": "Grilled Salmon",
-    "price": 14.99,
-    "tagline": "Succulent and Savory!",
-    "calories": 500
-  },
-  {
-    "id": "mno",
-    "name": "Caesar Salad",
-    "price": 8.99,
-    "tagline": "Crisp and Classic!",
-    "calories": 400
   }
 ]
