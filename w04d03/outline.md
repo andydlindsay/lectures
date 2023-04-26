@@ -32,19 +32,19 @@ $.ajax({
 ### Run through the starter app code
 * The `foods` are being required in from a JSON file (students might not have seen this before)
 
-### Introduce static files / express.static
+### Introduce static files and `express.static`
 * Discuss static files (contrast with ejs templates which are dynamic)
 * Add `express.static` middleware to the starter app
-* Add a `public` directory and an `index.html`
+* Add a `public` folder and an `index.html`
 * Demo that `index.html` will be served when visiting `/` (and only `/`)
 
 ```js
-app.use(express.static('public')); // serve up static files from a folder name "public"
+app.use(express.static('public')); // serve up static files from a folder named "public"
 ```
 
 ### Add jQuery and demo making an AJAX request
 * Make a request to an external API
-* Make a request to the `/foods` endpoint
+* Make a request to the `/food-items` endpoint
 
 ```js
 // /public/ajax-demo.js
@@ -52,13 +52,13 @@ $.ajax({
   method: 'GET',
   url: 'https://www.dnd5eapi.co/api/monsters/adult-black-dragon/',
   success: (response) => {
-    console.log(response);
+    console.log('inside callback', response);
   }
 });
 
 $.ajax({
   method: 'GET',
-  url: '/foods',
+  url: '/food-items',
 }).done((response) => {
   console.log('inside promise', response);
 });
@@ -69,7 +69,7 @@ $.ajax({
 * Add a stylesheet and styles
 
 ```html
-<!-- inside index.html -->
+<!-- inside /public/index.html -->
 <article class="food-item">
   <div class="food-item-header">
     <h2>Name: Hawaiian Pizza</h2>
@@ -85,7 +85,7 @@ $.ajax({
 ```
 
 ```css
-/* inside food-styles.css */
+/* inside /public/food-item.css */
 .food-item {
   border: 2px solid magenta;
   border-radius: 15px;
@@ -107,11 +107,11 @@ $.ajax({
 }
 ```
 
-### Recreate the hardcoded food-item element using jQuery
+### Re-create the hardcoded food item element using jQuery
 * Add a wrapper `<section>` with an id so we can grab it with jQuery
 * Append/prepend our new element to the DOM
 * The style/markup for the created element should be identical to the hardcoded element
-* This is a good opportunity to demonstrate when JS runs by running our code outside and then inside a `document.ready` (the query for the `food-item-container` will fail if the JS runs too early)
+* This is a good opportunity to demonstrate when JS runs by running our code outside and then inside a `document.ready` function (the query for the `#food-item-container` will fail if the JS runs too early)
 
 ```js
 // inside /public/food-item.js
@@ -133,6 +133,7 @@ const $foodItem = $(`
 const $container = $('#food-item-container');
 
 $container.prepend($foodItem); // or .append
+// or
 $foodItem.prependTo($container); // or .appendTo
 ```
 
@@ -246,7 +247,7 @@ renderFoodItems(foodItems);
 const fetchFoods = () => {
   $.ajax({
     method: 'GET',
-    url: '/foods'
+    url: '/food-items'
   }).then((foodItems) => {
     renderFoodItems(foodItems);
   });
