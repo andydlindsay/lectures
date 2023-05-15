@@ -1,26 +1,17 @@
 import './App.css';
-import Button from './component/Button';
-
-// const Header = (props) => {
-//   return <h2>{props.heading}</h2>;
-// };
-
-// const Div = (props) => {
-//   return (
-//     <div>
-//       <Header heading={props.headingFromParent} />
-//     </div>
-//   );
-// };
+// import Button from './component/Button';
 
 const App = () => {
+  const myArr = [
+    <div key="1">this is a div</div>,
+    <button key="2">my button</button>,
+    <section key="3">this is a sections</section>
+  ];
+
   return (
     <div className="App">
       <h2>Demo App</h2>
-
-      {/* <Div headingFromParent="Really important info" /> */}
-
-      <Button>Join us today!</Button>
+      { myArr }
     </div>
   );
 };
