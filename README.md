@@ -20,7 +20,7 @@
 * [W05D02 - Database Design](/w05d02)
 * [W05D03 - SQL from our Apps](/w05d03)
 * [W05D05 - Midterm Project Kickoff](/w05d05)
-* [W07D02 - Component-Based UI w/ React](/w07d02)
+* [W07D01 - JSX and Props](/w07d01)
 * [W07D03 - Immutable Update Patterns](/w07d03)
 * [W07D04 - Data Fetching & Other Side Effects](/w07d04)
 * [W07D05 - Custom Hooks](/w07d05)
@@ -58,6 +58,7 @@
 * [Intro to Vue](/workshop-intro-to-vue)
 
 ## Archived
+* [W07D02 - Component-Based UI w/ React](/archived-w07d02)
 * [W08D02 - Real World React](/archived-w08d02)
 * [W10D02 - Feature Testing with Rails and RSpec](/archived-w10d02)
 * [BREAKOUT - React Router v5](/archived-breakout-react-router-v5/)
