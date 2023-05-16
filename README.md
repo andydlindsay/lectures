@@ -21,6 +21,7 @@
 * [W05D03 - SQL from our Apps](/w05d03)
 * [W05D05 - Midterm Project Kickoff](/w05d05)
 * [W07D01 - JSX and Props](/w07d01)
+* [W07D03 - React Developer Workflow](/w07d03)
 * [W08D01 - React Review](/w08d01)
 * [W08D02 - Unit & Integration Testing](/w08d02)
 * [W08D03 - End-to-End Testing with Cypress](/w08d03)
