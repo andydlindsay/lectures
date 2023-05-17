@@ -5,7 +5,7 @@
 * [ ] React DevTools
 * [ ] Building Components in Isolation
   * [ ] Fragments
-  * [ ] Styling
+  * [ ] Styling with hardcoded values
   * [ ] Passing props
   * [ ] Default props
   * [ ] Looping and arrays

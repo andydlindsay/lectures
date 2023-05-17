@@ -185,17 +185,206 @@ const App = () => {
 
 ### `ProductList` Component
 * Create `ProductList` component
+* Demonstrate looping over an array and the `key prop` error
 
 ```jsx
+// inside /src/components/ProductList.jsx
+import ProductListItem from "./ProductListItem";
 
+const ProductList = () => {
+  const products = [
+    {
+      name: 'Blueberries',
+      description: 'Cannot be beat',
+      price: 2.75
+    },
+    {
+      name: 'Strawberries',
+      description: 'Fantastic with whipped cream',
+      price: 4.49
+    },
+    {
+      name: 'Canteloupe',
+      description: 'Awesome on a warm day',
+      price: 6.89
+    },
+  ];
+
+  const mappedProducts = products.map((product, index) => {
+    return <ProductListItem 
+      key={index}
+      name={product.name}
+      description={product.description}
+      price={product.price}
+    />;
+  });
+
+  return (
+    <div>
+      <h2>Product List</h2>
+      
+      { mappedProducts }
+    </div>
+  );
+};
+
+export default ProductList;
 ```
 
-* Looping and arrays
-* Conditional rendering
+* Move to using `defaultProps`
+
+```jsx
+// inside /src/components/ProductList.jsx
+import ProductListItem from "./ProductListItem";
+
+const ProductList = (props) => {
+  const mappedProducts = props.products.map((product, index) => {
+    return <ProductListItem 
+      key={index}
+      name={product.name}
+      description={product.description}
+      price={product.price}
+    />;
+  });
+
+  return (
+    <div>
+      <h2>Product List</h2>
+      
+      { mappedProducts }
+    </div>
+  );
+};
+
+export default ProductList;
+
+ProductList.defaultProps = {
+  products: [
+    {
+      name: 'Blueberries',
+      description: 'Cannot be beat',
+      price: 2.75
+    },
+    {
+      name: 'Strawberries',
+      description: 'Fantastic with whipped cream',
+      price: 4.49
+    },
+    {
+      name: 'Canteloupe',
+      description: 'Awesome on a warm day',
+      price: 6.89
+    },
+  ]
+};
+```
+
+* Demonstrate conditional rendering with an empty products array
+
+```jsx
+// inside /src/components/ProductList.jsx
+import ProductListItem from "./ProductListItem";
+
+const ProductList = (props) => {
+  const mappedProducts = props.products.map((product, index) => {
+    return <ProductListItem 
+      key={index}
+      name={product.name}
+      description={product.description}
+      price={product.price}
+    />;
+  });
+
+  return (
+    <div>
+      <h2>Product List</h2>
+      
+      { !props.products.length && <h2>No products to display</h2> }
+      { mappedProducts }
+    </div>
+  );
+};
+
+export default ProductList;
+
+ProductList.defaultProps = {
+  products: []
+};
+```
 
 ### `LoginForm` Component
-* Managing state
-* Controlled inputs
-* Handling DOM events
+* Create `LoginForm` component
+* Demonstrate managing state for a `username` and `password`
+* Discuss controlled inputs
 
-* [ ] Passing children
+```jsx
+// inside /src/components/LoginForm.jsx
+import { useState } from 'react';
+
+const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <div>
+      <h2>Login Form</h2>
+
+      <form>
+        <label>Username</label>
+        <input 
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <br/>
+        <label>Password</label>
+        <input 
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <br/>
+        <button type="submit">Login!</button>
+      </form>
+    </div>
+  );
+};
+
+export default LoginForm;
+```
+
+* Add form submission handling
+
+```jsx
+// inside /src/components/LoginForm.jsx
+const LoginForm = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    alert(`You are trying to sign in as ${username} with password ${password}`);
+  };
+
+  return (
+    <div>
+      <h2>Login Form</h2>
+
+      <form onSubmit={submitHandler}>
+        <label>Username</label>
+        <input 
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <br/>
+        <label>Password</label>
+        <input 
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <br/>
+        <button type="submit">Login!</button>
+      </form>
+    </div>
+  );
+};
+```

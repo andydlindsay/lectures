@@ -1,13 +1,13 @@
 import './App.css';
 
-import ProductList from './components/ProductList';
+import LoginForm from './components/LoginForm';
 
 const App = () => {
   return (
     <div className="App">
       <h2>Demo App</h2>
 
-      <ProductList />
+      <LoginForm />
     </div>
   );
 };
