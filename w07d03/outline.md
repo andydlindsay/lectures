@@ -10,8 +10,6 @@ $ nvm install 16
 $ nvm alias default 16
 ```
 
-### Create a new app with CRA
-
 ### Demo React DevTools
 * [DevTools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)
 * Demo the DevTools in the browser
@@ -21,3 +19,17 @@ $ nvm alias default 16
 * We want to consider the props that the component will accept and the various different ways that the component might be displayed (eg. disabled, loading, error).
 * There are a variety of tools that can help us with this, but a straight-forward way to develop components in isolation is to render them individually in `App.js`.
 
+Main Page
+* [ ] Fragments
+* [ ] Passing props
+* [ ] Default props
+* [ ] Passing children
+
+Login Form
+* [ ] Managing state
+* [ ] Controlled inputs
+* [ ] Handling DOM events
+
+Navigation
+* [ ] Looping and arrays
+* [ ] Conditional rendering
