@@ -1,20 +1,20 @@
 # W07D03 - React Developer Workflow
 
 ### To Do
-* [ ] Node version and NVM
+* [ ] Node Version and NVM
 * [ ] React DevTools
-* [ ] Building components in isolation
+* [ ] Building Components in Isolation
   * [ ] Fragments
+  * [ ] Styling
   * [ ] Passing props
   * [ ] Default props
-  * [ ] Passing children
+  * [ ] Looping and arrays
+  * [ ] Conditional rendering
   * [ ] Managing state
   * [ ] Controlled inputs
   * [ ] Handling DOM events
-  * [ ] Looping and arrays
-  * [ ] Conditional rendering
 
-### Node version and NVM
+### Node Version and NVM
 * Working on a variety of projects can mean having to switch quickly between different versions of Node.
 * We recommend using a **version manager** such as NVM to help with this process.
 
@@ -27,7 +27,7 @@ $ nvm alias default 14 # make version 14 the default
 $ nvm use default # switch to the default version
 ```
 
-* Note: Changing Node versions may mean that some installed packages might not work. It is common to delete the `node_modules` folder and run `npm install` again to make sure the compatible version of each package has been installed.
+#### Note: Changing Node versions may mean that some installed packages might not work. It is common to delete the `node_modules` folder and run `npm install` again to make sure the compatible version of each package has been installed.
 
 ### React DevTools
 * Most modern browsers have extensions/plugins that give us insight into our React applications.
@@ -35,7 +35,7 @@ $ nvm use default # switch to the default version
 * The React DevTools allows us to see/edit state and props for a component and see which hooks are being used within a component.
 * They also allow us to view the _component hierarchy_ (the parent/child relationship between components).
 
-### Build components in isolation
+### Building Components in Isolation
 * Ideally, components should be developed in isolation. This makes them easier to style and forces us to think of just this component, not how it fits into the overall app.
 * We want to consider the props that the component will accept and the various different ways that the component might be displayed (eg. disabled, loading, error).
 * There are a variety of tools that can help us with this such as [Storybook](https://storybook.js.org/), but a straight-forward way to develop components in isolation is to render them individually in `App.js`.

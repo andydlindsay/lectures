@@ -1,0 +1,16 @@
+.product-list-item {
+  border: 2px solid lightgreen;
+  padding: 0 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-price {
+  color: darkmagenta;
+}
