@@ -51,6 +51,8 @@ const ProductListItem = () => {
 * Start with hardcoded values
 
 ```jsx
+// inside /src/components/ProductListItem.jsx
+
 /*
 Props:
   name: string
@@ -189,6 +191,11 @@ const App = () => {
 
 ```jsx
 // inside /src/components/ProductList.jsx
+
+/*
+Props:
+  products: []
+*/
 import ProductListItem from "./ProductListItem";
 
 const ProductList = () => {
