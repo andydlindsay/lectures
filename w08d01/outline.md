@@ -46,7 +46,7 @@ PGPORT=5432
 * Update the config object to use the keys from the `.env` 
 
 ```js
-// inside /src/db/index.js
+// inside /backend/src/db/index.js
 const client = new pg.Client({
   // connectionString: process.env.DATABASE_URL || "",
   host: process.env.PGHOST,
@@ -58,6 +58,7 @@ const client = new pg.Client({
 });
 ```
 
+* `npm start`
 * Visit `http://localhost:8001/api/debug/reset`
 * Visit `http://localhost:8001/api/topics`
 * Visit `http://localhost:8001/api/photos`
