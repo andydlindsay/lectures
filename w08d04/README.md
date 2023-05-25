@@ -19,8 +19,8 @@
 * Cypress can be installed locally to the project (as a dev dependency) or globally on your OS
 
 ```bash
-npm install -g cypress
-npm install --save-dev cypress
+npm install -g cypress@9.7.0
+npm install --save-dev cypress@9.7.0
 ```
 
 * Use the `open` command to start Cypress running

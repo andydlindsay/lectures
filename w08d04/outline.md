@@ -11,7 +11,8 @@
   * Used for integration and E2E testing (mostly)
 
 ### Install Cypress
-* `npm install --save-dev cypress` or `yarn add --dev cypress`
+* Install Cypress version `9.7.0`
+* `npm install --save-dev cypress@9.7.0` or `yarn add --dev cypress@9.7.0`
 * Open Cypress with `node_modules/.bin/cypress open`
 * Create a script called `cypress` to run the above
 * Remove the example tests
