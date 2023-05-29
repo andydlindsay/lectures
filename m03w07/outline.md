@@ -172,6 +172,8 @@ app.get('/protected', (req, res) => {
 });
 ```
 
+* `https://cdn.dribbble.com/users/2190368/screenshots/4369474/gold-coins-treasure-chest-animated-icons.gif`
+
 ```ejs
 <h1>Protected Secrets!</h1>
 <img width="150" src="https://cdn.dribbble.com/users/2190368/screenshots/4369474/gold-coins-treasure-chest-animated-icons.gif"/>
