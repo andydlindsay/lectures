@@ -1,6 +1,6 @@
 # Table of Contents
 
-## Lectures
+## Web Immersive Lectures
 * [W01D02 - The Dev Workflow](/w01d02)
 * [W01D03 - Objects in JS](/w01d03)
 * [W01D04 - Callbacks!](/w01d04)
@@ -29,7 +29,8 @@
 * [W10D01 - Rails Review](/w10d01)
 * [W10D04 - Final Project Kickoff](/w10d04)
 
-## Flex-Specific Lectures
+## Flex Lectures
+* [M03W07 - HTTP Cookies & User Authentication](/m03w07)
 * [M07W16 - React Fundamentals](/m07w16)
 * [M07W17 - Component-Based UI w/ React](/m07w17)
 * [M09W23 - Project Planning](/m09w23)
