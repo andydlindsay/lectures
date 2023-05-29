@@ -92,6 +92,11 @@ app.post('/login', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
+  // did we NOT get a username and/or password?
+  if (!username || !password) {
+    return res.status(400).send('please provide a username and a password');
+  }
+
   // check if a user with that username exists
   let foundUser;
   for (const userId in users) {
@@ -218,6 +223,11 @@ app.post('/register', (req, res) => {
   // get the username and password from the body
   const username = req.body.username;
   const password = req.body.password;
+
+  // did we NOT get a username and/or password?
+  if (!username || !password) {
+    return res.status(400).send('please provide a username and a password');
+  }
 
   // check if a user with that username already exists
   let foundUser;
