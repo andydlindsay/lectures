@@ -97,7 +97,7 @@ app.post('/login', (req, res) => {
     return res.status(400).send('please provide a username and a password');
   }
 
-  // check if a user with that username exists
+  // lookup the user based off the provided username
   let foundUser;
   for (const userId in users) {
     const user = users[userId];
@@ -229,7 +229,7 @@ app.post('/register', (req, res) => {
     return res.status(400).send('please provide a username and a password');
   }
 
-  // check if a user with that username already exists
+  // lookup the user based on the username provided
   let foundUser;
   for (const userId in users) {
     const user = users[userId];
