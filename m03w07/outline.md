@@ -131,8 +131,7 @@ app.post('/login', (req, res) => {
 
 ```js
 app.get('/protected', (req, res) => {
-  // grab the user's id from the cookie
-  const userId = req.cookies.userId;
+  console.log(req.cookies); // undefined
 });
 ```
 
@@ -250,10 +249,10 @@ app.post('/register', (req, res) => {
 
   // create the new user object
   const newUser = {
-    id,
-    email,
-    password
-  }
+    id: id,
+    username: username,
+    password: password
+  };
 
   // add the new user to the `users` object
   users[id] = newUser;
@@ -279,7 +278,7 @@ const findUserByUsername = (username) => {
 ```
 
 ```js
-// update the POST /login handler to use the new function
+// update the /login and /register handlers to use the new function
 
 // old
 let foundUser;

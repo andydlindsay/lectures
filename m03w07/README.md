@@ -15,18 +15,6 @@
   * Are passed to the server with every HTTP request by the browser
   * Usually used to store a unique value that identifies a particular user
 
-### Reading Cookies
-* Cookies come in with the request
-* We could parse the request header ourselves, but it's easier to use a library like `cookie-parser`
-* `cookie-parser` will parse the cookies and add them to the `request` object
-
-```js
-app.get('/protected', (req, res) => {
-  const userId = req.cookies.userId;
-  // do something with the userId
-});
-```
-
 ### Setting Cookies
 * Cookies are set on the `response` object
 * The browser will receive the reponse and store the cookie as directed
@@ -37,6 +25,18 @@ app.post('/login', (req, res) => {
   res.cookie('userId', user.id); // set the cookie's key and value
   
   res.redirect('/');
+});
+```
+
+### Reading Cookies
+* Cookies come in with the request
+* We could parse the request header ourselves, but it's easier to use a library like `cookie-parser`
+* `cookie-parser` will parse the cookies and add them to the `request` object
+
+```js
+app.get('/protected', (req, res) => {
+  const userId = req.cookies.userId;
+  // do something with the userId
 });
 ```
 
