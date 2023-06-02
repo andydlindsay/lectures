@@ -1,14 +1,10 @@
 # W02D02 - Asynchronous Control Flow
 
 ### To Do
-* [ ] Breakout! 20 minutes
+* [ ] Blocking Code
 * [ ] Asynchronous Programming
-* [ ] Blocking vs Non-Blocking
 * [ ] `setTimeout` and `setInterval`
 * [ ] File System Functions (`fs`)
-
-### Breakout (20 minutes)
-* In groups, run through the questions in this [gist](https://gist.github.com/andydlindsay/d586198046d7074d83e371ead76b4f4b)
 
 ### Asynchronous Programming
 * JavaScript is `synchronous`; executing one line of code after the previous one has completed

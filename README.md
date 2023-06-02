@@ -34,6 +34,7 @@
 * [M01W02 - Objects in JS](/m01w02-1)
 * [M01W02 - Callbacks!](/m01w02-2)
 * [M01W03 - TDD, CommonJS, and NPM](/m01w03-1)
+* [M01W04 - Asynchronous Control Flow](/m01w04-1)
 * [M03W07 - HTTP Cookies & User Authentication](/m03w07-1)
 * [M07W16 - React Fundamentals](/m07w16-1)
 * [M07W17 - Component-Based UI w/ React](/m07w17-1)
