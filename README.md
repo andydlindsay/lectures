@@ -40,6 +40,7 @@
 * [M03W06 - Web Servers 101](/m03w06-1)
 * [M03W06 - CRUD with Express](/m03w06-2)
 * [M03W07 - HTTP Cookies & User Authentication](/m03w07-1)
+* [M03W07 - Security & Real World HTTP Servers](/m03w07-2)
 * [M07W16 - React Fundamentals](/m07w16-1)
 * [M07W17 - Component-Based UI w/ React](/m07w17-1)
 * [M09W23 - Project Planning](/m09w23-1)
