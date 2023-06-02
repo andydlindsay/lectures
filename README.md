@@ -31,10 +31,10 @@
 
 ## Flex Lectures
 * [M01W01 - The Dev Workflow](/m01w01-2)
-* [M03W07 - HTTP Cookies & User Authentication](/m03w07)
-* [M07W16 - React Fundamentals](/m07w16)
-* [M07W17 - Component-Based UI w/ React](/m07w17)
-* [M09W23 - Project Planning](/m09w23)
+* [M03W07 - HTTP Cookies & User Authentication](/m03w07-1)
+* [M07W16 - React Fundamentals](/m07w16-1)
+* [M07W17 - Component-Based UI w/ React](/m07w17-1)
+* [M09W23 - Project Planning](/m09w23-1)
 
 ## Breakouts
 * [Express Router](/breakout-express-router)
