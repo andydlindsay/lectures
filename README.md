@@ -30,6 +30,7 @@
 * [W10D04 - Final Project Kickoff](/w10d04)
 
 ## Flex Lectures
+* [M01W01 - The Dev Workflow](/m01w01-2)
 * [M03W07 - HTTP Cookies & User Authentication](/m03w07)
 * [M07W16 - React Fundamentals](/m07w16)
 * [M07W17 - Component-Based UI w/ React](/m07w17)
