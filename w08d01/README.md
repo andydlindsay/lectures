@@ -77,15 +77,15 @@ useEffect(() => {
 - To perform cleanup, return a function from your `useEffect`
 
 ```jsx
-const [timer, setTimer] = useState(0);
+const [counter, setCounter] = useState(0);
 
 useEffect(() => {
-  // set up an interval to increment a timer
+  // set up an interval to increment a counter
   const myInterval = setInterval(() => {
-    setTimer(timer => timer + 1);
+    setCounter(prev => prev + 1);
   }, 1000);
 
-  // declare a cleanup function
+  // declare a cleanup function to clear the interval
   const cleanup = () => {
     clearInterval(myInterval);
   };
