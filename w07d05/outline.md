@@ -4,7 +4,7 @@
 
 ```
 App - state: todos
-  - Header 
+  - Header - props: todos
   - TodoList - props: todos
     - TodoListItem - props: todo
   - NewTodoForm - props: setTodo, state: form data
