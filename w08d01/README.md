@@ -100,7 +100,7 @@ useEffect(() => {
 3. Any cleanup for effects from the previous render are performed
 4. New effects for the current render are performed
 
-![_useEffect_ flow](https://raw.githubusercontent.com/andydlindsay/lectures/master/w07d04/useEffect%20Flow.png)
+![_useEffect_ flow](https://raw.githubusercontent.com/andydlindsay/lectures/master/w08d01/useEffect%20Flow.png)
 
 ### Useful Links
 - [React Docs: Hook Rules](https://reactjs.org/docs/hooks-rules.html)
