@@ -47,6 +47,7 @@
 * [M04W09 - AJAX](/m04w09-1)
 * [M04W10 - Responsive Design and SASS](/m04w10-1)
 * [M05W11 - SQL Intro](/m05w11-1)
+* [M05W11 - Database Design](/m05w11-2)
 * [M07W16 - React Fundamentals](/m07w16-1)
 * [M07W17 - Component-Based UI w/ React](/m07w17-1)
 * [M09W23 - Project Planning](/m09w23-1)
