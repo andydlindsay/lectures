@@ -1,4 +1,4 @@
-# M05W11 - SQL Intro
+# W05D01 - SQL Intro
 
 ### To Do
 - [ ] Introduction to RDBMS
