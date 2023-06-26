@@ -45,6 +45,7 @@
 * [M04W08 - Intro to CSS](/m04w08-1)
 * [M04W08 - Client Side JavaScript & jQuery](/m04w08-2)
 * [M04W10 - Responsive Design and SASS](/m04w10-1)
+* [M05W11 - SQL Intro](/m05w11-1)
 * [M07W16 - React Fundamentals](/m07w16-1)
 * [M07W17 - Component-Based UI w/ React](/m07w17-1)
 * [M09W23 - Project Planning](/m09w23-1)
