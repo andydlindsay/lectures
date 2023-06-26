@@ -30,7 +30,6 @@ $.ajax({
 ```
 
 ### Run through the starter app code
-* The `foods` are being required in from a JSON file (students might not have seen this before)
 
 ### Introduce static files and `express.static`
 * Discuss static files (contrast with ejs templates which are dynamic)

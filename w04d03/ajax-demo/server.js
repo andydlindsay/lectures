@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-const foodItems = require('./data/food-items.json');
+const foodItems = require('./data/food-items');
 
 const app = express();
 const port = 8001;

@@ -37,7 +37,7 @@
 </html>
 ```
 
-![DOM example](https://raw.githubusercontent.com/andydlindsay/lectures/master/w04d02/dom-example.png)
+![DOM example](https://raw.githubusercontent.com/andydlindsay/lectures/master/m04w08-2/dom-example.png)
 *Green outline === HTML element; Pink outline === text node*
 
 ### Useful Browser Objects
