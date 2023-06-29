@@ -6,7 +6,6 @@
 - [ ] Callbacks and higher order functions
 - [ ] Anonymous functions
 - [ ] Arrow functions
-- [ ] Make our own higher order function
 
 ### Functions as Values
 - Just like everything else in JavaScript, functions are values

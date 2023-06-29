@@ -78,7 +78,7 @@ runMyFunction(singleParam => {
 });
 ```
 
-### Implement `map`, `forEach`, and/or `filter`
+### Time Allowing: Implement `map`, `forEach`, and/or `filter`
 
 ```js
 const map = (arr, cb) => {
