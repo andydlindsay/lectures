@@ -25,6 +25,7 @@
 * [W07D04 - Immutable Update Patterns](/w07d04)
 * [W07D05 - React Review](/w07d05)
 * [W08D01 - Data Fetching & Other Side Effects](/w08d01)
+* [W08D03 - Unit & Integration Testing](/w08d03)
 * [W08D04 - End-to-End Testing with Cypress](/w08d04)
 * [W08D05 - Intro to Ruby](/w08d05)
 * [W10D01 - Rails Review](/w10d01)
