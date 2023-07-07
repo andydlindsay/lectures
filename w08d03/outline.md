@@ -134,16 +134,12 @@ test('change cheat state when clicking on robot', () => {
 ```js
 const {state, toggleIsCheating} = props;
 
-const handleClick = () => {
-  return toggleIsCheating();
-};
-
 <span
   data-testid="robot-icon"
   role="img" 
   aria-label="robot" 
   className={state.isCheating ? "cheating" : null}
-  onClick={handleClick}
+  onClick={toggleIsCheating}
 >
   🤖
 </span>
