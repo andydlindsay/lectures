@@ -41,7 +41,7 @@
 - TDD: unit test
   - choose a valid response for the computer player (currently hard-coded)
 - TDD: integration test
-  - clicking on the robot head will toggle the cheating boolean
+  - clicking on the robot head will toggle the `isCheating` boolean
 - mocking
   - test fetching high scores (mock Axios)
 
@@ -49,27 +49,27 @@
 
 ```js
 describe('chooseRobotItem function', () => {
-  test('given player choice and cheating is true, returns winning choice', () => {
-    const cheating = true;
+  test('given player choice and isCheating is true, returns winning choice', () => {
+    const isCheating = true;
 
     let playerSelection = 'Axe';
-    let result = chooseRobotItem(cheating, playerSelection);
+    let result = chooseRobotItem(isCheating, playerSelection);
     expect(result).toBe('Moai');
 
     playerSelection = 'Moai';
-    result = chooseRobotItem(cheating, playerSelection);
+    result = chooseRobotItem(isCheating, playerSelection);
     expect(result).toBe('Tree');
 
     playerSelection = 'Tree';
-    result = chooseRobotItem(cheating, playerSelection);
+    result = chooseRobotItem(isCheating, playerSelection);
     expect(result).toBe('Axe');
   });
 
-  test('given player choice and cheating is false, returns a valid choice', () => {
-    const cheating = false;
+  test('given player choice and isCheating is false, returns a valid choice', () => {
+    const isCheating = false;
     const playerSelection = 'Axe';
     
-    const result = chooseRobotItem(cheating, playerSelection);
+    const result = chooseRobotItem(isCheating, playerSelection);
     const options = ['Axe', 'Tree', 'Moai'];
     // expect(options.includes(result)).toBeTruthy();
     expect(options).toContain(result);
@@ -80,44 +80,45 @@ describe('chooseRobotItem function', () => {
 ### `src/helpers/helpers.js`
 
 ```js
-export const chooseRobotItem = (cheating, playerItem) => {
+export const chooseRobotItem = (isCheating, playerItem) => {
   const lookup = {
     'Tree': 'Axe',
     'Moai': 'Tree',
     'Axe': 'Moai'
   };
-  if (cheating) {
+
+  if (isCheating) {
     return lookup[playerItem];
-  } else {
-    const choices = ["Moai", "Axe", "Tree"];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
   }
+
+  const choices = ["Moai", "Axe", "Tree"];
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
 };
 ```
 
-### Update function call in `Player.jsx`
+### Update function call in `src/App.jsx`
 
 ```js
 // from
 const compSelection = chooseRobotItem();
 
 // to
-const compSelection = chooseRobotItem(cheating, playerSelection);
+const compSelection = chooseRobotItem(isCheating, playerSelection);
 
 // update useEffect dependency array
-}, [playerSelection, cheating, setState]);
+}, [playerSelection, isCheating, setState]);
 ```
 
-### `src/components/__tests__/Game.test.jsx`
+### `src/__tests__/App.test.jsx`
 
 ```js
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Game from '../Game';
+import App from '../App';
 
 test('change cheat state when clicking on robot', () => {
-  const { getByTestId } = render(<Game />);
+  const { getByTestId } = render(<App />);
   const robotIcon = getByTestId('robot-icon');
 
   fireEvent.click(robotIcon);
@@ -131,19 +132,17 @@ test('change cheat state when clicking on robot', () => {
 ### `src/components/Computer.jsx`
 
 ```js
-const {state, setState} = props;
+const {state, toggleIsCheating} = props;
 
 const handleClick = () => {
-  return setState(prevState => (
-    { ...prevState, cheating: !prevState.cheating }
-  ));
+  return toggleIsCheating();
 };
 
 <span
   data-testid="robot-icon"
   role="img" 
   aria-label="robot" 
-  className={state.cheating ? "cheating" : null}
+  className={state.isCheating ? "cheating" : null}
   onClick={handleClick}
 >
   🤖
