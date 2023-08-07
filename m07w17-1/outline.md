@@ -1,232 +1,211 @@
-# Spreading props
+# Outline
 
-* Create a `Product` component
+## Updating State
+
+### Create a VisitorCounter component
 
 ```jsx
-const Product = (props) => {
+const VisitorCounter = () => {
   return (
     <div>
-      <h2>Product name: {props.name}</h2>
-      <h2>Product price: ${props.price}</h2>
+      <h2>Visitor Count: 0</h2>
+      <button>Click me!</button>
     </div>
   );
 };
 
-export default Product;
+export default VisitorCounter;
 ```
 
-* Demonstrate the spread operator for passing props
+### Wire up the button
 
 ```jsx
-import Product from './components/Product';
-import './App.css';
+import {useState} from 'react';
 
-const App = () => {
-  const product = {
-    name: 'Peanuts',
-    price: 2.49
+const VisitorCounter = () => {
+  const [counter, setCounter] = useState(0);
+
+  const handleClick = () => {
+    setCounter(counter + 1);
   };
 
   return (
-    <div className="App">
-      <Product 
-        name="Taco Kit"
-        price={6.99}
-      />
-      <Product 
-        { ...product }
-      />
+    <div>
+      <h2>Visitor Count: {counter}</h2>
+      <button onClick={handleClick}>Click me!</button>
     </div>
   );
 };
-
-export default App;
 ```
 
-# Refactor to demonstrate rendering an array
+### Demonstrate multiple updates to state (this doesn't work)
 
 ```jsx
-  const arrayOfProducts = [
-    <Product key="1" name="Taco Kit" price={6.99} />,
-    <Product key="2" {...product} />,
-  ];
-
-  return (
-    <div className="App">
-      { arrayOfProducts }
-    </div>
-  );
+const handleClick = () => {
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+  setCounter(counter + 1);
+};
 ```
 
-# Refactor to demonstrate `.map`
+### Introduce the `prev` version of setState
 
 ```jsx
-const products = [
-  { name: 'Taco Kit', price: 1.49 },
-  { name: 'Lettuce', price: 4.48 },
+const handleClick = () => {
+  setCounter(prev => prev + 1);
+  setCounter(prev => prev + 1);
+  setCounter(prev => prev + 1);
+};
+```
+
+## Introduce the spread operator
+
+### Start with arrays
+
+```js
+// inside spread.js
+const arr = [1, 2, 3];
+
+const copy = arr; // copies the reference
+
+copy.push(4);
+
+console.log(arr); // [1, 2, 3, 4]
+console.log(copy); // [1, 2, 3, 4]
+```
+
+```js
+// using spread to create the copy
+const arr = [1, 2, 3];
+
+const copy = [...arr]; // create a new reference
+
+copy.push(4);
+
+console.log(arr); // [1, 2, 3]
+console.log(copy); // [1, 2, 3, 4]
+```
+
+```js
+// spread and add a new element at the same time
+const arr = [1, 2, 3];
+
+const copy = [// create a new reference
+  ...arr,
+  4
 ];
 
-const mappedProducts = products.map((product, index) => {
-  return <Product key={index} { ...product } />;
-});
+// copy.push(4);
+
+console.log(arr); // [1, 2, 3]
+console.log(copy); // [1, 2, 3, 4]
 ```
 
-# Demonstrate raising state with a to do list
+### Demonstrate spread with objects
 
-- App
-  - ToDoList
-  - ToDoForm
-
-# Pass actions down as props
-
-* Pass down `setTodos` as a prop and talk about having to pass down the `todos` as well (don't discuss using `prev` unless a student brings it up)
-* Wrap `setTodos` in a helper function that takes in the new todo and pass that down instead
-
-```jsx
-const addNewTodo = (newTodo) => {
-  setTodos([...todos, newTodo]);
+```js
+// inside spread.js
+const user = {
+  username: 'alice'
 };
 
-// in return
-<TodoForm addNewTodo={addNewTodo} />
-```
+const copy = user; // copies the reference
 
-# Add storybook
+copy.username = 'bob';
 
-```bash
-# install storybook
-npx sb init
-
-# run storybook
-npm run storybook
-```
-
-* Demo the example stories in the browser
-
-# Rewrite Button component and refactor test
-
-```jsx
-const Button = () => {
-  return (
-    <button>Click me!</button>
-  );
-};
+console.log(user); // { username: 'bob' }
+console.log(copy); // { username: 'bob' }
 ```
 
 ```js
-import { storiesOf } from "@storybook/react";
-import Button from "./Button";
-
-storiesOf("Button Component", module)
-  .add("displays on screen", () => <Button></Button>)
-```
-
-# Delete all example stories and assets
-
-* Replace all files with `index.js`
-* Update `.storybook/main.js` to point to our index file
-
-```js
-module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../src/stories/index.js" // this line
-  ],
-  ...
-}
-```
-
-# Add more stories
-
-* Accepts `props.children`
-
-```js
-  .add("shows children as button text", () => <Button>Register</Button>)
-```
-
-* Add a click handler and demo `action`
-
-```js
-  .add("can be clicked on", () => (
-    <Button click={() => console.log("clicked!")}>Login</Button>
-  ))
-  .add("can be clicked on using action", () => (
-    <Button click={action("does it change??")}>Login</Button>
-  ))
-```
-
-* Changes style based on props passed in
-
-```js
-  .add("shows as blue when passed 'primary'", () => (
-    <Button mode="primary" click={action('click')}>
-      Logout
-    </Button>
-  ))
-  .add("shows as pink when passed 'secondary'", () => (
-    <Button secondary click={action('click')}>
-      Add Favourite
-    </Button>
-  ))
-```
-
-# Final stories file
-
-```js
-// src/stories/index.js
-import { storiesOf } from "@storybook/react";
-import { action } from "@storybook/addon-actions";
-import Button from "../components/Button";
-
-storiesOf("Button Component", module)
-  .add("displays on screen", () => <Button></Button>)
-  .add("shows children as button text", () => <Button>Register</Button>)
-  .add("can be clicked on", () => (
-    <Button click={() => console.log("clicked!")}>Login</Button>
-  ))
-  .add("can be clicked on using action", () => (
-    <Button click={action("does it change??")}>Login</Button>
-  ))
-  .add("shows as blue when passed 'primary'", () => (
-    <Button mode="primary" click={action('click')}>
-      Logout
-    </Button>
-  ))
-  .add("shows as pink when passed 'secondary'", () => (
-    <Button secondary click={action('click')}>
-      Add Favourite
-    </Button>
-  ));
-```
-
-# Final `Button` component
-
-```jsx
-import './Button.scss';
-
-const Button = (props) => {
-  let className = 'button';
-
-  if (props.mode === 'primary') {
-    className += ' blue';
-  }
-
-  if (props.secondary) {
-    className += ' pink';
-  }
-
-  return (
-    <button
-      className={className}
-      onClick={() => props.click('Monday')}
-    >{props.children || 'Click me!'}</button>
-  );
+// using spread to create the copy
+const user = {
+  username: 'alice'
 };
 
-export default Button;
+const copy = {...user}; // creates a new reference
+
+copy.username = 'bob';
+
+console.log(user); // { username: 'alice' }
+console.log(copy); // { username: 'bob' }
 ```
 
-# ***If adding `sass` breaks storybook***
+```js
+// spread and overwrite a key
+const user = {
+  username: 'alice'
+};
 
-* Delete `node_modules` and reinstall
+const copy = { // creates a new reference
+  ...user,
+  username: 'bob'
+};
+
+// copy.username = 'bob';
+
+console.log(user); // { username: 'alice' }
+console.log(copy); // { username: 'bob' }
+```
+
+## Using spread with nested objects and arrays
+
+```js
+const user = {
+  username: 'alice',
+  foods: ['hotdogs']
+};
+
+const copy = { // creates a new reference
+  ...user,
+  username: 'bob'
+};
+
+copy.foods.push('waffles');
+
+console.log(user); // { username: 'alice', foods: [ 'hotdogs', 'waffles' ] }
+console.log(copy); // { username: 'bob', foods: [ 'hotdogs', 'waffles' ] }
+```
+
+```js
+// spread the `foods` key to create a new reference
+const user = {
+  username: 'alice',
+  foods: ['hotdogs']
+};
+
+const copy = { // creates a new reference
+  ...user,
+  username: 'bob',
+  foods: [
+    ...user.foods
+  ]
+};
+
+copy.foods.push('waffles');
+
+console.log(user); // { username: 'alice', foods: [ 'hotdogs' ] }
+console.log(copy); // { username: 'bob', foods: [ 'hotdogs', 'waffles' ] }
+```
+
+```js
+// spread and add the element at the same time
+const user = {
+  username: 'alice',
+  foods: ['hotdogs']
+};
+
+const copy = { // creates a new reference
+  ...user,
+  username: 'bob',
+  foods: [
+    ...user.foods,
+    'waffles'
+  ]
+};
+
+// copy.foods.push('waffles');
+
+console.log(user); // { username: 'alice', foods: [ 'hotdogs' ] }
+console.log(copy); // { username: 'bob', foods: [ 'hotdogs', 'waffles' ] }
+```
