@@ -209,3 +209,266 @@ const copy = { // creates a new reference
 console.log(user); // { username: 'alice', foods: [ 'hotdogs' ] }
 console.log(copy); // { username: 'bob', foods: [ 'hotdogs', 'waffles' ] }
 ```
+
+## Create a `Pizza` component
+
+```jsx
+import {useState} from 'react';
+
+const Pizza = () => {
+  const [newTopping, setNewTopping] = useState('');
+  const [toppings, setToppings] = useState([]);
+
+  const addButtonHandler = () => {
+    setToppings((prev) => {
+      return [
+        ...prev,
+        newTopping
+      ];
+    });
+    setNewTopping('');
+  };
+
+  const toppingsMap = toppings.map((topping, index) => {
+    return <p key={index}>{topping}</p>;
+  });
+
+  return (
+    <div>
+      <h2>Create your own Pizza!</h2>
+
+      <div>
+        <label>New topping:</label>
+        <input 
+          value={newTopping}
+          onChange={(event) => setNewTopping(event.target.value)}
+        />
+        <button onClick={addButtonHandler}>Add!</button>
+      </div>
+
+      <div>
+        <h2>Toppings:</h2>
+        { toppingsMap }
+      </div>
+    </div>
+  );
+};
+
+export default Pizza;
+```
+
+### Add a `crust` option to the `Pizza` component
+
+```jsx
+const [crust, setCrust] = useState('stuffed');
+
+<div>
+  <h3>Crust: {crust}</h3>
+  <label>Change crust</label>
+  <input 
+    value={crust}
+    onChange={(event) => setCrust(event.target.value)}
+  />
+</div>
+```
+
+## Updating complex state [Stretch]
+
+### Combine the `crust` and `toppings` into a single state object
+
+```jsx
+import {useState} from 'react';
+
+const Pizza = () => {
+  const [pizza, setPizza] = useState({
+    crust: 'stuffed',
+    toppings: []
+  });
+
+  const [newTopping, setNewTopping] = useState('');
+
+  const addButtonHandler = () => {
+    setPizza((prev) => {
+      return {
+        ...prev,
+        toppings: [
+          ...prev.toppings,
+          newTopping
+        ]
+      };
+    });
+    setNewTopping('');
+  };
+
+  const updateCrust = (event) => {
+    setPizza((prev) => {
+      return {
+        ...prev,
+        crust: event.target.value
+      }
+    });
+  };
+
+  const toppingsMap = pizza.toppings.map((topping, index) => {
+    return <p key={index}>{topping}</p>;
+  });
+
+  return (
+    <div>
+      <h2>Create your own Pizza!</h2>
+
+      <div>
+        <h3>Crust: {pizza.crust}</h3>
+        <label>Change crust</label>
+        <input 
+          value={pizza.crust}
+          onChange={updateCrust}
+        />
+      </div>
+
+      <div>
+        <label>New topping:</label>
+        <input 
+          value={newTopping}
+          onChange={(event) => setNewTopping(event.target.value)}
+        />
+        <button onClick={addButtonHandler}>Add!</button>
+      </div>
+
+      <div>
+        <h2>Toppings:</h2>
+        { toppingsMap }
+      </div>
+    </div>
+  );
+};
+
+export default Pizza;
+```
+
+## Demonstrate `useReducer`
+
+```js
+import { useReducer } from "react";
+
+const reducer = (state, action) => {
+  if (action.type === 'add-one') {
+    return {
+      ...state,
+      count: state.count + 1
+    };
+  }
+
+  if (action.type === 'minus-one') {
+    return {
+      ...state,
+      count: state.count - 1
+    };
+  }
+
+  throw new Error('tried to call dispatch function with an invalid action type');
+};
+
+const ReducerDemo = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  const plusHandler = () => {
+    dispatch({ type: 'add-one' });
+  };
+
+  const minusHandler = () => {
+    dispatch({ type: 'minus-one' });
+  };
+
+  return (
+    <div>
+      <h2>Reducer Demo</h2>
+      <h3>Count: {state.count}</h3>
+      <button onClick={plusHandler}>Plus one</button>
+      <button onClick={minusHandler}>Minus one</button>
+    </div>
+  );
+};
+
+export default ReducerDemo;
+```
+
+## Switch `Pizza` component to use a reducer instead [stretch]
+
+```jsx
+import {useState, useReducer} from 'react';
+
+const reducer = (state, action) => {
+  if (action.type === 'add-topping') {
+    return {
+      ...state,
+      toppings: [
+        ...state.toppings,
+        action.payload
+      ]
+    };
+  }
+
+  if (action.type === 'set-crust') {
+    return {
+      ...state,
+      crust: action.payload
+    };
+  }
+
+  throw new Error('tried to call dispatch function with invalid action type');
+};
+
+const Pizza = () => {
+  const [state, dispatch] = useReducer(reducer, {
+    crust: 'stuffed',
+    toppings: []
+  });
+
+  const [newTopping, setNewTopping] = useState('');
+
+  const addButtonHandler = () => {
+    dispatch({ type: 'add-topping', payload: newTopping });
+    setNewTopping('');
+  };
+
+  const updateCrust = (event) => {
+    dispatch({ type: 'set-crust', payload: event.target.value });
+  };
+
+  const toppingsMap = state.toppings.map((topping, index) => {
+    return <p key={index}>{topping}</p>;
+  });
+
+  return (
+    <div>
+      <h2>Create your own Pizza!</h2>
+
+      <div>
+        <h3>Crust: {state.crust}</h3>
+        <label>Change crust</label>
+        <input 
+          value={state.crust}
+          onChange={updateCrust}
+        />
+      </div>
+
+      <div>
+        <label>New topping:</label>
+        <input 
+          value={newTopping}
+          onChange={(event) => setNewTopping(event.target.value)}
+        />
+        <button onClick={addButtonHandler}>Add!</button>
+      </div>
+
+      <div>
+        <h2>Toppings:</h2>
+        { toppingsMap }
+      </div>
+    </div>
+  );
+};
+
+export default Pizza;
+```

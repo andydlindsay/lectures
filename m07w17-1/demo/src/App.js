@@ -1,11 +1,15 @@
 import './App.css';
-import VisitorCounter from './components/VisitorCounter';
+// import VisitorCounter from './components/VisitorCounter';
+import Pizza from './components/Pizza';
+// import ReducerDemo from './components/ReducerDemo';
 
 const App = () => {
   return (
     <div className="App">
       <h2>Pat's Pizza Place</h2>
-      <VisitorCounter />
+      {/* <VisitorCounter /> */}
+      <Pizza />
+      {/* <ReducerDemo /> */}
     </div>
   );
 };
