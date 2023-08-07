@@ -34,7 +34,6 @@ const reducer = (state, action) => {
         isCheating: !state.isCheating,
       };
 
-
     default:
       throw new Error(`reducer called with unsupported type: ${action.type}`);
   }
