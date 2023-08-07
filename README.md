@@ -51,7 +51,7 @@
 * [M05W11 - Database Design](/m05w11-2)
 * [M05W12 - SQL from our Apps](/m05w12-1)
 * [M07W16 - React Fundamentals](/m07w16-1)
-* [M07W17 - Component-Based UI w/ React](/m07w17-1)
+* [M07W17 - State Management and Immutable Update Patterns](/m07w17-1)
 * [M09W23 - Project Planning](/m09w23-1)
 
 ## Breakouts
@@ -85,5 +85,6 @@
 * [W08D03 - End-to-End Testing with Cypress](/archived-w08d03)
 * [W08D04 - Class-based Components](/archived-w08d04)
 * [W10D02 - Feature Testing with Rails and RSpec](/archived-w10d02)
+* [M07W17 - Component-Based UI w/ React](/archived-m07w17-1)
 * [BREAKOUT - React Router v5](/archived-breakout-react-router-v5/)
 * [BREAKOUT - Tackle the Take Home Challenge](/archived-breakout-takehome-challenge)
