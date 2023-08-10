@@ -260,10 +260,8 @@ const List = () => {
 
   const mappedItems = items.map((item, index) => {
     return (
-      <div>
-        <p key={index}>{item} <button onClick={() => removeItem(item)}>❌</button></p>
-      </div>
-    )
+      <p key={index}>{item} <button onClick={() => removeItem(item)}>❌</button></p>
+    );
   });
 
   return (
