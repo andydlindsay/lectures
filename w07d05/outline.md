@@ -1,7 +1,7 @@
 # Outline
 
 ## Introduce Custom Hooks
-- From the [React Docs](https://reactjs.org/docs/hooks-custom.html):
+- From the [React Docs](https://react.dev/learn/reusing-logic-with-custom-hooks):
 > Building your own Hooks lets you extract component logic into reusable functions.
 - We can pull repetitive or complex code out of our components and move it into _custom hooks_
 - _Custom hooks_ are just JavaScript functions that can use React hooks
