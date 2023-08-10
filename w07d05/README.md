@@ -6,6 +6,7 @@
 - [ ] `useCounter`
 - [ ] `useInput`
 - [ ] `useList`
+- [ ] Custom hook libraries
 
 ### Custom Hooks
 - From the [React Docs](https://reactjs.org/docs/hooks-custom.html):
