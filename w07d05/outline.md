@@ -1,240 +1,287 @@
 # Outline
 
-### Plan out components and initial state
+## Introduce Custom Hooks
 
-```
-App - state: todos
-  - Header - props: todos
-  - TodoList - props: todos
-    - TodoListItem - props: todo
-  - NewTodoForm - props: setTodo, state: form data
-```
-
-### Build the `TodoListItem` component in isolation
+## `useToggle`
 
 ```jsx
-// src/components/TodoListItem.jsx
+// create a component to toggle state
 import {useState} from 'react';
 
-const TodoListItem = (props) => {
-  const [isComplete, setIsComplete] = useState(false);
+const Toggle = () => {
+  const [isOn, setIsOn] = useState(false);
 
-  const clickHandler = () => {
-    setIsComplete(!isComplete);
+  const toggleState = () => {
+    setIsOn(!isOn);
   };
 
   return (
-    <div onClick={clickHandler}>
-      <p>{props.todo.task} ({props.todo.id}) - { isComplete ? '✅' : '🟩' }</p>
+    <div>
+      <h2>Light switch!</h2>
+      <button onClick={toggleState}>Click me</button>
+
+      { isOn && <h2>💡</h2> }
+      { !isOn && <h2>off</h2> }
     </div>
   );
 };
 
-export default TodoListItem;
-
-TodoListItem.defaultProps = {
-  todo: {
-    id: 'jkl',
-    task: 'water the plants'
-  }
-};
+export default Toggle;
 ```
 
-### Create the `TodoList` component
+```js
+// create a `useToggle` function
+import {useState} from 'react';
+
+const useToggle = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const toggleState = () => {
+    setIsOn(!isOn);
+  };
+
+  return {isOn, toggleState}
+};
+
+export default useToggle;
+```
+
+```js
+// completed Toggle component
+import useToggle from "../hooks/useToggle";
+
+const Toggle = () => {
+  const {isOn, toggleState} = useToggle();
+
+  return (
+    <div>
+      <h2>Light switch!</h2>
+      <button onClick={toggleState}>Click me</button>
+
+      { isOn && <h2>💡</h2> }
+      { !isOn && <h2>off</h2> }
+    </div>
+  );
+};
+
+export default Toggle;
+```
+
+## `useCounter`
 
 ```jsx
-// src/components/TodoList.jsx
-import TodoListItem from "./TodoListItem";
+// create a Counter component
+import {useState} from 'react';
 
-const TodoList = (props) => {
-  const mappedTodos = props.todos.map((todo) => {
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increment}>Increment!</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+```jsx
+// create a `useCounter` hook
+import {useState} from 'react';
+
+const useCounter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return {count, increment};
+};
+
+export default useCounter;
+```
+
+```jsx
+// finished Counter component
+import useCounter from "../hooks/useCounter";
+
+const Counter = () => {
+  const {count, increment} = useCounter();
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={increment}>Increment!</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+## `useInput`
+
+```jsx
+// create a Login component
+import {useState} from 'react';
+
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`you are trying to log in as ${username} with password ${password}`);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>Username</label>
+        <input 
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+        <br/>
+        <label>Password</label>
+        <input 
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <br/>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
+```
+
+```js
+// create a `useInput` hook
+import {useState} from 'react';
+
+const useInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+
+  const onChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return {value, onChange};
+};
+
+export default useInput;
+```
+
+```jsx
+// completed Login component
+import useInput from "../hooks/useInput";
+
+const Login = () => {
+  const usernameInput = useInput('');
+  const passwordInput = useInput('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`you are trying to log in as ${usernameInput.value} with password ${passwordInput.value}`);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>Username</label>
+        <input 
+          value={usernameInput.value}
+          onChange={usernameInput.onChange}
+        />
+        <br/>
+        <label>Password</label>
+        <input 
+          { ...passwordInput }
+        />
+        <br/>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+
+export default Login;
+```
+
+## `useList`
+
+```js
+// create a `useList` hook
+import { useState } from 'react';
+
+const useList = (initialItems) => {
+  const [items, setItems] = useState(initialItems);
+
+  const addItem = (item) => {
+    setItems([...items, item]);
+  };
+
+  const removeItem = (itemToRemove) => {
+    const updatedItems = items.filter((item) => item !== itemToRemove);
+    setItems(updatedItems);
+  };
+
+  return { items, addItem, removeItem };
+}
+
+export default useList;
+```
+
+```jsx
+// create a List component to use our hook
+import useList from "../hooks/useList";
+import useInput from "../hooks/useInput";
+
+const initialItems = ['apple', 'berry', 'carrot'];
+
+const List = () => {
+  const {items, addItem, removeItem} = useList(initialItems);
+  const newItemInput = useInput('');
+
+  const handleClick = () => {
+    addItem(newItemInput.value);
+    newItemInput.clear();
+  };
+
+  const mappedItems = items.map((item, index) => {
     return (
-      <TodoListItem
-        key={todo.id} 
-        todo={todo} 
-      />
-    );
+      <div>
+        <p key={index}>{item} <button onClick={() => removeItem(item)}>❌</button></p>
+      </div>
+    )
   });
 
   return (
     <div>
-      <h2>Todo List</h2>
-      { mappedTodos }
-    </div>
-  );
-};
-
-export default TodoList;
-
-TodoList.defaultProps = {
-  todos: [
-    {
-      id: 'abc',
-      task: 'walk the dog'
-    },
-    {
-      id: 'def',
-      task: 'pick up groceries'
-    },
-    {
-      id: 'ghi',
-      task: 'mow the lawn'
-    },
-  ]
-};
-```
-
-### Build the `Header` component
-
-```jsx
-// src/components/Header
-const Header = (props) => {
-  return (
-    <div>
-      <h1>Todo List App! ({props.numComplete} / {props.numTodos} completed)</h1>
-    </div>
-  );
-};
-
-export default Header;
-
-Header.defaultProps = {
-  numComplete: 3,
-  numTodos: 5
-};
-```
-
-### Move storing completed todos to the `App` component
-
-```jsx
-// src/App.js
-import {useState} from 'react';
-
-import './App.css';
-
-import Header from './components/Header';
-import TodoList from './components/TodoList';
-
-const initialTodos = [
-  {
-    id: 'aaa',
-    task: 'go mountain biking'
-  },
-  {
-    id: 'bbb',
-    task: 'clean the dishes'
-  },
-];
-
-const App = () => {
-  const [todos, setTodos] = useState(initialTodos);
-  const [completedTodos, setCompletedTodos] = useState([]);
-
-  const toggleComplete = (todo) => {
-    if (completedTodos.includes(todo)) {
-      const filtered = completedTodos.filter((completed) => completed !== todo);
-      return setCompletedTodos(filtered);
-    }
-
-    setCompletedTodos([...completedTodos, todo]);
-  };
-
-  return (
-    <div className="App">
-      <Header numComplete={completedTodos.length} numTodos={todos.length} />
-      <TodoList todos={todos} completedTodos={completedTodos} toggleComplete={toggleComplete} />
-    </div>
-  );
-};
-
-export default App;
-```
-
-```jsx
-// src/components/TodoList.jsx
-const TodoList = (props) => {
-  const mappedTodos = props.todos.map((todo) => {
-    return (
-      <TodoListItem
-        key={todo.id} 
-        todo={todo} 
-        toggleComplete={() => props.toggleComplete(todo)}
-        isComplete={props.completedTodos.includes(todo)}
-      />
-    );
-  });
-
-  return (
-    <div>
-      <h2>Todo List</h2>
-      { mappedTodos }
-    </div>
-  );
-};
-```
-
-### Create the `NewTodoForm` component
-
-```jsx
-// src/components/NewTodoForm.jsx
-import {useState} from 'react';
-
-const NewTodoForm = (props) => {
-  const [newTodo, setNewTodo] = useState('');
-
-  const clickHandler = () => {
-    props.addNewTodo(newTodo);
-    setNewTodo('');
-  };
-
-  return (
-    <div>
-      <h2>Add a todo!</h2>
+      <h2>List of Items</h2>
 
       <div>
-        <label>Todo:</label>
-        <input 
-          value={newTodo}
-          onChange={(event) => setNewTodo(event.target.value)}
+        <input
+          value={newItemInput.value}
+          onChange={newItemInput.onChange}
         />
-        <button onClick={clickHandler}>Create!</button>
+        <button onClick={handleClick}>Add!</button>
       </div>
+
+      { mappedItems }
     </div>
   );
 };
 
-export default NewTodoForm;
-```
-
-```jsx
-// src/App.js
-const addNewTodo = (task) => {
-  const id = Math.random().toString(36).substring(2, 5);
-  const newTodo = { id, task };
-  setTodos([...todos, newTodo]);
-};
-```
-
-### Conditionally color the header if all todos are complete
-
-```css
-/* src/styles/Header.css */
-.all-done {
-  color: goldenrod;
-}
-```
-
-```jsx
-// src/components/Header
-import '../styles/Header.css';
-
-const Header = (props) => {
-  const className = props.numComplete === props.numTodos ? 'all-done' : null;
-
-  return (
-    <div className={className}>
-      <h1>Todo List App! ({props.numComplete} / {props.numTodos} completed)</h1>
-    </div>
-  );
-};
+export default List;
 ```

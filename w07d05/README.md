@@ -1,7 +1,8 @@
-# W07D05 - React Review
+# W07D05 - Custom Hooks
 
 ### To Do
-* [ ] Building Components
-* [ ] Props
-* [ ] Immutable Patterns
-* [ ] Q and A
+- [ ] Introduce custom hooks
+- [ ] `useToggle`
+- [ ] `useCounter`
+- [ ] `useInput`
+- [ ] `useList`
