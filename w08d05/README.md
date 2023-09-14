@@ -242,7 +242,7 @@ user[my_key] # nil
 user[my_key.to_sym] # 'bobh'
 ```
 
-### Blocks and Lambdas
+### Blocks and Procs
 * Blocks define a chuck of code to be executed
 * They can be defined with do..end or {}
 
@@ -260,23 +260,29 @@ dogs.each { |dog|
 }
 ```
 
-* Lambdas are blocks stored in memory
+* Procs are blocks stored in memory
 * This functionality is similar to how callbacks work in JS
 
 ```rb
-# lambda creation
-do_thing = lambda { |dog| puts dog } # lambda keyword
-say_something = -> { puts "I'm giving up on you" } # lambda literal
+# proc creation
+do_thing = Proc.new do |dog| 
+  puts dog
+end
 
-# use & to convert a lambda to a block
+# use & to convert a proc to a block
 dogs.each &do_thing
 
-# defining a method that takes a lambda
+# defining a method that takes a proc
 def my_method(&block)
   block.call # .call to invoke the block
 end
 
-# invoke the method and pass the stored lambda
+# methods can also accept blocks "invisibly" and call them using the `yield` keyword
+def my_method
+  yield # invoke the block
+end
+
+# invoke the method and pass the stored proc
 my_method &say_something # w/o parens
 my_method(&say_something) # w/ parens
 ```
