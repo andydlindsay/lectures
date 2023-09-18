@@ -4,9 +4,9 @@
 
 #### Project Management
 
-* [Waterfall Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23/waterfall_release_process.png)
+* [Waterfall Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23-1/waterfall_release_process.png)
 * [Agile Manifesto](https://agilemanifesto.org/principles.html)  
-* [Agile Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23/agile_release_train.png)
+* [Agile Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23-1/agile_release_train.png)
 * [Scrum Process](https://www.pm-partners.com.au/wp-content/uploads/2021/06/blog-scrum-process-opt.jpg)
 
 #### Planning out a Project

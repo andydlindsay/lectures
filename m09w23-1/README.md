@@ -21,7 +21,7 @@
 
 #### Waterfall Release Schedule
 
-![Waterfall Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23/waterfall_release_process.png)
+![Waterfall Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23-1/waterfall_release_process.png)
 
 #### Agile
 
@@ -37,7 +37,7 @@
 
 #### Agile Release Schedule
 
-![Agile Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23/agile_release_train.png)
+![Agile Release Schedule](https://raw.githubusercontent.com/andydlindsay/lectures/master/m09w23-1/agile_release_train.png)
 
 #### Scrum
 
