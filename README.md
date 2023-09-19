@@ -56,6 +56,7 @@
 * [M07W19 - Class-based Components](/m07w19-1)
 * [M09W22 - Intro to Ruby](/m09w22-1)
 * [M09W23 - Project Planning](/m09w23-1)
+* [M09W24 - Rails Review](/m09w24-1)
 
 ## Breakouts
 * [Express Router](/breakout-express-router)
