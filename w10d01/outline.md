@@ -53,6 +53,9 @@
 # API only rails app
 % rails new <app-name> --api
 
+# Don't create a git repo
+% rails new <app-name> --skip-git
+
 # Start a rails app
 % rails server
 

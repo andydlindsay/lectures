@@ -53,6 +53,9 @@
 # API only rails app
 % rails new <app-name> --api
 
+# Don't create a git repo
+% rails new <app-name> --skip-git
+
 # Start a rails app
 % rails server
 
@@ -249,72 +252,6 @@ end
 
 # or in one line
 <%= render @books %>
-```
-
-### Use nested routes
-
-```rb
-# config/routes.rb
-Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :authors do
-    resources :books
-  end
-
-  # Using namespaces /admin/articles
-  # rails g controller admin/articles
-  namespace :admin do
-    resources :articles, :comments
-  end
-
-  # Shallow nesting
-  resources :articles do
-    resources :comments, only: [:index, :new, :create]
-  end
-  resources :comments, only: [:show, :edit, :update, :destroy]
-
-  # Using the :shallow option
-  resources :articles do
-    resources :comments, shallow: true
-  end
-end
-```
-
-* Update books controller
-
-```rb
-# app/controllers/books_controller.rb
-class BooksController < ApplicationController
-  def index
-    @author = Author.find(params[:author_id]);
-    @books = @author.books
-  end
-end
-```
-
-* Update books index view
-
-```rb
-# app/views/books/index.html.erb
-<h2>Books for <%= @author.first_name + ' ' + @author.last_name %></h2>
-<%= link_to 'Home', authors_path  %>
-<% @books.each do |book| %>
-  <div>
-    <%= book.title %>
-  </div>
-<% end %>
-```
-
-* Update authors index view
-
-```rb
-# app/views/authors/index.html.erb
-<h1>All the Authors</h1>
-<% @authors.each do |author| %>
-  <div>
-    <h2><%= "#{author.first_name} #{author.last_name}" %> - <%= link_to 'Books', author_books_path(author)  %></h2>
-  </div>
-<% end %>
 ```
 
 ### What if we want to send back JSON instead?
