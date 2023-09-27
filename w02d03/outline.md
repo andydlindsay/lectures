@@ -34,7 +34,7 @@
   - No error recovery (any corrupted packets are discarded)
   - Packets can arrive in any order
   - Useful for streaming/low latency applications
-- **TCP**: **T**ransportation **C**ontrol **P**rotocol
+- **TCP**: **T**ransmission **C**ontrol **P**rotocol
   - Larger header size (20 bytes)
   - Requires a connection (3-way handshake)
   - Corrupted packets are reported to the server and are re-sent
