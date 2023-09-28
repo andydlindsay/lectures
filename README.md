@@ -59,13 +59,14 @@
 * [M09W24 - Rails Review](/m09w24-1)
 
 ## Breakouts
-* [Express Router](/breakout-express-router)
+* [Async and Promises](/breakout-async-and-promises/)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
-* [React Router v6](/breakout-react-router)
 * [Exam 1 Review](/breakout-w1-exam)
 * [Exam 2 Review](/breakout-w2-exam)
 * [Exam 3 Review](/breakout-w3-exam)
 * [Exam 4 Review](/breakout-w4-exam)
+* [Express Router](/breakout-express-router)
+* [React Router v6](/breakout-react-router)
 * [Technical Interview Prep](/breakout-ti-prep/)
 
 ## Advanced Topics
