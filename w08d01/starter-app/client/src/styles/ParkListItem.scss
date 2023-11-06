@@ -1,0 +1,15 @@
+.park-list-item {
+  border: 4px dotted lightgreen;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+
+  &--header {
+    color: brown;
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,190 +1,187 @@
-# External Resources
-
-* Hacker News: 
-  * https://hn.algolia.com/api/v1/items/:id
-  * https://hn.algolia.com/api/v1/users/:username
-
-* JSONPlaceholder:
-  * http://jsonplaceholder.typicode.com/todos/:id
-  * http://jsonplaceholder.typicode.com/users/:id
-
-* Github API:
-  * https://api.github.com/users/andydlindsay/repos
-
-* Chef Andy:
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/ingredients
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipes
-  * https://my-json-server.typicode.com/andydlindsay/chef-andy/recipe-ingredients
-
-* `useEffect` Flow Diagram
-  * https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU
-
 # Outline
 
-### Pure Functions
-- A function is said to be pure if:
-  - It produces no side-effects
-  - It will return the same value if called with the same arguments
+### Breakdown the UI into components
+* Demonstrate the available endpoints
+  * http://localhost:8001/api/parks
+  * http://localhost:8001/api/parks/3
+  * http://localhost:8001/api/parks/3/reviews
+
+* Outline the components needed
+  - App
+    - ParkList
+    - ParkListItem
+
+### Create some fake data
 
 ```js
-// simple pure functions
-const add = (num1, num2) => {
-  return num1 + num2;
+const parkData = [
+  {
+    id: 1,
+    name: 'Park number one',
+    location: 'Saskatchewan',
+    averageReview: 4.5
+  },
+  {
+    id: 2,
+    name: 'Park number two',
+    location: 'Ontario',
+    averageReview: 4.4
+  },
+  {
+    id: 3,
+    name: 'Park number three',
+    location: 'Quebec',
+    averageReview: 4.2
+  },
+];
+
+export default parkData;
+```
+
+### Create ParkList.jsx
+
+```jsx
+// src/components/ParkList.jsx
+import ParkListItem from './ParkListItem';
+
+const ParkList = (props) => {
+  console.log(props);
+
+  const mappedParks = props.parks.map((park) => {
+    return (
+      <ParkListItem key={park.id} park={park} />
+    );
+  });
+
+  return (
+    <div>
+      { mappedParks }
+    </div>
+  );
 };
 
-const sayHello = (name) => {
-  return `Hello there ${name}!`;
+export default ParkList;
+```
+
+### Create ParkListItem.jsx
+
+```jsx
+// src/components/ParkListItem.jsx
+import '../styles/ParkListItem.css';
+
+const ParkListItem = (props) => {
+  return (
+    <div className="park-list-item">
+      <h2 className="park-list-item--header">Name: {props.park.name} ({props.park.id})</h2>
+      <div className="park-list-item--footer">
+        <h3>Location: {props.park.location}</h3>
+        <h3>Average Review: {props.park.averageReview}</h3>
+      </div>
+    </div>
+  );
 };
+
+export default ParkListItem;
 ```
 
-### Side Effects
-- Any operation that modifies the state of the computer or interacts with something outside of your program is said to have a **side effect**
-- Common _side effects_:
-  - Writing to standard out (eg. `console.log`)
-  - Modifying the DOM directly (instead of relying on React)
-  - Establishing socket connections (eg. `ws` or `Socket.io`)
-  - Retrieving data from an API (eg. `axios`, `jQuery`, or the `fetch` API)
-  - Setting timers or intervals
+### Add SASS
 
-### Create a new app called `use-effect`
-* Clean up the default application
+```css
+.park-list-item {
+  border: 4px dotted lightgreen;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
 
-### Create a new component `UseEffect` and import into `src/App.js`
+.park-list-item--header {
+  color: brown;
+}
 
-### Set up a simple counter with `useState`
+.park-list-item--footer {
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+```scss
+.park-list-item {
+  border: 4px dotted lightgreen;
+  border-radius: 15px;
+  padding: 0 20px;
+  margin-bottom: 10px;
+
+  &--header {
+    color: brown;
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+```
+
+### Switch over to loading the data from the server
 
 ```jsx
-const [count, setCount] = React.useState(0);
+// src/App.js
+import './App.css';
+import {useState, useEffect} from 'react';
 
-<div>
-  <h3>Count: { count }</h3>
-  <button
-    onClick={() => setCount(count + 1)}
-  >Increment</button>
-</div>
+// components
+import ParkList from './components/ParkList';
+
+// fake data
+// import parkData from './data/parks';
+
+const App = () => {
+  const [parks, setParks] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/parks')
+      .then(res => res.json())
+      .then(parks => setParks(parks));
+  }, []);
+
+  return (
+    <div className="App">
+      <h2>React Review</h2>
+      <ParkList parks={parks} />
+    </div>
+  );
+};
+
+export default App;
 ```
 
-### Introduce `useEffect` by changing document title
+### Discuss CORS and the `proxy` key
+* Don't forget to restart the webpack server so it loads the configuration
 
-```jsx
-React.useEffect(() => {
-  console.log('changing title');
-  document.title = `You clicked ${count} times!`;
-});
+```json
+// inside package.json
+{
+  "proxy": "http://localhost:8001"
+}
 ```
 
-### Put a `setTimeout` inside of `useEffect`
+### Refactor to a custom hook
 
-```jsx
-React.useEffect(() => {
-  setTimeout(() => {
-    console.log(`Current count is ${count}`);
-  }, 3000);
-});
+```js
+// src/hooks/useApplicationData.js
+import {useState, useEffect} from 'react';
+
+const useApplicationData = () => {
+  const [parks, setParks] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/parks')
+      .then(res => res.json())
+      .then(parks => setParks(parks));
+  }, []);
+
+  return parks;
+};
+
+export default useApplicationData;
 ```
-
-### Convert the timeout to an interval
-
-```jsx
-React.useEffect(() => {
-  const interval = setInterval(() => {
-    console.log(`Current count is ${count}`);
-  }, 3000);
-
-  // try to clear the interval
-  clearInterval(interval);
-});
-```
-
-### Return a cleanup function from `useEffect`
-
-```jsx
-React.useEffect(() => {
-  const interval = setInterval(() => {
-    console.log(`Current count is ${count}`);
-  }, 500);
-
-  const cleanup = () => {
-    console.log('running cleanup');
-    clearInterval(interval);
-  };
-
-  return cleanup;
-});
-```
-
-### Add some more state to the component and show how it calls `useEffect` for every state change
-
-```jsx
-const [search, setSearch] = React.useState('');
-
-<div>
-  <label htmlFor="search">Search Term:</label>
-  <input 
-    type="text" 
-    id="search" 
-    value={search} 
-    onChange={(event) => setSearch(event.target.value)}
-  />
-</div>
-```
-
-### Pass a dependency array to both `useEffect` functions
-
-```jsx
-React.useEffect(() => {
-  console.log('changing title');
-  document.title = `You clicked ${count} times!`;
-}, [count]);
-```
-
-### Fetch some data and demonstrate empty dependency array
-
-```jsx
-const [item, setItem] = React.useState({});
-
-React.useEffect(() => {
-  axios
-    .get('http://hn.algolia.com/api/v1/items/1')
-    .then(res => {
-      setItem(res.data);
-    });
-}, []);
-
-<div>
-  <h2>{item.title}</h2>
-</div>
-```
-
-### Fetch some more data
-
-```jsx
-const [userInfo, setUserInfo] = React.useState({});
-
-React.useEffect(() => {
-  axios.get('http://hn.algolia.com/api/v1/items/1')
-    .then(res => {
-      setItem(res.data);
-      const { author } = res.data;
-      return axios.get(`https://hn.algolia.com/api/v1/users/${author}`);
-    .then(res => {
-      setUserInfo(res.data);
-    });
-}, []);
-
-<div>
-  <h2>{item.title}</h2>
-  <h3>By: {userInfo.username}</h3>
-  <h4>Bio: {userInfo.about}</h4>
-</div>
-```
-
-### Beware the infinite loop!
-
-```jsx
-useEffect(() => {
-  setCount(count + 1);
-}, [count]);
-```
-
-### Talk through the [`useEffect` flow diagram](https://www.draw.io/#G1yWxjtHguerWufNgUBS5kB0pabPmdC6pU)
