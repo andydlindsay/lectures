@@ -1,11 +1,14 @@
 import ParkListItem from './ParkListItem';
 
 const ParkList = (props) => {
-  console.log(props);
-
   const mappedParks = props.parks.map((park) => {
     return (
-      <ParkListItem key={park.id} park={park} />
+      <ParkListItem
+        key={park.id}
+        park={park}
+        openModal={props.openModal}
+        setSelectedPark={props.setSelectedPark}
+      />
     );
   });
 
