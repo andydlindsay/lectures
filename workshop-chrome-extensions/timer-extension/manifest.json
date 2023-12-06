@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Simple Timer",
+  "version": "1.0.0",
+  "description": "A very simple timer",
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  }
+}

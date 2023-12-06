@@ -78,6 +78,7 @@
 ## Workshops
 * [Scheduler](/workshop-scheduler)
 * [Intro to Vue](/workshop-intro-to-vue)
+* [Chrome Extensions](/workshop-chrome-extensions/)
 
 ## Archived
 * [W07D02 - Component-Based UI w/ React](/archived-w07d02)
