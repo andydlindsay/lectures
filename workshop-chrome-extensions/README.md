@@ -15,6 +15,10 @@
 |`icons`|Object|At least one key/value pair|
 
 
+### Popup HTML Rules
+* Must be between 25x25 and 800x600 pixels
+* 
+
 
 
 

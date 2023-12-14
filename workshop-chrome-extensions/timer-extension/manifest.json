@@ -7,5 +7,15 @@
     "16": "images/icon.png",
     "48": "images/icon.png",
     "128": "images/icon.png"
-  }
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon.png",
+      "24": "images/icon.png",
+      "32": "images/icon.png"
+    },
+    "default_title": "do I work??",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
 }
