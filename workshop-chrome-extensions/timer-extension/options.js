@@ -9,4 +9,9 @@ saveButton.addEventListener('click', () => {
 
   console.log('newName:', newName);
   console.log('newDisplayChoice:', newDisplayChoice);
+
+  chrome.storage.local.set({ 
+    name: newName,
+    displayChoice: newDisplayChoice
+  });
 });

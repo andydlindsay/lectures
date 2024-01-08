@@ -2,6 +2,9 @@
   "manifest_version": 3,
   "name": "Simple Timer",
   "version": "1.0.0",
+  "permissions": [
+    "storage"
+  ],
   "description": "A very simple timer",
   "icons": {
     "16": "images/icon.png",
