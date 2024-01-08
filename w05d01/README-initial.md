@@ -1,4 +1,4 @@
-# M05W11 - SQL Intro
+# W05W01 - SQL Intro
 
 ### To Do
 - [ ] Introduction to RDBMS
@@ -12,7 +12,7 @@
 
 ### SELECT Challenges
 
-For the first 6 queries, we'll be using the `users` table.
+For the first 5 queries, we'll be using the `users` table.
 
 ![users table](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/w5d1-users.io.png)
 
@@ -46,47 +46,35 @@ For the first 6 queries, we'll be using the `users` table.
 
 ```
 
-6. List all the countries users live in; don't repeat any countries
-
-```sql
-
-```
-
 For the rest of the queries, we'll be using the `albums` and `songs` tables.
 
 ![albums and songs](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/albums-and-songs.png)
 
-7. List all albums along with their songs
+6. List all albums along with their songs
 
 ```sql
 
 ```
 
-8. List all albums along with how many songs each album has
+7. List all albums along with how many songs each album has
 
 ```sql
 
 ```
 
-9. Enhance previous query to only include albums that have more than 10 songs
+8. Enhance previous query to only include albums that have more than 10 songs
 
 ```sql
 
 ```
 
-10. List ALL albums in the database, along with their songs if any
+9. List ALL albums in the database, along with their songs if any
 
 ```sql
 
 ```
 
-11. List albums along with average song rating
-
-```sql
-
-```
-
-12. List albums and songs with rating higher than album average
+10. List ONLY the first 10 songs from the songs table
 
 ```sql
 

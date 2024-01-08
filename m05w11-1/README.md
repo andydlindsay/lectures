@@ -167,7 +167,7 @@ OFFSET 20 LIMIT 10;
 
 ### SELECT Challenges
 
-For the first 6 queries, we'll be using the `users` table.
+For the first 5 queries, we'll be using the `users` table.
 
 ![users table](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/w5d1-users.io.png)
 
@@ -221,19 +221,11 @@ FROM users
 WHERE country = 'Canada' AND payment_due_date < CURRENT_DATE;
 ```
 
-6. List all the countries users live in; don't repeat any countries (DISTINCT)
-
-```sql
-SELECT DISTINCT country
-FROM users
-ORDER BY country;
-```
-
 For the rest of the queries, we'll be using the `albums` and `songs` tables.
 
 ![albums and songs](https://andydlindsay-portfolio.s3.amazonaws.com/lighthouse/albums-and-songs.png)
 
-7. List all albums along with their songs (INNER JOIN)
+6. List all albums along with their songs (INNER JOIN)
 
 ```sql
 SELECT *
@@ -242,7 +234,7 @@ JOIN songs
 ON albums.id = songs.album_id;
 ```
 
-8. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
+7. List all albums along with how many songs each album has (GROUP BY with INNER JOIN and COUNT)
 
 ```sql
 SELECT albums.album_name, COUNT(songs.id) AS num_songs
@@ -252,7 +244,7 @@ ON albums.id = songs.album_id
 GROUP BY albums.album_name;
 ```
 
-9. Enhance previous query to only include albums that have more than 10 songs (requires HAVING)
+8. Enhance previous query to only include albums that have more than 10 songs (requires HAVING)
 
 ```sql
 SELECT albums.album_name, COUNT(songs.id) AS num_songs
@@ -263,7 +255,7 @@ GROUP BY albums.album_name
 HAVING COUNT(songs.id) > 10;
 ```
 
-10. List ALL albums in the database, along with their songs if any (need LEFT JOIN so that all albums are included)
+9. List ALL albums in the database, along with their songs if any (need LEFT JOIN so that all albums are included)
 
 ```sql
 SELECT *
@@ -279,35 +271,17 @@ ON albums.id = songs.album_id
 WHERE songs.album_id IS NULL;
 ```
 
-11. List albums along with average song rating (AVG)
+10. List ONLY the first 10 songs from the songs table (LIMIT and OFFSET)
 
 ```sql
-SELECT albums.album_name, AVG(songs.rating) AS avg_rating
-FROM albums
-JOIN songs
-ON albums.id = songs.album_id
-GROUP BY albums.album_name;
-```
-
-12. List albums and songs with rating higher than album average (subquery)
-
-```sql
--- this query will give us the average song rating for the specified album
-SELECT AVG(rating)
-FROM songs
-WHERE album_id = 1;
-
--- this query will give us back all the songs (and album info) with a rating higher than specified (3.0)
 SELECT *
-FROM albums
-JOIN songs ON albums.id = songs.album_id
-WHERE songs.rating > 3.0;
+FROM songs
+LIMIT 10;
 
--- we can use a subquery to put these two queries together
-SELECT *,
-FROM albums
-JOIN songs ON albums.id = songs.album_id
-WHERE songs.rating > (SELECT AVG(rating) FROM songs WHERE album_id = albums.id);
+-- using LIMIT with OFFSET
+SELECT *
+FROM songs
+LIMIT 10 OFFSET 10;
 ```
 
 ### Useful Links
