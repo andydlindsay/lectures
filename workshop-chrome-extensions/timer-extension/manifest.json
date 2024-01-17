@@ -3,7 +3,8 @@
   "name": "Simple Timer",
   "version": "1.0.0",
   "permissions": [
-    "storage"
+    "storage",
+    "alarms"
   ],
   "description": "A very simple timer",
   "icons": {
@@ -20,5 +21,8 @@
     "default_title": "do I work??",
     "default_popup": "popup.html"
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  }
 }

@@ -46,9 +46,11 @@ const loadInitialValues = () => {
 
       const name = result.name || 'Timer Extension';
       const displayChoice = result.displayChoice || 'default';
+      const counter = result.counter || 0;
     
       document.getElementById('name').textContent = name;
-      document.getElementById('display-choice').textContent = displayChoice;
+      document.getElementById('displayChoice').textContent = displayChoice;
+      document.getElementById('counter').textContent = counter;
     });
 };
 
@@ -56,13 +58,24 @@ loadInitialValues();
 
 // listen for changes to the values
 chrome.storage.onChanged.addListener(async (changes, namespace) => {
-  console.log('changes', changes);
-  console.log('namespace', namespace);
+  // console.log('changes', changes);
+  // console.log('namespace', namespace);
 
   // const newName = changes.name.newValue;
   // const newDisplayChoice = changes.displayChoice.newValue;
-  const newName = await chrome.storage.local.get('name');
-  const newDisplayChoice = await chrome.storage.local.get('displayChoice');
+  // const newName = await chrome.storage.local.get('name');
+  // const newDisplayChoice = await chrome.storage.local.get('displayChoice');
 
-  document.getElementById('name').textContent = newName.name;
+  for (const key in changes) {
+    document.getElementById(key).textContent = changes[key].newValue;
+  }
+
+  // document.getElementById('name').textContent = newName.name;
+  // document.getElementById('display-choice').textContent = newDisplayChoice.displayChoice;
+});
+
+document.getElementById('increment').addEventListener('click', async () => {
+  const result = await chrome.storage.local.get('counter');
+  const newCount = result.counter ? result.counter + 1 : 1;
+  chrome.storage.local.set({ counter: newCount });
 });
