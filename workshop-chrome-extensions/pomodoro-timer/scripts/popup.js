@@ -3,6 +3,7 @@ const timerElement = document.getElementById('timer');
 const resetButton = document.getElementById('reset-timer');
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop');
+const progressBar = document.getElementById('progress-bar');
 
 const setTime = () => {
   const currentTime = new Date().toLocaleTimeString();
@@ -13,32 +14,49 @@ setTime();
 
 setInterval(setTime, 1000);
 
+// display/hide the buttons
+const displayButtons = (isRunning) => {
+  if (isRunning) {
+    stopButton.classList.remove('hide');
+    startButton.classList.add('hide');
+  } else {
+    stopButton.classList.add('hide');
+    startButton.classList.remove('hide');
+  }
+};
+
 // display the timer value
 const displayTimer = (timer = 1500) => {
   const secondsRemaining = String(timer % 60).padStart(2, '0');
   const minutesRemaining = String(Math.floor(timer / 60)).padStart(2, ' ');
   timerElement.textContent = `${minutesRemaining}:${secondsRemaining}`;
+
+  progressBar.value = timer;
 };
 
 // get the timer value
-const loadTimerValue = () => {
-  chrome.storage.local.get('timer')
-    .then(result => {
-      return result.timer;
-    })
-    .then(displayTimer);
+const loadValues = () => {
+  chrome.storage.local.get()
+    .then(results => {
+      displayButtons(results.isRunning);
+      displayTimer(results.timer);
+    });
 };
 
-loadTimerValue();
+loadValues();
 
 chrome.storage.onChanged.addListener((changes) => {
   if ('timer' in changes) {
     displayTimer(changes.timer.newValue);
   }
+  if ('isRunning' in changes) {
+    isRunning = changes.isRunning.newValue;
+    displayButtons(changes.isRunning.newValue);
+  }
 });
 
 resetButton.addEventListener('click', () => {
-  chrome.storage.local.set({ timer: 10 });
+  chrome.storage.local.set({ timer: 1500 });
 });
 
 startButton.addEventListener('click', () => {

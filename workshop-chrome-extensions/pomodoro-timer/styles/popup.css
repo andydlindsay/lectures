@@ -14,14 +14,14 @@ font-family: 'Share Tech Mono', monospace;
 html {
   height: 400px;
   width: 500px;
-  background-color: #A84028;
-  color: #E2C4BE;
+  background-color: #a84028;
+  color: #e2c4be;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 header {
@@ -30,8 +30,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Grape Nuts', cursive;
-  border-bottom: 2px solid #422F2A;
+  font-family: "Grape Nuts", cursive;
+  border-bottom: 2px solid #422f2a;
 }
 
 header h2 {
@@ -51,20 +51,43 @@ div.pomodoro {
 }
 
 #timer {
-  font-family: 'Share Tech Mono', monospace;
+  font-family: "Share Tech Mono", monospace;
 }
 
 button {
   background-color: #754034;
-  border: 2px solid #422F2A;
+  border: 2px solid #422f2a;
   padding: 0.35rem 0.75rem;
   border-radius: 1rem;
-  color: #E2C4BE;
+  color: #e2c4be;
   font-size: 1rem;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   cursor: pointer;
+  width: 5rem;
 }
 
 button:active {
   transform: translateY(0.25rem);
+}
+
+.hide {
+  display: none;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+}
+
+meter::-webkit-meter-optimum-value {
+  background: #754034;
+}
+
+meter::-moz-meter-bar {
+  background: #754034;
+}
+
+meter {
+  width: 25rem;
+  font-size: 2rem;
 }
