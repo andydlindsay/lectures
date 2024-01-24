@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Quicksand&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/popup.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Pomodoro Timer</h2>
+    </header>
+
+    <main>
+      <div class="main-heading">
+        <h2>Current time: <span id="current-time">00:00</span></h2>
+      </div>
+
+      <div class="pomodoro">
+        <h1>Time remaining: <span id="timer">25:00</span></h1>
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset-timer">Reset</button>
+      </div>
+    </main>
+
+    <script defer src="/scripts/popup.js"></script>
+  </body>
+</html>

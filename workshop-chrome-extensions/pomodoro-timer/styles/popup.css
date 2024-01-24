@@ -1,0 +1,70 @@
+/* 
+primary: #A84028;
+secondary: #754034;
+bright: #DB2E08;
+dark: #422F2A;
+font-dark: #332C2B;
+font-bright: #E2C4BE;
+
+font-family: 'Grape Nuts', cursive;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Share Tech Mono', monospace;
+*/
+
+html {
+  height: 400px;
+  width: 500px;
+  background-color: #A84028;
+  color: #E2C4BE;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+header {
+  height: 60px;
+  background-color: #754034;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Grape Nuts', cursive;
+  border-bottom: 2px solid #422F2A;
+}
+
+header h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+div.main-heading {
+  display: flex;
+  justify-content: center;
+}
+
+div.pomodoro {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#timer {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+button {
+  background-color: #754034;
+  border: 2px solid #422F2A;
+  padding: 0.35rem 0.75rem;
+  border-radius: 1rem;
+  color: #E2C4BE;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(0.25rem);
+}

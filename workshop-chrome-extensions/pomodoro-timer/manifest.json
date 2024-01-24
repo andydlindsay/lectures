@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Pomodoro Timer",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "description": "Customizable pomodoro timer",
+  "icons": {
+    "16": "images/tomato.png",
+    "48": "images/tomato.png",
+    "128": "images/tomato.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/tomato.png",
+      "24": "images/tomato.png",
+      "32": "images/tomato.png"
+    },
+    "default_title": "Pomodoro Timer",
+    "default_popup": "/html/popup.html"
+  },
+  "options_page": "/html/options.html",
+  "background": {
+    "service_worker": "scripts/background.js"
+  }
+}
