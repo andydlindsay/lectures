@@ -4,7 +4,7 @@
 * Styling
 * Adding JS
 * Sharing data
-* Service workers?
-* Alarms?
+* Service workers
+* Alarms
 * Notifications
 * Interacting with the webpage

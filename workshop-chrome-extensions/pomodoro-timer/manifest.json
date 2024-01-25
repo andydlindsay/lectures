@@ -20,9 +20,9 @@
       "32": "images/tomato.png"
     },
     "default_title": "Pomodoro Timer",
-    "default_popup": "/html/popup.html"
+    "default_popup": "html/popup.html"
   },
-  "options_page": "/html/options.html",
+  "options_page": "html/options.html",
   "background": {
     "service_worker": "scripts/background.js"
   }

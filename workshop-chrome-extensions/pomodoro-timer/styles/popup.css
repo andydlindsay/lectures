@@ -91,3 +91,13 @@ meter {
   width: 25rem;
   font-size: 2rem;
 }
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+footer img {
+  margin-top: 1rem;
+  width: 10rem;
+}

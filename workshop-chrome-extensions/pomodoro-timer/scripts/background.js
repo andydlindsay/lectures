@@ -22,7 +22,8 @@ chrome.storage.onChanged.addListener((changes) => {
   if ('isRunning' in changes) {
     if (changes.isRunning.newValue) {
       return chrome.alarms.create('every second', {
-        periodInMinutes: 1 / 60
+        periodInMinutes: 1 / 60,
+        delayInMinutes: 1 / 240,
       });
     }
 
