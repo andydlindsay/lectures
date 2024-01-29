@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  padding: 15px 0;
+}
+
+body {
+  height: 400px;
+  width: 300px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+.task-row {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}

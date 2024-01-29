@@ -8,3 +8,10 @@
 * Alarms
 * Notifications
 * Interacting with the webpage
+
+### Order
+* Intro Slide Deck
+* Basic HTML and CSS for popup
+* Basic HTML and CSS for options page
+* Storage to share data between popup and options
+* 

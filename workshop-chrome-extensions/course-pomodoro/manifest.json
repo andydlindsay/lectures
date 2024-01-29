@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Course Pomodoro Timer",
+  "version": "1.0.0",
+  "description": "A simple pomodoro timer",
+  "icons": {
+    "16": "images/full-size-tomato.png",
+    "48": "images/full-size-tomato.png",
+    "128": "images/full-size-tomato.png"
+  },
+  "action": {
+    "default_icon": "images/full-size-tomato.png",
+    "default_title": "Pomodoro Timer",
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
