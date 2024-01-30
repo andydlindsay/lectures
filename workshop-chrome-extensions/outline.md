@@ -7,6 +7,7 @@
 * Service workers
 * Alarms
 * Notifications
+* Context menus?
 * Interacting with the webpage
 
 ### Order
@@ -17,4 +18,5 @@
 * 
 
 ### Extension Ideas
-* an extension that tells you when you have too many tabs open
+* tells you when you have too many tabs open
+* highlight list of ingredients and "add to cart" at walmart/ubereats

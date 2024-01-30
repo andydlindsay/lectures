@@ -17,6 +17,8 @@
     "service_worker": "background.js"
   },
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "search",
+    "tabs"
   ]
 }
