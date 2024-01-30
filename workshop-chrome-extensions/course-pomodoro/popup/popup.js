@@ -1,4 +1,5 @@
 let tasks = [];
+let timerDuration = 1500;
 
 const addTaskBtn = document.getElementById("add-task");
 const taskList = document.getElementById("task-list");
@@ -8,7 +9,7 @@ const pauseBtn = document.getElementById("pause");
 const resetBtn = document.getElementById("reset");
 
 const saveTasks = () => {
-  chrome.storage.sync.set({ tasks });
+  chrome.storage.local.set({ tasks });
 };
 
 const renderTasks = () => {
@@ -46,9 +47,7 @@ const renderTasks = () => {
 };
 
 const updateTimer = (timerInSeconds) => {
-  const pomodoroLength = 1500;
-
-  const timeRemaining = pomodoroLength - timerInSeconds;
+  const timeRemaining = timerDuration - timerInSeconds;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
 
@@ -107,12 +106,15 @@ resetBtn.addEventListener("click", () => {
     });
 });
 
-chrome.storage.sync.get("tasks").then((result) => {
+chrome.storage.local.get("tasks").then((result) => {
   tasks = result.tasks || [];
   renderTasks(tasks);
 });
 
 chrome.storage.local.get().then((results) => {
+  if ("timerDuration" in results) {
+    timerDuration = results.timerDuration;
+  }
   if ("timer" in results) {
     updateTimer(results.timer);
   }
@@ -122,7 +124,17 @@ chrome.storage.local.get().then((results) => {
 });
 
 chrome.storage.onChanged.addListener((changes) => {
+  if ("timerDuration" in changes) {
+    timerDuration = changes.timerDuration.newValue;
+    chrome.storage.local.get('timer')
+      .then((results) => {
+        updateTimer(results.timer);
+      });
+  }
   if ("timer" in changes) {
     updateTimer(changes.timer.newValue);
+  }
+  if ("isRunning" in changes) {
+    showHideButtons(changes.isRunning.newValue);
   }
 });

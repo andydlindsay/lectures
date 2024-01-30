@@ -20,5 +20,6 @@
   ],
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "options_page": "options/options.html"
 }

@@ -4,11 +4,11 @@ chrome.alarms.create("every second", {
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === "every second") {
-    chrome.storage.local.get(["timer", "isRunning"]).then((results) => {
+    chrome.storage.local.get().then((results) => {
       if (results.isRunning) {
-        const pomodoroLength = 1500;
+        const pomodoroLength = results.timerDuration || 1500;
 
-        if (results.timer === pomodoroLength) {
+        if (results.timer == pomodoroLength) {
           chrome.notifications.create(null, {
             title: "Pomodoro Notification",
             message: "The timer is done!",
@@ -30,12 +30,14 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   }
 });
 
-chrome.storage.local.get(["timer", "isRunning"]).then((results) => {
+chrome.storage.local.get().then((results) => {
   const timer = results.timer || 0;
   const isRunning = results.isRunning || true;
+  const timerDuration = results.timerDuration || 1500;
 
   chrome.storage.local.set({
     timer,
     isRunning,
+    timerDuration,
   });
 });
