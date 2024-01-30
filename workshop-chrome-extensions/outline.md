@@ -15,3 +15,6 @@
 * Basic HTML and CSS for options page
 * Storage to share data between popup and options
 * 
+
+### Extension Ideas
+* an extension that tells you when you have too many tabs open

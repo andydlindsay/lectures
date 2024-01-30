@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "DOM Practice",
+  "version": "1.0.0",
+  "description": "Data fetching and DOM interaction",
+  "icons": {
+    "16": "images/webpage.png",
+    "48": "images/webpage.png",
+    "128": "images/webpage.png"
+  },
+  "action": {
+    "default_icon": "images/webpage.png",
+    "default_title": "DOM Practice",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "contextMenus"
+  ]
+}
