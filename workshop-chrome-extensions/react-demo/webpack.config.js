@@ -3,7 +3,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  mode: 'production',
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
   entry: {
     popup: path.resolve('src/popup/popup.js'),
   },
