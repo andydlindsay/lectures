@@ -14,11 +14,19 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background/background.js"
   },
   "permissions": [
     "contextMenus",
     "search",
-    "tabs"
+    "tabs",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript/contentScript.js"],
+      "css": ["contentScript/contentScript.css"]
+    }
   ]
 }

@@ -49,3 +49,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     });
   }
 });
+
+chrome.storage.onChanged.addListener((changes) => {
+  console.log(changes);
+});

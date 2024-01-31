@@ -8,7 +8,8 @@
 * Alarms
 * Notifications
 * Context menus?
-* Interacting with the webpage
+* Content scripts (aka. interacting with the webpage)
+* Folder/file structure
 
 ### Order
 * Intro Slide Deck
@@ -20,3 +21,4 @@
 ### Extension Ideas
 * tells you when you have too many tabs open
 * highlight list of ingredients and "add to cart" at walmart/ubereats
+* close duplicate tabs
