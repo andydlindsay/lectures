@@ -2,6 +2,16 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const getHtmlPlugins = (chunks) => {
+  return chunks.map(chunk => (
+    new HtmlWebpackPlugin({
+      title: `React Practice - ${chunk}`,
+      filename: `${chunk}/${chunk}.html`,
+      chunks: [chunk],
+    })
+  ));
+};
+
 const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
@@ -44,17 +54,13 @@ const config = {
         },
       ]
     }),
-    new HtmlWebpackPlugin({
-      title: 'React Practice - Popup',
-      filename: 'popup/popup.html',
-      chunks: ['popup'],
-    }),
-    new HtmlWebpackPlugin({
-      title: 'React Practice - Options Page',
-      filename: 'options/options.html',
-      chunks: ['options'],
-    }),
-  ]
+    ...getHtmlPlugins(['popup', 'options']),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    }
+  }
 };
 
 module.exports = config;
