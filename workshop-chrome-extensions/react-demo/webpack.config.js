@@ -6,10 +6,25 @@ const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: {
-    popup: path.resolve('src/popup/popup.js'),
+    popup: path.resolve('src/popup/index.js'),
+  },
+  module: {
+    rules: [
+      {
+        loader: 'babel-loader',
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        options: {
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-react',
+          ],
+        }
+      }
+    ]
   },
   resolve: {
-    extensions: ['.jsx', '.js'],
+    extensions: ['.js', '.jsx'],
   },
   output: {
     filename: '[name].js',
