@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "React Demo",
+  "version": "1.0.0",
+  "description": "Demo React inside a Chrome extension",
+  "action": {
+    "default_title": "React Practice",
+    "default_popup": "popup.html",
+    "default_icon": "images/react-icon.png"
+  },
+  "icons": {
+    "16": "images/react-icon.png",
+    "48": "images/react-icon.png",
+    "128": "images/react-icon.png"
+  }
+}

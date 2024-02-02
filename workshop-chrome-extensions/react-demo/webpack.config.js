@@ -34,7 +34,7 @@ const config = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve('src/manifest.json'),
+          from: path.resolve('src/static'),
           to: path.resolve('dist'),
         },
       ]
