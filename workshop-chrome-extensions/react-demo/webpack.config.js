@@ -7,6 +7,7 @@ const config = {
   devtool: 'cheap-module-source-map',
   entry: {
     popup: path.resolve('src/popup/index.js'),
+    options: path.resolve('src/options/index.js'),
   },
   module: {
     rules: [
@@ -27,7 +28,7 @@ const config = {
     extensions: ['.js', '.jsx'],
   },
   output: {
-    filename: '[name].js',
+    filename: '[name]/[name].js',
     path: path.resolve('dist'),
   },
   plugins: [
@@ -37,12 +38,21 @@ const config = {
           from: path.resolve('src/static'),
           to: path.resolve('dist'),
         },
+        {
+          from: path.resolve('src/background'),
+          to: path.resolve('dist/background'),
+        },
       ]
     }),
     new HtmlWebpackPlugin({
-      title: 'React Practice',
-      filename: 'popup.html',
+      title: 'React Practice - Popup',
+      filename: 'popup/popup.html',
       chunks: ['popup'],
+    }),
+    new HtmlWebpackPlugin({
+      title: 'React Practice - Options Page',
+      filename: 'options/options.html',
+      chunks: ['options'],
     }),
   ]
 };

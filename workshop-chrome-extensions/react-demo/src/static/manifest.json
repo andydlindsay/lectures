@@ -5,12 +5,16 @@
   "description": "Demo React inside a Chrome extension",
   "action": {
     "default_title": "React Practice",
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "images/react-icon.png"
   },
   "icons": {
     "16": "images/react-icon.png",
     "48": "images/react-icon.png",
     "128": "images/react-icon.png"
+  },
+  "options_page": "options/options.html",
+  "background": {
+    "service_worker": "background/background.js"
   }
 }

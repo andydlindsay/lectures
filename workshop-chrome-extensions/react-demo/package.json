@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --progress --config webpack.config.js",
     "build": "rm -rf dist; webpack --config webpack.config.js"
   },
