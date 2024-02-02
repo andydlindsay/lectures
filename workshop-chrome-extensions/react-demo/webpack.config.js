@@ -23,7 +23,7 @@ const config = {
     rules: [
       {
         loader: 'babel-loader',
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
         options: {
           presets: [
@@ -31,7 +31,23 @@ const config = {
             '@babel/preset-react',
           ],
         }
-      }
+      },
+      {
+        test: /\.(css|scss|sass)$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
   resolve: {
@@ -52,15 +68,19 @@ const config = {
           from: path.resolve('src/background'),
           to: path.resolve('dist/background'),
         },
+        {
+          from: path.resolve('src/contentScript'),
+          to: path.resolve('dist/contentScript'),
+        },
       ]
     }),
     ...getHtmlPlugins(['popup', 'options']),
   ],
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    }
-  }
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //   }
+  // }
 };
 
 module.exports = config;
