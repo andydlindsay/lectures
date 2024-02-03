@@ -1,6 +1,7 @@
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const getHtmlPlugins = (chunks) => {
   return chunks.map(chunk => (
@@ -13,8 +14,6 @@ const getHtmlPlugins = (chunks) => {
 };
 
 const config = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
   entry: {
     popup: path.resolve('src/popup/index.js'),
     options: path.resolve('src/options/index.js'),
@@ -57,7 +56,10 @@ const config = {
     filename: '[name]/[name].js',
     path: path.resolve('dist'),
   },
-  plugins: [
+  plugins: [,
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+    }),
     new CopyPlugin({
       patterns: [
         {
@@ -76,11 +78,6 @@ const config = {
     }),
     ...getHtmlPlugins(['popup', 'options']),
   ],
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   }
-  // }
 };
 
 module.exports = config;
