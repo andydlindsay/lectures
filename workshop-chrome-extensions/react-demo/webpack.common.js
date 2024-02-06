@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -77,6 +78,9 @@ const config = {
       ]
     }),
     ...getHtmlPlugins(['popup', 'options']),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
   ],
 };
 

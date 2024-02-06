@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './Popup.scss';
 import icon from '../static/images/react-icon.png';
 
