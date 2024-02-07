@@ -78,9 +78,9 @@
 {
   "permissions": [
     "storage",
-    "tabs",
     "alarms",
-    "contentMenus"
+    "notifications",
+    "contextMenus"
   ]
 }
 ```
@@ -206,7 +206,7 @@ chrome.notifications.create('', {
 
 // named notification
 chrome.notifications.create('my notification name', {
-  title: 'Name Notification',
+  title: 'Named Notification',
   message: 'This notification has a name',
   iconUrl: '/images/small-icon.png',
   type: 'basic',
