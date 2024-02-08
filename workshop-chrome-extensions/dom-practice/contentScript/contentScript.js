@@ -2,6 +2,11 @@
 
 // document.title = 'whatever';
 
+chrome.runtime.sendMessage({ content: 'hello world', friends: [] })
+  .then((response) => {
+    console.log('message response in contentScript', response);
+  });
+
 const tags = document.getElementsByTagName('a');
 
 const tagText = [];

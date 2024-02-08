@@ -53,3 +53,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 chrome.storage.onChanged.addListener((changes) => {
   console.log(changes);
 });
+
+chrome.runtime.onMessage.addListener((message, sender, response) => {
+  console.log('message', message, 'sender', sender);
+
+  response({ content: 'message received loud and clear!', user: {}, topics: [] });
+});

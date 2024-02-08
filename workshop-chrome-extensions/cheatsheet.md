@@ -8,6 +8,7 @@
 * [Storage API](#storage-api)
 * [Alarms API](#alarms-api)
 * [Notifications API](#notifications-api)
+* [Runtime API](#runtime-api)
 * [Boilerplates](#boilerplates)
 
 ### Manifest File
@@ -210,6 +211,44 @@ chrome.notifications.create('my notification name', {
   message: 'This notification has a name',
   iconUrl: '/images/small-icon.png',
   type: 'basic',
+});
+```
+
+### Runtime API
+* The [runtime API](https://developer.chrome.com/docs/extensions/reference/api/runtime) can be used to interact with the background script and program against lifecycle events for your extension.
+* No permissions are required to interact with the runtime API
+
+#### Running Code on Install
+* Add code that will run when the extension is first installed in the browser
+* For example: establishing default settings, updating the context menus (right click menu), or adding a "first launch" greeting
+
+```js
+// fires when the extension is installed
+chrome.runtime.onInstalled.addListener((details) => {
+  console.log(details); // contains info about the extension and the reason for the event
+
+  // add any code that you want to run on install
+});
+```
+
+#### Running Code in the Service Worker
+* The background and content scripts **do not** share scope/variables
+* We can trigger code in the background script by sending messages from the content script
+
+```js
+// send a message indicating what type of action you want to run or 
+// what type of data you want to get back
+chrome.runtime.sendMessage('message content')
+  .then((response) => {
+    console.log(response); // whatever the receiver returned
+  });
+
+// listen for any incoming messages
+chrome.runtime.onMessage.addListener((message, sender, responseFunction) => {
+  console.log(message); // the content of the message we're receiving
+  console.log(sender); // info about the sender of the message
+
+  responseFunction('here is my response'); // this is the response passed to the .then callback above
 });
 ```
 

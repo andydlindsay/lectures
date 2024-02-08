@@ -1,5 +1,10 @@
 ### Topics
 * Setup and manifest.json
+
+
+* Web accessible resources?
+
+
 * Icons
 * Styling
 * Adding JS
