@@ -1,7 +1,8 @@
 # Chrome Extension Cheatsheet
 
-### Documentation
+### Useful Links
 * [Chrome Extension Docs](https://developer.chrome.com/docs/extensions)
+* [Vanilla JS Cheatsheet](https://gist.github.com/Alexey-654/5b8c74a4e25e9a41179cb6b324fd4b5b)
 
 ### Table of Contents
 * [Manifest File](#manifest-file)
