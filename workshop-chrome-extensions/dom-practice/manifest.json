@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "DOM Practice",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Data fetching and DOM interaction",
   "icons": {
     "16": "images/webpage.png",
@@ -20,7 +20,8 @@
     "contextMenus",
     "search",
     "tabs",
-    "storage"
+    "storage",
+    "notifications"
   ],
   "content_scripts": [
     {

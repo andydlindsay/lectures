@@ -1,10 +1,5 @@
 ### Topics
 * Setup and manifest.json
-
-
-* Web accessible resources?
-
-
 * Icons
 * Styling
 * Adding JS
@@ -12,9 +7,12 @@
 * Service workers
 * Alarms
 * Notifications
-* Context menus?
 * Content scripts (aka. interacting with the webpage)
+* Runtime
 * Folder/file structure
+
+* Context menus?
+* Web accessible resources?
 
 ### Order
 * Intro Slide Deck
