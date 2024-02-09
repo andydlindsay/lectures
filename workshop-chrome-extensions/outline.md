@@ -5,26 +5,26 @@
 * [Create Manifest.json](#create-manifestjson)
 * [Add a Popup](#add-a-popup)
 * [Add Styling and Functionality](#add-styling-and-functionality)
-* [**Work Task #1**](#work-task-1)
+* [**Work Task #1**](#work-task-1) - style and add functionality to popup
 * [Add an Options Page](#add-an-options-page)
 * [Folder Structure](#folder-structure)
-* [**Work Task #2**](#work-task-2)
+* [**Work Task #2**](#work-task-2) - add options form and submit handler
 * [Add the Storage API](#add-the-storage-api)
-* [**Work Task #3**](#work-task-3)
+* [**Work Task #3**](#work-task-3) - update storage when options form submits
 * [Add a Background Script](#add-a-background-script)
 * [Add the Alarms API](#add-the-alarms-api)
 * [Add the Notifications API](#add-the-notifications-api)
-* [**Work Task #4**](#work-task-4)
+* [**Work Task #4**](#work-task-4) - add background script and send notifications
 * [Add the Content Script](#add-the-content-script)
-* [**Work Task #5**](#work-task-5)
+* [**Work Task #5**](#work-task-5) - DOM manipulation
 * [[Stretch] Implement Messaging](#stretch-implement-messaging)
 
 ### Work Tasks
-* [Work Task #1](#work-task-1) 
-* [Work Task #2](#work-task-2) 
-* [Work Task #3](#work-task-3) 
-* [Work Task #4](#work-task-4) 
-* [Work Task #5](#work-task-5) 
+* [**Work Task #1**](#work-task-1) - style and add functionality to popup
+* [**Work Task #2**](#work-task-2) - add options form and submit handler
+* [**Work Task #3**](#work-task-3) - update storage when options form submits
+* [**Work Task #4**](#work-task-4) - add background script and send notifications
+* [**Work Task #5**](#work-task-5) - DOM manipulation
 
 ### Why Build Chrome Extensions?
 * Lots of room for creativity
