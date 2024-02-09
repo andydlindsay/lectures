@@ -1,7 +1,23 @@
 # Outline
 
 ### Table of Contents
-
+* [Why Build Chrome Extensions?](#why-build-chrome-extensions)
+* [Create Manifest.json](#create-manifestjson)
+* [Add a Popup](#add-a-popup)
+* [Add Styling and Functionality](#add-styling-and-functionality)
+* [**Work Task #1**](#work-task-1)
+* [Add an Options Page](#add-an-options-page)
+* [Folder Structure](#folder-structure)
+* [**Work Task #2**](#work-task-2)
+* [Add the Storage API](#add-the-storage-api)
+* [**Work Task #3**](#work-task-3)
+* [Add a Background Script](#add-a-background-script)
+* [Add the Alarms API](#add-the-alarms-api)
+* [Add the Notifications API](#add-the-notifications-api)
+* [**Work Task #4**](#work-task-4)
+* [Add the Content Script](#add-the-content-script)
+* [**Work Task #5**](#work-task-5)
+* [[Stretch] Implement Messaging](#stretch-implement-messaging)
 
 ### Work Tasks
 * [Work Task #1](#work-task-1) 
@@ -64,7 +80,7 @@
 
 [Back to top](#outline)
 
-## Work Task #1:
+### Work Task #1:
 * In `popup.html`, create at least two DOM elements that can be changed/customized (eg. app title, image source, counter variable)
 * In `popup.js`, wire up the functionality outlined above (eg. add event handlers and update the DOM)
 
@@ -152,7 +168,7 @@ js
 
 [Back to top](#outline)
 
-## Work Task #2:
+### Work Task #2:
 * Add a form to the options page to customize the 2+ pieces of state (eg. counter, app title, etc)
 * Add a submit handler that alerts/logs the form data
 
@@ -235,9 +251,9 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
 
 [Back to top](#outline)
 
-## Work Task #3:
+### Work Task #3:
 * Update storage when the options form submits (the popup should update as well)
-* Bonus: load from storage when options page options and pre-populate the input fields with the current values from storage (if any)
+* Bonus: load from storage when options page opens and pre-populate the input fields with the current values from storage (if any)
 
 ```js
 // options.js
@@ -325,7 +341,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 [Back to top](#outline)
 
-### Add Alarms API
+### Add the Alarms API
 * Update the manifest file
 
 ```json
@@ -363,7 +379,7 @@ chrome.alarms.clear('every 5 seconds');
 
 [Back to top](#outline)
 
-### Add Notifications API
+### Add the Notifications API
 * Update manifest file
 
 ```json
