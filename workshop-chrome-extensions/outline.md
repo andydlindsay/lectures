@@ -440,3 +440,22 @@ html {
 * Add a content script and manipulate the webpage (eg. change styles, add/remove elements)
 
 [Back to top](#outline)
+
+### [Stretch] Implement Messaging
+
+```js
+// send a message indicating what type of action you want to run or 
+// what type of data you want to get back
+chrome.runtime.sendMessage('message content')
+  .then((response) => {
+    console.log(response); // whatever the receiver returned
+  });
+
+// listen for any incoming messages
+chrome.runtime.onMessage.addListener((message, sender, responseFunction) => {
+  console.log(message); // the content of the message we're receiving
+  console.log(sender); // info about the sender of the message
+
+  responseFunction('here is my response'); // this is the response passed to the .then callback above
+});
+```
