@@ -87,6 +87,8 @@
 }
 ```
 
+[Back to top](#chrome-extension-cheatsheet)
+
 ### Storage API
 * The [storage API](https://developer.chrome.com/docs/extensions/reference/api/storage) can be used to store data in the client's browser.
 * There are three main storage areas:
@@ -140,6 +142,8 @@ chrome.storage.onChanged.addListener((changes, storageArea) => {
 });
 ```
 
+[Back to top](#chrome-extension-cheatsheet)
+
 ### Alarms API
 * The [alarms API](https://developer.chrome.com/docs/extensions/reference/api/alarms) can be used to "wake up" your service workers and run code at specified intervals or at specified times.
 * Requires the `alarms` permission to be set
@@ -182,6 +186,8 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 chrome.alarms.clear('alarm name');
 ```
 
+[Back to top](#chrome-extension-cheatsheet)
+
 ### Notifications API
 * The [notifications API](https://developer.chrome.com/docs/extensions/reference/api/notifications) can be used to send a notification to the user's device
 * Requires the `notifications` permission to be set
@@ -214,6 +220,8 @@ chrome.notifications.create('my notification name', {
   type: 'basic',
 });
 ```
+
+[Back to top](#chrome-extension-cheatsheet)
 
 ### Runtime API
 * The [runtime API](https://developer.chrome.com/docs/extensions/reference/api/runtime) can be used to interact with the background script and program against lifecycle events for your extension.
@@ -253,6 +261,10 @@ chrome.runtime.onMessage.addListener((message, sender, responseFunction) => {
 });
 ```
 
+[Back to top](#chrome-extension-cheatsheet)
+
 ### Boilerplates
 * [Basic Extension](https://github.com/andydlindsay/chrome-extension)
 * [React Extension](https://github.com/andydlindsay/react-chrome-extension)
+
+[Back to top](#chrome-extension-cheatsheet)

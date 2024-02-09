@@ -1,9 +1,21 @@
 # Outline
 
+### Table of Contents
+
+
+### Work Tasks
+* [Work Task #1](#work-task-1) 
+* [Work Task #2](#work-task-2) 
+* [Work Task #3](#work-task-3) 
+* [Work Task #4](#work-task-4) 
+* [Work Task #5](#work-task-5) 
+
 ### Why Build Chrome Extensions?
 * Lots of room for creativity
 * Easy to build and cheap to deploy
 * Transferable skills from/to other web technologies
+
+[Back to top](#outline)
 
 ### Create Manifest.json
 * Mandatory keys: `manifest_version`, `name`, and `version`
@@ -24,6 +36,8 @@
 }
 ```
 
+[Back to top](#outline)
+
 ### Add a Popup
 
 ```json
@@ -36,6 +50,8 @@
 }
 ```
 
+[Back to top](#outline)
+
 ### Add Styling and Functionality
 
 ```html
@@ -45,6 +61,8 @@
 <!-- relative paths work -->
 <script defer src="../js/popup.js"></script>
 ```
+
+[Back to top](#outline)
 
 ## Work Task #1:
 * In `popup.html`, create at least two DOM elements that can be changed/customized (eg. app title, image source, counter variable)
@@ -73,6 +91,8 @@ incrementButton.addEventListener('click', () => {
 });
 ```
 
+[Back to top](#outline)
+
 ### Add an Options Page
 
 ```json
@@ -100,38 +120,323 @@ incrementButton.addEventListener('click', () => {
 </html>
 ```
 
+[Back to top](#outline)
+
+### Folder Structure
+* Relative paths work within the files so that folders can be structured however the dev sees fit
+
+```
+manifest.json
+popup
+  popup.html
+  popup.css
+  popup.js
+options
+  options.html
+  options.css
+  options.js
+```
+
+```
+manifest.json
+html
+  popup.html
+  options.html
+css
+  popup.css
+  options.css
+js
+  popup.js
+  options.js
+```
+
+[Back to top](#outline)
+
 ## Work Task #2:
+* Add a form to the options page to customize the 2+ pieces of state (eg. counter, app title, etc)
+* Add a submit handler that alerts/logs the form data
 
+```html
+<form id="options-form">
+  <label for="app-title">App Title</label>
+  <input type="text" id="app-title" name="app-title" />
+  <br/>
+  <label for="count">Count Value</label>
+  <input type="number" id="count" name="count" />
+  <br/>
+  <button type="submit" value="save">Save</button>
+</form>
+```
 
+```js
+// grab the DOM element(s)
+const form = document.getElementById('options-form');
+const appTitleInput = document.getElementById('app-title');
+const countInput = document.getElementById('count');
 
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log(appTitleInput.value);
+  console.log(countInput.value);
+});
+```
 
+[Back to top](#outline)
 
+### Add the Storage API
+* There are three main storage areas:
+  * Local (`chrome.storage.local`): Data is stored on the local device and is not shared between devices. Max size: 10mb
+  * Syncing (`chrome.storage.sync`): Data that is synchronized between multiple devices. Max size: 100kb
+  * Session (`chrome.storage.session`): Data that is cleared when the browser session ends. Max size: 10mb
+* Requires the `storage` permission to be set
 
+```json
+{
+  "permissions": [
+    "storage"
+  ]
+}
+```
 
+```js
+// update storage
+chrome.storage.local.set({ count });
+```
 
+* Read the value(s) in the devTools
 
+```js
+chrome.storage.local.get('count').then(console.log);
+```
 
-### Topics
-* Styling
-* Adding JS
-* Sharing data
-* Service workers
-* Alarms
-* Notifications
-* Content scripts (aka. interacting with the webpage)
-* Runtime
+* Load the value from storage when the popup opens
 
-* Context menus?
-* Web accessible resources?
+```js
+chrome.storage.local.get('count')
+  .then((results) => {
+    count = results.count;
+    countSpan.textContent = count;
+  });
+```
 
-### Order
-* Intro Slide Deck
-* Basic HTML and CSS for popup
-* Basic HTML and CSS for options page
-* Storage to share data between popup and options
-* 
+* Add a listener for the value to change
 
-### Extension Ideas
-* tells you when you have too many tabs open
-* highlight list of ingredients and "add to cart" at walmart/ubereats
-* close duplicate tabs
+```js
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  console.log(changes);
+  console.log(namespace);
+
+  if ('count' in changes) {
+    count = changes.count.newValue;
+    countSpan.textContent = count;
+  }
+});
+```
+
+[Back to top](#outline)
+
+## Work Task #3:
+* Update storage when the options form submits (the popup should update as well)
+* Bonus: load from storage when options page options and pre-populate the input fields with the current values from storage (if any)
+
+```js
+// options.js
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log(appTitleInput.value);
+  console.log(countInput.value);
+
+  chrome.storage.local.set({
+    appTitle: appTitleInput.value,
+    count: Number(countInput.value),
+  });
+});
+```
+
+```js
+// popup.js
+chrome.storage.local.get(['count', 'appTitle'])
+  .then((results) => {
+    count = results.count;
+    countSpan.textContent = count;
+    titleHeader.textContent = results.appTitle || 'My amazing extension!!';
+  });
+
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if ('count' in changes) {
+    count = changes.count.newValue;
+    countSpan.textContent = count;
+  }
+
+  if ('appTitle' in changes) {
+    titleHeader.textContent = changes.appTitle.newValue;
+  }
+});
+```
+
+* Load initial form values from storage
+
+```js
+chrome.storage.local.get(['count', 'appTitle'])
+  .then((results) => {
+    appTitleInput.value = results.appTitle;
+    countInput.value = results.count;
+  });
+```
+
+[Back to top](#outline)
+
+### Add a Background Script
+* Update the manifest file
+
+```json
+"background": {
+  "service_worker": "background/background.js"
+}
+```
+
+* Icon click functionality
+
+```js
+// must remove default_popup key in manifest
+chrome.action.onClicked.addListener(() => {
+  console.log('icon clicked!');
+});
+```
+
+* Data fetching
+
+```js
+fetch('https://www.dnd5eapi.co/api/monsters/adult-black-dragon/')
+  .then(res => res.json())
+  .then(console.log);
+```
+
+* Default values
+
+```js
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.set({
+    count: -10, 
+    appTitle: 'Please choose a new title'
+  });
+});
+```
+
+[Back to top](#outline)
+
+### Add Alarms API
+* Update the manifest file
+
+```json
+{
+  "permissions": [
+    "alarms"
+  ]
+}
+```
+
+* Syntax
+
+```js
+// alarm creation
+chrome.alarms.create('alarm name', {
+  delayInMinutes: 5, // time to wait before the first alarm happens (optional)
+  periodInMinutes: 5, // interval between alarms in minutes (optional)
+  when: 1707261534, // specific unix timestamp when alarm should fire (optional)
+});
+```
+
+* Add a short duration alarm
+
+```js
+chrome.alarms.create('every 5 seconds', {
+  periodInMinutes: 5 / 60,
+});
+
+chrome.alarms.onAlarm.addListener((alarm) => {
+  console.log('alarm', alarm);
+});
+
+chrome.alarms.clear('every 5 seconds');
+```
+
+[Back to top](#outline)
+
+### Add Notifications API
+* Update manifest file
+
+```json
+{
+  "permissions": [
+    "notifications"
+  ]
+}
+```
+
+* Create a notification
+
+```js
+// basic notification
+chrome.notifications.create('', {
+  title: 'Notification Title',
+  message: 'Here is a message from my extension',
+  iconUrl: '/images/small-icon.png',
+  type: 'basic', // 'basic', 'image', 'list', 'progress'
+});
+
+// named notification
+chrome.notifications.create('my notification name', {
+  title: 'Named Notification',
+  message: 'This notification has a name',
+  iconUrl: '/images/small-icon.png',
+  type: 'basic',
+});
+```
+
+[Back to top](#outline)
+
+### Work Task #4:
+* Add code to the background script to establish default values in storage when the extension is installed/updated
+* Send a notification after an event has happened (eg. on button click or when a timer fires)
+
+```js
+chrome.alarms.onAlarm.addListener((alarm) => {
+  chrome.notifications.create('named notification', {
+    title: 'notification from my extension',
+    message: 'a very important message',
+    iconUrl: '/images/icon.png',
+    type: 'basic',
+  });
+});
+```
+
+[Back to top](#outline)
+
+### Add the Content Script
+* Content scripts allow us to interact with the webpage
+* Content scripts do not share scope/variables with popup or options
+* Update the manifest file and reload the extension
+
+```json
+"content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content-script.js"],
+    "css": ["content-styles.css"]
+  }
+]
+```
+
+```css
+html {
+  color: orange !important;
+}
+```
+
+[Back to top](#outline)
+
+### Work Task #5:
+* Add a content script and manipulate the webpage (eg. change styles, add/remove elements)
+
+[Back to top](#outline)
