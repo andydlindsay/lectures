@@ -52,6 +52,7 @@
 * [M05W11 - Database Design](/m05w11-2)
 * [M05W12 - SQL from our Apps](/m05w12-1)
 * [M07W16 - React Fundamentals](/m07w16-1)
+* [M07W17 - What is React State?](/m07w17-1)
 * [M07W17 - State Management and Immutable Update Patterns](/m07w17-2)
 * [M07W19 - Class-based Components](/m07w19-1)
 * [M09W22 - Intro to Ruby](/m09w22-1)
@@ -60,6 +61,7 @@
 
 ## Breakouts
 * [Async and Promises](/breakout-async-and-promises/)
+* [Callbacks](/breakout-callbacks/)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
 * [Exam 1 Review](/breakout-w1-exam)
 * [Exam 2 Review](/breakout-w2-exam)
