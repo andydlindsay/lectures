@@ -1,5 +1,9 @@
 # Outline
 
+### Functions are Values
+- Just like everything else in JavaScript, functions are values
+- As a result, they can be stored in variables just like any other value
+
 ### Callbacks and Higher Order Functions
 * A callback is a function that gets passed to another function to be executed by that function
 * Callback functions are used all over the place in JavaScript
