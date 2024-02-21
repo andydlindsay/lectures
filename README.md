@@ -72,6 +72,7 @@
 * [Technical Interview Prep](/breakout-ti-prep/)
 
 ## Advanced Topics
+* [Building Chrome Extensions](/advanced-chrome-extensions)
 * [Github](/advanced-github)
 * [Maze Generation](/advanced-maze)
 * [TypeScript](/advanced-typescript)
