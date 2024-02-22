@@ -8,7 +8,7 @@
 
 ### Curriculum Overview
 
-- These [slides](#) contain a high-level overview of the Lighthouse Labs web development program curriculum
+- These [slides](https://docs.google.com/presentation/d/1_NWYcPhS6Q3hQKXnh09Eufl7hs45yBLbUBZhWyvqeSc/edit?usp=sharing) contain a high-level overview of the Lighthouse Labs web development program curriculum
 
 ### Problem Solving
 

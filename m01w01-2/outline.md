@@ -1,5 +1,5 @@
 ### Goals
-- Curriculum overview (using these [slides](https://docs.google.com/presentation/d/1m3R_aN4S5YoCBmXRbjaZQGatygWyZXYLcN-fkcP_HWA)) (~15 minutes)
+- Curriculum overview (using these [slides](https://docs.google.com/presentation/d/1_NWYcPhS6Q3hQKXnh09Eufl7hs45yBLbUBZhWyvqeSc/edit?usp=sharing)) (~15 minutes)
 - Writing code incrementally
 - Problem solving tips
 - Basic git workflow (init -> add -> commit -> push)
@@ -10,18 +10,18 @@
 - Lecturers will make mistakes
 
 ### Curriculum Outline
-- Week 1 && 2: Fundamentals (FOCAL)
-- Week 3: Web Servers
-- Week 4: JavaScript in the Browser
-- Week 5: Persistent Data
-- Week 6: Mid-terms
-- Week 7 && 8: Front-end Framework
-- Week 9 && 10: Legacy Codebase
-- Week 11 && 12: Finals
-
-- Fundamental Fridays (programming tests/comp sci/research & reflect)
-- Technical Interviews x 2 (W3, W9)
-- Career Services
+- Module 1 (w1-w4): Fundamentals (FOCAL) - Lotide
+- Module 2 (w5): Networking and HTTP for Web Developers - Snek
+- Module 3 (w6-w7): Intro to Web Server Development - TinyApp
+- Module 4 (w8-w11): Intro to Front-end Development - Tweeter
+- Module 5 (w12-w13): Relational Databases and SQL - LighthouseBnB
+- Module 6 (w14-w15): Midterm Project
+- Module 7 (w16-w19): React - PhotoLabs
+- Module 8 (w20-w21): Automated Testing in React
+- Module 9 (w22-w26): Ruby on Rails
+- Module 10 (w27-w30): Final Project
+- Programming Tests (6 in total)
+- Technical Interviews (2)
 
 ### Compass
 * Not an instruction manual
@@ -30,11 +30,6 @@
 
 ### Problem:
 > Write a program that takes in an unlimited number of command line arguments and prints out the sum of them. If any argument is not a whole number, skip it. Do not support negative numbers.
-
-### Logic Syntax Data (LSD)
-- Logic: have I told the computer exactly what to do?
-- Syntax: am I missing a curly brace?
-- Data: do I have the data I think I do in the format I expect?
 
 ### Keep in Mind
 - Doing things with intention (you are not a passenger)
