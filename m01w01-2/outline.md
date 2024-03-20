@@ -4,6 +4,12 @@
 - Problem solving tips
 - Basic git workflow (init -> add -> commit -> push)
 
+### AI Responsibility
+* Avoid integrated tooling for now
+* Don't use AI in tests/interviews
+* Don't use it to get answers/solutions
+* Warning: AI can hallucinate!
+
 ### Upfront
 - Students should not be trying to code-along during lecture
 - This is a discussion meant to facilitate a deeper learning of the coding concepts
@@ -18,10 +24,18 @@
 - Module 6 (w14-w15): Midterm Project
 - Module 7 (w16-w19): React - PhotoLabs
 - Module 8 (w20-w21): Automated Testing in React
-- Module 9 (w22-w26): Ruby on Rails
+- Module 9 (w22-w26): Ruby on Rails - Jungle
 - Module 10 (w27-w30): Final Project
 - Programming Tests (6 in total)
 - Technical Interviews (2)
+
+### Delivery Options
+* Lectures
+* Breakouts
+* Assistance Requests (AR's)
+* Office Hours
+  * Show in Discord
+  * Reminder to update Discord username to match Compass and Zoom
 
 ### Compass
 * Not an instruction manual
