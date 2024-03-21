@@ -1,0 +1,15 @@
+{
+  "name": "w02d04-example",
+  "version": "1.0.0",
+  "description": "Notes and example code for W2D4 lecture",
+  "main": "survey-promise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-promise": "^1.0.4"
+  }
+}
