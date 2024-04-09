@@ -61,6 +61,7 @@
 
 ## Breakouts
 * [Async and Promises](/breakout-async-and-promises/)
+* [AI BREAKOUT #2 - End of Lorem Ipsum](/breakout-ai-2-end-of-lorem-ipsum/)
 * [Callbacks](/breakout-callbacks/)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
 * [Exam 1 Review](/breakout-w1-exam)
