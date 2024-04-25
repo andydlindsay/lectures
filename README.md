@@ -48,6 +48,7 @@
 * [M04W08 - Client Side JavaScript & jQuery](/m04w08-2)
 * [M04W09 - AJAX](/m04w09-1)
 * [M04W10 - Responsive Design and SASS](/m04w10-1)
+* [M04W10 - Tests 1-3 Review](/m04w10-2)
 * [M05W11 - SQL Intro](/m05w11-1)
 * [M05W11 - Database Design](/m05w11-2)
 * [M05W12 - SQL from our Apps](/m05w12-1)
