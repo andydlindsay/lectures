@@ -63,7 +63,7 @@ req.session = null;
 * The public key is available to anyone who wants it and is used to encrypt the communication
 * The private key is known only to the receiver and is used to decrypt the communication
 
-* [HTTP to HTTPS infographic](https://www.brafton.com/wp-content/uploads/2019/11/Infographic-How-to-convert-HTTP-to-HTTPS-750x3872.png)
+* [HTTP to HTTPS infographic](https://www.brafton.com/wp-content/uploads/2024/04/Infographic-How-to-convert-HTTP-to-HTTPS-scaled-1.png)
 
 ### Get example resource and create RESTful routes for it
 
