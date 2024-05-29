@@ -71,6 +71,7 @@
 * [Exam 4 Review](/breakout-w4-exam)
 * [Express Router](/breakout-express-router)
 * [React Router v6](/breakout-react-router)
+* [Team Git Workflow](/breakout-team-git-workflow/)
 * [Technical Interview Prep](/breakout-ti-prep/)
 
 ## Advanced Topics
