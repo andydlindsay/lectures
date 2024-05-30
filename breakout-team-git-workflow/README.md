@@ -34,7 +34,7 @@
 ### Team Git Workflow
 * One team member will create the repo on Github
 * Other team members will be added as collaborators using the Settings menu (team members will **not** create their own fork)
-* The creator and any collaborators will be able to push/pull code from/to the repo
+* The creator and any collaborators will be able to push/pull code to/from the repo
 * Each team member should be working only on branches and **not** directly on master/main
 * When a branch is ready to merge into main, it can be done locally or on Github (via a Pull Request)
 * Each team member is responsible for keeping their working branches up-to-date with the main branch; this means periodically checking out main and pulling down the latest code and then merging it into their working branch and settling any merge conflicts that arise
