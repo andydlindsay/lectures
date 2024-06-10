@@ -1,4 +1,4 @@
-# Breakout - useContext Hook
+# Breakout - React Context API
 
 ### To Do
 * [ ] Intro to `useContext`

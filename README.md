@@ -70,10 +70,10 @@
 * [Exam 3 Review](/breakout-w3-exam)
 * [Exam 4 Review](/breakout-w4-exam)
 * [Express Router](/breakout-express-router)
+* [React Context API](/breakout-use-context/)
 * [React Router v6](/breakout-react-router)
 * [Team Git Workflow](/breakout-team-git-workflow/)
 * [Technical Interview Prep](/breakout-ti-prep/)
-* [useContext Hook](/breakout-use-context/)
 
 ## Advanced Topics
 * [Building Chrome Extensions](/advanced-chrome-extensions)
