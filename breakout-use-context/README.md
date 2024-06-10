@@ -14,13 +14,13 @@
 ### Creating Context
 * We need to set up a place in memory to store our context (ie. data)
 * This is typically done in a separate file to prevent circular imports
-* The `.createContext` method is used to create the context
+* The `createContext` method is used to create the context
 
 ```js
-import {useContext} from 'react';
+import {createContext} from 'react';
 
 // context is typically capitalized
-const MyContext = useContext(null); // establish a default value if wanted
+const MyContext = createContext(null); // establish a default value if wanted
 
 export default MyContext; // export the context to be imported by other components
 ```
