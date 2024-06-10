@@ -40,7 +40,7 @@ const SimpleComponent = () => {
   return (
     <MyContext.Provider value={data}>
       {/* child components go here */}
-    </MyContext>
+    </MyContext.Provider>
   );
 };
 
