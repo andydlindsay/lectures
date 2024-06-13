@@ -1,16 +1,5 @@
 # Outline
 
-### Node version and NVM
-
-```bash
-$ node --version
-
-$ nvm list
-$ nvm install 16
-$ nvm alias default 16
-$ nvm use default
-```
-
 ### Repo Considerations
 * Mono-repo vs multi-repo
 

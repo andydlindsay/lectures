@@ -1,7 +1,6 @@
 # W07D04 - React Developer Workflow
 
 ### To Do
-* [ ] Node Version and NVM
 * [ ] CRA Alternatives
 * [ ] Project Structure
 * [ ] Data Structure
@@ -12,21 +11,6 @@
   * [ ] Conditional rendering
 * [ ] React DevTools
 * [ ] `build` Command
-
-### Node Version and NVM
-* Working on a variety of projects can mean having to switch quickly between different versions of Node.
-* We recommend using a **version manager** such as NVM to help with this process.
-
-```bash
-# example nvm commands
-$ nvm list # list all the Node versions currently installed
-$ nvm install 14 # install version 14
-$ nvm use 14 # switch temporarily to version 14
-$ nvm alias default 14 # make version 14 the default
-$ nvm use default # switch to the default version
-```
-
-#### Note: Changing Node versions may mean that some installed packages might not work. It is common to delete the `node_modules` folder and run `npm install` again to make sure the compatible version of each package has been installed.
 
 ### React DevTools
 * Most modern browsers have extensions/plugins that give us insight into our React applications.
