@@ -1,18 +1,17 @@
-# W07D03 - React Developer Workflow
+# W07D04 - React Developer Workflow
 
 ### To Do
 * [ ] Node Version and NVM
-* [ ] React DevTools
+* [ ] CRA Alternatives
+* [ ] Project Structure
+* [ ] Data Structure
+* [ ] Component Selection
 * [ ] Building Components in Isolation
-  * [ ] Fragments
   * [ ] Styling with hardcoded values
   * [ ] Passing props
-  * [ ] Default props
-  * [ ] Looping and arrays
   * [ ] Conditional rendering
-  * [ ] Managing state
-  * [ ] Controlled inputs
-  * [ ] Handling DOM events
+* [ ] React DevTools
+* [ ] `build` Command
 
 ### Node Version and NVM
 * Working on a variety of projects can mean having to switch quickly between different versions of Node.
