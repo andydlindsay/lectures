@@ -11,13 +11,10 @@
   * Used for integration and E2E testing (mostly)
 
 ### Install Cypress
-* Install Cypress version `9.7.0`
-* `npm install --save-dev cypress@9.7.0` or `yarn add --dev cypress@9.7.0`
-* Open Cypress with `node_modules/.bin/cypress open`
-* Create a script called `cypress` to run the above
-* Remove the example tests
+* `npm install --save-dev cypress` or `yarn add --dev cypress`
+* Open Cypress with `npx cypress open`
 
-### Create a new file `cypress/integration/01_cypress.spec.js`
+### Create a new file `cypress/e2e/01_cypress.cy.js`
 
 ```js
 describe('Cypress', () => {
@@ -27,13 +24,17 @@ describe('Cypress', () => {
 });
 ```
 
-### Edit `cypress.json`
+### Edit `cypress.config.js`
 
-```json
-{
-  "viewportWidth": 1280,
-  "viewportHeight": 1200
-}
+```js
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    viewportHeight: 1280,
+    viewportWidth: 1200
+  },
+});
 ```
 
 ### Start the app server running and add a new test to visit the site
@@ -44,7 +45,7 @@ it('can visit the home page', () => {
 });
 ```
 
-### Add a new spec file `cypress/integration/02_filters.spec.js`
+### Add a new spec file `cypress/e2e/02_filters.cy.js`
 
 ```js
 describe('Filters', () => {
@@ -62,10 +63,18 @@ describe('Filters', () => {
 });
 ```
 
-### Add the `baseUrl` key to `cypress.json`
+### Add the `baseUrl` key to `cypress.config.js`
 
-```json
-"baseUrl": "http://localhost:8765"
+```js
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:8765', // this line
+    viewportHeight: 1280,
+    viewportWidth: 1200
+  },
+});
 ```
 
 ### Convert affected files to use `cy.visit('/');` instead
@@ -91,7 +100,7 @@ it('toggles a check box by clicking on the label', () => {
 });
 ```
 
-### Add a new spec file `cypress/integration/03_text-input.spec.js`
+### Add a new spec file `cypress/e2e/03_text-input.cy.js`
 
 ```js
 describe('Text Input', () => {
@@ -147,7 +156,7 @@ describe('Text Input', () => {
 
 ### Add `itunes.json` to `cypress/fixtures`
 
-### Add a new spec file `cypress/integration/04_display-results.spec.js`
+### Add a new spec file `cypress/e2e/04_display-results.cy.js`
 
 ```js
 describe('Display Results', () => {

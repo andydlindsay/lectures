@@ -19,8 +19,8 @@
 * Cypress can be installed locally to the project (as a dev dependency) or globally on your OS
 
 ```bash
-npm install -g cypress@9.7.0
-npm install --save-dev cypress@9.7.0
+npm install -g cypress
+npm install --save-dev cypress
 ```
 
 * Use the `open` command to start Cypress running
@@ -30,27 +30,31 @@ npm install --save-dev cypress@9.7.0
 cypress open
 
 # local installation
-node_modules/.bin/cypress open
+npx cypress open
 ```
 
 * Add a script to `package.json` for a quick way to start Cypress
 
 ```json
-"cypress": "node_modules/.bin/cypress open"
+"cypress": "cypress open"
 ```
 
 ```bash
 npm run cypress
 ```
 
-* We use the `cypress.json` file in the main directory to configure Cypress
+* We use the `cypress.config.js` file in the main directory to configure Cypress
 
-```json
-{
-  "baseUrl": "http://localhost:3000",
-  "viewportWidth": 1280,
-  "viewportHeight": 1200
-}
+```js
+const { defineConfig } = require("cypress");
+
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:8765',
+    viewportHeight: 1280,
+    viewportWidth: 1200
+  },
+});
 ```
 
 * `baseUrl` tells Cypress where our application is hosted and what port it's listening on
