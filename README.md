@@ -62,7 +62,7 @@
 
 ## Breakouts
 * [Async and Promises](/breakout-async-and-promises/)
-* [AI BREAKOUT #2 - End of Lorem Ipsum](/breakout-ai-2-end-of-lorem-ipsum/)
+* [AI #2 - End of Lorem Ipsum](/breakout-ai-2-end-of-lorem-ipsum/)
 * [Callbacks](/breakout-callbacks/)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
 * [Exam 1 Review](/breakout-w1-exam)
@@ -70,6 +70,7 @@
 * [Exam 3 Review](/breakout-w3-exam)
 * [Exam 4 Review](/breakout-w4-exam)
 * [Express Router](/breakout-express-router)
+* [How to Learn Computer Programming](/breakout-learn-computer-programming/)
 * [React Context API](/breakout-use-context/)
 * [React Router v6](/breakout-react-router)
 * [Team Git Workflow](/breakout-team-git-workflow/)
