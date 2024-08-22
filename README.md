@@ -81,6 +81,8 @@
 * [React Router v6](/breakout-react-router)
 * [Team Git Workflow](/breakout-team-git-workflow/)
 * [Technical Interview Prep](/breakout-ti-prep/)
+* [Ruby on Rails #1 (Routing and Controllers)](/breakout-rails-1/)
+* [Ruby on Rails #2 (Migrations and Models)](/breakout-rails-2/)
 
 ## Advanced Topics
 * [Building Chrome Extensions](/advanced-chrome-extensions)
