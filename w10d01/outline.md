@@ -100,6 +100,27 @@ class CreateBooks < ActiveRecord::Migration[6.0]
 end
 ```
 
+### Example migration attributes
+
+```rb
+class CreateUsers < ActiveRecord::Migration[6.0]
+  def change
+    create_table :users do |t|
+      t.string  :username, null: false, unique: true, limit: 20
+      t.string  :email, null: false, unique: true
+      t.integer :age, null: false, default: 18
+      t.boolean :admin, default: false
+      t.datetime :signup_date, null: false, default: -> { 'CURRENT_TIMESTAMP' }
+
+      # precision is total digits and scale is digits after decimal
+      t.decimal :account_balance, precision: 10, scale: 2, default: 0.0
+
+      t.timestamps
+    end
+  end
+end
+```
+
 ```rb
 # app/models/author.rb
 class Author < ApplicationRecord
@@ -111,6 +132,51 @@ end
 # app/models/book.rb
 class Book < ApplicationRecord
   belongs_to :author
+end
+```
+
+### Example model validations
+
+```rb
+# app/models/user.rb
+class User < ApplicationRecord
+  # Required
+  validates :name, presence: true
+
+  # Between 3 and 20 characters
+  validates :username, length: { in: 3..20 }
+
+  # No more than 500 characters
+  validates :bio, length: { maximum: 500 }
+
+  # Must be greater than 0
+  validates :price, numericality: { greater_than: 0 }
+
+  # Must be an integer <= 1000
+  validates :stock, numericality: { only_integer: true, less_than_or_equal_to: 1000 }
+
+  # Must be one of 'admin', 'user', or 'guest'
+  validates :role, inclusion: { in: %w(admin user guest) } 
+
+  # Can't be 'admin' or 'superuser'
+  validates :username, exclusion: { in: %w(admin superuser) }
+
+  # Uniqueness
+  validates :email, uniqueness: true
+
+  # Multiple attributes
+  validates :username, presence: true, length: { in: 3..20 }, uniqueness: true
+
+  # Custom validation
+  validate :email_domain_check
+
+  private
+
+  def email_domain_check
+    unless email.ends_with?('@example.com')
+      @errors.add(:email, 'must be from @example.com')
+    end
+  end
 end
 ```
 
@@ -337,4 +403,70 @@ end
 ```bash
 # try to commit first to show off changes
 rails g scaffold publishers
+```
+
+### Form submission
+
+#### Form
+
+```erb
+<h1>Create a new todo!</h1>
+
+<%= link_to "Go back", todos_path %>
+
+<%= form_with(model: @todo, local: true) do |form| %>
+  <% if @todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo.errors.count, "error") %> prevented us from creating a todo.</h2>
+      <ul>
+        <% @todo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :task %>
+  <%= form.text_field :task %>
+
+  <%= form.submit %>
+<% end %>
+```
+
+#### Model
+
+```rb
+class Todo < ApplicationRecord
+  validates :task, presence: true, length: { minimum: 8 }
+end
+```
+
+#### Controller
+
+```rb
+class TodosController < ApplicationController
+  def index
+    @todos = Todo.all
+  end
+
+  def new
+    @todo = Todo.new
+  end
+
+  def create
+    @todo = Todo.new(todo_params)
+
+    if @todo.save
+      redirect_to [:todos]
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def todo_params
+    params.require(:todo).permit(:task)
+  end
+end
 ```
