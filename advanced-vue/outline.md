@@ -32,7 +32,7 @@ npm create vue@latest app-name
 </script>
 
 <template>
-  <!-- template using handlebars -->
+  <!-- template for component -->
 </template>
 
 <style scoped>
@@ -100,6 +100,43 @@ const count = ref(0)
 
 ### Data fetching
 * Data fetching is normally done in the `onMounted` function inside the script tag
+
+```vue
+<script setup>
+import {ref, onMounted, onUpdated} from 'vue'
+
+const monster = ref()
+
+onMounted(() => {
+  fetch('https://www.dnd5eapi.co/api/monsters/adult-black-dragon/')
+    .then(res => res.json())
+    .then(res => monster.value = res);
+})
+
+onUpdated(() => {
+  console.log('component updated');
+});
+</script>
+
+<template>
+  <div v-if="monster" class="monster">
+    <h2>Name: {{ monster.name }}</h2>
+    <h3>Languages: {{ monster.languages }}</h3>
+    <h3>Alignment: {{ monster.alignment }}</h3>
+  </div>
+</template>
+
+<style scoped>
+.monster {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  padding: 20px;
+  color: lightblue;
+}
+</style>
+```
+
+### Using the proxy to avoid CORS issues
 * We need to configure the proxy in `vite.config.js`
 
 ```js
@@ -128,41 +165,4 @@ export default defineConfig({
     }
   }
 })
-```
-
-```vue
-<script setup>
-import {ref, onMounted, onUpdated} from 'vue'
-
-const monster = ref()
-
-onMounted(() => {
-  fetch('https://www.dnd5eapi.co/api/monsters/adult-black-dragon/')
-    .then(res => res.json())
-    .then(res => monster.value = res);
-})
-
-onUpdated(() => {
-  console.log('component updated');
-});
-
-console.log('component created');
-</script>
-
-<template>
-  <div v-if="monster" class="monster">
-    <h2>Name: {{ monster.name }}</h2>
-    <h3>Languages: {{ monster.languages }}</h3>
-    <h3>Alignment: {{ monster.alignment }}</h3>
-  </div>
-</template>
-
-<style scoped>
-.monster {
-  border: 2px solid magenta;
-  border-radius: 15px;
-  padding: 20px;
-  color: lightblue;
-}
-</style>
 ```
