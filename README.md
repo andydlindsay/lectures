@@ -89,7 +89,7 @@
 * [Github](/advanced-github)
 * [Maze Generation](/advanced-maze)
 * [TypeScript](/advanced-typescript)
-* [Vue](/advanced-vue)
+* [Vue 3](/advanced-vue)
 
 ## Workshops
 * [Scheduler](/workshop-scheduler)
@@ -113,3 +113,4 @@
 * [M07W17 - Component-Based UI w/ React](/archived-m07w17-1)
 * [BREAKOUT - React Router v5](/archived-breakout-react-router-v5/)
 * [BREAKOUT - Tackle the Take Home Challenge](/archived-breakout-takehome-challenge)
+* [Vue 2](/archived-advanced-vue)

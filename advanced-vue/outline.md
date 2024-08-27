@@ -1,10 +1,3 @@
-## External Resources
-
-* [Vue Install Instructions](https://vuejs.org/v2/guide/)
-* [Vue Cheat Sheet](https://devhints.io/vue)
-* [Chef Andy API](http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes)
-* [Vue Lifecycle Diagram](https://vuejs.org/assets/lifecycle.16e4c08e.png)
-
 ## Outline
 
 ### Introduction to Vue.js
@@ -13,275 +6,163 @@
 * Component-based
 * Reactive: when the data changes, the view re-renders
 
-### Follow steps from the guide
-* https://vuejs.org/v2/guide/
+### Installation
+* Use `vite` directly or use the `vue` builder tool
+* `vue` gives more specific Vue options while `vite` is more generic
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+```bash
+# using vite
+npm create vite@latest app-name
 
-<div id="app">
-  {{ message }}
-</div>
-
-<script>
-  const app = new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue!'
-    }
-  });
-</script>
+# using vue
+npm create vue@latest app-name
 ```
 
-### Experiment in the browser console
-* Demonstrate name and that it can be updated in the console with `app.name = 'something else';`
-* Show how it works just like jQuery and must wait for the DOM to load to hook into it
+### Explore the default app
+* `vite.config.js` contains default configuration, adds the `vue` plugin to vite and aliases the root path as `@` to prevent needing to use relative paths for imports
+* `index.html` serves the same purpose as the index file in React apps
+* `main.js` (similar to `index.js` in React) sets up the Vue app and mounts it to the div in the DOM with the corresponding id
 
-### Add an array to the data object
-* Render an unordered list using `v-for`
-
-```html
-<ul>
-  <li v-for="sport of sports">{{ sport }}</li>
-</ul>
-
-<script>
-  const app = new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue!',
-      sports: ['badminton', 'volleyball', 'soccer']
-    }
-  });
-</script>
-```
-
-* Add a new item to the list using `app.sports.push('tennis');`
-
-### Bound Properties
-* Demonstrate bound properties using `v-bind:` and then the short-hand
-
-```html
-<h2 v-bind:title="message">Hello {{ name }}</h2>
-<h2 :title="message">Hello {{ name }}</h2>
-```
-
-* Hover over the `h2` to show the tooltip
-* Change the tooltip with `app.message = 'something else';`
-
-### Conditional Rendering
-* Demonstrate `v-if`
-
-```js
-data: {
-  visible: true
-}
-```
-
-```html
-<p v-if="visible">I'm here!!!</p>
-<p v-else>I'm here instead!</p>
-```
-
-* Open the console and set `app.visible = false;`
-
-### Methods and Event Handling
-* Add the `methods` object and create a simple method for a click event
-* Bind it to a DOM element using `v-on:click="functionName"`
-
-```js
-methods: {
-  sayHello() {
-    alert('hello!!!');
-  }
-}
-```
-
-```html
-<h2 v-bind:title="message" v-on:click="sayHello">Hello {{ name }}</h2>
-<h2 v-bind:title="message" @click="sayHello">Hello {{ name }}</h2>
-```
-
-### Create a counter :p
-
-```js
-data: {
-  counter: 0
-},
-methods: {
-  incrementCounter() {
-    this.counter += 1;
-  }
-}
-```
-
-```html
-<div>
-  <h2>Counter: {{ counter }}</h2>
-  <button @click="incrementCounter">Plus 1</button>
-</div>
-```
-
-### Binding Data with `v-model`
-* Add a `form` object to the `data` object
-
-```js
-data: {
-  form: {
-    username: '',
-    password: ''
-  }
-},
-methods: {
-  onSubmit() {
-    console.log(this.form);
-  }
-}
-```
-
-```html
-<form>
-  <label for="username">Username</label>
-  <input type="text" id="username" v-model="form.username" />
-  <br/>
-  <label for="password">Password</label>
-  <input type="password" id="password" v-model="form.password" />
-  <br/>
-  <button type="button" @click="onSubmit">Log In!</button>
-</form>
-```
-
-### Computed Properties
-* `computed` properties are values that can be calculated/computed from other values in state
-* Computed properties are not called like functions, they are referenced like other pieces of state
-
-```js
-computed: {
-  reverseUsername() {
-    return this.form.username.split('').reverse().join('');
-  }
-}
-```
-
-### Watch
-* `watch` property is used to watch for changes to values (similar to dependency array in `useEffect`)
-
-```js
-watch: {
-  'form.username': function() {
-    console.log('updates!');
-  }
-  // or
-  'form.username'() {
-    console.log('updates!');
-  }
-}
-```
-
-### Vue Lifecycle Methods
-* https://vuejs.org/assets/lifecycle.16e4c08e.png
-* Introduce the `created` lifecycle method and `fetch` data from an external API
+### Component Basics
 
 ```vue
-<ol>
-  <li v-for="recipe of recipes">{{ recipe.title }}</li>
-</ol>
-```
+<script setup>
+// used for setting up state, creating functions,
+// fetching data, and defining props
+</script>
 
-```js
-data: {
-  recipes: []
-},
-created() {
-  fetch('http://my-json-server.typicode.com/andydlindsay/chef-andy/recipes')
-    .then(res => res.json())
-    .then(data => this.recipes = data);
-}
-```
-
-### App Creation with vue-cli
-* Install vue-cli
-
-```shell
-% npm i -g @vue/cli
-% vue --version
-
-% vue create my-project
-
-% cd my-project
-% yarn serve
-```
-
-* Explore the created project structure
-* Single file vue components
-
-### Prop passing from parent to child
-
-```vue
 <template>
-  <ChildComponent :prop="prop" />
+  <!-- template using handlebars -->
 </template>
 
+<style scoped>
+.styles.for.this.component {}
+</style>
+```
+
+### Props
+
+```vue
+<script setup>
+// simple (no types)
+defineProps(['propOne', 'propTwo'])
+
+// with data types
+defineProps({
+  propOne: String,
+  propTwo: Number,
+})
+
+// with more info per prop
+defineProps({
+  propOne: {
+    type: String,
+    required: true,
+  },
+  propTwo: {
+    type: Number,
+    defaultValue: 42,
+  }
+})
 <script>
-import InBetween from './components/InBetween.vue';
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      poem: 'Hello to the day'
-    };
-  },
-  components: {
-    InBetween
-  },
-}
-</script>
 ```
 
-### Demo Vue devtools
-
-### Custom Event Handling
-* Emit an event from the child component
-
-```js
-data() {
-  return {
-    childMessage: ''
-  }
-},
-props: ['msg', 'propTwo'],
-methods: {
-  sendToParent() {
-    this.$emit('message-stored', this.childMessage);
-  }
-}
-```
-
-* Look in devtools to see the event and the payload
-* Listen for the event in the parent by attaching a custom event handler
-
-```html
-<HelloWorld @message-stored="messageFromChild" />
-```
-
-* You can pass it down deeper with this syntax on "in-between" components
-
-```html
-<TestComponent v-on="$listeners" :poem="poem" />
-```
-
-### Slots
-* Slots are for child elements passed in (similar to `props.children`)
-
-```js
-// Slots.vue
+```vue
 <template>
-  <div class="slots">
-    <slot></slot>
+  <h2>Prop One: {{ propOne }}</h2>
+  <h2>Prop Two: {{ propTwo }}</h2>
+</template>
+```
+
+### State
+* State is established in the script tag using `ref` to make the value reactive (without this, Vue won't know/update the DOM if the value changes)
+
+```vue
+<script setup>
+import {ref} from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <div>
+    <button @click="count++">Count is {{count}}</button>
+  </div>
+</template>
+```
+
+### Passing bound props (reactive)
+* If we want to pass down reactive (ie. changeable) values, we need to bind them to the child
+
+```vue
+
+```
+
+### Data fetching
+* Data fetching is normally done in the `onMounted` function inside the script tag
+* We need to configure the proxy in `vite.config.js`
+
+```js
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8001',
+        changeOrigin: true, // if the server requires the host header to match the target url
+        rewrite: (path) => path.replace(/^\/api/, ''), // used if you want to remove the prefix from the proxied request
+      }
+    }
+  }
+})
+```
+
+```vue
+<script setup>
+import {ref, onMounted, onUpdated} from 'vue'
+
+const monster = ref()
+
+onMounted(() => {
+  fetch('https://www.dnd5eapi.co/api/monsters/adult-black-dragon/')
+    .then(res => res.json())
+    .then(res => monster.value = res);
+})
+
+onUpdated(() => {
+  console.log('component updated');
+});
+
+console.log('component created');
+</script>
+
+<template>
+  <div v-if="monster" class="monster">
+    <h2>Name: {{ monster.name }}</h2>
+    <h3>Languages: {{ monster.languages }}</h3>
+    <h3>Alignment: {{ monster.alignment }}</h3>
   </div>
 </template>
 
-// App.vue
-<Slots>I am passing something to you</Slots>
+<style scoped>
+.monster {
+  border: 2px solid magenta;
+  border-radius: 15px;
+  padding: 20px;
+  color: lightblue;
+}
+</style>
 ```
