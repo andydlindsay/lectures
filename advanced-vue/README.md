@@ -5,7 +5,10 @@
 * [ ] Installation
 * [ ] The Default App
 * [ ] Component Basics
+* [ ] Conditional Rendering and Looping
 * [ ] Props
+* [ ] Slots (`props.children`)
 * [ ] State
 * [ ] Bound Props
+* [ ] Lifecycle Hooks
 * [ ] Data Fetching

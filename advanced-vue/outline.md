@@ -40,6 +40,36 @@ npm create vue@latest app-name
 </style>
 ```
 
+### Conditional Rendering and Looping
+
+```vue
+<script setup>
+import FunStuffChild from './FunStuffChild.vue'
+
+const username = 'bob'
+const languages = ['javascript', 'css', 'html']
+</script>
+
+<template>
+  <div>
+    <h2>FunStuff Component</h2>
+
+    <!-- conditional rendering -->
+    <h2 v-if="username === 'alice'">Username must be "alice"</h2>
+    <h2 v-else-if="username === 'bob'">What a great name!</h2>
+    <h2 v-else>Choose a better name</h2>
+
+    <!-- array looping -->
+    <ul>
+      <li v-for="language of languages" :key="language">{{ language }}</li>
+    </ul>
+
+    <!-- looping with a child component -->
+    <FunStuffChild v-for="language of languages" :key="language" :language="language" />
+  </div>
+</template>
+```
+
 ### Props
 
 ```vue
@@ -74,6 +104,64 @@ defineProps({
 </template>
 ```
 
+### Slots
+* Equivalent to `props.children` in React
+
+```vue
+<script setup>
+import Header from './components/Header.vue'
+import Slots from './components/Slots.vue'
+</script>
+
+<template>
+  <!-- <Header message="About Us" />
+  <Header message="Welcome to Our Site!" /> -->
+  <Slots>
+    <h3>Inside the opening and closing tags</h3>
+    <h4>This is like props.children from React</h4>
+  </Slots>
+</template>
+
+<style scoped></style>
+```
+
+```vue
+<template>
+  <div>
+    <h2>Slots Component</h2>
+    <slot />
+    <slot />
+  </div>
+</template>
+```
+
+### Named Slots [stretch]
+
+```vue
+<template>
+  <!-- <Header message="About Us" />
+  <Header message="Welcome to Our Site!" /> -->
+  <Slots>
+    <template #top>
+      <h2>This shows up at the top of the page</h2>
+    </template>
+    <template #bottom>
+      <h4>Copyright &copy;2024</h4>
+    </template>
+  </Slots>
+</template>
+```
+
+```vue
+<template>
+  <div>
+    <h2>Slots Component</h2>
+    <slot name="top"/>
+    <slot name="bottom"/>
+  </div>
+</template>
+```
+
 ### State
 * State is established in the script tag using `ref` to make the value reactive (without this, Vue won't know/update the DOM if the value changes)
 
@@ -91,11 +179,133 @@ const count = ref(0)
 </template>
 ```
 
-### Passing bound props (reactive)
-* If we want to pass down reactive (ie. changeable) values, we need to bind them to the child
+### Complex State
 
 ```vue
+<script setup>
+import {ref} from 'vue'
 
+const foods = ref([])
+const newFood = ref('')
+</script>
+
+<template>
+  <div>
+    <h2>Foods Component</h2>
+
+    <div>
+      <label>New Food:</label>
+      <input 
+        v-bind:value="newFood"
+        v-on:input="e => newFood = e.target.value"
+      />
+      <button
+        v-on:click="foods.push(newFood)"
+      >Add</button>
+    </div>
+
+    <div>
+      <ul>
+        <li v-for="food of foods" :key="food">{{ food }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+```
+
+* Using `v-model` and shorthands
+
+```vue
+<template>
+  <div>
+    <h2>Foods Component</h2>
+
+    <div>
+      <label>New Food:</label>
+      <input 
+        v-model="newFood"
+      />
+      <button
+        @click="foods.push(newFood)"
+      >Add</button>
+    </div>
+
+    <div>
+      <ul>
+        <li v-for="food of foods" :key="food">{{ food }}</li>
+      </ul>
+    </div>
+  </div>
+</template>
+```
+
+### Passing bound props (reactive)
+* If we want to pass down reactive (ie. changeable) values, we need to bind them to the child
+* Adding a colon the front of the property is the same as using the more verbose `v-bind:`
+
+```vue
+<script setup>
+import HeaderChild from './HeaderChild.vue'
+
+const props = defineProps({
+  message: {
+    type: String,
+    required: true,
+  },
+});
+
+const message = 'overridden';
+</script>
+
+<template>
+  <div class="welcome">
+    <h2>Header Component</h2>
+    <h2>Message: {{ props.message }}</h2>
+    <HeaderChild :message="props.message" />
+  </div>
+</template>
+```
+
+### Lifecycle Hooks
+* Commonly used: `onMounted`, `onUpdated`, `onUnmounted`
+* [Lifecycle Docs](https://vuejs.org/api/composition-api-lifecycle)
+
+```vue
+<script setup>
+import {onMounted, onUpdated, onUnmounted, ref} from 'vue'
+
+const count = ref(0)
+const interval = ref(null)
+
+// called when the component is added to the DOM
+// used for handling side effects
+onMounted(() => {
+  console.log('component has been mounted')
+  interval.value = setInterval(() => {
+    console.log('interval has fired')
+  }, 500);
+})
+
+// called whenever the component's reactive data updates
+onUpdated(() => {
+  if (count.value >= 10) count.value = 0
+  console.log('component has been updated')
+})
+
+// called when the component is removed from the DOM
+// used for cleanup
+onUnmounted(() => {
+  clearInterval(interval.value)
+  console.log('component has been unmounted')
+})
+</script>
+
+<template>
+  <div>
+    <h2>Lifecycle Component</h2>
+    <button @click="count++">Count is {{ count }}</button>
+  </div>
+</template>
 ```
 
 ### Data fetching
@@ -103,7 +313,7 @@ const count = ref(0)
 
 ```vue
 <script setup>
-import {ref, onMounted, onUpdated} from 'vue'
+import {ref, onMounted} from 'vue'
 
 const monster = ref()
 
@@ -112,10 +322,6 @@ onMounted(() => {
     .then(res => res.json())
     .then(res => monster.value = res);
 })
-
-onUpdated(() => {
-  console.log('component updated');
-});
 </script>
 
 <template>
