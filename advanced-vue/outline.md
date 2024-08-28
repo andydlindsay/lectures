@@ -70,6 +70,17 @@ const languages = ['javascript', 'css', 'html']
 </template>
 ```
 
+### Event Handling
+* Any DOM event can be handled by adding a listener to the particular element
+* The syntax is `v-on:<event>="functionToCall"`
+
+```html
+<button v-on:click="onButtonClick">Click Me!</button>
+
+<!-- there's also a short hand for v-on -->
+<button @click="onButtonClick">Click Me!</button>
+```
+
 ### Props
 
 ```vue
