@@ -79,10 +79,10 @@
 * [How to Learn Computer Programming](/breakout-learn-computer-programming/)
 * [React Context API](/breakout-use-context/)
 * [React Router v6](/breakout-react-router)
-* [Team Git Workflow](/breakout-team-git-workflow/)
-* [Technical Interview Prep](/breakout-ti-prep/)
 * [Ruby on Rails #1 (Routing and Controllers)](/breakout-rails-1/)
 * [Ruby on Rails #2 (Migrations and Models)](/breakout-rails-2/)
+* [Team Git Workflow](/breakout-team-git-workflow/)
+* [Technical Interview Prep](/breakout-ti-prep/)
 
 ## Advanced Topics
 * [Building Chrome Extensions](/advanced-chrome-extensions)
@@ -113,4 +113,4 @@
 * [M07W17 - Component-Based UI w/ React](/archived-m07w17-1)
 * [BREAKOUT - React Router v5](/archived-breakout-react-router-v5/)
 * [BREAKOUT - Tackle the Take Home Challenge](/archived-breakout-takehome-challenge)
-* [Vue 2](/archived-advanced-vue)
+* [ADVANCED - Vue 2](/archived-advanced-vue)
