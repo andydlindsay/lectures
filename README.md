@@ -21,6 +21,7 @@
 * [W05D03 - SQL from our Apps](/w05d03)
 * [W05D05 - Midterm Project Kickoff](/w05d05)
 * [W07D01 - JSX and Props](/w07d01)
+* [W07D02 - What is React State?](/w07d02)
 * [W07D03 - React Developer Workflow](/w07d03)
 * [W07D04 - Immutable Update Patterns](/w07d04)
 * [W07D05 - Custom Hooks](/w07d05)
@@ -67,8 +68,8 @@
 * [M09W24 - Rails Review](/m09w24-1)
 
 ## Breakouts
-* [Async and Promises](/breakout-async-and-promises/)
 * [AI #2 - End of Lorem Ipsum](/breakout-ai-2-end-of-lorem-ipsum/)
+* [Async and Promises](/breakout-async-and-promises/)
 * [Callbacks](/breakout-callbacks/)
 * [CRUD with AJAX](/breakout-crud-with-ajax)
 * [Exam 1 Review](/breakout-w1-exam)
@@ -92,9 +93,9 @@
 * [Vue 3](/advanced-vue)
 
 ## Workshops
-* [Scheduler](/workshop-scheduler)
-* [Intro to Vue](/workshop-intro-to-vue)
 * [Chrome Extensions](/workshop-chrome-extensions/)
+* [Intro to Vue](/workshop-intro-to-vue)
+* [Scheduler](/workshop-scheduler)
 
 ## Archived
 * [W07D02 - Component-Based UI w/ React](/archived-w07d02)
