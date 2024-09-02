@@ -1,21 +1,9 @@
-# Breakout - React Context API
-
-### To Do
-* [ ] Intro to `useContext`
-* [ ] Creating context
-* [ ] The `Provider` component
-* [ ] Consuming context
-* [ ] Creating our own `Provider` component
+# Outline
 
 ### Intro to `useContext`
 * The `useContext` hook can be used to share data across the entire application (or parts of it)
 * By using `useContext` we can reduce (or eliminate) the need for prop drilling
 * With the addition of `useState` or `useReducer`, the context can share application state (eg. the user info for the currently logged in user, the theme colour or language preference)
-
-### Creating Context
-* We need to set up a place in memory to store our context (ie. data)
-* This is typically done in a separate file to prevent circular imports
-* The `createContext` method is used to create the context
 
 ```js
 import {createContext} from 'react';
@@ -69,7 +57,32 @@ const ChildComponent = () => {
 export default ChildComponent;
 ```
 
-### Useful Links
-* [useContext Docs](https://react.dev/reference/react/useContext)
-* [A Guide to React Context and useContext() Hook](https://dmitripavlutin.com/react-context-and-usecontext/)
-* [React useContext Best Practices and Tips](https://mobileappcircular.com/react-usecontext-best-practices-and-tips-b6eccaad8a15)
+### Creating our own `Provider`
+* We can use `props.children` to create and provide context in the same component
+* We can also create a custom hook to eliminate needing to export the context (this also makes it simpler for children to consume because they don't need to import both useContext and the context itself)
+
+```jsx
+import {useState, createContext, useContext} from 'react';
+
+const CountContext = createContext();
+
+export const useCountContext = () => {
+  return useContext(CountContext);
+};
+
+const ContextComponent = (props) => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <CountContext.Provider value={{ count, increment }}>
+      { props.children }
+    </CountContext.Provider>
+  );
+};
+
+export default ContextComponent;
+```
