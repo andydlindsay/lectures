@@ -1,6 +1,7 @@
 # Table of Contents
 
 ## Web Immersive Lectures
+* [W01D01 - Tech Talk and Curriculum Outline](/w01d01/)
 * [W01D02 - The Dev Workflow](/w01d02)
 * [W01D03 - Objects in JS](/w01d03)
 * [W01D04 - Callbacks!](/w01d04)
@@ -34,6 +35,7 @@
 * [W10D04 - Final Project Kickoff](/w10d04)
 
 ## Flex Lectures
+* [M01W01 - Tech Talk and Curriculum Outline](/m01w01-1)
 * [M01W01 - The Dev Workflow](/m01w01-2)
 * [M01W02 - Objects in JS](/m01w02-1)
 * [M01W02 - Callbacks!](/m01w02-2)
