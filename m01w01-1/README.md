@@ -6,15 +6,15 @@
 * Check your node version (14 WSL/Linux, 16 M1+)
 
 ### Curriculum Overview
-* Module 1 - FOCAL (Functions, Objects, Conditions, Arrays, Loops) - Lotide
-* Module 2 - FOCAL continued (networking, async programming)
-* Module 3 - Back end app development (web servers, cookies, security) - TinyApp
-* Module 4 - Front end app development (HTML, CSS, JS) - Tweeter
+* Module 1 - Programming Fundamentals (functions, objects, conditions, arrays, loops) - Lotide
+* Module 2 - Networking and HTTP - Snake
+* Module 3 - Web server development (web servers, cookies, security) - TinyApp
+* Module 4 - Front end development (HTML, CSS, JS) - Tweeter
 * Module 5 - Databases (SQL, relational databases) - LightBnB
 * Module 6 - Midterm Project (Group)
 * Module 7 - React - PhotoLabs
 * Module 8 - Automated testing in React (jest, cypress) - Scheduler
-* Module 9 - Job simulation module (Rails/Ruby) - Jungle
+* Module 9 - Ruby on Rails (job simulation module) - Jungle
 * Module 10 - Final Project (Group)
 
 ### Exams and Technical Interviews
