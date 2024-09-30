@@ -221,6 +221,34 @@ const Inbetween = () => {
 export default Inbetween;
 ```
 
+### Provider Component with Custom Hook
+
+```jsx
+import {createContext, useState, useContext} from 'react';
+
+const CountContext = createContext();
+
+export const useCountContext = () => {
+  return useContext(CountContext);
+};
+
+const CountProvider = (props) => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <CountContext.Provider value={{ count, increment }}>
+      {props.children}
+    </CountContext.Provider>
+  );
+};
+
+export default CountProvider;
+```
+
 ## `useRef`
 * The `useRef` hook allows us to keep track of non-stage values
 * Updates to the `useRef` value will **not** cause a re-render
