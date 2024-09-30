@@ -1,8 +1,6 @@
-`rafce`
-
 # External Resources
-* `yarn add react-router-dom`
-* `yarn add styled-components`
+* `npm i react-router-dom`
+* `npm i styled-components`
 
 # Outline
 
@@ -224,6 +222,8 @@ export default Inbetween;
 ```
 
 ## `useRef`
+* The `useRef` hook allows us to keep track of non-stage values
+* Updates to the `useRef` value will **not** cause a re-render
 
 ### Set focus :p
 
@@ -254,62 +254,28 @@ const UseRef = () => {
 export default UseRef;
 ```
 
-### Avoid stale state
-* https://reactjs.org/docs/hooks-reference.html#useref
+### Hang onto previous state value
 
 ```jsx
-import React, { useRef, useState } from 'react';
+import {useRef, useState, useEffect} from 'react';
 
-const UseRef = () => {
+const RefPractice = () => {
   const [count, setCount] = useState(0);
+  const prevCount = useRef(0);
 
-  const handleAlert = () => {
-    setTimeout(() => {
-      alert(count);
-    }, 3000);
-  };
+  useEffect(() => {
+    prevCount.current = count;
+  }, [count]);
 
   return (
     <div>
-      <p>useRef</p>
-
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count => count + 1)}>Increment</button>
-        <button onClick={handleAlert}>Show Alert</button>
-      </div>
+      <h2>RefPractice Component</h2>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <h2>Old value: {prevCount.current}</h2>
     </div>
   );
 };
 
-export default UseRef;
-```
-
-```jsx
-// current value reference
-import React, { useRef, useState } from 'react';
-
-const UseRef = () => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef();
-  countRef.current = count;
-
-  const handleAlert = () => {
-    setTimeout(() => {
-      alert(countRef.current);
-    }, 3000);
-  };
-
-  return (
-    <div>
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count => count + 1)}>Increment</button>
-        <button onClick={handleAlert}>Show Alert</button>
-      </div>
-    </div>
-  );
-};
-
-export default UseRef;
+export default RefPractice;
 ```
