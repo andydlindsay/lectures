@@ -3,7 +3,9 @@
 ### To Do
 * [ ] Blocking Code
 * [ ] Asynchronous Programming
-* [ ] `setTimeout` and `setInterval`
+* [ ] `setTimeout`
+* [ ] Returning Values from Async Code
+* [ ] `setInterval`
 * [ ] File System Functions (`fs`)
 
 ### Asynchronous Programming
