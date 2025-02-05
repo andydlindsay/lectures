@@ -147,10 +147,10 @@ h1 {
 }
 ```
 
-#### Partials and `@import`
+#### Partials and `@use`
 * We can use partials to store small amounts of code
 * The convention for naming partials is to prepend the filename with an underscore (eg. `_variables.scss` or `_nav.scss`)
-* Partials can be included into other Sass files using the `@import` syntax
+* Partials can be included into other Sass files using the `@use` syntax
 * When importing, the leading underscore can be omitted from the filename
 
 ```scss
@@ -159,7 +159,7 @@ $border-width: 2px;
 $border-color: red;
 
 // inside styles.scss
-@import 'variables';
+@use 'variables';
 p {
   border: $border-width solid $border-color;
 }

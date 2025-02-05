@@ -193,10 +193,10 @@ $border: $border-width $border-style $border-color;
 
 ```scss
 // styles.scss
-@import '_variables';
+@use '_variables';
 
 // you can omit the underscore
-@import 'variables';
+@use 'variables';
 ```
 
 ### Extending Styles
